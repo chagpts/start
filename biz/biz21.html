@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Article</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Quicksand', sans-serif;
+  background:
+    linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
+    url("../verse.png") no-repeat center center / cover;
+  padding: 60px 20px;
+}
+
+.container {
+  max-width: 920px;
+  margin: auto;
+  background: rgba(255,255,255,0.95);
+  padding: 50px 60px;
+  border-radius: 28px;
+}
+
+h1, h2, h3 {
+  font-family: 'Baloo 2', cursive;
+}
+
+h1 { margin-bottom: 28px; }
+
+h2 {
+  margin-top: 50px;
+  margin-bottom: 16px;
+}
+
+p {
+  line-height: 1.8;
+  margin-bottom: 18px;
+  font-size: 15px;
+}
+
+ul { margin-left: 20px; margin-bottom: 22px; }
+li { margin-bottom: 8px; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 28px 0;
+  font-size: 14px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 14px;
+  vertical-align: top;
+}
+
+th { background: #f2f2f2; font-weight: 600; }
+
+.highlight {
+  background: #f7f7f7;
+  padding: 22px 26px;
+  border-radius: 18px;
+  margin: 30px 0;
+  font-size: 14px;
+}
+
+/* Dialogue blocks */
+.dialogue {
+  background: #fafafa;
+  padding: 26px 30px;
+  border-radius: 18px;
+  margin-top: 25px;
+  font-size: 14px;
+  border: 1px solid #eee;
+}
+
+.dialogue h3 { margin-top: 0; margin-bottom: 12px; }
+.dialogue p { margin-bottom: 10px; }
+.role { font-weight: 600; }
+
+/* Korean translation block inside dialogue */
+.translation {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed #ddd;
+}
+
+.translation h4 {
+  margin: 0 0 10px 0;
+  font-family: 'Baloo 2', cursive;
+  font-size: 15px;
+}
+
+/* Inline Korean term notes */
+.kr-note {
+  font-size: 12px;
+  color: #666;
+  margin-left: 6px;
+  white-space: nowrap;
+}
+
+.back {
+  text-align: center;
+  margin-top: 55px;
+}
+
+.back a {
+  display: inline-block;
+  padding: 12px 26px;
+  background: #333;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 6px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 13px;
+  background: rgba(255,255,255,0.75);
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 20px;
+}
+
+@media (max-width: 600px) {
+  .container { padding: 30px 24px; }
+  .kr-note { white-space: normal; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Accounting Automation in Practice  
+— How Data Flows Into the GL and Updates Financial Statements</h1>
+
+<p>
+In most modern setups, nobody is “typing numbers into financial statements.”
+Instead, the financial statements are <b>the output of a system that is continuously posting to the general ledger (GL)</b>.
+</p>
+
+<div class="highlight">
+<p>So the real story is:</p>
+<p>
+<b>
+Source systems → standardized data intake
+<span class="kr-note">(표준화된 데이터 유입/수집)</span>
+→ coding/posting rules → GL posting → subledger rollups → financial statements update automatically.
+</b>
+</p>
+<p>The finance team’s work shifts from <b>data entry</b> to <b>controls, review, and exception handling</b>.</p>
+</div>
+
+<h2>1 What people mean by “accounting automation” now</h2>
+
+<p>
+Accounting automation today is mostly about building a reliable pipeline
+<span class="kr-note">(업무/데이터 처리 흐름)</span>
+where operational data
+(bank activity, invoices, card spend, billing events) is captured in a standardized format and posted into the GL
+with consistent logic.
+</p>
+
+<p>
+When implemented well, the GL becomes the single source of truth, and financial statements become a real-time report layer.
+</p>
+
+<div class="dialogue">
+  <h3>Training Dialogue (Senior → Junior)</h3>
+  <p><span class="role">Senior:</span> When people say “accounting automation” now, they don’t mean humans disappear. They mean we build a <b>pipeline</b><span class="kr-note">(파이프라인: 데이터가 흘러가는 자동 처리 흐름)</span> that posts operational data into the GL reliably.</p>
+  <p><span class="role">Junior:</span> So financial statements aren’t “written” automatically—they’re just reports generated from whatever is in the GL?</p>
+  <p><span class="role">Senior:</span> Exactly. The hard part is <b>standardized intake</b><span class="kr-note">(표준화 인입: 같은 포맷으로 들어오게 만들기)</span> and <b>consistent posting rules</b>. If those are weak, you just automate mistakes.</p>
+  <p><span class="role">Junior:</span> What’s the first thing you check when you design the pipeline?</p>
+  <p><span class="role">Senior:</span> The source systems and the data shape—bank, AP, cards, billing—and then the COA mapping and exception workflow.</p>
+
+  <div class="translation">
+    <h4>Korean Translation</h4>
+    <p><span class="role">선임:</span> 요즘 “회계 자동화”라고 하면 사람이 사라진다는 뜻이 아니라, 운영 데이터가 GL로 안정적으로 들어가도록 <b>파이프라인</b><span class="kr-note">(데이터 자동 처리 흐름)</span>을 만든다는 의미야.</p>
+    <p><span class="role">후임:</span> 그럼 재무제표는 자동으로 “작성”되는 게 아니라, GL에 들어있는 데이터를 기반으로 리포트가 나오는 거네요?</p>
+    <p><span class="role">선임:</span> 맞아. 핵심은 <b>표준화 인입</b><span class="kr-note">(같은 형식으로 유입)</span>과 <b>일관된 전표 규칙</b>이야. 이게 약하면 실수를 자동화하는 꼴이 돼.</p>
+    <p><span class="role">후임:</span> 파이프라인 설계할 때 제일 먼저 확인하는 건 뭐예요?</p>
+    <p><span class="role">선임:</span> 은행, AP, 카드, 빌링 같은 소스 시스템과 데이터 형태부터 보고, 그 다음 COA 매핑과 예외 처리 흐름을 잡아.</p>
+  </div>
+</div>
+
+<h2>2 Bank feeds → auto-categorization → auto journal entries</h2>
+
+<h3>What’s automated</h3>
+<ul>
+  <li>Daily bank feeds (ACH<span class="kr-note">(ACH: 미국식 계좌이체/자동이체 네트워크)</span>, wires, deposits, withdrawals) flow into the accounting system.</li>
+  <li>Transactions are <b>auto-matched</b> to known vendors/customers, historical patterns, or memo descriptors.</li>
+  <li>The system proposes (or auto-posts) entries like:</li>
+</ul>
+
+<ul>
+  <li>Bank fees → Bank charges expense</li>
+  <li>Merchant deposits → AR clearing / Sales clearing <span class="kr-note">(sales clearing: 매출 임시계정/클리어링 계정)</span></li>
+  <li>Rent → Rent expense</li>
+  <li>Debt service → Interest expense + loan payable</li>
+</ul>
+
+<h3>Why this matters</h3>
+<div class="highlight">
+<p>It eliminates the old workflow:</p>
+<p>
+&gt; download bank CSV → clean it → manually enter cash activity → hope it ties out
+</p>
+</div>
+
+<h3>What accountants still do</h3>
+<ul>
+  <li>Review exceptions (new vendors, ambiguous memos)</li>
+  <li>Confirm correct classification (OPEX vs CAPEX<span class="kr-note">(운영비 vs 자본적지출)</span>, COGS vs operating<span class="kr-note">(매출원가 vs 판관비/운영비)</span>)</li>
+  <li>Ensure period cutoffs and accrual logic are right</li>
+  <li>Approve posting thresholds (e.g., auto-post under $X)</li>
+</ul>
+
+<div class="dialogue">
+  <h3>Training Dialogue (Senior → Junior)</h3>
+  <p><span class="role">Senior:</span> Bank feeds can auto-post, but our job is managing <b>exceptions</b>: new vendors, unclear memos, unusual patterns.</p>
+  <p><span class="role">Junior:</span> If the bank balance reconciles, is that enough to trust the automation?</p>
+  <p><span class="role">Senior:</span> Not really. Reconciliation proves totals, not correctness of <b>classification</b>. Merchant deposits usually shouldn’t become revenue directly—often they go to an <b>AR or sales clearing</b><span class="kr-note">(임시로 모아두는 계정)</span> account first.</p>
+  <p><span class="role">Junior:</span> So we shouldn’t set everything to auto-post immediately?</p>
+  <p><span class="role">Senior:</span> Right. Use thresholds: auto-post under a certain amount, propose-only above it, and review sensitive accounts.</p>
+  <p><span class="role">Junior:</span> How do cutoffs show up in bank automation?</p>
+  <p><span class="role">Senior:</span> Cash timing and accrual timing differ. You still need accrual entries when the bank date doesn’t reflect the economic period.</p>
+
+  <div class="translation">
+    <h4>Korean Translation</h4>
+    <p><span class="role">선임:</span> 은행 피드는 자동 기장도 되지만, 우리는 예외(신규 거래처/애매한 메모/특이 패턴)를 관리해야 해.</p>
+    <p><span class="role">후임:</span> 은행 잔액이 리콘되면 자동화를 믿어도 되나요?</p>
+    <p><span class="role">선임:</span> 꼭 그렇진 않아. 리콘은 합계가 맞는지 보는 거지 분류가 맞는지까지 보장하진 않아. 가맹점 입금은 보통 매출로 바로 잡지 않고 <b>세일즈 클리어링</b><span class="kr-note">(매출 임시계정)</span>을 먼저 타는 경우가 많아.</p>
+    <p><span class="role">후임:</span> 그럼 처음부터 전부 자동포스팅으로 두면 안 되겠네요?</p>
+    <p><span class="role">선임:</span> 맞아. 금액 기준으로 자동포스팅/제안(propose-only)을 나누고, 민감 계정은 별도로 리뷰해야 해.</p>
+    <p><span class="role">후임:</span> 월말 컷오프는 은행 자동화에서 어떻게 보나요?</p>
+    <p><span class="role">선임:</span> 현금 기준과 발생주의 기준이 달라. 은행일자가 경제적 기간을 반영하지 않으면 발생주의 조정이 필요해.</p>
+  </div>
+</div>
+
+<h2>3 AP automation: invoice capture + 2/3-way match + posting</h2>
+
+<h3>What’s automated</h3>
+<p>Invoices enter the system via:</p>
+<ul>
+  <li>Vendor portals</li>
+  <li>Email inboxes</li>
+  <li>EDI (larger vendors)<span class="kr-note">(EDI: 기업 간 전자문서/데이터 교환)</span></li>
+  <li>Scans/PDFs with OCR</li>
+</ul>
+
+<p>The system extracts fields (vendor, invoice #, date, amounts, line items), then:</p>
+<ul>
+  <li>Checks duplicates</li>
+  <li>Validates tax and totals</li>
+  <li>Routes for approval (workflow)</li>
+  <li>
+    Runs <b>2-way match (PO vs invoice)</b><span class="kr-note">(발주서-인보이스 대조)</span>
+    or <b>3-way match (PO vs invoice vs receiving)</b><span class="kr-note">(발주서-인보이스-검수/입고 대조)</span>
+  </li>
+  <li>Posts to AP subledger and GL</li>
+</ul>
+
+<h3>Where “auto-posting” becomes real</h3>
+<p>Once the invoice is approved and matched:</p>
+<ul>
+  <li>Expense account and department can be pulled from:<span class="kr-note">(계정/부서 자동 지정 근거)</span></li>
+</ul>
+<ul>
+  <li>PO coding<span class="kr-note">(PO 코딩: 발주 단계에서 계정/부서 태깅)</span></li>
+  <li>Vendor rules (“Adobe invoices → software subscriptions”)<span class="kr-note">(벤더 규칙: 거래처별 자동 분류)</span></li>
+  <li>Item master mapping (“MRO supplies → maintenance expense”)<span class="kr-note">(품목 마스터 매핑: 품목→계정 연결)</span></li>
+</ul>
+<ul>
+  <li>Accrual timing can be automated (service period recognition, prepaid logic)</li>
+</ul>
+
+<h3>What accountants still do</h3>
+<ul>
+  <li>Handle non-PO invoices and messy vendors</li>
+  <li>Review unusual coding (repairs vs capital, marketing vs customer acquisition)</li>
+  <li>Resolve price/quantity variances, partial receipts, credit memos</li>
+  <li>Ensure sales tax/use tax treatment is correct</li>
+</ul>
+
+<div class="dialogue">
+  <h3>Training Dialogue (Senior → Junior)</h3>
+  <p><span class="role">Senior:</span> In AP, the real win isn’t OCR—it’s <b>matching</b>. Controls come from 2-way and 3-way match.</p>
+  <p><span class="role">Junior:</span> What’s the biggest practical difference between 2-way and 3-way?</p>
+  <p><span class="role">Senior:</span> 3-way adds <b>receiving</b><span class="kr-note">(입고/검수)</span>. If physical goods are involved, 3-way is much safer than paying based on an invoice alone.</p>
+  <p><span class="role">Junior:</span> After match and approval, does coding happen automatically?</p>
+  <p><span class="role">Senior:</span> If PO coding is clean, yes. But for non-PO invoices, you’ll rely on vendor rules and item mappings—and still review judgment calls like <b>repair vs capitalization</b>.</p>
+  <p><span class="role">Junior:</span> Duplicate invoices—can we trust the system to catch them?</p>
+  <p><span class="role">Senior:</span> It catches many, but not all. That’s why we do targeted reviews on high-risk vendors and recurring spend categories.</p>
+
+  <div class="translation">
+    <h4>Korean Translation</h4>
+    <p><span class="role">선임:</span> AP에서 진짜 성과는 OCR이 아니라 매칭이야. 2-way/3-way 매칭이 통제를 만들어.</p>
+    <p><span class="role">후임:</span> 2-way랑 3-way의 실무 차이가 가장 큰 게 뭐예요?</p>
+    <p><span class="role">선임:</span> 3-way는 입고/검수가 추가돼. 실물이 있는 구매는 인보이스만 보고 지급하는 것보다 훨씬 안전해.</p>
+    <p><span class="role">후임:</span> 매칭과 승인까지 끝나면 코딩은 자동으로 되나요?</p>
+    <p><span class="role">선임:</span> PO 코딩이 깨끗하면 거의 자동이야. 하지만 non-PO는 벤더 규칙/품목 매핑을 쓰되 판단(수선 vs 자본화)은 여전히 리뷰해야 해.</p>
+    <p><span class="role">후임:</span> 중복 인보이스는 시스템이 다 잡아주나요?</p>
+    <p><span class="role">선임:</span> 많이 잡지만 전부는 아니야. 그래서 고위험 벤더나 반복비용은 타깃 리뷰를 해.</p>
+  </div>
+</div>
+
+<h2>4 Corporate cards + employee expenses → automated coding & policy checks</h2>
+
+<h3>What’s automated</h3>
+<ul>
+  <li>Card transactions feed in daily.</li>
+  <li>Employees attach receipts (mobile capture).</li>
+  <li>System applies:</li>
+</ul>
+
+<ul>
+  <li>Policy rules (limits, categories)</li>
+  <li>Merchant-based coding</li>
+  <li>Auto-splitting for tips, taxes, etc.</li>
+</ul>
+
+<ul>
+  <li>Approved expenses post into GL (often through an expense subledger).</li>
+</ul>
+
+<h3>What accountants still do</h3>
+<ul>
+  <li>Exceptions (missing receipts, out-of-policy spend)</li>
+  <li>Reclassifications (client meals vs travel vs office)</li>
+  <li>Proper cost center allocation</li>
+</ul>
+
+<div class="dialogue">
+  <h3>Training Dialogue (Senior → Junior)</h3>
+  <p><span class="role">Senior:</span> For corporate cards, automation is nice—but the bigger value is catching <b>policy violations</b><span class="kr-note">(정책 위반)</span> early.</p>
+  <p><span class="role">Junior:</span> What violations happen most often?</p>
+  <p><span class="role">Senior:</span> Missing receipts, out-of-policy categories, or spending above limits. The system flags them; we confirm justification and evidence.</p>
+  <p><span class="role">Junior:</span> Does merchant-based coding ever misclassify?</p>
+  <p><span class="role">Senior:</span> All the time. That’s why we require <b>cost center/project tags</b><span class="kr-note">(코스트센터/프로젝트 태그)</span> and review the largest items monthly.</p>
+  <p><span class="role">Junior:</span> Can we trust automatic splitting for tips and taxes?</p>
+  <p><span class="role">Senior:</span> Only after validation, especially during <b>rollout</b><span class="kr-note">(도입 초기/전사 적용 단계)</span>.</p>
+
+  <div class="translation">
+    <h4>Korean Translation</h4>
+    <p><span class="role">선임:</span> 법인카드는 자동화도 좋지만, 더 큰 가치는 정책 위반을 빨리 잡는 데 있어.</p>
+    <p><span class="role">후임:</span> 어떤 위반이 제일 자주 나와요?</p>
+    <p><span class="role">선임:</span> 영수증 누락, 정책 외 카테고리, 한도 초과 같은 것들. 시스템이 플래그를 세우면 사유와 증빙을 확인해.</p>
+    <p><span class="role">후임:</span> 가맹점 기반 코딩이 틀릴 때도 있나요?</p>
+    <p><span class="role">선임:</span> 자주 있어. 그래서 코스트센터/프로젝트 태그를 필수로 받고 큰 금액은 월 단위로 리뷰해.</p>
+    <p><span class="role">후임:</span> 팁/세금 자동 분할은 믿어도 돼요?</p>
+    <p><span class="role">선임:</span> 도입(롤아웃) 초기에는 반드시 검증하고 나서 적용해.</p>
+  </div>
+</div>
+
+<h2>5 AR automation: invoicing + cash application + revenue logic (sometimes)</h2>
+
+<h3>What’s automated</h3>
+<ul>
+  <li>
+    Invoices generated from CRM/billing systems
+    <span class="kr-note">(CRM/빌링 시스템: 고객/청구 관리 시스템)</span>
+    (Stripe, Zuora, Salesforce billing, etc.)
+  </li>
+  <li>Customer payments feed in (ACH/card).</li>
+  <li>Cash application uses:</li>
+</ul>
+
+<ul>
+  <li>Remittance data</li>
+  <li>Invoice # matching</li>
+  <li>Customer rules</li>
+</ul>
+
+<p>Some companies also automate parts of revenue recognition:</p>
+<ul>
+  <li>Contract data → schedules</li>
+  <li>Deferred revenue rollforwards</li>
+  <li>Allocation rules (ASC 606) in specialized systems</li>
+</ul>
+
+<h3>What accountants still do</h3>
+<ul>
+  <li>Unapplied cash and <b>short pay</b><span class="kr-note">(일부만 지급/미달 지급)</span></li>
+  <li>Dispute handling and credit memos</li>
+  <li>
+    Revenue judgments—performance obligations, variable consideration, cutoffs
+    <span class="kr-note">(판단: 수행의무/변동대가/기간 귀속)</span>
+  </li>
+</ul>
+
+<div class="dialogue">
+  <h3>Training Dialogue (Senior → Junior)</h3>
+  <p><span class="role">Senior:</span> In AR, the automation payoff is biggest in cash application. Unapplied cash destroys reporting.</p>
+  <p><span class="role">Junior:</span> Isn’t it just matching by invoice number?</p>
+  <p><span class="role">Senior:</span> In practice, customers often pay multiple invoices together, and remittance data is messy.</p>
+  <p><span class="role">Junior:</span> How do we handle short pays—can that be automated?</p>
+  <p><span class="role">Senior:</span> The system can post a difference, but it can’t decide if it’s a discount, a dispute, or an error. That judgment drives credit memos and revenue adjustments.</p>
+  <p><span class="role">Junior:</span> What about automating revenue recognition with ASC 606 tools?</p>
+  <p><span class="role">Senior:</span> Schedules can be automated, but judgments—performance obligations, variable consideration, and cutoffs<span class="kr-note">(핵심 판단 3가지)</span>—still require human review and strong documentation.</p>
+
+  <div class="translation">
+    <h4>Korean Translation</h4>
+    <p><span class="role">선임:</span> AR에서 자동화 효과는 현금 적용에서 가장 커. 미적용 현금이 쌓이면 리포팅이 망가져.</p>
+    <p><span class="role">후임:</span> 인보이스 번호로 매칭하면 끝 아닌가요?</p>
+    <p><span class="role">선임:</span> 실제로는 여러 인보이스 합산 지급도 많고, 리미턴스 데이터가 지저분해.</p>
+    <p><span class="role">후임:</span> short pay(일부만 지급)는 자동으로 처리할 수 있나요?</p>
+    <p><span class="role">선임:</span> 차액을 잡아줄 수는 있어도, 할인/분쟁/오류 중 무엇인지는 판단 못 해. 그 판단이 크레딧 메모와 매출 조정으로 이어져.</p>
+    <p><span class="role">후임:</span> ASC 606 툴로 매출인식을 자동화하면요?</p>
+    <p><span class="role">선임:</span> 스케줄 계산은 자동화돼도, 수행의무/변동대가/컷오프 같은 판단은 사람 리뷰와 문서화가 필요해.</p>
+  </div>
+</div>
+
+<h2>6 “Auto financial statements” is really “auto rollups from a clean GL”</h2>
+
+<div class="highlight">
+<p>
+&gt; The Balance Sheet and Income Statement update automatically because they’re <i>reports</i> on the GL —<br>
+&gt; not because the company is “writing” the financial statements automatically.
+</p>
+</div>
+
+<p>
+As transactions post into the GL (directly or via subledgers), reporting layers calculate:
+</p>
+<ul>
+  <li>Trial balance</li>
+  <li>Department/entity rollups</li>
+  <li>FX translation (if multi-currency)</li>
+  <li>Consolidation eliminations (if multi-entity)</li>
+</ul>
+
+<div class="dialogue">
+  <h3>Training Dialogue (Senior → Junior)</h3>
+  <p><span class="role">Senior:</span> “Auto financial statements” really means the GL is clean, so reporting can roll up automatically.</p>
+  <p><span class="role">Junior:</span> What does “clean GL” mean in practice?</p>
+  <p><span class="role">Senior:</span> Consistent coding and subledger tie-outs. If the foundation is messy, the report will be messy.</p>
+  <p><span class="role">Junior:</span> If a report looks wrong, should we fix the report mapping first?</p>
+  <p><span class="role">Senior:</span> Usually no. Trace the source transaction and mapping rules first, then adjust report lines last.</p>
+
+  <div class="translation">
+    <h4>Korean Translation</h4>
+    <p><span class="role">선임:</span> “재무제표 자동”은 GL가 깨끗해서 리포트가 자동 롤업된다는 뜻이야.</p>
+    <p><span class="role">후임:</span> 실무에서 GL가 깨끗하다는 건 뭐예요?</p>
+    <p><span class="role">선임:</span> 코딩이 일관되고 서브레저 대사가 잘 되는 것. 기반이 지저분하면 리포트도 지저분해.</p>
+    <p><span class="role">후임:</span> 리포트가 이상하면 리포트 매핑부터 고치면 되나요?</p>
+    <p><span class="role">선임:</span> 보통은 아니야. 원천 거래와 매핑 룰부터 추적하고 마지막에 리포트 라인을 조정해.</p>
+  </div>
+</div>
+
+<h2>7 Close automation: reconciliations, flux analysis, and continuous accounting</h2>
+
+<p>
+This is where US accountants often feel the biggest shift.
+</p>
+
+<h3>What’s automated now</h3>
+<ul>
+  <li>Bank rec auto-match (transactions ↔ book entries)</li>
+  <li>Intercompany matching</li>
+  <li>Auto-generated accrual suggestions (based on prior months or contracts)</li>
+  <li>Close checklists and workflow tracking</li>
+  <li>
+    Flux analysis flags <span class="kr-note">(변동 분석 경고/플래그)</span>
+    (material movements vs thresholds)
+  </li>
+  <li>Journal entry controls (approval routing, evidence links)</li>
+</ul>
+
+<div class="highlight">
+<p>
+In strong implementations, the “month-end close” becomes less of a cliff and more like:
+<b>continuous posting + daily/weekly review + month-end tie-out and judgment calls.</b>
+</p>
+</div>
+
+<div class="dialogue">
+  <h3>Training Dialogue (Senior → Junior)</h3>
+  <p><span class="role">Senior:</span> Close automation isn’t about cramming work into month-end faster. It’s about shifting to continuous accounting.</p>
+  <p><span class="role">Junior:</span> When flux analysis flags something, what’s the right response?</p>
+  <p><span class="role">Senior:</span> You explain the “why.” Drill down to drivers and attach support. The tool flags; we interpret.</p>
+  <p><span class="role">Junior:</span> Can we rely on auto accrual suggestions?</p>
+  <p><span class="role">Senior:</span> Not at first. Validate samples, keep thresholds conservative, then expand.</p>
+
+  <div class="translation">
+    <h4>Korean Translation</h4>
+    <p><span class="role">선임:</span> 마감 자동화는 월말에 더 빨리 몰아치는 게 아니라 상시 회계로 바꾸는 거야.</p>
+    <p><span class="role">후임:</span> 변동분석 플래그가 뜨면 어떻게 대응하죠?</p>
+    <p><span class="role">선임:</span> “왜 변했는지”를 설명해야 해. 원인까지 드릴다운하고 근거를 붙여. 툴은 표시만 하고 해석은 우리가 해.</p>
+    <p><span class="role">후임:</span> 자동 발생 제안은 믿고 써도 돼요?</p>
+    <p><span class="role">선임:</span> 초반엔 샘플 검증부터 하고, 임계값은 보수적으로 두고, 점진적으로 확장해.</p>
+  </div>
+</div>
+
+<h2>8 What makes or breaks automation: rules + master data + controls</h2>
+
+<p>Automation only feels “real” when these are in place:</p>
+<ul>
+  <li><b>Vendor/customer master data is clean</b></li>
+  <li>A consistent <b>chart of accounts</b> and mapping logic exists</li>
+  <li>Policies exist for:</li>
+</ul>
+
+<ul>
+  <li>Auto-post vs propose-only</li>
+  <li>Materiality thresholds</li>
+  <li>Exception workflows</li>
+</ul>
+
+<ul>
+  <li>Strong <b>audit trail</b>:</li>
+</ul>
+
+<ul>
+  <li>Source document attached</li>
+  <li>Approval history visible</li>
+  <li>Change logs for edits and overrides</li>
+</ul>
+
+<p>
+For SOX environments, this is crucial: automation increases speed,
+but it also increases the need for <b>system controls and monitoring</b>.
+</p>
+
+<div class="dialogue">
+  <h3>Training Dialogue (Senior → Junior)</h3>
+  <p><span class="role">Senior:</span> Automation succeeds or fails on rules, master data, and controls—not on fancy features.</p>
+  <p><span class="role">Junior:</span> How do we decide propose-only versus auto-post?</p>
+  <p><span class="role">Senior:</span> By amount, account sensitivity, vendor trust, and historical error rates. Start cautious, then scale.</p>
+
+  <div class="translation">
+    <h4>Korean Translation</h4>
+    <p><span class="role">선임:</span> 자동화의 성패는 룰/마스터데이터/통제에 달려 있어. 기능이 화려하다고 성공하는 게 아니야.</p>
+    <p><span class="role">후임:</span> propose-only랑 auto-post는 어떻게 결정해요?</p>
+    <p><span class="role">선임:</span> 금액, 계정 민감도, 벤더 신뢰도, 과거 오류율로. 처음엔 보수적으로 시작해서 안정화되면 확장해.</p>
+  </div>
+</div>
+
+<h2>9 The honest boundary: automation doesn’t replace judgment</h2>
+
+<p>It replaces:</p>
+<ul>
+  <li>Copying numbers</li>
+  <li>Repetitive postings</li>
+  <li>Matching and routing</li>
+</ul>
+
+<p>It does <i>not</i> replace:</p>
+<ul>
+  <li>Classification judgment (OPEX vs CAPEX<span class="kr-note">(운영비 vs 자본적지출)</span>, COGS vs operating<span class="kr-note">(매출원가 vs 운영비)</span>, below-the-line items)</li>
+  <li>Estimates (accruals, reserves, impairment)</li>
+  <li>Cutoffs and revenue judgment</li>
+  <li>Unusual transactions (M&amp;A, restructurings, complex leases, equity)</li>
+</ul>
+
+<div class="highlight">
+<p>
+So the job shifts to:
+<b>review, exception management, governance, and analysis.</b>
+</p>
+</div>
+
+<div class="back">
+  <a href="../">← Back to Home</a>
+  <a href="../biz.html">← Back to Articles</a>
+</div>
+
+</div>
+
+<footer>
+  © <span id="year"></span> Cha GPTs. All rights reserved.
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

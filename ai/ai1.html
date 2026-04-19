@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>AI OCR Accounting Platform — 3 Month Project Plan</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand&display=swap" rel="stylesheet" />
+
+<style>
+body {
+  font-family: 'Quicksand', sans-serif;
+  background:
+    linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
+    url("../verse.png") no-repeat center center / cover;
+  padding: 60px 20px;
+}
+
+.container {
+  max-width: 980px;
+  margin: auto;
+  background: rgba(255,255,255,0.95);
+  padding: 50px 60px;
+  border-radius: 28px;
+}
+
+h1, h2, h3 {
+  font-family: 'Baloo 2', cursive;
+}
+
+h1 {
+  margin-bottom: 28px;
+  line-height: 1.2;
+}
+
+h2 {
+  margin-top: 50px;
+  margin-bottom: 16px;
+}
+
+h3 {
+  margin-top: 28px;
+  margin-bottom: 10px;
+}
+
+p {
+  line-height: 1.8;
+  margin-bottom: 14px;
+  font-size: 15px;
+}
+
+ul {
+  margin-left: 20px;
+  margin-bottom: 18px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 14px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 14px;
+  vertical-align: top;
+}
+
+th {
+  background: #f2f2f2;
+  font-weight: 600;
+}
+
+.highlight {
+  background: #f7f7f7;
+  padding: 22px 26px;
+  border-radius: 18px;
+  margin: 24px 0;
+  font-size: 14px;
+}
+
+.questions {
+  background: #f7f7f7;
+  padding: 25px 30px;
+  border-radius: 18px;
+  margin-top: 30px;
+}
+
+.link-block {
+  background: #eef2f7;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+.link-block a {
+  color: #1a0dab;
+  text-decoration: underline;
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  background: #f7f7f7;
+  border: 1px solid #e7e7e7;
+  margin: 4px 6px 6px 0;
+}
+
+.codeblock {
+  background: #0f172a;
+  color: #e5e7eb;
+  padding: 16px 18px;
+  border-radius: 14px;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.65;
+  margin: 16px 0 22px 0;
+}
+
+.small {
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+/* Dialogue */
+.dialogue {
+  background: #fafafa;
+  padding: 26px 30px;
+  border-radius: 18px;
+  margin-top: 25px;
+  font-size: 14px;
+  border: 1px solid #eee;
+}
+
+.dialogue .meta {
+  font-size: 13px;
+  opacity: 0.85;
+  margin-bottom: 12px;
+}
+
+.turn {
+  margin: 14px 0;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: #ffffff;
+  border: 1px solid #efefef;
+}
+
+.role {
+  font-weight: 700;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.role.dev { color: #1f4b99; }
+.role.acc { color: #0b6b3a; }
+.role.pm  { color: #7a3bb2; }
+.role.it  { color: #8a4d00; }
+
+.turn p {
+  margin: 6px 0 0 0;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.back {
+  text-align: center;
+  margin-top: 55px;
+}
+
+.back a {
+  display: inline-block;
+  padding: 12px 26px;
+  background: #333;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 6px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 13px;
+  background: rgba(255,255,255,0.75);
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 20px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 30px 24px;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+  <h1>
+    AI OCR Accounting Platform — 3 Month MVP Plan
+  </h1>
+
+  <p>
+    This plan outlines a realistic 3-month build for a U.S.-focused AI OCR accounting web platform.
+    The product follows a QuickBooks-style accounting structure while adding OCR, Llama-based document understanding,
+    accounting recommendations, approval workflow, and posting integration.
+  </p>
+
+  <div class="highlight">
+    <p style="margin:0;">
+      <strong>Core Product Idea:</strong> Upload invoices, receipts, and utility bills → OCR extracts the document →
+      Llama normalizes and classifies the data → accounting rules generate posting candidates →
+      users review and approve → data is posted into a QuickBooks-compatible workflow.
+    </p>
+  </div>
+
+  <div class="link-block">
+    <p style="margin-bottom:10px;"><strong>Recommended MVP Stack</strong></p>
+    <span class="badge">FastAPI</span>
+    <span class="badge">PostgreSQL</span>
+    <span class="badge">S3 / Object Storage</span>
+    <span class="badge">Redis / Queue</span>
+    <span class="badge">OCR Engine</span>
+    <span class="badge">Llama</span>
+    <span class="badge">Rules Engine</span>
+    <span class="badge">Next.js Admin UI</span>
+    <span class="badge">QuickBooks API</span>
+    <p style="margin-top:12px; margin-bottom:0;">
+      <em>Product Principle:</em> OCR and LLM assist understanding, but accounting logic is finalized by rules and approval.
+    </p>
+  </div>
+
+  <h2>Milestones at a Glance</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Month</th>
+        <th>Main Goal</th>
+        <th>Milestone Output</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Month 1</td>
+        <td>Document intake + OCR pipeline</td>
+        <td>Upload → OCR → extracted JSON → document review screen</td>
+      </tr>
+      <tr>
+        <td>Month 2</td>
+        <td>Llama normalization + accounting recommendation</td>
+        <td>Vendor detection, account suggestion, confidence scoring, editable review flow</td>
+      </tr>
+      <tr>
+        <td>Month 3</td>
+        <td>Approval workflow + QuickBooks posting</td>
+        <td>Review → approve → post Bill/Expense/Vendor to QuickBooks-compatible flow</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Project Scope — What This MVP Is</h2>
+
+  <div class="highlight">
+    <p style="margin:0;">
+      <strong>MVP Definition:</strong> A working accounting operations tool for U.S. business documents.
+      It should support receipt and bill ingestion, OCR extraction, LLM-assisted normalization, account recommendation,
+      approval workflow, duplicate detection, audit logging, and QuickBooks posting for core objects such as
+      <strong>Bill</strong>, <strong>Expense</strong>, and <strong>Vendor</strong>.
+    </p>
+  </div>
+
+  <h3>1) Product Flow</h3>
+  <ul>
+    <li><strong>Upload:</strong> User uploads PDF or image documents.</li>
+    <li><strong>OCR:</strong> The system extracts text and key fields from invoices, receipts, and utility bills.</li>
+    <li><strong>Llama Processing:</strong> The model normalizes vendor names, classifies document type, and suggests accounts.</li>
+    <li><strong>Accounting Recommendation:</strong> A rules engine converts extracted data into draft accounting actions.</li>
+    <li><strong>Review & Approval:</strong> Users verify, correct, and approve entries.</li>
+    <li><strong>Posting:</strong> Approved entries are pushed into a QuickBooks-compatible flow.</li>
+  </ul>
+
+  <h3>2) Key Design Principle</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Layer</th>
+        <th>Responsibility</th>
+        <th>Reason</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>OCR</td>
+        <td>Read document text and structure</td>
+        <td>Best used for extraction, not accounting decisions</td>
+      </tr>
+      <tr>
+        <td>Llama</td>
+        <td>Normalize, classify, explain, recommend</td>
+        <td>Good at ambiguity handling and document interpretation</td>
+      </tr>
+      <tr>
+        <td>Rules Engine</td>
+        <td>Generate deterministic accounting actions</td>
+        <td>Required for stable accounting behavior</td>
+      </tr>
+      <tr>
+        <td>User Approval</td>
+        <td>Validate final decision before posting</td>
+        <td>Ensures trust, control, and auditability</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Month 1 — Foundation + OCR Pipeline</h2>
+
+  <p>
+    The first month focuses on building the intake and document processing pipeline.
+    The goal is simple: users can upload files, the system runs OCR, stores the outputs,
+    and displays structured document data in a reviewable UI.
+  </p>
+
+  <h3>Month 1 Deliverables</h3>
+  <ul>
+    <li>Document upload system for PDF and image files</li>
+    <li>Document storage and metadata tracking</li>
+    <li>OCR integration and raw extraction pipeline</li>
+    <li>OCR results saved as structured JSON</li>
+    <li>Basic document list page and detail page</li>
+  </ul>
+
+  <p><strong>Suggested database tables</strong></p>
+  <div class="codeblock"><pre>documents
+document_files
+ocr_runs
+ocr_results
+users
+audit_logs</pre></div>
+
+  <p><strong>Example OCR output schema</strong></p>
+  <div class="codeblock"><pre>{
+  "document_id": "doc_1001",
+  "document_type_raw": "invoice",
+  "vendor_raw": "Amazon Business",
+  "invoice_number": "INV-20391",
+  "document_date": "2026-04-05",
+  "subtotal": 120.00,
+  "tax": 9.60,
+  "total": 129.60,
+  "currency": "USD",
+  "line_items": [
+    {
+      "description": "Office supplies",
+      "amount": 129.60
+    }
+  ],
+  "confidence": 0.89
+}</pre></div>
+
+  <p><strong>Month 1 success condition</strong></p>
+  <div class="highlight">
+    <p style="margin:0;">
+      A user can upload a document and see OCR-extracted fields in the web UI.
+      At the end of Month 1, the system does not need to make accounting decisions yet.
+      It only needs to read, store, and display document data reliably.
+    </p>
+  </div>
+
+  <h2>Month 2 — Llama + Accounting Recommendation</h2>
+
+  <p>
+    The second month adds business intelligence on top of OCR. Llama is introduced to normalize vendors,
+    identify document types, recommend account categories, and generate confidence-based accounting suggestions.
+    Users should be able to see and edit these recommendations before anything is finalized.
+  </p>
+
+  <h3>Month 2 Deliverables</h3>
+  <ul>
+    <li>Llama integration for normalization and classification</li>
+    <li>Strict JSON schema output from the model</li>
+    <li>Vendor normalization and alias handling</li>
+    <li>Chart of accounts mapping and recommendation engine</li>
+    <li>Confidence scores and review flags</li>
+    <li>Editable review UI for accounting staff</li>
+  </ul>
+
+  <p><strong>Structured Llama output</strong></p>
+  <div class="codeblock"><pre>{
+  "document_type": "vendor_bill",
+  "vendor_name_raw": "AMZN Mktp US",
+  "vendor_name_normalized": "Amazon",
+  "transaction_date": "2026-04-05",
+  "currency": "USD",
+  "amount_total": 129.60,
+  "category": "Office Supplies",
+  "suggested_account": "Office Supplies",
+  "recommended_qbo_entity": "Bill",
+  "risk_flags": ["new_vendor"],
+  "confidence": 0.91
+}</pre></div>
+
+  <p><strong>Rules engine example</strong></p>
+  <div class="codeblock"><pre>// Pseudo logic
+if (document_type === "vendor_bill") {
+  entity = "Bill";
+}
+
+if (vendor_history.same_account_ratio > 0.8) {
+  suggested_account = vendor_history.most_common_account;
+}
+
+if (amount_total <= 0 || currency == null) {
+  status = "needs_review";
+}
+
+if (duplicate_check == true) {
+  status = "duplicate_alert";
+}</pre></div>
+
+  <p><strong>Month 2 success condition</strong></p>
+  <div class="highlight">
+    <p style="margin:0;">
+      At the end of Month 2, the platform should not just read documents.
+      It should also understand them well enough to recommend vendors, document types,
+      and accounting categories, while allowing a human reviewer to adjust the result.
+    </p>
+  </div>
+
+  <h2>Month 3 — Approval Workflow + QuickBooks Posting</h2>
+
+  <p>
+    The third month turns the system into a usable accounting operations product.
+    This is where review states, approval workflow, duplicate protection, audit logs,
+    and posting integration are completed.
+  </p>
+
+  <h3>Month 3 Deliverables</h3>
+  <ul>
+    <li>Approval status flow: Draft → Review → Approved → Posted</li>
+    <li>QuickBooks OAuth and posting integration</li>
+    <li>Posting support for Bill, Expense, and Vendor</li>
+    <li>Duplicate detection rules</li>
+    <li>Audit log for OCR result, AI result, edits, and posting action</li>
+    <li>Basic metrics dashboard for confidence and review rate</li>
+  </ul>
+
+  <p><strong>Workflow state example</strong></p>
+  <div class="codeblock"><pre>{
+  "document_id": "doc_1001",
+  "status": "review",
+  "reviewer_id": "user_22",
+  "recommended_action": {
+    "entity": "Bill",
+    "vendor": "Amazon",
+    "account": "Office Supplies",
+    "amount": 129.60
+  },
+  "approval_required": true,
+  "duplicate_check": false
+}</pre></div>
+
+  <p><strong>Duplicate detection example</strong></p>
+  <div class="codeblock"><pre>// Duplicate rules
+same_vendor &&
+same_invoice_number &&
+same_amount &&
+date_within_30_days</pre></div>
+
+  <p><strong>Audit log example</strong></p>
+  <div class="codeblock"><pre>{
+  "document_id": "doc_1001",
+  "event": "account_corrected",
+  "from": "Meals and Entertainment",
+  "to": "Office Supplies",
+  "by": "user_22",
+  "timestamp": "2026-04-11T10:14:22Z"
+}</pre></div>
+
+  <p><strong>Month 3 success condition</strong></p>
+  <div class="highlight">
+    <p style="margin:0;">
+      At the end of Month 3, a user should be able to upload a document,
+      review AI suggestions, approve the final result, and send it into a QuickBooks-compatible accounting flow.
+      This is the point where the platform becomes a real MVP rather than a technical demo.
+    </p>
+  </div>
+
+  <h2>Recommended MVP Scope</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Include</th>
+        <th>Exclude for Now</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Vendor bills</td>
+        <td>Payroll</td>
+      </tr>
+      <tr>
+        <td>Receipts</td>
+        <td>Multi-entity consolidation</td>
+      </tr>
+      <tr>
+        <td>Utility bills</td>
+        <td>Advanced tax filing</td>
+      </tr>
+      <tr>
+        <td>USD only</td>
+        <td>Multi-currency support</td>
+      </tr>
+      <tr>
+        <td>Bill / Expense / Vendor</td>
+        <td>Full ERP replacement</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Example End-to-End Flow</h2>
+
+  <p class="small">
+    Example input: a U.S. office supply invoice uploaded as a PDF.
+  </p>
+
+  <div class="codeblock"><pre>1. User uploads invoice PDF
+2. OCR extracts vendor, invoice number, date, total, line items
+3. Llama normalizes "AMZN Mktp US" to "Amazon"
+4. Rules engine recommends:
+   - Document Type: Vendor Bill
+   - Account: Office Supplies
+   - QBO Entity: Bill
+5. Reviewer checks and approves
+6. System posts to QuickBooks-compatible workflow
+7. Audit trail stores every step</pre></div>
+
+  <h2>Team Alignment — How the Product Should Be Built</h2>
+
+  <div class="dialogue">
+    <div class="meta">
+      <strong>Context:</strong> The team is aligning on a 3-month MVP for a U.S. AI OCR accounting platform.
+      The product is based on a QuickBooks-style accounting structure, but adds OCR, Llama, rules, and approval workflow.
+    </div>
+
+    <div class="turn">
+      <span class="role pm">PM (Mina):</span>
+      <p>
+        We only have three months, so we need a focused MVP. I want a product that looks like a real accounting operations tool,
+        not just an OCR demo. What is the smallest version we can ship that still feels useful?
+      </p>
+    </div>
+
+    <div class="turn">
+      <span class="role dev">Developer (Alex):</span>
+      <p>
+        The minimum useful version is document upload, OCR extraction, Llama-based normalization,
+        accounting recommendation, review UI, and QuickBooks posting for core objects only.
+        We should keep the posting scope narrow: Bill, Expense, and Vendor.
+      </p>
+    </div>
+
+    <div class="turn">
+      <span class="role acc">Accounting Lead (Jisoo):</span>
+      <p>
+        That works as long as the AI does not directly post to the books.
+        I want accounting staff to review the recommendation first.
+        The model can suggest, but the workflow must require approval.
+      </p>
+    </div>
+
+    <div class="turn">
+      <span class="role dev">Developer (Alex):</span>
+      <p>
+        Agreed. OCR reads the document, Llama interprets it, and the rules engine generates a deterministic recommendation.
+        The final accounting action stays in draft or review state until a human approves it.
+      </p>
+    </div>
+
+    <div class="turn">
+      <span class="role it">IT/Security (Daniel):</span>
+      <p>
+        Then we also need auditability. I want a trace of the raw OCR result, the Llama output,
+        the reviewer edits, and the final posting action. Otherwise the system will be hard to trust.
+      </p>
+    </div>
+
+    <div class="turn">
+      <span class="role dev">Developer (Alex):</span>
+      <p>
+        We can make that part of the core design. Every document will keep its original file,
+        OCR result, normalized AI result, approval history, duplicate check result, and posting log.
+      </p>
+    </div>
+
+    <div class="turn">
+      <span class="role acc">Senior Accountant (Hana):</span>
+      <p>
+        I also want the recommendation layer to get smarter as we use it.
+        For example, if Amazon bills are usually mapped to Office Supplies,
+        the next similar document should come in with a stronger suggestion.
+      </p>
+    </div>
+
+    <div class="turn">
+      <span class="role dev">Developer (Alex):</span>
+      <p>
+        Yes. We can implement vendor alias mapping and historical account suggestions in Month 2.
+        That way the model is not working alone; it is supported by prior accounting behavior.
+      </p>
+    </div>
+
+    <div class="turn">
+      <span class="role pm">PM (Mina):</span>
+      <p>
+        Then the project should be staged clearly. Month 1 reads the document,
+        Month 2 understands the document, and Month 3 posts the approved result.
+      </p>
+    </div>
+
+    <div class="turn">
+      <span class="role acc">Accounting Lead (Jisoo):</span>
+      <p>
+        That sequencing makes sense. By the end, I want the team to be able to upload a bill,
+        review the suggested account, approve it, and push it into the accounting flow without manual re-entry.
+      </p>
+    </div>
+  </div>
+
+  <h2>Suggested Discussion / Next Steps</h2>
+  <div class="questions">
+    <ul>
+      <li>Should the MVP start with <strong>receipts + vendor bills only</strong> before customer invoices?</li>
+      <li>Who owns the initial <strong>chart of accounts mapping rules</strong> for Month 2?</li>
+      <li>Should duplicate detection be <strong>strict</strong> in Month 3 or advisory only?</li>
+      <li>Do we want the first release to support only <strong>USD + one business entity</strong>?</li>
+    </ul>
+  </div>
+
+  <div class="back">
+    <a href="../">← Back to Home</a>
+    <a href="../ai.html">← Back to Projects</a>
+  </div>
+
+</div>
+
+<footer>
+  © <span id="year"></span> Cha GPTs. All rights reserved.
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

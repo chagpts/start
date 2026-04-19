@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Understanding HTML, Python, Flask, Framer, and Hosting</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Quicksand', sans-serif;
+  background:
+    linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
+    url("../verse.png") no-repeat center center / cover;
+  padding: 60px 20px;
+  color: #222;
+}
+
+.container {
+  max-width: 920px;
+  margin: auto;
+  background: rgba(255,255,255,0.95);
+  padding: 50px 60px;
+  border-radius: 28px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+h1, h2, h3 {
+  font-family: 'Baloo 2', cursive;
+  line-height: 1.25;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 2.2rem;
+}
+
+h2 {
+  margin-top: 50px;
+  margin-bottom: 16px;
+  font-size: 1.6rem;
+}
+
+h3 {
+  margin-top: 28px;
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+}
+
+p {
+  line-height: 1.9;
+  margin-bottom: 18px;
+  font-size: 15px;
+}
+
+ul {
+  margin-left: 20px;
+  margin-bottom: 22px;
+}
+
+li {
+  margin-bottom: 10px;
+  line-height: 1.8;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 28px 0;
+  font-size: 14px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 14px;
+  vertical-align: top;
+  line-height: 1.7;
+}
+
+th {
+  background: #f2f2f2;
+  font-weight: 600;
+}
+
+.highlight {
+  background: #f7f7f7;
+  padding: 22px 26px;
+  border-radius: 18px;
+  margin: 30px 0;
+  font-size: 14px;
+}
+
+.questions {
+  background: #f7f7f7;
+  padding: 25px 30px;
+  border-radius: 18px;
+  margin-top: 30px;
+}
+
+.link-block {
+  background: #eef2f7;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+.link-block a {
+  color: #1a0dab;
+  text-decoration: underline;
+}
+
+.dialogue {
+  background: #fafafa;
+  padding: 26px 30px;
+  border-radius: 18px;
+  margin-top: 25px;
+  font-size: 14px;
+}
+
+.dialogue p {
+  margin-bottom: 16px;
+}
+
+.role {
+  font-weight: 700;
+  color: #111;
+}
+
+.kr {
+  display: block;
+  margin-top: 4px;
+  color: #666;
+  font-size: 13px;
+}
+
+.section-note {
+  font-size: 14px;
+  color: #555;
+}
+
+.back {
+  text-align: center;
+  margin-top: 55px;
+}
+
+.back a {
+  display: inline-block;
+  padding: 12px 26px;
+  background: #333;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 6px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 13px;
+  background: rgba(255,255,255,0.75);
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 20px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 30px 24px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.35rem;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Understanding HTML, Python, Flask, Framer, and Hosting<br>— Through a Long Beginner-Friendly Conversation</h1>
+
+<p>
+If someone is trying to build a website with GPT for the first time, words like HTML, Python, Flask, Framer, and Hosting can feel overwhelming.
+This page explains those ideas through a long, natural conversation in English, with Korean translations added right after important lines.
+</p>
+
+<div class="highlight">
+  <p>
+    This version is designed for absolute beginners.
+    Instead of only throwing technical words around, it explains what each part does, how they connect, and when you would actually use them.
+  </p>
+</div>
+
+<h2>1. Quick Idea Before the Conversation</h2>
+
+<p>
+Before reading the dialogue, here is the simplest version of the full website-building flow:
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Term</th>
+      <th>Simple Meaning</th>
+      <th>Korean Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>HTML</td>
+      <td>Builds the visible page</td>
+      <td>화면을 만드는 것</td>
+    </tr>
+    <tr>
+      <td>Python</td>
+      <td>Handles logic and actions</td>
+      <td>기능을 처리하는 것</td>
+    </tr>
+    <tr>
+      <td>Flask</td>
+      <td>Connects the website and Python code</td>
+      <td>웹과 Python을 연결하는 도구</td>
+    </tr>
+    <tr>
+      <td>GPT</td>
+      <td>Adds AI responses</td>
+      <td>AI 기능</td>
+    </tr>
+    <tr>
+      <td>Framer</td>
+      <td>Lets you build simple sites visually with little code</td>
+      <td>코딩 없이 쉽게 만드는 도구</td>
+    </tr>
+    <tr>
+      <td>Hosting</td>
+      <td>Puts your site online so others can access it</td>
+      <td>인터넷에 공개하는 것</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>2. Long Conversation</h2>
+
+<p class="section-note">
+The conversation below includes all the ideas we discussed above, but in a much more detailed and natural teaching flow.
+</p>
+
+<div class="dialogue">
+
+<p>
+  <span class="role">A:</span>
+  I want to build a website using GPT, but honestly… I don’t understand anything. What are HTML and Python files?
+  <span class="kr">나 GPT로 웹사이트 만들고 싶은데… 솔직히 아무것도 모르겠어. HTML이랑 Python 파일이 뭐야?</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  That’s totally fine. Everyone starts there.
+  <span class="kr">완전 괜찮아. 다 거기서 시작해.</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Let’s go slowly. I’ll explain step by step, like we’re building the idea from zero.
+  <span class="kr">천천히 가자. 완전 처음부터 하나씩 쌓아가듯 설명해줄게.</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  First, when you open a website, what do you actually see?
+  <span class="kr">먼저, 웹사이트를 열면 실제로 뭐가 보여?</span>
+</p>
+
+<p>
+  <span class="role">A:</span>
+  Text, buttons, pictures, maybe boxes to type in?
+  <span class="kr">글자, 버튼, 사진, 그리고 입력하는 칸 같은 거?</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Exactly. The part that creates those visible pieces is HTML.
+  <span class="kr">맞아. 그런 눈에 보이는 것들을 만드는 게 HTML이야.</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  HTML is like the structure of the page. It tells the browser where the title goes, where the paragraph goes, where the button goes, and where the image goes.
+  <span class="kr">HTML은 페이지의 구조야. 제목은 어디에, 문단은 어디에, 버튼은 어디에, 이미지는 어디에 둘지 브라우저에게 알려주는 거지.</span>
+</p>
+
+<p>
+  <span class="role">A:</span>
+  So HTML is just the layout?
+  <span class="kr">그럼 HTML은 그냥 배치만 하는 거야?</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Yes. HTML is not really the “thinking” part. It mostly shows things.
+  <span class="kr">응. HTML은 “생각하는” 부분이 아니고, 주로 보여주는 역할이야.</span>
+</p>
+
+<p>
+  <span class="role">A:</span>
+  Then what makes the website actually do something?
+  <span class="kr">그럼 실제로 웹사이트를 움직이게 하는 건 뭐야?</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  That’s where Python comes in.
+  <span class="kr">그게 바로 Python이 하는 일이야.</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Python is the part that handles logic. It can check whether a login is correct, save data, calculate results, connect to GPT, or decide what answer should be shown.
+  <span class="kr">Python은 로직을 처리하는 부분이야. 로그인 정보가 맞는지 확인하고, 데이터를 저장하고, 계산하고, GPT와 연결하고, 어떤 답을 보여줄지 결정할 수 있어.</span>
+</p>
+
+<p>
+  <span class="role">A:</span>
+  So HTML is the part people see, and Python is the part that works behind the scenes?
+  <span class="kr">그러면 HTML은 사람들이 보는 부분이고, Python은 뒤에서 일하는 부분이네?</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Exactly.
+  <span class="kr">정확해.</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Another simple way to say it is:
+  <span class="kr">더 쉽게 말하면 이렇게 정리할 수 있어.</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  HTML is what the user sees. Python is what the website does.
+  <span class="kr">HTML은 사용자가 보는 것, Python은 웹사이트가 실제로 하는 일이야.</span>
+</p>
+
+<p>
+  <span class="role">A:</span>
+  I think I get that part. But how do those two connect?
+  <span class="kr">그 부분은 알 것 같아. 근데 둘이 어떻게 연결돼?</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Great question. This is where Flask appears.
+  <span class="kr">좋은 질문이야. 여기서 Flask가 등장해.</span>
+</p>
+
+<p>
+  <span class="role">A:</span>
+  What exactly is Flask?
+  <span class="kr">Flask 정확히 뭐야?</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Flask is a web framework for Python. That sounds technical, but in simple words, it helps Python talk to the website.
+  <span class="kr">Flask는 Python용 웹 프레임워크야. 말이 좀 어렵지만 쉽게 말하면 Python이 웹사이트와 대화하게 도와주는 도구야.</span>
+</p>
+
+<p>
+  <span class="role">A:</span>
+  What do you mean by “talk to the website”?
+  <span class="kr">“웹사이트와 대화한다”는 게 무슨 뜻이야?</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Imagine you type something into a box on a webpage and press a button.
+  The website needs a way to send that input to Python.
+  Flask handles that connection.
+  <span class="kr">네가 웹페이지 입력칸에 뭔가를 쓰고 버튼을 눌렀다고 해보자. 그 입력값을 Python으로 보내야 하잖아. 그 연결을 Flask가 해주는 거야.</span>
+</p>
+
+<p>
+  <span class="role">A:</span>
+  So Flask is kind of like a bridge?
+  <span class="kr">그럼 Flask는 다리 같은 거네?</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Yes, exactly. That’s one of the best beginner ways to understand it.
+  <span class="kr">응, 맞아. 초보한테는 그 비유가 제일 이해하기 쉬워.</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Here’s the flow:
+  <span class="kr">흐름은 이래.</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  First, HTML shows an input box and a button.
+  <span class="kr">먼저 HTML이 입력창과 버튼을 보여줘.</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Then the user types a message and clicks submit.
+  <span class="kr">그다음 사용자가 메시지를 쓰고 제출 버튼을 눌러.</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Flask receives that request and passes it to Python.
+  <span class="kr">그러면 Flask가 그 요청을 받아서 Python으로 넘겨.</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Python processes the message and creates a result.
+  <span class="kr">Python이 그 메시지를 처리하고 결과를 만들어.</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Flask sends that result back to the page.
+  <span class="kr">그리고 Flask가 그 결과를 다시 페이지로 보내.</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Finally, HTML displays the answer to the user.
+  <span class="kr">마지막으로 HTML이 그 답을 사용자에게 보여줘.</span>
+</p>
+
+<p>
+  <span class="role">A:</span>
+  Oh, now I can picture it much more clearly.
+  <span class="kr">오, 이제 훨씬 그림이 그려진다.</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Good. In one line, it looks like this:
+  User → HTML → Flask → Python → Flask → HTML
+  <span class="kr">좋아. 한 줄로 쓰면 이렇게 돼: 사용자 → HTML → Flask → Python → Flask → HTML</span>
+</p>
+
+<p>
+  <span class="role">A:</span>
+  That already feels less scary.
+  <span class="kr">이제 좀 덜 무섭다.</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  It should. Once you see the flow, the words stop feeling random.
+  <span class="kr">그래야지. 흐름이 보이면 단어들이 따로따로 안 느껴져.</span>
+</p>
+
+<p>
+  <span class="role">A:</span>
+  Where does GPT fit into this?
+  <span class="kr">그럼 GPT는 여기 어디에 들어가?</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  GPT usually connects through Python.
+  <span class="kr">GPT는 보통 Python 쪽에서 연결돼.</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  So if someone asks something on your website, the page itself doesn’t directly “think.”
+  Instead, Python sends the user’s message to GPT, receives the answer, and then the page shows that answer.
+  <span class="kr">즉, 사용자가 웹사이트에서 질문한다고 해서 페이지 자체가 생각하는 건 아니야. Python이 그 질문을 GPT로 보내고, 답을 받은 다음, 페이지가 그 답을 보여주는 거야.</span>
+</p>
+
+<p>
+  <span class="role">A:</span>
+  So GPT is like the intelligence part?
+  <span class="kr">그럼 GPT는 똑똑한 부분이네?</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Exactly. You can think of GPT as the brain that produces the answer, but Python is still the one doing the connection work.
+  <span class="kr">맞아. GPT는 답을 만들어내는 뇌라고 볼 수 있지만, 실제로 연결하고 처리하는 일은 여전히 Python이 맡는 거야.</span>
+</p>
+
+<p>
+  <span class="role">A:</span>
+  I think I get HTML, Python, Flask, and GPT now. But do I always have to code everything?
+  <span class="kr">이제 HTML, Python, Flask, GPT는 조금 알 것 같아. 근데 꼭 다 코딩해야 해?</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Not always. There are tools made for people who want to build websites more visually.
+  <span class="kr">항상 그런 건 아니야. 더 시각적으로 웹사이트를 만들고 싶은 사람들을 위한 도구도 있어.</span>
+</p>
+
+<p>
+  <span class="role">A:</span>
+  Like what?
+  <span class="kr">예를 들면 뭐?</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Framer is one example.
+  <span class="kr">Framer가 그 예 중 하나야.</span>
+</p>
+
+<p>
+  <span class="role">A:</span>
+  What is Framer?
+  <span class="kr">Framer는 뭐야?</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Framer is a website builder that lets you create pages visually. You can drag things around, edit text, add sections, and publish a website without writing much code.
+  <span class="kr">Framer는 웹사이트를 눈으로 보면서 만들 수 있는 빌더야. 요소를 드래그해서 배치하고, 텍스트를 바꾸고, 섹션을 추가하고, 코드를 많이 쓰지 않고도 사이트를 배포할 수 있어.</span>
+</p>
+
+<p>
+  <span class="role">A:</span>
+  That sounds easier than learning HTML and Python.
+  <span class="kr">그럼 HTML이랑 Python 배우는 것보다 훨씬 쉬운 거 아니야?</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  For simple websites, yes. It is easier and faster.
+  <span class="kr">간단한 웹사이트라면 맞아. 더 쉽고 빠르지.</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  But Framer is better for things like landing pages, portfolios, and simple company sites.
+  <span class="kr">하지만 Framer는 소개 페이지, 포트폴리오, 간단한 회사 사이트 같은 데 더 잘 맞아.</span>
+</p>
+
+<p>
+  <span class="role">A:</span>
+  Then when is coding better?
+  <span class="kr">그럼 직접 코딩이 더 좋은 건 언제야?</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Coding becomes better when you need more complex behavior.
+  For example:
+  logins, user accounts, saving data, custom tools, dashboards, or connecting GPT in a flexible way.
+  <span class="kr">더 복잡한 동작이 필요할 때는 코딩이 더 좋아. 예를 들어 로그인, 사용자 계정, 데이터 저장, 커스텀 툴, 대시보드, 또는 GPT를 더 자유롭게 연결하고 싶을 때 말이야.</span>
+</p>
+
+<p>
+  <span class="role">A:</span>
+  So Framer is easier, but coding gives more control?
+  <span class="kr">그럼 Framer는 쉽고, 코딩은 더 자유로운 거네?</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Exactly. That is the trade-off.
+  <span class="kr">정확해. 그게 차이점이야.</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  You can summarize it like this:
+  <span class="kr">이렇게 정리할 수 있어.</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Framer = easy and fast, but limited for advanced logic.
+  <span class="kr">Framer = 쉽고 빠르지만, 고급 기능에는 한계가 있음.</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  HTML + Python + Flask = harder at first, but much more powerful.
+  <span class="kr">HTML + Python + Flask = 처음엔 어렵지만 훨씬 강력함.</span>
+</p>
+
+<p>
+  <span class="role">A:</span>
+  That makes sense. But if I build something on my computer, can other people already see it?
+  <span class="kr">이해됐어. 근데 내가 컴퓨터에서 만들면 다른 사람도 바로 볼 수 있어?</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Not yet. That’s where hosting comes in.
+  <span class="kr">아직은 아니야. 여기서 호스팅이 필요해.</span>
+</p>
+
+<p>
+  <span class="role">A:</span>
+  I hear that word a lot. What is hosting?
+  <span class="kr">그 단어 진짜 많이 듣는데, 호스팅이 뭐야?</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Hosting means putting your website on a server so it can be accessed through the internet.
+  <span class="kr">호스팅은 네 웹사이트를 서버에 올려서 인터넷으로 접속할 수 있게 만드는 거야.</span>
+</p>
+
+<p>
+  <span class="role">A:</span>
+  What is a server?
+  <span class="kr">서버는 또 뭐야?</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  A server is basically a computer that stays on and is ready to respond when people visit your site.
+  <span class="kr">서버는 쉽게 말하면 항상 켜져 있으면서 사람들이 네 사이트에 들어오면 응답해주는 컴퓨터야.</span>
+</p>
+
+<p>
+  <span class="role">A:</span>
+  So before hosting, my website only works on my own computer?
+  <span class="kr">그럼 호스팅 전에는 내 컴퓨터에서만 돌아가는 거야?</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Yes. Usually only you can see it locally.
+  <span class="kr">응. 보통은 네 로컬 환경에서만 보여.</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  After hosting, other people can visit it through a link.
+  <span class="kr">호스팅을 하면 다른 사람들도 링크로 들어올 수 있어.</span>
+</p>
+
+<p>
+  <span class="role">A:</span>
+  So hosting is the step that makes the site public.
+  <span class="kr">그러면 호스팅은 사이트를 공개 상태로 만드는 단계네.</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Exactly. That’s the final step for going live.
+  <span class="kr">맞아. 실제 공개의 마지막 단계라고 보면 돼.</span>
+</p>
+
+<p>
+  <span class="role">A:</span>
+  Can you give me the full process one more time from beginning to end?
+  <span class="kr">처음부터 끝까지 전체 과정을 한 번만 더 정리해줄래?</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Sure.
+  <span class="kr">물론이지.</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  First, HTML builds the visible page.
+  <span class="kr">먼저 HTML이 보이는 화면을 만들고,</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Then Python adds the logic and actions.
+  <span class="kr">그다음 Python이 기능과 동작을 만들고,</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Flask connects the web page and the Python code.
+  <span class="kr">Flask가 웹페이지와 Python 코드를 연결하고,</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  GPT can be connected through Python to add AI responses.
+  <span class="kr">GPT는 Python을 통해 연결돼서 AI 답변 기능을 추가하고,</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Framer is an optional shortcut when you want to build a simpler website visually.
+  <span class="kr">Framer는 더 간단한 사이트를 시각적으로 만들고 싶을 때 쓰는 선택지이고,</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Hosting is what puts the final result online for everyone else to access.
+  <span class="kr">호스팅은 최종 결과를 인터넷에 올려서 다른 사람도 접속할 수 있게 하는 거야.</span>
+</p>
+
+<p>
+  <span class="role">A:</span>
+  Wow. Now the words feel connected instead of random.
+  <span class="kr">와. 이제 단어들이 따로 놀지 않고 서로 연결돼 보여.</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  That’s the goal. Once the structure clicks, the technical terms stop feeling scary.
+  <span class="kr">그게 핵심이야. 구조가 이해되면 기술 용어도 덜 무섭게 느껴져.</span>
+</p>
+
+<p>
+  <span class="role">A:</span>
+  Then let me try to summarize:
+  HTML is the screen, Python is the function, Flask is the bridge, GPT is the intelligence, Framer is the easier builder, and Hosting puts it online.
+  <span class="kr">그럼 내가 정리해볼게. HTML은 화면, Python은 기능, Flask는 다리, GPT는 지능, Framer는 쉽게 만드는 방법, Hosting은 인터넷에 올리는 거.</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Perfect. That means you really understood it.
+  <span class="kr">완벽해. 그 말이면 진짜 이해한 거야.</span>
+</p>
+
+<p>
+  <span class="role">A:</span>
+  I finally feel ready to start building something.
+  <span class="kr">이제 진짜 뭔가 만들 준비가 된 느낌이야.</span>
+</p>
+
+<p>
+  <span class="role">B:</span>
+  Good. Once you understand the roles of each part, building becomes much less confusing.
+  <span class="kr">좋아. 각 요소의 역할을 이해하면 만드는 과정이 훨씬 덜 헷갈려.</span>
+</p>
+
+</div>
+
+<h2>3. Beginner Summary</h2>
+
+<div class="highlight">
+  <p><strong>HTML</strong> = what users see on the page</p>
+  <p><strong>Python</strong> = what the website does behind the scenes</p>
+  <p><strong>Flask</strong> = the bridge between the page and Python</p>
+  <p><strong>GPT</strong> = the AI that generates responses</p>
+  <p><strong>Framer</strong> = an easier no-code or low-code way to build simple sites</p>
+  <p><strong>Hosting</strong> = the step that makes the site public on the internet</p>
+</div>
+
+<h2>4. When to Use What</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Situation</th>
+      <th>Best Choice</th>
+      <th>Reason</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>You want a simple landing page fast</td>
+      <td>Framer</td>
+      <td>Fast visual building with little code</td>
+    </tr>
+    <tr>
+      <td>You want a GPT-powered tool</td>
+      <td>HTML + Python + Flask</td>
+      <td>You need backend logic and API connection</td>
+    </tr>
+    <tr>
+      <td>You want login, database, or custom features</td>
+      <td>HTML + Python + Flask</td>
+      <td>More flexibility and control</td>
+    </tr>
+    <tr>
+      <td>You want other people to access the site</td>
+      <td>Hosting</td>
+      <td>Your site must be online on a server</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>5. Discussion Questions</h2>
+
+<div class="questions">
+  <ul>
+    <li>If you were a complete beginner, would you start with Framer first or jump straight into HTML and Python?</li>
+    <li>Why do you think Flask is important in a GPT website workflow?</li>
+    <li>What kind of website would need hosting the most urgently?</li>
+    <li>Which explanation helped the most: screen vs function, bridge, or server?</li>
+  </ul>
+</div>
+
+<div class="back">
+  <a href="../">← Back to Home</a>
+  <a href="../articles.html">← Back to Articles</a>
+</div>
+
+</div>
+
+<footer>
+  © <span id="year"></span> Cha GPTs. All rights reserved.
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,421 @@
+<h2>Role Play — Building a U.S. AI OCR Accounting Platform</h2>
+
+<div class="dialogue">
+  <div class="meta">
+    <strong>Context:</strong> The team is planning a U.S.-focused AI OCR accounting web platform.
+    They want to understand what LoRA is, why India-specific LoRA models are easier to find than U.S. ones,
+    and how to build a practical system using OCR, Llama, accounting rules, approval workflow, and a QuickBooks-style structure.
+  </div>
+
+  <div class="turn">
+    <span class="role pm">PM (Mina):</span>
+    <p>
+      We want to build a web app that reads U.S. accounting documents with OCR, lets AI organize them,
+      and then pushes approved results into a QuickBooks-style accounting flow. But when we looked at Hugging Face,
+      we mostly found India-focused receipt LoRA models and not a clear U.S. accounting LoRA.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role dev">AI Engineer (Alex):</span>
+    <p>
+      That confusion usually starts because people think LoRA is a full model. It is not.
+      LoRA is a lightweight fine-tuning method that adds task-specific behavior on top of a large base model like Llama.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role acc">Accounting Lead (Jisoo):</span>
+    <p>
+      So the India receipt parser is basically a general model plus extra training for Indian receipts.
+      From a finance perspective, that sounds like attaching a specialized accounting skill to an existing AI brain.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role dev">AI Engineer (Alex):</span>
+    <p>
+      Exactly. The base model understands language in general, and the LoRA teaches it to do one narrow job well,
+      such as extracting vendor, amount, date, tax, and category from receipts or bills.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role it">Backend Engineer (Daniel):</span>
+    <p>
+      Then why do we see India-specific LoRA models more clearly than U.S. ones?
+      The U.S. market is large, so I would have expected a famous “U.S. accounting receipt LoRA” to already exist.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role dev">AI Engineer (Alex):</span>
+    <p>
+      India has a stronger need for country-specific document models because the vendor landscape is more fragmented,
+      regional utility providers vary a lot, and fintech ecosystems create many different receipt formats.
+      In the U.S., document formats are more standardized, existing accounting systems are mature,
+      and teams often solve the problem with OCR plus rules plus general-purpose models instead of one famous country-specific LoRA.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role pm">PM (Mina):</span>
+    <p>
+      So the issue is not that U.S. LoRA models do not exist at all.
+      It is more that there is no single highly visible, strongly branded U.S. accounting LoRA in the same way that some India-specific models present themselves.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role dev">AI Engineer (Alex):</span>
+    <p>
+      Correct. In practice, the U.S. solution is usually a composed system:
+      OCR reads the document, Llama interprets it, a rules engine turns it into accounting recommendations,
+      and an approval workflow decides what gets posted.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role acc">Accounting Lead (Jisoo):</span>
+    <p>
+      That makes more sense to me from a controls standpoint.
+      I do not want AI posting directly to the books. I want AI to help us understand documents faster,
+      while accounting rules and approvals control the actual posting.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role it">Backend Engineer (Daniel):</span>
+    <p>
+      Then we should clearly separate responsibilities in the architecture.
+      OCR should extract text, Llama should normalize and classify, the rules engine should determine posting logic,
+      and humans should approve the final accounting action.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role dev">AI Engineer (Alex):</span>
+    <p>
+      Yes, that is the right structure: document upload, OCR, Llama JSON extraction, rules engine,
+      review and approval, then QuickBooks-compatible posting.
+      In that setup, AI helps with understanding, but accounting control stays deterministic.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role pm">PM (Mina):</span>
+    <p>
+      Then our product message should be clear.
+      We are not claiming that AI does accounting by itself; we are saying that AI converts messy business documents
+      into structured, review-ready accounting data.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role acc">Senior Accountant (Hana):</span>
+    <p>
+      And that is valuable on its own.
+      If the system can read receipts, vendor bills, and utility bills, normalize vendor names,
+      extract totals and taxes, and suggest the right accounting treatment, the accounting team already saves a lot of time.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role dev">AI Engineer (Alex):</span>
+    <p>
+      That is why our first LoRA should stay narrow.
+      We should not try to train “all of U.S. accounting.” We should train a document extraction LoRA
+      that takes OCR text and returns structured JSON for receipts, vendor bills, and utility bills.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role it">Backend Engineer (Daniel):</span>
+    <p>
+      So the output should be something like document type, normalized vendor, invoice number,
+      transaction date, subtotal, tax, total, suggested account, and recommended QuickBooks entity.
+      That gives the rest of the platform something stable to work with.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role dev">AI Engineer (Alex):</span>
+    <p>
+      Exactly. And suggested account should still be treated carefully,
+      because different companies have different charts of accounts.
+      Early on, the LoRA should recommend, while the rules engine and vendor history apply company-specific logic.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role pm">PM (Mina):</span>
+    <p>
+      So instead of searching for a magical U.S. accounting LoRA,
+      we should build small task-specific LoRAs for our own product.
+      Receipt extraction, vendor bill extraction, and vendor normalization sound like good starting points.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role dev">AI Engineer (Alex):</span>
+    <p>
+      Yes, and before training anything, we need to define the output schema.
+      If the model returns free-form text, it becomes hard to validate, hard to connect to accounting logic,
+      and hard to push into a QuickBooks-style workflow.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role acc">Accounting Lead (Jisoo):</span>
+    <p>
+      That means the model is not here to “write a nice explanation.”
+      It is here to reliably produce fields that accounting and engineering can trust,
+      such as vendor, amount, date, tax, and whether the document should become a Bill or an Expense.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role it">Backend Engineer (Daniel):</span>
+    <p>
+      Then the training data format should also reflect that.
+      We can use a chat-style JSONL format where the system prompt defines the extraction task,
+      the user message contains OCR text, and the assistant message contains the target JSON.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role dev">AI Engineer (Alex):</span>
+    <p>
+      That is the right approach.
+      We can start with practical U.S. vendor examples like Starbucks, Uber, Staples, Comcast, Adobe, Verizon, and Amazon,
+      then label them as receipt, vendor_bill, or utility_bill with normalized outputs.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role pm">PM (Mina):</span>
+    <p>
+      But we do not really have a large labeled dataset yet.
+      Can we still start, or are we blocked until we collect thousands of manually reviewed documents?
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role dev">AI Engineer (Alex):</span>
+    <p>
+      We can absolutely start.
+      The initial strategy should be pseudo-labeling with rules, synthetic data generation,
+      and human correction logs rather than waiting for a perfect labeled dataset.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role acc">Accounting Lead (Jisoo):</span>
+    <p>
+      So for example, we can use regex and accounting rules to pull out invoice number, total, tax, and date,
+      then use known vendor mappings to create an initial recommendation.
+      That gives us rough labels even before the accounting team manually reviews everything.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role dev">AI Engineer (Alex):</span>
+    <p>
+      Exactly. Those labels do not need to be perfect on day one.
+      They just need to be good enough to create a useful first training set,
+      especially for deterministic fields like totals, dates, and invoice numbers.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role it">Backend Engineer (Daniel):</span>
+    <p>
+      And we can also create synthetic samples.
+      We can generate fake OCR-like invoice text for vendors such as Staples, Uber, Adobe, and Comcast,
+      then automatically generate the correct JSON output for training.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role dev">AI Engineer (Alex):</span>
+    <p>
+      Yes, that is one of the most practical ways to bootstrap a LoRA.
+      We can begin with maybe 30 carefully written seed samples, expand with synthetic documents,
+      and then keep improving with real correction logs from production use.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role acc">Senior Accountant (Hana):</span>
+    <p>
+      The correction log will be extremely valuable.
+      If accounting keeps changing “AMZN Mktp US” to “Amazon,” or changes a suggested account from Meals to Office Supplies,
+      that becomes our best real-world learning signal.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role dev">AI Engineer (Alex):</span>
+    <p>
+      Exactly. That is why production feedback matters so much.
+      Over time, the most useful dataset is not synthetic data alone,
+      but the combination of synthetic samples, pseudo-labels, and accountant-approved corrections.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role it">Backend Engineer (Daniel):</span>
+    <p>
+      From an implementation standpoint, we can keep the training project clean.
+      We will have raw OCR exports, processed train-valid-test JSONL files, a synthetic generator,
+      and separate scripts for training, evaluation, inference, and schema validation.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role dev">AI Engineer (Alex):</span>
+    <p>
+      Yes, and the training stack can be straightforward.
+      We use a base instruct model, apply LoRA with PEFT, train with chat-formatted JSONL,
+      and evaluate not just loss but exact-match accuracy on vendor, date, total, and document type.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role acc">Accounting Lead (Jisoo):</span>
+    <p>
+      That evaluation approach matters.
+      For accounting operations, the meaningful question is not whether the model sounds fluent,
+      but whether it extracted the right vendor, the right amount, and the right document class.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role pm">PM (Mina):</span>
+    <p>
+      Then the three-month roadmap also becomes clearer.
+      Month 1 is reading documents, Month 2 is understanding documents, and Month 3 is turning reviewed results into posting-ready accounting actions.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role it">Backend Engineer (Daniel):</span>
+    <p>
+      In Month 1, we should focus on upload, OCR, document storage, and a document detail screen.
+      Users need to see the original file, raw OCR text, and extracted fields in one place.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role dev">AI Engineer (Alex):</span>
+    <p>
+      In Month 2, we connect Llama and the first extraction LoRA.
+      That is where we add vendor normalization, document classification, suggested account, recommended QuickBooks entity,
+      and confidence-based review routing.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role acc">Accounting Lead (Jisoo):</span>
+    <p>
+      In Month 3, we need controlled accounting workflow.
+      Draft, Review, Approved, and Posted states should exist, with duplicate detection, audit logs,
+      and QuickBooks-compatible posting only after approval.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role pm">PM (Mina):</span>
+    <p>
+      We should also keep the MVP narrow.
+      Vendor bills, receipts, utility bills, USD only, and core objects like Bill, Expense, and Vendor are enough for the first version.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role dev">AI Engineer (Alex):</span>
+    <p>
+      I agree. We should not attempt payroll, multi-currency, or full ERP logic in the first release.
+      A narrow workflow with strong extraction, review, and posting is much more realistic.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role it">Backend Engineer (Daniel):</span>
+    <p>
+      And technically, that narrower scope makes the platform safer.
+      We can validate JSON outputs, detect duplicates, track audit history, and prevent accidental double posting
+      without overcomplicating the first release.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role acc">Senior Accountant (Hana):</span>
+    <p>
+      From the accounting side, that is the right balance.
+      AI should reduce manual entry and improve document handling speed,
+      but the books should still be controlled by policy, review, and traceable approval.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role pm">PM (Mina):</span>
+    <p>
+      Then our strategy is clear.
+      We are not chasing a famous prebuilt U.S. accounting LoRA. We are building our own practical system:
+      OCR plus a narrow LoRA plus accounting rules plus review plus QuickBooks-style posting.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role dev">AI Engineer (Alex):</span>
+    <p>
+      Exactly. India-specific LoRA models stand out because they package a very specific regional problem into one visible model.
+      In the U.S., the stronger path for us is to build a product-oriented pipeline and train task-specific LoRAs that fit our workflow.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role acc">Accounting Lead (Jisoo):</span>
+    <p>
+      And that is easier to trust from a finance perspective.
+      AI helps us understand documents, but accounting decisions still stay grounded in rules, mappings, and approvals.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role it">Backend Engineer (Daniel):</span>
+    <p>
+      It is also easier to maintain.
+      Instead of one black-box model trying to do everything,
+      each layer handles a clear responsibility and can be improved independently.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role pm">PM (Mina):</span>
+    <p>
+      Great. Then we will lock the plan this way:
+      start with a 30-sample JSONL seed set, expand with synthetic training data,
+      collect correction logs from real reviews, and grow the LoRA over time while the product ships.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role dev">AI Engineer (Alex):</span>
+    <p>
+      That is the right order.
+      First, build a usable OCR-accounting workflow. Then use that workflow to generate better data.
+      Then train better LoRAs from the data the product creates.
+    </p>
+  </div>
+
+  <div class="turn">
+    <span class="role acc">Senior Accountant (Hana):</span>
+    <p>
+      From my side, that sounds realistic.
+      If the first version can save us from retyping vendor names, totals, taxes, and document categories,
+      the accounting team will already see real value.
+    </p>
+  </div>
+</div>

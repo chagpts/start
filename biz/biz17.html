@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ITAC Interface Testing – Shopify/Stripe → Synder → QuickBooks (Non-Reliance)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand&display=swap" rel="stylesheet">
+<style>
+body {
+  font-family: 'Quicksand', sans-serif;
+  background:
+    linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
+    url("../verse.png") no-repeat center center / cover;
+  padding: 60px 20px;
+}
+.container {
+  max-width: 820px;
+  margin: auto;
+  background: rgba(255,255,255,0.95);
+  padding: 50px 60px;
+  border-radius: 28px;
+}
+h1, h2, h3 {
+  font-family: 'Baloo 2', cursive;
+}
+h1 { margin-bottom: 30px; }
+h2 { margin-top: 45px; margin-bottom: 15px; }
+p { line-height: 1.75; margin-bottom: 18px; font-size: 15px; }
+ul { margin-left: 20px; margin-bottom: 20px; }
+li { margin-bottom: 8px; }
+table { width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 14px; }
+th, td { border: 1px solid #ddd; padding: 12px 14px; vertical-align: top; }
+th { background: #f2f2f2; font-weight: 600; }
+.note { font-size: 13px; color: #555; margin-top: 10px; }
+.dialogue { background: #f7f7f7; padding: 28px 30px; border-radius: 18px; margin-top: 25px; }
+.dialogue .role { font-weight: 700; }
+.dialogue .tag { display: inline-block; font-size: 12px; padding: 3px 10px; border-radius: 12px; background: #e9e9e9; margin-left: 8px; color: #444; }
+.dialogue .msg { margin-bottom: 14px; }
+.callout { background: #fff7e6; border: 1px solid #ffe2a8; padding: 18px 20px; border-radius: 18px; margin: 18px 0; font-size: 14px; }
+.badge { display:inline-block; font-size:12px; padding:6px 10px; border-radius:14px; background:#f0f0f0; margin:0 8px 8px 0; }
+.back { text-align:center; margin-top:50px; }
+.back a { display:inline-block; padding:12px 26px; background:#333; color:#fff; border-radius:30px; text-decoration:none; font-size:14px; margin:6px; }
+footer { text-align:center; margin-top:60px; font-size:13px; background:rgba(255,255,255,0.75); display:inline-block; padding:10px 18px; border-radius:20px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>ITAC Interface Testing Report (Non-Reliance)</h1>
+<p>
+This report documents an end-to-end audit workpaper for an automated interface:
+<strong>Shopify / Stripe → Synder → QuickBooks</strong>.
+The audit approach is <strong>Non-Reliance</strong> (i.e., no reliance on Synder controls / no SOC reliance),
+and focuses on <strong>direct source-to-GL validation</strong>.
+</p>
+
+<div class="badges">
+  <span class="badge">ITAC</span>
+  <span class="badge">Non-Reliance</span>
+  <span class="badge">Interface Completeness</span>
+  <span class="badge">Interface Accuracy</span>
+  <span class="badge">Duplicate & Cutoff</span>
+  <span class="badge">Material Weakness Scenario</span>
+</div>
+
+<div class="callout">
+<strong>Scope Summary:</strong><br>
+We tested whether transactions originating from Shopify and Stripe are <strong>complete, accurate, non-duplicative,
+and appropriately classified</strong> when recorded in QuickBooks via Synder. This report includes sampling methodology,
+10 sample tie-outs, exception analysis, expanded testing approach, and severity assessment leading to a
+<strong>Material Weakness</strong> conclusion (scenario-based).
+</div>
+
+<h2>1. Background & System Description</h2>
+<p>
+Management uses <strong>Synder</strong> as an integration platform to transmit sales, refunds, fees, and payouts from
+<strong>Shopify</strong> and <strong>Stripe</strong> to <strong>QuickBooks Online</strong>.
+The interface is system-driven (API/webhook-based), and transactions are posted to the general ledger through
+system-generated entries (e.g., sales receipts, deposits, expenses, refund receipts).
+</p>
+
+<ul>
+  <li><strong>Upstream:</strong> Shopify (orders/refunds/taxes/shipping) and Stripe (charges/fees/payouts)</li>
+  <li><strong>Middleware:</strong> Synder (mapping, transformation, sync scheduling, error queues)</li>
+  <li><strong>Downstream:</strong> QuickBooks (GL posting, bank feeds, reconciliation)</li>
+</ul>
+
+<h2>2. Audit Strategy (Non-Reliance)</h2>
+<p>
+We did <strong>not</strong> place reliance on Synder’s controls. Accordingly, we performed <strong>direct testing</strong>
+of completeness and accuracy by reconciling source transactions to amounts recorded in QuickBooks.
+</p>
+
+<div class="callout">
+<strong>Non-Reliance Implication:</strong><br>
+Without reliance on Synder controls, assurance is obtained primarily through <strong>source-to-QuickBooks tie-outs</strong>,
+population-level reconciliations, expanded testing when deviations occur, and evaluation of compensating controls.
+</div>
+
+<h2>3. Control Objective</h2>
+<p>
+To determine whether transactions originating in Shopify and Stripe are:
+</p>
+<ul>
+  <li><strong>Complete</strong> (all relevant transactions recorded in QBO)</li>
+  <li><strong>Accurate</strong> (gross, fee, net, and attributes match source)</li>
+  <li><strong>Non-duplicative</strong> (unique IDs not posted twice)</li>
+  <li><strong>Properly classified</strong> (appropriate GL accounts)</li>
+  <li><strong>Properly cut off</strong> (recorded in the appropriate reporting period)</li>
+</ul>
+
+<h2>4. Population</h2>
+<p>
+Population obtained from management for the audit period:
+</p>
+<ul>
+  <li><strong>Period:</strong> <em>[Jan 1 – Dec 31, 20XX]</em></li>
+  <li><strong>Total transactions:</strong> <em>[18,742]</em></li>
+  <li><strong>Population sources:</strong> Shopify order/refund exports; Stripe balance/payout exports; QBO transaction detail exports</li>
+</ul>
+
+<h2>5. Sampling Methodology</h2>
+
+<h3>5.1 Non-Statistical (Judgmental) Sampling Rationale</h3>
+<p>
+We selected a judgmental sample of <strong>10</strong> items focusing on higher-risk characteristics:
+</p>
+<ul>
+  <li>High-dollar sales</li>
+  <li>Period-end activity (cutoff risk)</li>
+  <li>Refunds / returns</li>
+  <li>Items occurring near suspected configuration changes</li>
+  <li>Unusual amounts (negative, multiple line components)</li>
+</ul>
+
+<p class="note">
+If desired, a mixed approach may be used (e.g., 15 random + 10 risk-based). In this report, we apply a risk-based
+sample of 10 to illustrate a material deficiency scenario and expansion logic.
+</p>
+
+<h3>5.2 Selection Documentation</h3>
+<table>
+<thead>
+<tr>
+  <th>Selection Type</th>
+  <th>Criteria</th>
+  <th>Planned Count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>High Value</td>
+  <td>Top amounts by gross sales</td>
+  <td>4</td>
+</tr>
+<tr>
+  <td>Period End</td>
+  <td>Within ±5 days of month/quarter-end</td>
+  <td>3</td>
+</tr>
+<tr>
+  <td>Refunds</td>
+  <td>Refund transactions / negative gross</td>
+  <td>2</td>
+</tr>
+<tr>
+  <td>Unusual / Exceptions</td>
+  <td>Unusual fee, net, or sync log flag</td>
+  <td>1</td>
+</tr>
+</tbody>
+</table>
+
+<h2>6. Test Procedures Performed</h2>
+<p>
+For each selected sample, we performed the following:
+</p>
+<ul>
+  <li>Agreed unique identifier (Shopify Order ID / Stripe Charge ID / Synder Sync ID) to QuickBooks reference</li>
+  <li>Traced and agreed <strong>Gross</strong>, <strong>Fee</strong>, and <strong>Net</strong> amounts from source → QBO</li>
+  <li>Inspected posting date for cutoff</li>
+  <li>Verified GL account classification (Sales, Merchant Fees, Stripe Clearing, Refunds, Sales Tax)</li>
+  <li>Inspected QBO transaction list to identify duplicates for the same unique identifier</li>
+</ul>
+
+<div class="callout">
+<strong>Key tie-out rule (eCommerce pattern):</strong><br>
+Gross = Sales components (product + shipping + tax if applicable) <br>
+Net = Gross − processing fees (Stripe) − other adjustments (e.g., refunds) <br>
+Payouts should reconcile to bank deposits, typically via a clearing account.
+</div>
+
+<h2>7. Sample Testing Results (10 Items)</h2>
+
+<table>
+<thead>
+<tr>
+  <th>#</th>
+  <th>Type</th>
+  <th>Source ID</th>
+  <th>Date (Source)</th>
+  <th>Gross (Source)</th>
+  <th>Fee (Source)</th>
+  <th>Net (Source)</th>
+  <th>QuickBooks Observation</th>
+  <th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td>
+  <td>Sale</td>
+  <td>SO-10045</td>
+  <td>20XX-03-14</td>
+  <td>520.00</td>
+  <td>15.08</td>
+  <td>504.92</td>
+  <td>SalesReceipt matches; fee posted to Merchant Fees; net clears to Stripe Clearing</td>
+  <td><strong>Pass</strong></td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>Sale</td>
+  <td>SO-10088</td>
+  <td>20XX-05-02</td>
+  <td>75.00</td>
+  <td>2.48</td>
+  <td>72.52</td>
+  <td>Recorded accurately; no duplicates identified</td>
+  <td><strong>Pass</strong></td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>Sale</td>
+  <td>SO-10102</td>
+  <td>20XX-06-29</td>
+  <td>1,240.00</td>
+  <td>36.26</td>
+  <td>1,203.74</td>
+  <td><strong>Missing</strong> in QBO (no SalesReceipt/Invoice/Deposit found for ID)</td>
+  <td><strong>Fail – Completeness</strong></td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>Refund</td>
+  <td>RF-2204</td>
+  <td>20XX-07-07</td>
+  <td>(95.00)</td>
+  <td>0.00</td>
+  <td>(95.00)</td>
+  <td>RefundReceipt recorded and linked; amounts agree</td>
+  <td><strong>Pass</strong></td>
+</tr>
+<tr>
+  <td>5</td>
+  <td>Sale</td>
+  <td>SO-10177</td>
+  <td>20XX-09-30</td>
+  <td>2,880.00</td>
+  <td>84.12</td>
+  <td>2,795.88</td>
+  <td>Gross matches; fee in QBO differs by 12.40; net differs accordingly</td>
+  <td><strong>Fail – Accuracy</strong></td>
+</tr>
+<tr>
+  <td>6</td>
+  <td>Sale</td>
+  <td>SO-10201</td>
+  <td>20XX-12-31</td>
+  <td>640.00</td>
+  <td>19.02</td>
+  <td>620.98</td>
+  <td>Recorded in QBO on <strong>20XY-01-02</strong> (next period) without documented cutoff policy</td>
+  <td><strong>Fail – Cutoff</strong></td>
+</tr>
+<tr>
+  <td>7</td>
+  <td>Sale</td>
+  <td>SO-10244</td>
+  <td>20XX-11-18</td>
+  <td>410.00</td>
+  <td>12.19</td>
+  <td>397.81</td>
+  <td>Amounts match; classification correct</td>
+  <td><strong>Pass</strong></td>
+</tr>
+<tr>
+  <td>8</td>
+  <td>Sale</td>
+  <td>SO-10298</td>
+  <td>20XX-10-05</td>
+  <td>3,900.00</td>
+  <td>113.92</td>
+  <td>3,786.08</td>
+  <td>Posted to <strong>Stripe Clearing</strong> as revenue (misclassification); Sales understated</td>
+  <td><strong>Fail – Classification</strong></td>
+</tr>
+<tr>
+  <td>9</td>
+  <td>Sale</td>
+  <td>SO-10310</td>
+  <td>20XX-08-22</td>
+  <td>58.00</td>
+  <td>2.03</td>
+  <td>55.97</td>
+  <td><strong>Duplicate</strong> postings: two SalesReceipts found for same ID</td>
+  <td><strong>Fail – Duplicate</strong></td>
+</tr>
+<tr>
+  <td>10</td>
+  <td>Sale</td>
+  <td>SO-10344</td>
+  <td>20XX-04-09</td>
+  <td>870.00</td>
+  <td>25.51</td>
+  <td>844.49</td>
+  <td>Recorded accurately; no duplicates identified</td>
+  <td><strong>Pass</strong></td>
+</tr>
+</tbody>
+</table>
+
+<p class="note">
+Initial testing identified <strong>5 deviations out of 10</strong> across completeness, accuracy, cutoff,
+classification, and duplication, indicating potential systemic interface issues rather than isolated anomalies.
+</p>
+
+<h2>8. Exception Summary & Interpretation</h2>
+<ul>
+  <li><strong>Completeness:</strong> Missing sales transaction(s) in QuickBooks</li>
+  <li><strong>Accuracy:</strong> Fee/net discrepancies suggesting calculation or mapping issues</li>
+  <li><strong>Cutoff:</strong> Period-end sales posted in subsequent period without documented policy/controls</li>
+  <li><strong>Classification:</strong> Revenue misposted to clearing account (financial statement presentation risk)</li>
+  <li><strong>Duplicates:</strong> Same ID recorded twice (overstatement risk)</li>
+</ul>
+
+<div class="callout">
+<strong>Why these matter:</strong><br>
+These exception types affect <strong>Revenue, Expenses, Cash/Clearing, and Liabilities</strong> and, if systematic,
+can create material misstatements at scale.
+</div>
+
+<h2>9. Root Cause Discussion (Inquiry with Management)</h2>
+<p>
+Management indicated that:
+</p>
+<ul>
+  <li>Synder configuration updates were performed around <em>[date]</em>.</li>
+  <li>Monitoring of sync failures is informal (no daily documented review of error queue).</li>
+  <li>No documented review/approval workflow exists for mapping changes.</li>
+</ul>
+
+<p class="note">
+No automated detective control (e.g., daily source total to GL total reconciliation) was identified
+that would timely prevent or detect missing/duplicate/misclassified transactions.
+</p>
+
+<h2>10. Expanded Testing Method (Fail Response)</h2>
+<p>
+Because deviations suggested potential systematic issues, we performed expanded testing to determine whether the
+exceptions were isolated or pervasive.
+</p>
+
+<h3>10.1 Expansion Approach</h3>
+<ul>
+  <li><strong>Attribute-based expansion (preferred):</strong> test 100% of transactions sharing the same attribute (date range, product type, refund type, or config-change window).</li>
+  <li><strong>High-value expansion:</strong> test additional high-dollar items where risk of material impact is higher.</li>
+  <li><strong>Additional random selections:</strong> increase sample size if no dominant attribute emerges.</li>
+</ul>
+
+<div class="callout">
+<strong>Expansion principle:</strong><br>
+If the deviation appears systematic (config/mapping logic), attribute-based 100% testing provides the strongest audit evidence
+and is often more efficient than simply adding random samples.
+</div>
+
+<h3>10.2 Expanded Testing Performed (Scenario)</h3>
+<ul>
+  <li>Additional items tested: <strong>15</strong> (focused on the suspected configuration change window and high-value sales)</li>
+  <li>Additional deviations identified: <strong>6</strong></li>
+  <li>Deviation pattern: recurring fee mismatch + intermittent missing IDs + occasional duplicates</li>
+</ul>
+
+<h2>11. Compensating Controls Considered</h2>
+<p>
+We assessed whether management performs controls that would detect these issues timely, including:
+</p>
+<ul>
+  <li>Daily/weekly reconciliation between Stripe payouts and QBO bank deposits</li>
+  <li>Daily sales summary review (Shopify vs QBO)</li>
+  <li>Stripe clearing reconciliation (clearing balance should return to zero)</li>
+  <li>Exception/error queue monitoring in Synder</li>
+</ul>
+
+<p>
+Based on inquiry and evidence inspected, management’s reviews were <strong>high-level</strong> and would not reliably detect:
+</p>
+<ul>
+  <li>Missing individual orders</li>
+  <li>Duplicate postings by unique ID</li>
+  <li>Misclassification of revenue vs clearing</li>
+</ul>
+
+<div class="callout">
+<strong>Conclusion on compensating controls:</strong><br>
+Compensating controls were assessed as <strong>not operating effectively</strong> to prevent or detect the identified deviations.
+</div>
+
+<h2>12. Likelihood & Impact Assessment (Severity Framework)</h2>
+
+<h3>12.1 Likelihood</h3>
+<ul>
+  <li><strong>Assessment:</strong> High</li>
+  <li><strong>Rationale:</strong> High deviation rate in initial sample (5/10) and continued deviations in expanded testing (6/15).
+  The deviation types suggest recurring systemic conditions rather than one-off errors.</li>
+</ul>
+
+<h3>12.2 Impact</h3>
+<ul>
+  <li><strong>Assessment:</strong> High</li>
+  <li><strong>Rationale:</strong> Exceptions directly impact revenue and cash-related balances. Missing, duplicate,
+  and misclassified postings can produce material misstatements across multiple accounts and periods.</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+  <th>Factor</th>
+  <th>Low</th>
+  <th>Moderate</th>
+  <th>High</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Likelihood</td>
+  <td>Rare / isolated</td>
+  <td>Repeats under certain conditions</td>
+  <td>Systemic / recurring</td>
+</tr>
+<tr>
+  <td>Impact</td>
+  <td>Immaterial / easily detected</td>
+  <td>Meaningful account impact</td>
+  <td>Revenue/Cash materially exposed</td>
+</tr>
+</tbody>
+</table>
+
+<h2>13. Severity Determination (Deficiency vs Significant vs Material)</h2>
+<p>
+Severity is determined based on <strong>Likelihood × Impact</strong> and the presence/absence of effective compensating controls.
+</p>
+
+<table>
+<thead>
+<tr>
+  <th>Severity Level</th>
+  <th>General Meaning</th>
+  <th>Typical Indicators in an Interface</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Control Deficiency</strong></td>
+  <td>Improvement needed; low risk of material misstatement</td>
+  <td>Isolated error, small amounts, quickly corrected, detective controls catch it</td>
+</tr>
+<tr>
+  <td><strong>Significant Deficiency</strong></td>
+  <td>Warrants governance attention</td>
+  <td>Recurring errors within a subset (product/period), moderate impact, compensating controls partially effective</td>
+</tr>
+<tr>
+  <td><strong>Material Weakness</strong></td>
+  <td>Reasonable possibility of material misstatement not prevented/detected</td>
+  <td>Missing/duplicate postings, pervasive mapping issues, multi-period exposure, lack of effective monitoring controls</td>
+</tr>
+</tbody>
+</table>
+
+<div class="callout">
+<strong>Severity Conclusion (Scenario):</strong><br>
+Given the <strong>high likelihood</strong> (frequent deviations across multiple types), <strong>high impact</strong> (revenue/cash exposure),
+and <strong>absence of effective compensating controls</strong>, the deficiency is evaluated as a <strong>Material Weakness</strong>.
+</div>
+
+<h2>14. Overall Conclusion</h2>
+<p>
+Based on the procedures performed, the automated interface facilitated through Synder is assessed as
+<strong>not operating effectively</strong> to ensure completeness and accuracy of transaction recording in QuickBooks.
+</p>
+
+<ul>
+  <li>Initial sample testing identified 5/10 deviations (completeness, accuracy, cutoff, classification, duplication).</li>
+  <li>Expanded testing identified additional deviations, supporting a systemic issue assessment.</li>
+  <li>Compensating controls were not sufficient to prevent or detect the issues in a timely manner.</li>
+</ul>
+
+<p>
+Accordingly, we conclude this represents a <strong>Material Weakness</strong> in internal control over financial reporting
+for the interface process (scenario-based).
+</p>
+
+<h2>15. Audit Implications & Recommended Actions</h2>
+
+<h3>15.1 Audit Implications</h3>
+<ul>
+  <li>Increase substantive procedures over revenue, merchant fees, and cash/clearing balances.</li>
+  <li>Perform additional period-end procedures to address cutoff risk.</li>
+  <li>Consider full-period roll-forward/roll-back tests around configuration change windows.</li>
+</ul>
+
+<h3>15.2 Management Remediation Recommendations</h3>
+<ul>
+  <li>Implement formal change management and approvals for Synder mappings/configuration.</li>
+  <li>Enable and document daily monitoring of Synder error queues and reprocessing logs.</li>
+  <li>Establish daily/weekly reconciliations: Shopify gross sales ↔ QBO sales; Stripe fees/payouts ↔ QBO deposits and clearing.</li>
+  <li>Restrict access to integration settings; perform periodic access reviews.</li>
+  <li>Define and document cutoff policies (order date vs payout date vs posting date) and enforce in configuration.</li>
+</ul>
+
+<div class="dialogue">
+  <p class="msg">
+    <span class="role">Auditor</span>
+    <span class="tag">Non-Reliance Approach</span><br>
+    Since we are not relying on Synder controls, our assurance must come from direct evidence that
+    source transactions are fully and accurately recorded in QuickBooks. The deviation pattern suggests
+    systemic risk, so we expanded testing and evaluated compensating controls.
+  </p>
+
+  <p class="msg">
+    <span class="role">Management</span>
+    <span class="tag">Response</span><br>
+    We recognize the monitoring gap. We will implement daily error-queue review, restrict access to mapping changes,
+    and perform recurring reconciliations between source totals and QuickBooks postings.
+  </p>
+
+  <p class="msg">
+    <span class="role">Auditor</span>
+    <span class="tag">Severity</span><br>
+    Without effective monitoring and change governance, missing, duplicate, and misclassified postings can occur at scale.
+    Based on likelihood and impact, the control issue is evaluated as a material weakness in this scenario.
+  </p>
+  <p>Auditor Non-Reliance Approach
+감사인의 비의존 접근법
+우리는 Synder 통제에 의존하지 않기 때문에, 우리의 확증은 원천 거래가 QuickBooks에 완전하고 정확하게 기록되었다는 직접적인 증거에서 나와야 한다.
+편차 패턴은 시스템적인 위험을 시사하므로, 우리는 테스트를 확대하고 보완적 통제를 평가하였다.</p>
+<p>
+Management Response
+경영진의 대응
+우리는 모니터링 공백을 인지하고 있다.
+우리는 일일 오류 대기열 검토를 도입하고, 매핑 변경에 대한 접근을 제한하며, 원천 합계와 QuickBooks 게시 내역 간의 정기적인 조정을 수행할 것이다.
+</p>
+<p>
+Auditor Severity (감사인의 심각도 평가)
+효과적인 모니터링과 변경 관리가 없다면, 누락된 거래, 중복 거래, 잘못 분류된 게시가 대규모로 발생할 수 있다.
+발생 가능성과 영향도를 고려할 때, 이 통제 문제는 이 시나리오에서 **중대한 내부통제 미비(material weakness)**로 평가된다.</p>
+</div>
+
+<div class="back">
+  <a href="../">← Back to Home</a>
+  <a href="../biz.html">← Back to Articles</a>
+</div>
+
+</div>
+
+<footer>
+  © <span id="year"></span> Cha GPTs. All rights reserved.
+</footer>
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Finance Team AI OCR Study</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand&display=swap" rel="stylesheet">
+
+<style>
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  background: linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65));
+  padding: 60px 20px;
+}
+
+.container {
+  max-width: 920px;
+  margin: auto;
+  background: rgba(255,255,255,0.95);
+  padding: 50px 60px;
+  border-radius: 28px;
+}
+
+h1,h2,h3 {
+  font-family: 'Baloo 2', cursive;
+}
+
+p {
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+
+.dialogue {
+  background:#fafafa;
+  padding:26px;
+  border-radius:18px;
+  margin-top:25px;
+  border:1px solid #eee;
+}
+
+.role{
+font-weight:600;
+}
+
+.translation{
+margin-top:15px;
+padding-top:15px;
+border-top:1px dashed #ddd;
+}
+
+.highlight{
+background:#f7f7f7;
+padding:22px;
+border-radius:18px;
+margin:25px 0;
+}
+
+ul{
+margin-left:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Finance Team AI OCR Project Discussion</h1>
+
+<p>
+This study case is based on a realistic situation inside a finance department.  
+The finance manager asks the team to experiment with an AI OCR system that can read numbers from images and perform calculations automatically.
+</p>
+
+<div class="highlight">
+
+<b>Study Goal</b>
+
+<ul>
+<li>Understand what OCR technology is</li>
+<li>Discuss PaddleOCR, Flask, and OpenCV</li>
+<li>Practice English conversation in a workplace situation</li>
+<li>Explore how AI could automate finance work</li>
+</ul>
+
+</div>
+
+<h2>Scene 1 — Manager's Request</h2>
+
+<div class="dialogue">
+
+<p><span class="role">Finance Manager:</span>  
+Our finance team spends a large amount of time entering numbers from invoices and receipts manually. Every day we receive dozens of documents, and someone has to type those numbers into the accounting system.</p>
+
+<p><span class="role">Finance Manager:</span>  
+Recently I heard about AI technologies that can read text directly from images. I would like our team to experiment with a simple OCR system that can read numbers from pictures and perform calculations automatically.</p>
+
+<p><span class="role">Employee A:</span>  
+That sounds like an interesting project. However, none of us are AI experts, so building a complex system might be difficult. Maybe we should start with a small prototype using free tools.</p>
+
+<div class="translation">
+
+<b>Korean Translation</b>
+
+<p><span class="role">재무팀장:</span>  
+우리 재무팀은 영수증과 인보이스 숫자를 수동으로 입력하는 데 많은 시간을 쓰고 있습니다.</p>
+
+<p><span class="role">재무팀장:</span>  
+AI가 이미지에서 텍스트를 읽을 수 있다고 들었습니다. 간단한 OCR 시스템을 실험해보고 싶습니다.</p>
+
+<p><span class="role">직원 A:</span>  
+좋은 프로젝트 같습니다. 하지만 우리는 AI 전문가가 아니기 때문에 무료 도구로 간단한 프로토타입부터 만들어 보는 것이 좋겠습니다.</p>
+
+</div>
+
+</div>
+
+<h2>Scene 2 — What is OCR?</h2>
+
+<div class="dialogue">
+
+<p><span class="role">Employee B:</span>
+Before we start building anything, I think we should clearly understand what OCR technology actually is. OCR stands for Optical Character Recognition, which is a technology that allows computers to detect and read text from images or scanned documents.</p>
+
+<p><span class="role">Employee B:</span>
+Many companies use OCR to convert paper documents into digital data. For example, banks use OCR to read numbers from checks, and logistics companies use it to read addresses on packages.</p>
+
+<p><span class="role">Employee C:</span>
+That means the computer does not actually "see" the image like humans do. Instead, it analyzes patterns of pixels and uses machine learning models to recognize characters such as numbers and letters.</p>
+
+<p><span class="role">Employee A:</span>
+In our project, we do not need a very complex OCR system. Our goal is much simpler. We only want the system to read numbers or simple math expressions from images and then calculate the result automatically.</p>
+
+<div class="translation">
+
+<b>Korean Translation</b>
+
+<p>OCR은 Optical Character Recognition의 약자로 이미지에서 글자를 읽는 기술입니다.</p>
+
+<p>은행, 물류회사 등 많은 기업에서 이미 사용되고 있습니다.</p>
+
+<p>컴퓨터는 사람처럼 이미지를 보는 것이 아니라 픽셀 패턴을 분석해서 글자를 인식합니다.</p>
+
+<p>우리 프로젝트에서는 복잡한 OCR이 아니라 숫자나 간단한 수식만 읽으면 됩니다.</p>
+
+</div>
+
+</div>
+
+<h2>Scene 3 — Deep Discussion: PaddleOCR</h2>
+
+<div class="dialogue">
+
+<p><span class="role">Employee A:</span>
+I looked into several OCR tools, and one of the most interesting ones is PaddleOCR. It is an open-source OCR framework developed by Baidu and is widely used in many AI projects.</p>
+
+<p><span class="role">Employee A:</span>
+One of the advantages of PaddleOCR is that it supports multiple languages and works surprisingly well even without a powerful GPU. This means we can run it on a normal computer using only a CPU.</p>
+
+<p><span class="role">Employee B:</span>
+That is important for us because our team does not have a dedicated AI server. If the system requires expensive hardware, the experiment would become much more difficult.</p>
+
+<p><span class="role">Employee C:</span>
+Another advantage is that PaddleOCR is open source. That means we can freely modify the code and adapt it to our specific use case, such as recognizing mathematical expressions from receipts.</p>
+
+<div class="translation">
+
+<b>Korean Translation</b>
+
+<p>PaddleOCR은 Baidu에서 만든 오픈소스 OCR AI입니다.</p>
+
+<p>여러 언어를 지원하고 CPU에서도 실행됩니다.</p>
+
+<p>AI 서버가 없는 팀에서도 실험할 수 있습니다.</p>
+
+<p>오픈소스이기 때문에 원하는 방식으로 수정할 수도 있습니다.</p>
+
+</div>
+
+</div>
+
+<h2>Scene 4 — Deep Discussion: Flask</h2>
+
+<div class="dialogue">
+
+<p><span class="role">Employee B:</span>
+Now we should think about how users will interact with the system. If the OCR program only runs in a Python terminal, it will not be convenient for most employees.</p>
+
+<p><span class="role">Employee B:</span>
+Instead, we should create a simple web page where users can upload images and see the results immediately.</p>
+
+<p><span class="role">Employee A:</span>
+Flask is perfect for that purpose. It is a lightweight web framework written in Python that allows developers to create web servers using only a few lines of code.</p>
+
+<p><span class="role">Employee C:</span>
+In our OCR system, Flask will receive the uploaded image from the user, send that image to the OCR engine, and then return the calculation result back to the web page.</p>
+
+<div class="translation">
+
+<b>Korean Translation</b>
+
+<p>사용자가 Python 프로그램을 직접 실행하는 것은 불편합니다.</p>
+
+<p>그래서 이미지를 업로드할 수 있는 웹사이트가 필요합니다.</p>
+
+<p>Flask는 Python으로 웹 서버를 만들 수 있는 가벼운 프레임워크입니다.</p>
+
+<p>사용자가 이미지를 올리면 Flask가 OCR 프로그램에 전달합니다.</p>
+
+</div>
+
+</div>
+
+<h2>Scene 5 — Deep Discussion: OpenCV</h2>
+
+<div class="dialogue">
+
+<p><span class="role">Employee C:</span>
+There is another important tool that we should discuss before implementing the system. It is called OpenCV, which stands for Open Source Computer Vision Library.</p>
+
+<p><span class="role">Employee C:</span>
+OpenCV provides many functions that allow programs to process and manipulate images. For example, we can convert images to grayscale, adjust contrast, remove noise, or detect edges.</p>
+
+<p><span class="role">Employee B:</span>
+Why would that be necessary for our OCR system?</p>
+
+<p><span class="role">Employee C:</span>
+Because OCR works much better when the image quality is clean. If we preprocess the image with OpenCV before sending it to PaddleOCR, the recognition accuracy can improve significantly.</p>
+
+<div class="translation">
+
+<b>Korean Translation</b>
+
+<p>OpenCV는 이미지 처리 라이브러리입니다.</p>
+
+<p>이미지를 흑백으로 바꾸거나 노이즈를 제거할 수 있습니다.</p>
+
+<p>OCR 전에 이미지를 정리하면 인식 정확도가 높아집니다.</p>
+
+</div>
+
+</div>
+
+<h2>Discussion Questions</h2>
+
+<ul>
+
+<li>Why does the finance team want an OCR system?</li>
+
+<li>What advantages does PaddleOCR provide?</li>
+
+<li>Why is Flask useful for AI web applications?</li>
+
+<li>How does OpenCV improve OCR accuracy?</li>
+
+<li>What problems can occur when developing AI systems?</li>
+
+<li>How might AI change finance departments in the future?</li>
+
+</ul>
+
+</div>
+
+</body>
+</html>

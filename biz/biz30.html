@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Last K-1</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Quicksand', sans-serif;
+  background:
+    linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
+    url("../verse.png") no-repeat center center / cover;
+  padding: 60px 20px;
+  color: #222;
+}
+
+.container {
+  max-width: 920px;
+  margin: auto;
+  background: rgba(255,255,255,0.95);
+  padding: 50px 60px;
+  border-radius: 28px;
+  box-sizing: border-box;
+}
+
+h1, h2, h3 {
+  font-family: 'Baloo 2', cursive;
+}
+
+h1 {
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+h2 {
+  margin-top: 46px;
+  margin-bottom: 16px;
+}
+
+p {
+  line-height: 1.8;
+  margin-bottom: 18px;
+  font-size: 15px;
+}
+
+.highlight {
+  background: #f7f7f7;
+  padding: 22px 26px;
+  border-radius: 18px;
+  margin: 30px 0;
+  font-size: 14px;
+}
+
+.dialogue {
+  background: #fafafa;
+  padding: 26px 30px;
+  border-radius: 18px;
+  margin-top: 25px;
+  font-size: 14px;
+}
+
+.dialogue p {
+  margin-bottom: 18px;
+}
+
+.role {
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+.kr {
+  display: block;
+  margin-top: 6px;
+  color: #444;
+}
+
+.scene {
+  background: #eef2f7;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin: 20px 0 30px;
+  font-size: 14px;
+}
+
+.scene strong {
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
+.note-block {
+  background: #f7f7f7;
+  padding: 25px 30px;
+  border-radius: 18px;
+  margin-top: 30px;
+}
+
+.fadeout {
+  text-align: center;
+  margin-top: 36px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.back {
+  text-align: center;
+  margin-top: 55px;
+}
+
+.back a {
+  display: inline-block;
+  padding: 12px 26px;
+  background: #333;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 6px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 13px;
+  background: rgba(255,255,255,0.75);
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 20px;
+}
+
+.page-footer {
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 30px 24px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>“THE LAST K-1”<br>— Bilingual Script</h1>
+
+  <p>
+    A tense tax meeting unfolds inside a cold conference room.
+    Two partners are in conflict, while a U.S. CPA and a Korean tax advisor explain
+    how partnership income, ownership changes, wash sales, and termination should be handled.
+  </p>
+
+  <div class="scene">
+    <strong>INT. CONFERENCE ROOM – DAY</strong><br>
+    Cold air fills the room. Papers covered in numbers lie scattered across the table.
+  </div>
+
+  <h2>Dialogue</h2>
+
+  <div class="dialogue">
+
+    <p>
+      <span class="role">A</span><br>
+      This isn’t fair. I basically ran the business during the first half of the year.
+      You can’t just split everything based on the year-end numbers.
+      <span class="kr">👉 이건 공정하지 않아요. 초반 6개월은 제가 거의 혼자 운영했어요. 연말 숫자만 보고 나누는 건 말이 안 됩니다.</span>
+    </p>
+
+    <p>
+      <span class="role">B</span><br>
+      I generated the income in the second half. My ownership was 80% after November.
+      Ignoring that makes my investment meaningless.
+      <span class="kr">👉 후반에 돈은 제가 벌었습니다. 11월 이후 지분이 80%였어요. 그걸 무시하면 투자한 의미가 없습니다.</span>
+    </p>
+
+    <p>
+      <span class="role">US CPA</span><br>
+      I understand both of you. But this isn’t about feelings—it’s about rules.
+      Under Internal Revenue Code Section 706, income must be allocated based on ownership changes by date.
+      <span class="kr">👉 두 분 다 이해합니다. 하지만 이건 감정이 아니라 규정 문제입니다. Section 706에 따라 지분 변경 날짜 기준으로 income을 나눠야 합니다.</span>
+    </p>
+
+    <p>
+      <span class="role">A</span><br>
+      So we can’t just allocate based on the year-end ownership?
+      Does that mean early contributions don’t matter at all?
+      <span class="kr">👉 그럼 연말 기준으로 나누는 건 안 되는 거네요? 초반 기여는 전혀 고려 안 되는 건가요?</span>
+    </p>
+
+    <p>
+      <span class="role">US CPA</span><br>
+      Each ownership change requires a separate allocation period.
+      And on December 11, the partnership terminated.
+      <span class="kr">👉 지분이 바뀔 때마다 기간을 나눠야 합니다. 그리고 12월 11일에 파트너십은 종료됐습니다.</span>
+    </p>
+
+    <p>
+      <span class="role">US CPA</span><br>
+      From a tax perspective, everything must be cut off on that date.
+      Anything after that is no longer partnership activity.
+      <span class="kr">👉 세무적으로 그 날짜에서 반드시 끊어야 합니다. 그 이후는 더 이상 파트너십 활동이 아닙니다.</span>
+    </p>
+
+    <p>
+      <span class="role">B</span><br>
+      Then what about the income earned after December 11?
+      That still came from the same business.
+      <span class="kr">👉 그럼 12월 11일 이후 수익은요? 같은 사업에서 나온 돈인데요.</span>
+    </p>
+
+    <p>
+      <span class="role">US CPA</span><br>
+      That income is not partnership income anymore.
+      It belongs to whoever continued the business individually.
+      <span class="kr">👉 그건 더 이상 파트너십 소득이 아닙니다. 이후 운영한 개인에게 귀속됩니다.</span>
+    </p>
+
+    <p>
+      <span class="role">KR Tax Advisor</span><br>
+      In Korea, this would likely be handled differently.
+      We usually allocate based on agreement or average ownership.
+      <span class="kr">👉 한국이라면 다르게 처리했을 겁니다. 보통 합의나 평균 지분으로 나눕니다.</span>
+    </p>
+
+    <p>
+      <span class="role">KR Tax Advisor</span><br>
+      There’s more flexibility compared to the U.S.
+      But here, compliance with IRS rules is essential.
+      <span class="kr">👉 미국보다 훨씬 유연합니다. 하지만 여기서는 IRS 규정을 따라야 합니다.</span>
+    </p>
+
+    <p>
+      <span class="role">A</span><br>
+      What about the wash sale loss here?
+      That loss came from my trades—why is it shared?
+      <span class="kr">👉 여기 wash sale 손실은요? 제가 만든 손실인데 왜 같이 나누나요?</span>
+    </p>
+
+    <p>
+      <span class="role">US CPA</span><br>
+      Wash sale adjustments happen at the partnership level.
+      They are not allocated separately to individual partners.
+      <span class="kr">👉 wash sale은 파트너십 레벨에서 처리됩니다. 개별 파트너에게 따로 배분되지 않습니다.</span>
+    </p>
+
+    <p>
+      <span class="role">US CPA</span><br>
+      You had $120,000 in gains and $20,000 disallowed loss.
+      So taxable income is already reduced to $100,000.
+      <span class="kr">👉 12만 달러 이익에서 2만 달러 손실이 제외되어 과세소득은 이미 10만 달러로 조정되었습니다.</span>
+    </p>
+
+    <p>
+      <span class="role">B</span><br>
+      So we’re just splitting the $100,000.
+      Then the timing of ownership is everything.
+      <span class="kr">👉 결국 10만 달러를 나누는 거네요. 그럼 지분 시점이 전부네요.</span>
+    </p>
+
+    <p>
+      <span class="role">US CPA</span><br>
+      Exactly. That’s why we use a time-based allocation.
+      Only the income up to December 10—344 days—is included in the partnership return.
+      <span class="kr">👉 맞습니다. 그래서 시간 기준으로 나눕니다. 12월 10일까지 344일 동안의 소득만 반영됩니다.</span>
+    </p>
+
+    <p>
+      <span class="role">A</span><br>
+      But that doesn’t reflect reality.
+      Most of the income came later in the year.
+      <span class="kr">👉 하지만 현실을 반영하지 않습니다. 대부분 수익은 후반에 발생했습니다.</span>
+    </p>
+
+    <p>
+      <span class="role">US CPA</span><br>
+      There is an alternative method.
+      It’s called the Interim Closing method.
+      <span class="kr">👉 다른 방법도 있습니다. Interim Closing 방식입니다.</span>
+    </p>
+
+    <p>
+      <span class="role">US CPA</span><br>
+      It allocates income based on actual results in each period.
+      But once chosen, it must be applied consistently.
+      <span class="kr">👉 각 기간의 실제 income으로 나누는 방식입니다. 하지만 선택하면 일관되게 적용해야 합니다.</span>
+    </p>
+
+    <p>
+      <span class="role">KR Tax Advisor</span><br>
+      In Korea, we would likely renegotiate using that method.
+      Practical fairness often matters more than strict rules.
+      <span class="kr">👉 한국이라면 그 방식으로 다시 협의했을 겁니다. 현실적 공정성을 더 중요하게 보니까요.</span>
+    </p>
+
+    <p>
+      <span class="role">B</span><br>
+      Then the income after December 11 is clearly mine.
+      That part seems straightforward.
+      <span class="kr">👉 그럼 12월 11일 이후 소득은 제 거네요. 이건 명확하네요.</span>
+    </p>
+
+    <p>
+      <span class="role">US CPA</span><br>
+      Correct. The partnership ended on December 10.
+      Anything after that is outside the partnership.
+      <span class="kr">👉 맞습니다. 파트너십은 12월 10일에 끝났습니다. 이후는 별도입니다.</span>
+    </p>
+
+    <p>
+      <span class="role">A</span><br>
+      So that’s the conclusion.
+      We split income based on ownership changes and cut off at termination.
+      <span class="kr">👉 결국 이렇게 되는군요. 지분 변화 기준으로 나누고 종료 시점에서 끊는다.</span>
+    </p>
+
+    <p>
+      <span class="role">US CPA</span><br>
+      That’s exactly right.
+      A partnership only allocates income while it exists.
+      <span class="kr">👉 정확합니다. 파트너십은 존재하는 동안만 income을 나눕니다.</span>
+    </p>
+
+    <p>
+      <span class="role">US CPA</span><br>
+      Once it ends, the tax treatment ends with it.
+      <span class="kr">👉 종료되는 순간 세무도 함께 끝납니다.</span>
+    </p>
+
+    <p>
+      <span class="role">KR Tax Advisor</span><br>
+      In simple terms, the U.S. follows rules.
+      Korea follows agreements.
+      <span class="kr">👉 간단히 말하면 미국은 규정, 한국은 합의 중심입니다.</span>
+    </p>
+
+    <p>
+      <span class="role">B</span><br>
+      So in the end, it wasn’t about the numbers.
+      It was about timing.
+      <span class="kr">👉 결국 숫자가 아니라 타이밍 문제였네요.</span>
+    </p>
+
+    <p>
+      <span class="role">A</span><br>
+      We trusted the relationship more than the structure.
+      That was our mistake.
+      <span class="kr">👉 우리는 구조보다 관계를 믿었습니다. 그게 실수였네요.</span>
+    </p>
+
+  </div>
+
+  <div class="note-block">
+    <p>
+      A single sheet remains on the table.<br>
+      <strong>K-1</strong>
+    </p>
+    <p class="fadeout">FADE OUT.</p>
+  </div>
+
+  <div class="back">
+    <a href="../">← Back to Home</a>
+    <a href="../biz.html">← Back to Articles</a>
+  </div>
+
+</div>
+
+<div class="page-footer">
+  <footer>
+    © <span id="year"></span> Cha GPTs. All rights reserved.
+  </footer>
+</div>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

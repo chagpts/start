@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Article</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Quicksand', sans-serif;
+  background:
+    linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
+    url("../verse.png") no-repeat center center / cover;
+  padding: 60px 20px;
+}
+
+.container {
+  max-width: 820px;
+  margin: auto;
+  background: rgba(255,255,255,0.95);
+  padding: 50px 60px;
+  border-radius: 28px;
+}
+
+h1, h2 {
+  font-family: 'Baloo 2', cursive;
+}
+
+h1 {
+  margin-bottom: 30px;
+}
+
+h2 {
+  margin-top: 45px;
+  margin-bottom: 15px;
+}
+
+p {
+  line-height: 1.75;
+  margin-bottom: 18px;
+  font-size: 15px;
+}
+
+ul {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 14px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 14px;
+  vertical-align: top;
+}
+
+th {
+  background: #f2f2f2;
+  font-weight: 600;
+}
+
+.note {
+  font-size: 13px;
+  color: #555;
+  margin-top: 10px;
+}
+
+.questions {
+  background: #f7f7f7;
+  padding: 25px 30px;
+  border-radius: 18px;
+  margin-top: 25px;
+}
+
+.back {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.back a {
+  display: inline-block;
+  padding: 12px 26px;
+  background: #333;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 6px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 13px;
+  background: rgba(255,255,255,0.75);
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 20px;
+}
+
+/* --- Dialogue styling --- */
+.dialogue {
+  background: #f7f7f7;
+  padding: 28px 30px;
+  border-radius: 18px;
+  margin-top: 25px;
+}
+.dialogue .role {
+  font-weight: 700;
+}
+.dialogue .tag {
+  display: inline-block;
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  background: #e9e9e9;
+  margin-left: 8px;
+  color: #444;
+}
+.dialogue .msg {
+  margin-bottom: 14px;
+}
+.dialogue .subnote {
+  font-size: 13px;
+  color: #555;
+  margin-top: 12px;
+  line-height: 1.65;
+}
+
+/* --- Summary badges/cards --- */
+.badges {
+  margin-top: 18px;
+  margin-bottom: 10px;
+}
+.badge {
+  display: inline-block;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 14px;
+  background: #f0f0f0;
+  margin: 0 8px 8px 0;
+  color: #444;
+}
+.mini-card {
+  background: #f7f7f7;
+  padding: 18px 20px;
+  border-radius: 18px;
+  margin: 18px 0;
+  border: 1px solid #eee;
+}
+.mini-card h3 {
+  font-family: 'Baloo 2', cursive;
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+.mini-card p {
+  margin: 0 0 10px;
+}
+.mini-card ul {
+  margin: 0 0 0 18px;
+}
+.callout {
+  background: #fff7e6;
+  border: 1px solid #ffe2a8;
+  padding: 18px 20px;
+  border-radius: 18px;
+  margin: 18px 0;
+  font-size: 14px;
+}
+
+/* --- Code block styling --- */
+pre {
+  background: #111;
+  color: #f5f5f5;
+  padding: 14px 16px;
+  border-radius: 14px;
+  overflow-x: auto;
+  font-size: 13px;
+  margin: 14px 0 18px;
+}
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 30px 24px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>ITGC Risks Around OCR & Document Repositories</h1>
+
+<h2>AI OCR in Accounting Automation</h2>
+
+<p>
+[Study material for accounting professionals.  
+Technical details are simplified for discussion purposes.]
+</p>
+
+<p>
+Many companies now use <strong>AI-based OCR</strong> to read invoices
+and automatically create journal entries in their accounting systems.
+While this improves efficiency, it also introduces
+<strong>new IT General Control (ITGC) risks</strong>,
+especially when evidence is stored in a document repository connected to ERP.
+</p>
+
+<!-- ===================== AI OCR Overview ===================== -->
+<h2>What Is AI OCR?</h2>
+
+<p>
+<strong>AI OCR</strong> is “intelligent document reading.”
+Traditional OCR mainly converts images into text.
+AI OCR goes further by using ML/AI to:
+</p>
+
+<ul>
+  <li><strong>Understand layouts</strong> (tables, headers, line items, stamps, signatures)</li>
+  <li><strong>Classify documents</strong> (invoice vs. receipt vs. credit memo)</li>
+  <li><strong>Extract key fields</strong> (vendor, invoice date, total, VAT, currency, bank info)</li>
+  <li><strong>Validate and normalize</strong> (date formats, currency symbols, tax formats)</li>
+</ul>
+
+<div class="badges">
+  <span class="badge">Text recognition</span>
+  <span class="badge">Layout understanding</span>
+  <span class="badge">Field extraction</span>
+  <span class="badge">Document classification</span>
+  <span class="badge">Confidence scoring</span>
+</div>
+
+<h2>Types of OCR (and Where AI OCR Fits)</h2>
+
+<table>
+<thead>
+<tr>
+  <th>Type</th>
+  <th>How It Works</th>
+  <th>Strengths</th>
+  <th>Limitations</th>
+</tr>
+</thead>
+<tbody>
+
+<tr>
+  <td><strong>Rule-based OCR</strong><br>(Template OCR)</td>
+  <td>Fixed coordinates or templates per vendor/layout</td>
+  <td>High accuracy for known formats, predictable</td>
+  <td>Breaks when layout changes; scaling vendors is hard</td>
+</tr>
+
+<tr>
+  <td><strong>Traditional OCR</strong><br>(Generic text OCR)</td>
+  <td>Converts image → text (no deep understanding)</td>
+  <td>Good for clean scans & simple text blocks</td>
+  <td>Weak on tables/line items; needs heavy post-processing</td>
+</tr>
+
+<tr>
+  <td><strong>AI OCR</strong><br>(Document AI / IDP)</td>
+  <td>ML models detect structure + extract fields + classify docs</td>
+  <td>Works across many formats, handles tables better</td>
+  <td>Still error-prone; requires monitoring & governance</td>
+</tr>
+
+<tr>
+  <td><strong>Hybrid OCR</strong></td>
+  <td>AI OCR + rules (validation, vendor-specific tweaks)</td>
+  <td>Best practical approach in accounting</td>
+  <td>Needs control design; rules can drift over time</td>
+</tr>
+
+</tbody>
+</table>
+
+<div class="callout">
+  <strong>Important:</strong> OCR accuracy is only half the story.  
+  In audits, the bigger question is often whether the <strong>supporting documents are protected from tampering</strong>
+  through strong ITGCs (access, change, logging, and retention).
+</div>
+
+<h2>Why the Evidence Layer Matters</h2>
+
+<p>
+Even if OCR extracts data perfectly, the audit problem happens when:
+</p>
+
+<ul>
+  <li>Users can <strong>overwrite</strong> a document after upload</li>
+  <li>The system keeps the same document ID but the underlying file changes</li>
+  <li>Logs are incomplete or editable</li>
+</ul>
+
+<p>
+Auditors often summarize this as:
+</p>
+
+<p><strong>“If evidence can be changed, evidence is not evidence.”</strong></p>
+
+<h2>Key Risks (ITGC Perspective)</h2>
+
+<table>
+<thead>
+<tr>
+  <th>ITGC Domain</th>
+  <th>What Can Go Wrong</th>
+  <th>Financial Reporting Impact</th>
+</tr>
+</thead>
+<tbody>
+
+<tr>
+  <td><strong>Access Management</strong></td>
+  <td>
+    Finance users have privileges to overwrite/replace uploaded invoices.<br>
+    No SoD (segregation of duties) between uploader, approver, and admin.
+  </td>
+  <td>
+    Evidence can be altered to support improper postings (fraud risk).
+  </td>
+</tr>
+
+<tr>
+  <td><strong>Change Management</strong></td>
+  <td>
+    Repository/ERP integration changes are deployed without approvals/testing.<br>
+    Controls (versioning, hashing) can be disabled unintentionally.
+  </td>
+  <td>
+    Reliance on system evidence becomes invalid; audit reliance reduced.
+  </td>
+</tr>
+
+<tr>
+  <td><strong>IT Operations & Logging</strong></td>
+  <td>
+    Logs are missing, not reviewed, or can be edited/deleted.<br>
+    No alerting on document overwrite events.
+  </td>
+  <td>
+    Inability to prove “who changed what and when” during audit.
+  </td>
+</tr>
+
+<tr>
+  <td><strong>Data Integrity / Retention</strong></td>
+  <td>
+    No immutable storage / no retention lock.<br>
+    Document versioning is absent or optional.
+  </td>
+  <td>
+    Audit evidence is not reliable; potential scope expansion and findings.
+  </td>
+</tr>
+
+</tbody>
+</table>
+
+<p class="note">
+✔ Practical audit expectation: <strong>read-only storage</strong>, <strong>versioning</strong>, <strong>hash at upload</strong>,
+and <strong>tamper-evident logs</strong> are typically assessed as ITGC-related controls over the evidence layer.
+</p>
+
+<h2>Why Auditors Treat This as ITGC</h2>
+
+<p>
+This is viewed as <strong>ITGC</strong> because the core issue is not “OCR logic,” but whether the company’s IT environment
+prevents or detects unauthorized changes to systems and records, including:
+</p>
+
+<ul>
+  <li><strong>Who can access</strong> the repository and what actions they can perform</li>
+  <li><strong>Whether changes are controlled</strong> (approvals, testing, deployment controls)</li>
+  <li><strong>Whether operations are monitored</strong> (logging, alerting, review)</li>
+  <li><strong>Whether evidence is immutable</strong> and retained properly</li>
+</ul>
+
+<!-- ===================== Updated Dialogue: Hash Change Detection (ITGC) ===================== -->
+<h2>Practical Dialogue: Hash Mismatch Between Interim and Year-End Audit (ITGC Issue)</h2>
+
+<div class="dialogue">
+
+  <p class="msg">
+    <span class="role">IT Auditor</span>
+    <span class="tag">Interim Audit</span><br>
+    During our interim audit, we sampled this transaction and captured the supporting invoice’s
+    <strong>SHA-256 hash</strong> from your document repository.
+    We’ll re-check the same document during year-end to confirm integrity.
+  </p>
+
+  <p class="msg">
+    <span class="role">Finance Team Lead</span>
+    <span class="tag">Year-end Pressure</span><br>
+    Understood.
+    Year-end is busy, but the invoice should be in the system.
+  </p>
+
+  <p class="msg">
+    <span class="role">IT Auditor</span>
+    <span class="tag">Year-end Audit</span><br>
+    We pulled the same invoice again for year-end testing.
+    The document ID is the same, but the <strong>hash value has changed</strong>.
+    That means the file is not identical to what existed at interim.
+  </p>
+
+  <p class="msg">
+    <span class="role">Finance Team Lead</span>
+    <span class="tag">Deflection</span><br>
+    Could that be just a system update or OCR re-processing?
+  </p>
+
+  <p class="msg">
+    <span class="role">IT Auditor</span>
+    <span class="tag">Technical Proof</span><br>
+    OCR re-processing doesn’t change the original file hash.
+    A cryptographic hash changes only if the file content changes.
+    Here’s what we observed:
+  </p>
+
+  <pre><code>Interim audit (SHA-256):  3a7bd3e2360a3d29eea436fcfb7e44c735d117c42d1c1835420b6b9942dd4f1b
+Year-end audit (SHA-256): 91b65d1b2c3c7f1c2a6a0fbe0b8b6b9c9c0c8f0b9a7a6b5c4d3e2f1a0b9c8d7e</code></pre>
+
+  <p class="msg">
+    <span class="role">IT Auditor</span>
+    <span class="tag">ITGC Finding</span><br>
+    Same document record, different hash indicates the document was <strong>replaced or modified</strong>.
+    This points to an <strong>ITGC weakness</strong> over the evidence layer:
+    access allows overwrite, and integrity controls (immutable storage/versioning/log review) are not effective.
+  </p>
+
+  <p class="msg">
+    <span class="role">OCR Developer</span>
+    <span class="tag">Root Cause</span><br>
+    Users can overwrite the stored file in the repository.
+    We don’t enforce <strong>immutable storage</strong> or mandatory <strong>versioning</strong>,
+    and the ERP link points to the document ID, not a specific version+hash.
+  </p>
+
+  <p class="msg">
+    <span class="role">Finance Team Lead</span>
+    <span class="tag">Admission</span><br>
+    At year-end, we swapped in a “cleaner” invoice version to make revenue look stronger.
+    We didn’t realize you could prove the file changed.
+  </p>
+
+  <p class="msg">
+    <span class="role">IT Auditor</span>
+    <span class="tag">Audit Conclusion</span><br>
+    This will be raised as an <strong>ITGC deficiency</strong>.
+    Because the change appears intentional and affects financial reporting,
+    it may also be assessed as a <strong>fraud risk</strong> and escalated.
+    Remediation expectation typically includes:
+    <ul>
+      <li><strong>Access control</strong>: prevent overwrite; enforce SoD</li>
+      <li><strong>Immutable storage</strong> for originals (WORM / retention lock)</li>
+      <li><strong>Versioning</strong>: any replacement becomes a new version; originals preserved</li>
+      <li><strong>Hash at upload</strong> (SHA-256) stored and monitored for mismatch</li>
+      <li><strong>Tamper-evident logs</strong>: who/when/what changed + periodic review</li>
+      <li><strong>ERP linkage</strong>: posting ties to a specific document version + hash</li>
+    </ul>
+  </p>
+
+  <p class="subnote">
+    <strong>Key point:</strong> Auditors do not simply check whether a document exists or not.
+    They verify whether the exact same document reviewed at the interim audit is still identical at year-end.
+    If the document ID remains the same but the hash value has changed, auditors conclude that the supporting evidence has been altered.
+  </p>
+
+</div>
+<!-- =================== End Updated Dialogue =================== -->
+
+<!-- ===================== Added Section: MD5 "Decode" Demo ===================== -->
+<h2>MD5 “Decode” Demo (Actually: Dictionary Attack)</h2>
+
+<p>
+People often say “decode a hash,” but hashes are <strong>one-way</strong> and cannot be reversed.
+What usually happens is a <strong>dictionary attack</strong>:
+we guess candidate texts and check which one produces the same MD5 hash.
+This is why <strong>MD5 is considered weak</strong> (fast + widely precomputed).
+</p>
+
+<div class="mini-card">
+  <p><strong>Target Hash (MD5)</strong></p>
+  <input id="targetHash" value="5f4dcc3b5aa765d61d8327deb882cf99" style="width:100%;padding:10px;border-radius:10px;border:1px solid #ddd;">
+  <p class="note">Tip: This is a famous MD5 of a very common password.</p>
+
+  <p style="margin-top:14px;"><strong>Candidate Words (comma separated)</strong></p>
+  <textarea id="candidates" rows="4" style="width:100%;padding:10px;border-radius:10px;border:1px solid #ddd;">123456,password,admin,qwerty,letmein,welcome,iloveyou</textarea>
+
+  <div style="margin-top:14px;">
+    <button id="runBtn" style="padding:10px 16px;border-radius:14px;border:0;background:#333;color:#fff;cursor:pointer;">Try Crack</button>
+  </div>
+
+  <p id="result" style="margin-top:14px;font-weight:700;"></p>
+
+  <p class="note">
+    This works only when the original text is in your candidate list (dictionary).<br>
+    For training use only. Do not use for unauthorized activity.
+  </p>
+
+  <p class="note">
+    (Optional demo reference) You can also test with public lookup sites, but avoid using real confidential data.
+    https://md5decrypt.net/en/ 
+  </p>
+</div>
+
+<!-- Tiny MD5 implementation (for demo only). In production, use a vetted crypto library. -->
+<script>
+/* Minimal MD5 function for demo (not for production security). */
+function md5cycle(x, k) {
+  let a = x[0], b = x[1], c = x[2], d = x[3];
+
+  a = ff(a, b, c, d, k[0], 7, -680876936);
+  d = ff(d, a, b, c, k[1], 12, -389564586);
+  c = ff(c, d, a, b, k[2], 17,  606105819);
+  b = ff(b, c, d, a, k[3], 22, -1044525330);
+  a = ff(a, b, c, d, k[4], 7, -176418897);
+  d = ff(d, a, b, c, k[5], 12,  1200080426);
+  c = ff(c, d, a, b, k[6], 17, -1473231341);
+  b = ff(b, c, d, a, k[7], 22, -45705983);
+  a = ff(a, b, c, d, k[8], 7,  1770035416);
+  d = ff(d, a, b, c, k[9], 12, -1958414417);
+  c = ff(c, d, a, b, k[10],17, -42063);
+  b = ff(b, c, d, a, k[11],22, -1990404162);
+  a = ff(a, b, c, d, k[12],7,  1804603682);
+  d = ff(d, a, b, c, k[13],12, -40341101);
+  c = ff(c, d, a, b, k[14],17, -1502002290);
+  b = ff(b, c, d, a, k[15],22,  1236535329);
+
+  a = gg(a, b, c, d, k[1], 5, -165796510);
+  d = gg(d, a, b, c, k[6], 9, -1069501632);
+  c = gg(c, d, a, b, k[11],14,  643717713);
+  b = gg(b, c, d, a, k[0], 20, -373897302);
+  a = gg(a, b, c, d, k[5], 5, -701558691);
+  d = gg(d, a, b, c, k[10],9,  38016083);
+  c = gg(c, d, a, b, k[15],14, -660478335);
+  b = gg(b, c, d, a, k[4], 20, -405537848);
+  a = gg(a, b, c, d, k[9], 5,  568446438);
+  d = gg(d, a, b, c, k[14],9, -1019803690);
+  c = gg(c, d, a, b, k[3], 14, -187363961);
+  b = gg(b, c, d, a, k[8], 20,  1163531501);
+  a = gg(a, b, c, d, k[13],5, -1444681467);
+  d = gg(d, a, b, c, k[2], 9, -51403784);
+  c = gg(c, d, a, b, k[7], 14,  1735328473);
+  b = gg(b, c, d, a, k[12],20, -1926607734);
+
+  a = hh(a, b, c, d, k[5], 4, -378558);
+  d = hh(d, a, b, c, k[8], 11, -2022574463);
+  c = hh(c, d, a, b, k[11],16,  1839030562);
+  b = hh(b, c, d, a, k[14],23, -35309556);
+  a = hh(a, b, c, d, k[1], 4, -1530992060);
+  d = hh(d, a, b, c, k[4], 11,  1272893353);
+  c = hh(c, d, a, b, k[7], 16, -155497632);
+  b = hh(b, c, d, a, k[10],23, -1094730640);
+  a = hh(a, b, c, d, k[13],4,  681279174);
+  d = hh(d, a, b, c, k[0], 11, -358537222);
+  c = hh(c, d, a, b, k[3], 16, -722521979);
+  b = hh(b, c, d, a, k[6], 23,  76029189);
+  a = hh(a, b, c, d, k[9], 4, -640364487);
+  d = hh(d, a, b, c, k[12],11, -421815835);
+  c = hh(c, d, a, b, k[15],16,  530742520);
+  b = hh(b, c, d, a, k[2], 23, -995338651);
+
+  a = ii(a, b, c, d, k[0], 6, -198630844);
+  d = ii(d, a, b, c, k[7], 10,  1126891415);
+  c = ii(c, d, a, b, k[14],15, -1416354905);
+  b = ii(b, c, d, a, k[5], 21, -57434055);
+  a = ii(a, b, c, d, k[12],6,  1700485571);
+  d = ii(d, a, b, c, k[3], 10, -1894986606);
+  c = ii(c, d, a, b, k[10],15, -1051523);
+  b = ii(b, c, d, a, k[1], 21, -2054922799);
+  a = ii(a, b, c, d, k[8], 6,  1873313359);
+  d = ii(d, a, b, c, k[15],10, -30611744);
+  c = ii(c, d, a, b, k[6], 15, -1560198380);
+  b = ii(b, c, d, a, k[13],21,  1309151649);
+  a = ii(a, b, c, d, k[4], 6, -145523070);
+  d = ii(d, a, b, c, k[11],10, -1120210379);
+  c = ii(c, d, a, b, k[2], 15,  718787259);
+  b = ii(b, c, d, a, k[9], 21, -343485551);
+
+  x[0] = add32(a, x[0]);
+  x[1] = add32(b, x[1]);
+  x[2] = add32(c, x[2]);
+  x[3] = add32(d, x[3]);
+}
+function cmn(q, a, b, x, s, t) {
+  a = add32(add32(a, q), add32(x, t));
+  return add32((a << s) | (a >>> (32 - s)), b);
+}
+function ff(a, b, c, d, x, s, t) { return cmn((b & c) | ((~b) & d), a, b, x, s, t); }
+function gg(a, b, c, d, x, s, t) { return cmn((b & d) | (c & (~d)), a, b, x, s, t); }
+function hh(a, b, c, d, x, s, t) { return cmn(b ^ c ^ d, a, b, x, s, t); }
+function ii(a, b, c, d, x, s, t) { return cmn(c ^ (b | (~d)), a, b, x, s, t); }
+
+function md51(s) {
+  let n = s.length,
+      state = [1732584193, -271733879, -1732584194, 271733878],
+      i;
+  for (i=64; i<=n; i+=64) {
+    md5cycle(state, md5blk(s.substring(i-64, i)));
+  }
+  s = s.substring(i-64);
+  let tail = Array(16).fill(0);
+  for (i=0; i<s.length; i++) tail[i>>2] |= s.charCodeAt(i) << ((i%4) << 3);
+  tail[i>>2] |= 0x80 << ((i%4) << 3);
+  if (i > 55) { md5cycle(state, tail); tail = Array(16).fill(0); }
+  tail[14] = n*8;
+  md5cycle(state, tail);
+  return state;
+}
+function md5blk(s) {
+  let md5blks = [], i;
+  for (i=0; i<64; i+=4) {
+    md5blks[i>>2] = s.charCodeAt(i) + (s.charCodeAt(i+1) << 8) + (s.charCodeAt(i+2) << 16) + (s.charCodeAt(i+3) << 24);
+  }
+  return md5blks;
+}
+function rhex(n) {
+  let s='', j=0;
+  for (; j<4; j++) s += ('0' + ((n >> (j*8+4)) & 0x0F).toString(16)).slice(-1)
+                    + ('0' + ((n >> (j*8)) & 0x0F).toString(16)).slice(-1);
+  return s;
+}
+function hex(x) { for (let i=0; i<x.length; i++) x[i] = rhex(x[i]); return x.join(''); }
+function md5(s) { return hex(md51(s)); }
+function add32(a, b) { return (a + b) & 0xFFFFFFFF; }
+
+document.getElementById('runBtn').addEventListener('click', () => {
+  const target = document.getElementById('targetHash').value.trim().toLowerCase();
+  const words = document.getElementById('candidates').value.split(',').map(s => s.trim()).filter(Boolean);
+
+  for (const w of words) {
+    if (md5(w) === target) {
+      document.getElementById('result').textContent = `MATCH! original text = "${w}"`;
+      return;
+    }
+  }
+  document.getElementById('result').textContent = "No match in candidate list. (Add more candidates.)";
+});
+</script>
+<!-- =================== End MD5 Demo =================== -->
+
+<h2>Discussion Questions</h2>
+
+<div class="questions">
+<ul>
+  <li>Which ITGC area is weakest in your environment (access, change, operations/logging, retention)?</li>
+  <li>Can finance users overwrite evidence in the repository? If yes, why?</li>
+  <li>Do you have immutable storage or retention lock for audit evidence?</li>
+  <li>Are logs tamper-evident and reviewed?</li>
+  <li>Does ERP posting link to a specific document version + hash?</li>
+</ul>
+</div>
+
+<div class="back">
+  <a href="../">← Back to Home</a>
+  <a href="../biz.html">← Back to Articles</a>
+</div>
+
+</div>
+
+<footer>
+  © <span id="year"></span> Cha GPTs. All rights reserved.
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

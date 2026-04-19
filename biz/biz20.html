@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI OCR Study Case</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Quicksand', sans-serif;
+  background:
+    linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
+    url("../verse.png") no-repeat center center / cover;
+  padding: 60px 20px;
+}
+
+.container {
+  max-width: 920px;
+  margin: auto;
+  background: rgba(255,255,255,0.95);
+  padding: 50px 60px;
+  border-radius: 28px;
+}
+
+h1, h2, h3 {
+  font-family: 'Baloo 2', cursive;
+}
+
+h1 { margin-bottom: 28px; }
+
+h2 {
+  margin-top: 50px;
+  margin-bottom: 16px;
+}
+
+p {
+  line-height: 1.8;
+  margin-bottom: 18px;
+  font-size: 15px;
+}
+
+ul { margin-left: 20px; margin-bottom: 22px; }
+li { margin-bottom: 8px; }
+
+.highlight {
+  background: #f7f7f7;
+  padding: 22px 26px;
+  border-radius: 18px;
+  margin: 30px 0;
+  font-size: 14px;
+}
+
+.dialogue {
+  background: #fafafa;
+  padding: 26px 30px;
+  border-radius: 18px;
+  margin-top: 25px;
+  font-size: 14px;
+  border: 1px solid #eee;
+}
+
+.dialogue h3 { margin-top: 0; margin-bottom: 12px; }
+
+.role { font-weight: 600; }
+
+.translation {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed #ddd;
+}
+
+.translation h4 {
+  margin: 0 0 10px 0;
+  font-family: 'Baloo 2', cursive;
+  font-size: 15px;
+}
+
+.back {
+  text-align: center;
+  margin-top: 55px;
+}
+
+.back a {
+  display: inline-block;
+  padding: 12px 26px;
+  background: #333;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 6px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 13px;
+  background: rgba(255,255,255,0.75);
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 20px;
+}
+
+@media (max-width: 600px) {
+  .container { padding: 30px 24px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Finance Team AI OCR Project  
+— English Discussion Case Study</h1>
+
+<p>
+This study session is based on a realistic company situation.  
+A finance manager asks the team to experiment with an AI OCR system that can read numbers from images and perform simple calculations.
+</p>
+
+<div class="highlight">
+<p><b>Study Goal</b></p>
+<p>
+Understand how AI OCR works, discuss automation in finance, and practice English communication through realistic workplace dialogue.
+</p>
+</div>
+
+<h2>1 The Manager's Request</h2>
+
+<div class="dialogue">
+<h3>Scene 1</h3>
+
+<p><span class="role">Finance Manager:</span>  
+Our finance team spends a significant amount of time manually entering numbers from receipts and invoices. Every day we receive many documents, and someone has to type all the numbers into the accounting system. I recently heard that AI technology can read text directly from images, so I wonder if we could experiment with a simple OCR system.</p>
+
+<p><span class="role">Employee A:</span>  
+That sounds like a very interesting idea. Most of us do not have deep experience with AI development, but we might be able to create a simple prototype using free tools. If we start with a basic system that reads numbers and performs calculations, it could help us understand the potential.</p>
+
+<p><span class="role">Finance Manager:</span>  
+Exactly. I am not expecting a perfect product right now. What I really want is a small experiment that shows whether this idea is feasible for our team.</p>
+
+<div class="translation">
+<h4>Korean Translation</h4>
+
+<p><span class="role">재무팀장:</span>  
+우리 재무팀은 영수증과 인보이스의 숫자를 직접 입력하는 데 많은 시간을 쓰고 있어요. 매일 수많은 문서를 처리해야 하고, 누군가는 그 숫자를 시스템에 입력해야 합니다. AI가 사진에서 글자를 읽을 수 있다는 이야기를 들었는데, 간단한 OCR 시스템을 만들어볼 수 있을까요?</p>
+
+<p><span class="role">직원 A:</span>  
+흥미로운 아이디어입니다. 우리 대부분이 AI 전문가라고 할 수는 없지만, 무료 도구를 사용하면 간단한 프로토타입 정도는 만들 수 있을 것 같습니다. 숫자를 읽고 계산까지 하는 기본 시스템부터 시작해 볼 수 있을 것 같습니다.</p>
+
+<p><span class="role">재무팀장:</span>  
+맞아요. 완벽한 제품을 기대하는 것은 아닙니다. 이 아이디어가 실제로 가능한지 확인하는 작은 실험이 필요합니다.</p>
+
+</div>
+</div>
+
+<h2>2 Team Discussion</h2>
+
+<div class="dialogue">
+<h3>Scene 2</h3>
+
+<p><span class="role">Employee B:</span>  
+So the manager wants an OCR system that reads numbers from images. Before we start building anything, we should probably understand how OCR technology actually works. If we understand the process clearly, we can design a better solution.</p>
+
+<p><span class="role">Employee C:</span>  
+OCR stands for Optical Character Recognition. It is a technology that allows computers to detect and read text from images or scanned documents. Many companies already use OCR to digitize paper records.</p>
+
+<p><span class="role">Employee A:</span>  
+In our case, we only need a very simple version. The system should read a mathematical expression from an image and then calculate the result automatically.</p>
+
+<div class="translation">
+
+<h4>Korean Translation</h4>
+
+<p><span class="role">직원 B:</span>  
+팀장님은 사진에서 숫자를 읽는 OCR 시스템을 원하십니다. 우리가 개발을 시작하기 전에 OCR 기술이 어떻게 작동하는지 이해하는 것이 좋겠습니다.</p>
+
+<p><span class="role">직원 C:</span>  
+OCR은 Optical Character Recognition의 약자입니다. 컴퓨터가 이미지나 스캔 문서에서 글자를 인식할 수 있게 하는 기술입니다.</p>
+
+<p><span class="role">직원 A:</span>  
+우리에게 필요한 것은 아주 간단한 버전입니다. 사진 속 수식을 읽고 결과를 계산하는 시스템이면 충분합니다.</p>
+
+</div>
+</div>
+
+<h2>3 Choosing Free Tools</h2>
+
+<div class="dialogue">
+<h3>Scene 3</h3>
+
+<p><span class="role">Employee B:</span>  
+Since this is just a prototype, we should probably use free and open-source tools. The company may not want to invest money until we know whether the idea works.</p>
+
+<p><span class="role">Employee C:</span>  
+I did some research and found a tool called PaddleOCR. It is a free AI system that reads text from images and works quite well even on normal computers.</p>
+
+<p><span class="role">Employee A:</span>  
+For the website, we can build a simple interface using a Python framework called Flask. It is lightweight and perfect for small prototypes like this.</p>
+
+<div class="translation">
+
+<h4>Korean Translation</h4>
+
+<p><span class="role">직원 B:</span>  
+이 프로젝트는 실험 단계이기 때문에 무료 오픈소스 도구를 사용하는 것이 좋겠습니다.</p>
+
+<p><span class="role">직원 C:</span>  
+조사를 해보니 PaddleOCR이라는 도구가 있습니다. 무료이고 이미지에서 글자를 인식하는 AI 시스템입니다.</p>
+
+<p><span class="role">직원 A:</span>  
+웹페이지는 Flask라는 Python 프레임워크로 만들 수 있습니다. 간단한 웹 서비스를 만들기에 적합합니다.</p>
+
+</div>
+</div>
+
+<h2>4 The First Problem</h2>
+
+<div class="dialogue">
+<h3>Scene 4</h3>
+
+<p><span class="role">Employee C:</span>  
+I tried running the program, but the system keeps failing when it tries to read the image file. The program says that the file cannot be opened, even though the image is clearly inside the folder.</p>
+
+<p><span class="role">Employee B:</span>  
+That is strange. Could you check the file name of the image? Sometimes file names or folder paths can cause unexpected errors.</p>
+
+<p><span class="role">Employee C:</span>  
+I think I found the problem. The file name of the image is written in Korean characters, and it seems the program cannot read it correctly.</p>
+
+<p><span class="role">Employee A:</span>  
+Yes, that happens sometimes with certain libraries like OpenCV. To avoid this issue, we should always use English file names for images and project files.</p>
+
+<div class="translation">
+
+<h4>Korean Translation</h4>
+
+<p><span class="role">직원 C:</span>  
+프로그램을 실행했는데 이미지 파일을 읽을 수 없다는 오류가 계속 발생합니다.</p>
+
+<p><span class="role">직원 B:</span>  
+파일 이름을 확인해 보셨나요? 파일 이름이나 경로 때문에 오류가 생길 수도 있습니다.</p>
+
+<p><span class="role">직원 C:</span>  
+파일 이름이 한국어로 되어 있습니다. 그것 때문에 문제가 생긴 것 같습니다.</p>
+
+<p><span class="role">직원 A:</span>  
+맞습니다. OpenCV 같은 라이브러리는 한글 파일 이름을 제대로 처리하지 못할 때가 있습니다. 그래서 영어 파일 이름을 사용하는 것이 좋습니다.</p>
+
+</div>
+</div>
+
+<h2>5 Reporting to the Manager</h2>
+
+<div class="dialogue">
+<h3>Scene 5</h3>
+
+<p><span class="role">Finance Manager:</span>  
+So how is the experiment going? Were you able to build the OCR prototype that we discussed last week?</p>
+
+<p><span class="role">Employee A:</span>  
+Yes, we successfully created a simple prototype. The system can read a math expression from an image and calculate the result automatically.</p>
+
+<p><span class="role">Employee B:</span>  
+We also discovered a few technical challenges during development. For example, the program fails when image file names are written in Korean, so we switched to English file names.</p>
+
+<p><span class="role">Finance Manager:</span>  
+That is great progress. Even a simple prototype can help us understand how AI could improve our workflow in the future.</p>
+
+<div class="translation">
+
+<h4>Korean Translation</h4>
+
+<p><span class="role">재무팀장:</span>  
+프로젝트는 어떻게 진행되고 있나요? 지난주에 이야기한 OCR 프로토타입을 만들었나요?</p>
+
+<p><span class="role">직원 A:</span>  
+네, 간단한 프로토타입을 만들었습니다. 사진 속 수식을 읽고 계산 결과를 보여주는 시스템입니다.</p>
+
+<p><span class="role">직원 B:</span>  
+개발 과정에서 몇 가지 기술적인 문제도 발견했습니다. 예를 들어 이미지 파일 이름이 한글이면 오류가 발생했습니다.</p>
+
+<p><span class="role">재무팀장:</span>  
+좋은 진전입니다. 작은 프로토타입이라도 미래에 업무 자동화 가능성을 보여줄 수 있습니다.</p>
+
+</div>
+</div>
+
+<h2>Discussion Questions</h2>
+
+<ul>
+<li>Why does the finance team want an OCR system?</li>
+<li>What advantages do free AI tools provide?</li>
+<li>Why did the program fail when the file name was written in Korean?</li>
+<li>How could AI automation change office work in the future?</li>
+<li>Should companies build AI systems internally or buy commercial software?</li>
+</ul>
+
+<div class="back">
+<a href="../">← Back to Home</a>
+</div>
+
+</div>
+
+<footer>
+© <span id="year"></span> AI Study Case
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

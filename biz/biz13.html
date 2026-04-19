@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ITGC English Study | System Development & Implementation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            margin: 40px;
+            background-color: #ffffff;
+            color: #222;
+        }
+        h1, h2, h3 {
+            color: #1f3a5f;
+        }
+        h1 {
+            border-bottom: 3px solid #1f3a5f;
+            padding-bottom: 10px;
+        }
+        h2 {
+            margin-top: 40px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+        }
+        h3 {
+            margin-top: 25px;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        li {
+            margin-bottom: 6px;
+        }
+        .section {
+            margin-top: 30px;
+        }
+        .dialogue {
+            background-color: #f8f9fb;
+            border-left: 4px solid #1f3a5f;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .label {
+            font-weight: bold;
+        }
+        .box {
+            background-color: #f4f6f8;
+            padding: 15px;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+<table style="width:100%; border-collapse:collapse; margin:30px 0; font-size:14px;">
+    <tr>
+        <th style="border:1px solid #333; padding:10px; background:#f2f2f2; width:15%;">감사영역</th>
+        <th style="border:1px solid #333; padding:10px; background:#f2f2f2; width:20%;">감사목적</th>
+        <th style="border:1px solid #333; padding:10px; background:#f2f2f2; width:20%;">감사항목</th>
+        <th style="border:1px solid #333; padding:10px; background:#f2f2f2;">감사절차</th>
+    </tr>
+
+    <tr>
+        <td style="border:1px solid #333; padding:10px;" rowspan="2">
+            시스템 개발 및 구축<br>
+            (ITGC – 착수 단계)
+        </td>
+
+        <td style="border:1px solid #333; padding:10px;" rowspan="2">
+            신규 정보시스템 구축이<br>
+            적절한 검토 및 승인절차에 따라<br>
+            결정되었는지 확인
+        </td>
+
+        <td style="border:1px solid #333; padding:10px;">
+            1.1.1 신규 정보시스템 구축을 위한<br>
+            사전 심의제도 및 경영진 승인 여부
+        </td>
+
+        <td style="border:1px solid #333; padding:10px;">
+            <strong>[인터뷰]</strong><br>
+            - 신규 정보시스템 구축 결정을 위한 정책 및 절차 존재 여부<br>
+            - 의사결정체계 존재 여부<br>
+            - 투자성과평가 수행 여부<br>
+            - 타 대기업 구축 사례(성공/실패) 비교 검토 여부<br>
+            - 전문업체 선정 시 주요 대기업 수행 실적 고려 여부<br><br>
+
+            <strong>[문서검토]</strong><br>
+            - 신규 정보시스템 구축 승인 정책 및 절차 문서 확인<br>
+            - 구축 완료 시스템에 대한 투자성과평가 문서 확인<br>
+            - 개발 또는 구매 발주 및 업체 선정 관련 문서 확인<br>
+            - 사전 심의 및 승인 절차 준수 여부 확인
+        </td>
+    </tr>
+
+    <tr>
+        <td style="border:1px solid #333; padding:10px;">
+            1.1.2 신규 정보시스템 구축 시<br>
+            효과적인 협의 기구 및 절차 존재 여부
+        </td>
+
+        <td style="border:1px solid #333; padding:10px;">
+            <strong>[인터뷰]</strong><br>
+            - PMO 또는 공식적인 협의 기구 구성 여부<br>
+            - 프로젝트 팀에 관련 부서 구성원의 적절한 참여 여부<br><br>
+
+            <strong>[문서검토]</strong><br>
+            - 개발 방법론에 프로젝트 범위, 일정, 역할 분담, 의사소통 체계 명시 여부<br>
+            - 프로젝트 조직 구성 및 업무 분장 관련 문서 확인<br>
+            - 참여 그룹 간 의견 조율 및 합의 절차 명시 여부
+        </td>
+    </tr>
+</table>
+
+<h1>ITGC English Study</h1>
+<p><strong>Topic:</strong> System Development & Implementation (Initiation Phase)</p>
+
+<div class="section">
+    <h2>1. Warm-up & ITGC Overview</h2>
+
+    <h3>Icebreaker Discussion</h3>
+    <ul>
+        <li>Have you ever been involved in a system implementation or ERP project?</li>
+        <li>What usually goes wrong in system implementation projects?</li>
+    </ul>
+
+    <h3>Key ITGC Concepts</h3>
+    <ul>
+        <li>IT General Controls (ITGC)</li>
+        <li>System Development Life Cycle (SDLC)</li>
+        <li>Initiation Phase</li>
+        <li>Governance and approval</li>
+        <li>Investment performance evaluation</li>
+        <li>Project Management Office (PMO)</li>
+    </ul>
+
+    <h3>Discussion</h3>
+    <ul>
+        <li>Why is the initiation phase critical from an audit perspective?</li>
+        <li>What risks arise when management approval is weak or informal?</li>
+    </ul>
+</div>
+
+<div class="section">
+    <h2>2. Control 1.1.1</h2>
+
+    <p><strong>Control Statement:</strong><br>
+    New system implementation should be approved through appropriate review and approval procedures.</p>
+
+    <h3>Audit Objective</h3>
+    <p>
+        To ensure that new information systems are implemented based on formal review,
+        business justification, and management approval.
+    </p>
+
+    <h3>Key Risks</h3>
+    <ul>
+        <li>Systems implemented without clear business justification</li>
+        <li>Absence of investment performance or ROI evaluation</li>
+        <li>Vendor selection based on relationships rather than capability</li>
+    </ul>
+
+    <h3>Interview Practice (Role Play)</h3>
+
+    <div class="dialogue">
+        <p><span class="label">Auditor:</span> Thank you for your time today. I’d like to ask a few questions regarding the approval process for the new system implementation.</p>
+        <p><span class="label">Manager:</span> Sure. I’ll do my best to explain.</p>
+
+        <p><span class="label">Auditor:</span> First, is there a formal policy for approving new system implementations?</p>
+        <p><span class="label">Manager:</span> Yes. We have an IT investment and system approval policy. Any new system requires a formal review and approval before the project starts.</p>
+
+        <p><span class="label">Auditor:</span> Who has the authority to approve a new system under that policy?</p>
+        <p><span class="label">Manager:</span> The final approval is granted by the executive committee, including the CIO and CFO. For large projects, board-level approval is also required.</p>
+
+        <p><span class="label">Auditor:</span> Was an investment performance evaluation conducted before this system was approved?</p>
+        <p><span class="label">Manager:</span> Yes. We prepared a business case that included expected cost savings, efficiency improvements, and estimated return on investment.</p>
+
+        <p><span class="label">Auditor:</span> Was that evaluation documented and formally reviewed?</p>
+        <p><span class="label">Manager:</span> Yes, it was documented and reviewed during the approval meeting. The results were included in the approval materials.</p>
+
+        <p><span class="label">Auditor:</span> Did management review benchmarking materials or case studies from other companies?</p>
+        <p><span class="label">Manager:</span> Yes. We reviewed implementation cases from several large companies in the same industry, including both successful and unsuccessful projects.</p>
+
+        <p><span class="label">Auditor:</span> How was the vendor selected, and was prior experience with large enterprises considered?</p>
+        <p><span class="label">Manager:</span> We conducted a vendor evaluation process. The vendor was selected based on technical capability, project methodology, and experience implementing similar systems for large enterprises.</p>
+
+        <p><span class="label">Auditor:</span> Were those evaluation results documented and approved?</p>
+        <p><span class="label">Manager:</span> Yes. The evaluation results and selection rationale were documented and approved as part of the procurement process.</p>
+
+        <p><span class="label">Auditor:</span> Thank you. We will review the related documents to confirm what we discussed today.</p>
+        <p><span class="label">Manager:</span> No problem. Please let me know if you need any additional information.</p>
+    </div>
+
+    <h3>Document Review Practice</h3>
+    <div class="box">
+        <strong>Documents to review:</strong>
+        <ul>
+            <li>Policy for IT investment and system approval</li>
+            <li>Management or board approval records</li>
+            <li>Business case or ROI analysis documents</li>
+            <li>Vendor selection and evaluation materials</li>
+            <li>Contract approval documents</li>
+        </ul>
+
+        <strong>Discussion points:</strong>
+        <ul>
+            <li>Which documents clearly demonstrate management approval?</li>
+            <li>What evidence would be considered insufficient for audit purposes?</li>
+            <li>Is post-implementation evaluation required under ITGC?</li>
+        </ul>
+    </div>
+</div>
+
+<div class="section">
+    <h2>3. Control 1.1.2</h2>
+
+    <p><strong>Control Statement:</strong><br>
+    Effective governance and communication structures should exist during system development.</p>
+
+    <h3>Audit Objective</h3>
+    <p>
+        To ensure that appropriate governance and communication mechanisms are established
+        to support effective system development.
+    </p>
+
+    <h3>Key Concepts</h3>
+    <ul>
+        <li>Project Management Office (PMO)</li>
+        <li>Steering committee</li>
+        <li>Stakeholders</li>
+        <li>Cross-functional participation</li>
+        <li>Communication and escalation procedures</li>
+    </ul>
+
+    <h3>Discussion</h3>
+    <ul>
+        <li>Why is a PMO important from an audit perspective?</li>
+        <li>What risks exist if business users are not involved in the project?</li>
+    </ul>
+
+    <h3>Interview Practice</h3>
+
+    <div class="dialogue">
+        <p><span class="label">Auditor:</span> Thank you for meeting with us. I’d like to ask a few questions about the governance structure during the system implementation project.</p>
+        <p><span class="label">Manager:</span> Sure. Please go ahead.</p>
+
+        <p><span class="label">Auditor:</span> Was a PMO or steering committee established for the project?</p>
+        <p><span class="label">Manager:</span> Yes. A formal PMO was established at the beginning of the project, and a steering committee was also formed for major decisions.</p>
+
+        <p><span class="label">Auditor:</span> What was the role of the PMO in the project?</p>
+        <p><span class="label">Manager:</span> The PMO was responsible for project planning, progress monitoring, issue tracking, and coordination among departments.</p>
+
+        <p><span class="label">Auditor:</span> How were issues, risks, and key decisions escalated during the project?</p>
+        <p><span class="label">Manager:</span> Operational issues were handled by the project team, while major risks and decisions were escalated to the steering committee through regular status meetings.</p>
+
+        <p><span class="label">Auditor:</span> Were all relevant departments involved in the project?</p>
+        <p><span class="label">Manager:</span> Yes. The project included representatives from IT, accounting, finance, and internal control, as well as key business users.</p>
+
+        <p><span class="label">Auditor:</span> How were roles and responsibilities defined?</p>
+        <p><span class="label">Manager:</span> Roles and responsibilities were clearly defined in a RACI matrix and documented in the project governance charter.</p>
+
+        <p><span class="label">Auditor:</span> Can you provide evidence such as meeting minutes or governance documents?</p>
+        <p><span class="label">Manager:</span> Yes. We have PMO meeting minutes, steering committee materials, and the project governance documents available for review.</p>
+
+        <p><span class="label">Auditor:</span> Who had the final decision-making authority for the project?</p>
+        <p><span class="label">Manager:</span> Final decision-making authority rested with the steering committee, chaired by the CIO, with approval from the CFO for financial matters.</p>
+
+        <p><span class="label">Auditor:</span> Thank you. We will review the documents and follow up if we have additional questions.</p>
+        <p><span class="label">Manager:</span> Of course. Please let us know if anything else is needed.</p>
+    </div>
+
+    <h3>Document Review</h3>
+    <div class="box">
+        <strong>Documents:</strong>
+        <ul>
+            <li>Project governance charter</li>
+            <li>PMO or steering committee organization chart</li>
+            <li>RACI matrix</li>
+            <li>System development methodology documents</li>
+            <li>Meeting minutes and issue logs</li>
+        </ul>
+
+        <strong>Red flags to discuss:</strong>
+        <ul>
+            <li>No formal PMO or steering committee</li>
+            <li>Limited involvement of business departments</li>
+            <li>Unclear roles and responsibilities</li>
+        </ul>
+    </div>
+</div>
+
+<div class="section">
+    <h2>4. Audit Simulation Exercise</h2>
+
+    <p><strong>Scenario:</strong><br>
+    A company implemented a new accounting system in the prior year.</p>
+
+    <div class="box">
+        <strong>Provided evidence:</strong>
+        <ul>
+            <li>No formal ROI or investment performance analysis</li>
+            <li>Vendor selected primarily based on prior relationships</li>
+            <li>PMO existed, but meeting minutes were not retained</li>
+            <li>Approval obtained via email only, without formal sign-off</li>
+        </ul>
+
+        <strong>Group tasks:</strong>
+        <ul>
+            <li>Identify control deficiencies</li>
+            <li>Assess control effectiveness (effective, partially effective, ineffective)</li>
+            <li>Draft audit findings in English</li>
+        </ul>
+    </div>
+
+    <p><strong>Example audit finding:</strong><br>
+    The company did not perform a formal investment performance evaluation prior to system implementation,
+    increasing the risk that the system may not align with business objectives.
+    </p>
+</div>
+
+<div class="section">
+    <h2>5. Audit Findings & Wrap-up</h2>
+
+    <h3>Communicating Audit Findings in English</h3>
+    <p><strong>Standard structure:</strong></p>
+    <ul>
+        <li>Condition</li>
+        <li>Criteria</li>
+        <li>Cause</li>
+        <li>Effect</li>
+        <li>Recommendation</li>
+    </ul>
+
+    <p><strong>Useful audit phrases:</strong></p>
+    <ul>
+        <li>Based on our inquiry and document review</li>
+        <li>We noted that management did not</li>
+        <li>This increases the risk that</li>
+        <li>We recommend that management establish</li>
+    </ul>
+
+    <h3>Closing Discussion</h3>
+    <ul>
+        <li>Which control is most difficult to implement in practice?</li>
+        <li>How might management challenge audit findings?</li>
+        <li>How should auditors respond professionally?</li>
+    </ul>
+</div>
+<div class="back">
+  <a href="../">← Back to Home</a>
+  <a href="../biz.html">← Back to Articles</a>
+</div>
+</body>
+</html>

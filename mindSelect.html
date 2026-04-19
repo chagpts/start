@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choose Your Mind</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)),
+    url("verse.png") no-repeat center center / cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 16px;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+}
+
+h1 {
+  font-family: 'Baloo 2', cursive;
+  font-size: 34px;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 50px;
+}
+
+.options {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.option {
+  background: rgba(255,255,255,0.95);
+  width: 360px;
+  padding: 40px 36px;
+  border-radius: 28px;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.2);
+  box-sizing: border-box;
+}
+
+.option h2 {
+  font-family: 'Baloo 2', cursive;
+  font-size: 26px;
+  margin-bottom: 14px;
+  color: #222;
+}
+
+.option p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #444;
+}
+
+.option a {
+  display: inline-block;
+  margin-top: 26px;
+  padding: 14px 34px;
+  background: #333;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-size: 15px;
+}
+
+.back {
+  margin-top: 50px;
+}
+
+.back a {
+  font-size: 14px;
+  color: #333;
+  text-decoration: underline;
+}
+
+footer {
+  margin-top: 60px;
+  font-size: 12px;
+  color: #555;
+  background: rgba(255,255,255,0.75);
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 20px;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 26px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    margin-bottom: 36px;
+  }
+
+  .option {
+    width: 100%;
+    padding: 32px 26px;
+  }
+
+  .option h2 {
+    font-size: 22px;
+  }
+
+  .option p {
+    font-size: 14.5px;
+  }
+
+  .option a {
+    width: 100%;
+    padding: 14px 0;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <h1>Choose Your Mind</h1>
+  <div class="subtitle">
+    Pick the depth of conversation you want to explore
+  </div>
+
+  <div class="options">
+
+    <div class="option">
+      <h2>Mind</h2>
+      <p>
+        Light and open conversation cards focused on emotions, relationships,
+        and everyday thoughts.
+      </p>
+      <a href="mind/mind.html">Enter Mind</a>
+    </div>
+
+    <div class="option">
+      <h2>Deep Mind</h2>
+      <p>
+        Philosophical and reflective questions about identity, values,
+        choices, and the deeper layers of the human mind.
+      </p>
+      <a href="mind/deepmind.html">Enter Deep Mind</a>
+    </div>
+
+  </div>
+
+  <div class="back">
+    <a href="index.html">Back to Home</a>
+  </div>
+
+  <footer>
+    © <span id="year"></span> Cha GPTs. All rights reserved.
+  </footer>
+
+</div>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

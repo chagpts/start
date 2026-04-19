@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Options Accounting Dialogue</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Quicksand', sans-serif;
+  background:
+    linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
+    url("../verse.png") no-repeat center center / cover;
+  padding: 60px 20px;
+}
+
+.container {
+  max-width: 980px;
+  margin: auto;
+  background: rgba(255,255,255,0.95);
+  padding: 50px 60px;
+  border-radius: 28px;
+}
+
+h1, h2, h3 {
+  font-family: 'Baloo 2', cursive;
+}
+
+h1 {
+  margin-bottom: 28px;
+  line-height: 1.2;
+}
+
+h2 {
+  margin-top: 50px;
+  margin-bottom: 16px;
+}
+
+h3 {
+  margin-top: 32px;
+  margin-bottom: 12px;
+}
+
+p {
+  line-height: 1.8;
+  margin-bottom: 18px;
+  font-size: 15px;
+}
+
+ul {
+  margin-left: 20px;
+  margin-bottom: 22px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 28px 0;
+  font-size: 14px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 14px;
+  vertical-align: top;
+}
+
+th {
+  background: #f2f2f2;
+  font-weight: 600;
+}
+
+.highlight {
+  background: #f7f7f7;
+  padding: 22px 26px;
+  border-radius: 18px;
+  margin: 30px 0;
+  font-size: 14px;
+}
+
+.questions {
+  background: #f7f7f7;
+  padding: 25px 30px;
+  border-radius: 18px;
+  margin-top: 30px;
+}
+
+.link-block {
+  background: #eef2f7;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+.link-block a {
+  color: #1a0dab;
+  text-decoration: underline;
+}
+
+.dialogue {
+  background: #fafafa;
+  padding: 26px 30px;
+  border-radius: 18px;
+  margin-top: 25px;
+  font-size: 14px;
+}
+
+.role {
+  font-weight: 600;
+}
+
+.translation {
+  color: #555;
+  margin-top: -10px;
+  margin-bottom: 20px;
+  padding-left: 8px;
+  border-left: 3px solid #ddd;
+}
+
+.note-box {
+  background: #eef6ff;
+  padding: 20px 24px;
+  border-radius: 16px;
+  margin: 24px 0;
+  font-size: 14px;
+}
+
+.back {
+  text-align: center;
+  margin-top: 55px;
+}
+
+.back a {
+  display: inline-block;
+  padding: 12px 26px;
+  background: #333;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 6px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 13px;
+  background: rgba(255,255,255,0.75);
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 20px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 30px 0;
+}
+
+small.standard {
+  display: block;
+  color: #666;
+  margin-top: 8px;
+  line-height: 1.7;
+  font-size: 12px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 30px 24px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Accounting for Call and Put Options<br>— Finance and Audit Dialogue</h1>
+
+<p>
+This role-play covers how a company should account for call and put option transactions,
+how fair value should be measured, when Black-Scholes or Monte Carlo may be used,
+why broker statements should not simply be booked as-is,
+how hedge accounting may affect recognition, measurement, and disclosures,
+and how the analysis differs under U.S. GAAP and Korean IFRS.
+</p>
+
+<div class="highlight">
+<p>
+Key message: options are derivatives, so the company must apply its own accounting policy,
+perform its own fair value assessment, and maintain supportable documentation for audit purposes.
+If hedge accounting is elected, documentation and effectiveness assessment become even more important.
+</p>
+</div>
+
+<h2>1 Key Accounting Points</h2>
+
+<table>
+<thead>
+<tr>
+  <th>Topic</th>
+  <th>Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Initial Recognition</td>
+  <td>Purchased option premium is recorded as an asset; written option premium received is recorded as a liability, subject to instrument terms and presentation analysis.</td>
+</tr>
+<tr>
+  <td>Subsequent Measurement</td>
+  <td>Options are remeasured at fair value each reporting date. Changes generally go through P&amp;L unless hedge accounting applies.</td>
+</tr>
+<tr>
+  <td>Valuation</td>
+  <td>Black-Scholes is commonly used for simpler options. Monte Carlo may be used for more complex, path-dependent, barrier, basket, or multi-factor structures.</td>
+</tr>
+<tr>
+  <td>Hedge Accounting</td>
+  <td>If designated in a qualifying hedging relationship, accounting may differ depending on whether the hedge is a fair value hedge or a cash flow hedge.</td>
+</tr>
+<tr>
+  <td>Exercise / Expiry</td>
+  <td>If exercised, the premium is reflected in the accounting for the underlying. If expired, the remaining carrying amount is realized as gain or loss.</td>
+</tr>
+<tr>
+  <td>Broker Statement</td>
+  <td>Broker values may be used as supporting evidence or for reconciliation, but not blindly booked without internal review and valuation governance.</td>
+</tr>
+<tr>
+  <td>Disclosures</td>
+  <td>Entities should disclose the nature of derivative activity, valuation methods, fair value hierarchy, hedge designation, and key assumptions where relevant.</td>
+</tr>
+</tbody>
+</table>
+
+<h2>2 Valuation Considerations</h2>
+
+<p>
+Fair value measurement is often the most sensitive area in option accounting.
+The company needs a supportable methodology, reasonable assumptions, and documentation
+for model governance and audit review.
+</p>
+
+<div class="highlight">
+<p>
+Simple option structure does not always mean simple accounting.
+The accounting may be straightforward, but fair value inputs, calibration, review controls,
+and support for assumptions still matter.
+</p>
+</div>
+
+<h2>3 U.S. GAAP vs K-IFRS Quick Comparison</h2>
+
+<table>
+<thead>
+<tr>
+  <th>Area</th>
+  <th>U.S. GAAP</th>
+  <th>K-IFRS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Main Standards</td>
+  <td>ASC 815, ASC 820</td>
+  <td>K-IFRS 1109, 1113, 1032, 1107</td>
+</tr>
+<tr>
+  <td>Basic Principle</td>
+  <td>Derivatives are generally measured at fair value, with gains/losses in earnings unless hedge accounting applies.</td>
+  <td>Derivatives are generally measured at fair value; changes are typically recognized in profit or loss unless hedge accounting changes the treatment.</td>
+</tr>
+<tr>
+  <td>Hedge Accounting</td>
+  <td>Formal designation and documentation required.</td>
+  <td>Formal designation and documentation required, following IFRS 9 hedge accounting logic.</td>
+</tr>
+<tr>
+  <td>Fair Value Inputs</td>
+  <td>Observable inputs preferred; internal models allowed with controls.</td>
+  <td>Observable inputs should be maximized; valuation techniques should be appropriate and consistently applied.</td>
+</tr>
+<tr>
+  <td>OCI Usage</td>
+  <td>Depends on hedge type.</td>
+  <td>Cash flow hedge effective portion generally goes to OCI first, then is reclassified when relevant.</td>
+</tr>
+<tr>
+  <td>Model Choice</td>
+  <td>Black-Scholes or Monte Carlo depending on instrument complexity.</td>
+  <td>Same concept; the model must fit the economics and the available inputs.</td>
+</tr>
+</tbody>
+</table>
+
+<div class="note-box">
+<p>
+Practical note for K-IFRS users: in many option-accounting cases, the answer is economically similar to U.S. GAAP,
+but the memo should explicitly reference K-IFRS 1109 for recognition and measurement,
+K-IFRS 1032 for presentation,
+K-IFRS 1113 for fair value methodology,
+and K-IFRS 1107 for disclosures.
+</p>
+</div>
+
+<h2>4 Original and Expanded Conversation (Role-play)</h2>
+
+<div class="dialogue">
+
+<p><span class="role">Head of Finance:</span><br>
+We’ve increased our options trading this quarter—both calls and puts. I’d like to confirm how we should properly reflect these in our books.</p>
+<p class="translation">재무팀장: 이번 분기에 콜옵션과 풋옵션 거래가 많이 늘었습니다. 이를 장부에 어떻게 반영해야 하는지 확인하고 싶습니다.</p>
+
+<p><span class="role">Auditor:</span><br>
+Sure. Since these are derivatives, they fall under fair value measurement. Under U.S. GAAP, you should follow ASC 815.</p>
+<p class="translation">회계감사인: 네. 이 거래는 파생상품이기 때문에 공정가치 평가 대상이며, US GAAP 기준으로 ASC 815를 적용해야 합니다.</p>
+
+<p><span class="role">Head of Finance:</span><br>
+At initial recognition, do we record based on the premium paid or received?</p>
+<p class="translation">재무팀장: 최초 인식 시에는 프리미엄 기준으로 기록하면 되나요?</p>
+
+<p><span class="role">Auditor:</span><br>
+Exactly. If you purchase options, the premium is recorded as an asset. If you write options, the premium received is recorded as a liability.</p>
+<p class="translation">회계감사인: 맞습니다. 옵션을 매입하면 프리미엄을 자산으로 인식하고, 옵션을 매도하면 수취한 프리미엄을 부채로 인식합니다.</p>
+
+<p><span class="role">Head of Finance:</span><br>
+And after that, we mark them to fair value each period?</p>
+<p class="translation">재무팀장: 이후에는 매 기간 공정가치로 평가하나요?</p>
+
+<p><span class="role">Auditor:</span><br>
+Yes. Changes in fair value go through P&amp;L unless hedge accounting is applied.</p>
+<p class="translation">회계감사인: 네. 헤지회계를 적용하지 않는다면 공정가치 변동은 모두 손익으로 반영됩니다.</p>
+
+<p><span class="role">Head of Finance:</span><br>
+We’re trading for investment purposes, so no hedge accounting.</p>
+<p class="translation">재무팀장: 저희는 트레이딩 목적이라 헤지회계는 적용하지 않습니다.</p>
+
+<p><span class="role">Auditor:</span><br>
+Then it’s straightforward—fair value changes go directly to earnings.</p>
+<p class="translation">회계감사인: 그렇다면 공정가치 변동을 바로 손익에 반영하시면 됩니다.</p>
+
+<p><span class="role">Head of Finance:</span><br>
+What about when options are exercised or expire?</p>
+<p class="translation">재무팀장: 옵션 행사나 만기 시에는 어떻게 처리하나요?</p>
+
+<p><span class="role">Auditor:</span><br>
+If exercised, the premium is included in the cost basis of the underlying asset. If expired, the premium becomes a realized gain or loss.</p>
+<p class="translation">회계감사인: 행사 시에는 프리미엄이 기초자산 원가에 포함되고, 만기 소멸 시에는 손익으로 확정됩니다.</p>
+
+<p><span class="role">Head of Finance:</span><br>
+Now, regarding valuation—we currently use Black-Scholes for simple options.</p>
+<p class="translation">재무팀장: 공정가치 평가와 관련해서, 단순 옵션은 Black-Scholes 모델을 사용하고 있습니다.</p>
+
+<p><span class="role">Auditor:</span><br>
+That’s appropriate for standard European-style options. It uses inputs like price, strike, volatility, interest rate, and time to maturity.</p>
+<p class="translation">회계감사인: 적절합니다. 유럽형 옵션에 적합하며 주가, 행사가, 변동성, 이자율, 잔존기간 등을 반영합니다.</p>
+
+<p><span class="role">Head of Finance:</span><br>
+For more complex structures, we’ve been using a simplified approach.</p>
+<p class="translation">재무팀장: 복잡한 구조는 단순화된 방식으로 처리하고 있습니다.</p>
+
+<p><span class="role">Auditor:</span><br>
+You should consider Monte Carlo simulation for those. It’s suitable for path-dependent or multi-variable options.</p>
+<p class="translation">회계감사인: 그런 경우에는 Monte Carlo 시뮬레이션을 사용해야 합니다. 경로 의존형이나 복잡한 옵션에 적합합니다.</p>
+
+<p><span class="role">Head of Finance:</span><br>
+Does the auditor prefer one model over the other?</p>
+<p class="translation">재무팀장: 감사 관점에서 어떤 모델을 더 선호하나요?</p>
+
+<p><span class="role">Auditor:</span><br>
+Not preference—appropriateness. Simple options go to Black-Scholes, and complex options may require Monte Carlo.</p>
+<p class="translation">회계감사인: 선호가 아니라 적합성이 중요합니다. 단순 옵션은 Black-Scholes, 복잡 옵션은 Monte Carlo가 적절합니다.</p>
+
+<p><span class="role">Head of Finance:</span><br>
+We’ve been using historical volatility.</p>
+<p class="translation">재무팀장: 변동성은 과거 데이터를 사용하고 있습니다.</p>
+
+<p><span class="role">Auditor:</span><br>
+That’s acceptable, but implied volatility may be more appropriate if market data is available.</p>
+<p class="translation">회계감사인: 가능하지만 시장 데이터가 있다면 내재변동성이 더 적절할 수 있습니다.</p>
+
+<p><span class="role">Head of Finance:</span><br>
+Can we run Monte Carlo internally?</p>
+<p class="translation">재무팀장: Monte Carlo를 내부에서 돌려도 되나요?</p>
+
+<p><span class="role">Auditor:</span><br>
+Yes, but you need proper validation, controls, and consistent assumptions.</p>
+<p class="translation">회계감사인: 네. 다만 모델 검증, 내부통제, 가정의 일관성이 필요합니다.</p>
+
+<p><span class="role">Head of Finance:</span><br>
+How does this tie into disclosures?</p>
+<p class="translation">재무팀장: 공시에는 어떻게 연결되나요?</p>
+
+<p><span class="role">Auditor:</span><br>
+You must disclose the nature of the derivatives, the valuation methods used, and the key inputs and assumptions.</p>
+<p class="translation">회계감사인: 파생상품의 성격, 평가 방법, 주요 입력값과 가정을 공시해야 합니다.</p>
+
+<p><span class="role">Head of Finance:</span><br>
+And fair value hierarchy?</p>
+<p class="translation">재무팀장: 공정가치 레벨은요?</p>
+
+<p><span class="role">Auditor:</span><br>
+Black-Scholes with observable inputs may fall into Level 2, while Monte Carlo with significant unobservable inputs may fall into Level 3.</p>
+<p class="translation">회계감사인: Black-Scholes에 관측 가능 입력값을 쓰면 Level 2가 될 수 있고, Monte Carlo에 중요한 비관측 입력값이 포함되면 Level 3가 될 수 있습니다.</p>
+
+<p><span class="role">Junior Staff:</span><br>
+Sorry, can I ask something?</p>
+<p class="translation">신입 직원: 죄송한데 질문 하나 드려도 될까요?</p>
+
+<p><span class="role">Head of Finance:</span><br>
+Of course.</p>
+<p class="translation">재무팀장: 네, 말씀하세요.</p>
+
+<p><span class="role">Junior Staff:</span><br>
+We execute trades through JP Morgan, and their statements already include valuation and P&amp;L. Can’t we just book those numbers directly?</p>
+<p class="translation">신입 직원: 저희가 JP Morgan을 통해 거래하고 있는데, statement에 valuation이랑 손익이 다 나옵니다. 그걸 그대로 장부에 넣으면 안 되나요?</p>
+
+<p><span class="role">Auditor:</span><br>
+Good question. But no—you shouldn’t.</p>
+<p class="translation">회계감사인: 좋은 질문입니다. 하지만 그대로 쓰면 안 됩니다.</p>
+
+<p><span class="role">Junior Staff:</span><br>
+Why not? Wouldn’t their numbers be more accurate?</p>
+<p class="translation">신입 직원: 왜 안 되나요? 은행 계산이 더 정확하지 않나요?</p>
+
+<p><span class="role">Auditor:</span><br>
+They are useful, but the company is still responsible for its own valuation. The bank may use different assumptions, adjustments, or pricing conventions, and auditors expect an independent valuation control process.</p>
+<p class="translation">회계감사인: 참고는 가능하지만 공정가치 산정 책임은 여전히 회사에 있습니다. 은행은 다른 가정, 조정, 가격 산정 기준을 쓸 수 있고, 감사에서는 독립적인 평가 통제를 요구합니다.</p>
+
+<p><span class="role">Head of Finance:</span><br>
+Think of it this way: broker values are reference, internal models are the basis.</p>
+<p class="translation">재무팀장: 이렇게 이해하면 됩니다. 브로커 값은 참고이고, 내부 모델이 기준입니다.</p>
+
+<p><span class="role">Junior Staff:</span><br>
+Then how should we use the broker statement?</p>
+<p class="translation">신입 직원: 그럼 브로커 statement는 어떻게 활용하나요?</p>
+
+<p><span class="role">Auditor:</span><br>
+Use it for comparison and variance analysis. If there is a large difference between internal valuation and the broker statement, document and explain the reason.</p>
+<p class="translation">회계감사인: 비교와 차이 분석에 활용하시면 됩니다. 내부 평가와 브로커 statement 간 차이가 크면 그 원인을 문서화해서 설명해야 합니다.</p>
+
+<p><span class="role">Head of Finance:</span><br>
+Operationally, booking should follow internal valuation, while reconciliation can follow the broker statement.</p>
+<p class="translation">재무팀장: 실무적으로는 장부 반영은 내부 평가 기준으로 하고, 대사는 브로커 statement 기준으로 하면 됩니다.</p>
+
+<p><span class="role">Junior Staff:</span><br>
+Got it. I thought we could just copy it over.</p>
+<p class="translation">신입 직원: 이해했습니다. 그냥 복붙하면 되는 줄 알았습니다.</p>
+
+<p><span class="role">Auditor:</span><br>
+That would definitely raise audit questions.</p>
+<p class="translation">회계감사인: 그렇게 하면 감사에서 바로 질문이 나올 겁니다.</p>
+
+<p><span class="role">Head of Finance:</span><br>
+Great question—that’s one of the most common mistakes.</p>
+<p class="translation">재무팀장: 좋은 질문이에요. 가장 흔한 실수 중 하나입니다.</p>
+
+<hr>
+
+<p><span class="role">Head of Finance:</span><br>
+Actually, we are considering hedge accounting for some of our positions next quarter.</p>
+<p class="translation">재무팀장: 사실 다음 분기부터 일부 포지션에 대해 헤지회계를 검토하고 있습니다.</p>
+
+<p><span class="role">Auditor:</span><br>
+That would change the accounting significantly. You would need formal designation and documentation at inception.</p>
+<p class="translation">회계감사인: 그 경우 회계처리가 크게 달라집니다. 최초 지정 시점에 공식적인 문서화가 필요합니다.</p>
+
+<p><span class="role">Junior Staff:</span><br>
+What kind of documentation are we talking about?</p>
+<p class="translation">신입 직원: 어떤 문서가 필요한 건가요?</p>
+
+<p><span class="role">Auditor:</span><br>
+You need to document the hedging relationship, the risk being hedged, the hedging instrument, and how effectiveness will be assessed.</p>
+<p class="translation">회계감사인: 헤지 관계, 헤지 대상 위험, 헤지 수단, 그리고 효과성 평가 방법을 모두 문서화해야 합니다.</p>
+
+<p><span class="role">Head of Finance:</span><br>
+And there are different types of hedge accounting, right?</p>
+<p class="translation">재무팀장: 헤지회계에도 여러 유형이 있죠?</p>
+
+<p><span class="role">Auditor:</span><br>
+Correct. The two most common are fair value hedge and cash flow hedge.</p>
+<p class="translation">회계감사인: 맞습니다. 대표적으로 공정가치 헤지와 현금흐름 헤지가 있습니다.</p>
+
+<p><span class="role">Junior Staff:</span><br>
+What’s the difference?</p>
+<p class="translation">신입 직원: 차이가 뭐죠?</p>
+
+<p><span class="role">Auditor:</span><br>
+In a fair value hedge, both the derivative and the hedged item’s changes go through P&amp;L. In a cash flow hedge, the effective portion goes to OCI first.</p>
+<p class="translation">회계감사인: 공정가치 헤지는 파생상품과 헤지 대상의 변동이 모두 손익으로 가고, 현금흐름 헤지는 효과적인 부분이 먼저 OCI로 갑니다.</p>
+
+<p><span class="role">Head of Finance:</span><br>
+So OCI acts as a temporary holding place?</p>
+<p class="translation">재무팀장: OCI는 일종의 임시 저장소 역할인가요?</p>
+
+<p><span class="role">Auditor:</span><br>
+Exactly. It is later reclassified into earnings when the hedged transaction affects P&amp;L.</p>
+<p class="translation">회계감사인: 맞습니다. 나중에 실제 거래가 손익에 반영될 때 OCI에서 재분류됩니다.</p>
+
+<p><span class="role">Junior Staff:</span><br>
+What about effectiveness testing?</p>
+<p class="translation">신입 직원: 효과성 테스트는 어떻게 하나요?</p>
+
+<p><span class="role">Auditor:</span><br>
+You need both prospective assessment and ongoing monitoring. The hedge must continue to meet the qualifying criteria.</p>
+<p class="translation">회계감사인: 사전 평가와 지속적인 모니터링이 필요합니다. 헤지는 계속해서 적격 요건을 충족해야 합니다.</p>
+
+<p><span class="role">Head of Finance:</span><br>
+Does that mean additional operational burden?</p>
+<p class="translation">재무팀장: 실무 부담이 많이 늘어나겠네요?</p>
+
+<p><span class="role">Auditor:</span><br>
+Yes. Hedge accounting reduces earnings volatility, but increases documentation and control requirements.</p>
+<p class="translation">회계감사인: 맞습니다. 손익 변동성은 줄지만 문서화와 통제 부담은 커집니다.</p>
+
+<p><span class="role">Head of Finance:</span><br>
+Would options always qualify as hedging instruments?</p>
+<p class="translation">재무팀장: 옵션은 항상 헤지수단으로 인정되나요?</p>
+
+<p><span class="role">Auditor:</span><br>
+Not automatically. They can qualify, but the entity must designate them properly and define whether it is hedging intrinsic value only or the entire option value.</p>
+<p class="translation">회계감사인: 자동으로 되는 것은 아닙니다. 헤지수단이 될 수는 있지만 적절한 지정이 필요하고, 내재가치만 헤지하는지 옵션 전체 가치를 헤지하는지도 명확히 해야 합니다.</p>
+
+<p><span class="role">Junior Staff:</span><br>
+Why does that distinction matter?</p>
+<p class="translation">신입 직원: 그 구분이 왜 중요한가요?</p>
+
+<p><span class="role">Auditor:</span><br>
+Because time value may be accounted for separately. Depending on the designation, some components may bypass immediate P&amp;L treatment.</p>
+<p class="translation">회계감사인: 시간가치 처리 방식이 달라질 수 있기 때문입니다. 지정 방식에 따라 일부 요소는 즉시 손익이 아니라 별도로 처리될 수 있습니다.</p>
+
+<hr>
+
+<p><span class="role">Head of Finance:</span><br>
+Let’s go back to valuation models. Are there limitations to Black-Scholes?</p>
+<p class="translation">재무팀장: 다시 평가 모델 얘기로 돌아가서, Black-Scholes에도 한계가 있나요?</p>
+
+<p><span class="role">Auditor:</span><br>
+Definitely. It assumes constant volatility and lognormal price distribution, which may not hold in real markets.</p>
+<p class="translation">회계감사인: 물론입니다. 변동성이 일정하고 가격이 로그정규분포를 따른다는 가정이 현실과 맞지 않을 수 있습니다.</p>
+
+<p><span class="role">Junior Staff:</span><br>
+So that’s where Monte Carlo comes in?</p>
+<p class="translation">신입 직원: 그래서 Monte Carlo를 쓰는 건가요?</p>
+
+<p><span class="role">Auditor:</span><br>
+Yes. Monte Carlo allows simulation of multiple paths and can incorporate more complex assumptions.</p>
+<p class="translation">회계감사인: 네. 다양한 경로를 시뮬레이션하고 더 복잡한 가정을 반영할 수 있습니다.</p>
+
+<p><span class="role">Head of Finance:</span><br>
+For example?</p>
+<p class="translation">재무팀장: 예를 들면요?</p>
+
+<p><span class="role">Auditor:</span><br>
+Early exercise features, path dependency, stochastic volatility, or multiple underlying variables.</p>
+<p class="translation">회계감사인: 조기행사 옵션, 경로 의존성, 확률적 변동성, 다중 기초자산 등을 반영할 수 있습니다.</p>
+
+<p><span class="role">Head of Finance:</span><br>
+Would Monte Carlo be appropriate for barrier options or basket options?</p>
+<p class="translation">재무팀장: 배리어 옵션이나 바스켓 옵션에도 Monte Carlo가 적절한가요?</p>
+
+<p><span class="role">Auditor:</span><br>
+Often yes. Those structures frequently depend on the path of one or more variables, which Black-Scholes may not capture adequately without major simplification.</p>
+<p class="translation">회계감사인: 대체로 그렇습니다. 그런 구조는 하나 이상의 변수 경로에 의존하는 경우가 많아서, Black-Scholes로는 과도한 단순화 없이 적절히 반영하기 어렵습니다.</p>
+
+<p><span class="role">Junior Staff:</span><br>
+But that sounds computationally heavy.</p>
+<p class="translation">신입 직원: 계산량이 많겠네요.</p>
+
+<p><span class="role">Auditor:</span><br>
+It is. But with modern systems, it’s manageable. The bigger issue is model validation and governance.</p>
+<p class="translation">회계감사인: 그렇지만 요즘 시스템으로는 가능합니다. 더 중요한 건 모델 검증과 거버넌스입니다.</p>
+
+<p><span class="role">Head of Finance:</span><br>
+What do auditors usually focus on?</p>
+<p class="translation">재무팀장: 감사에서는 무엇을 중점적으로 보나요?</p>
+
+<p><span class="role">Auditor:</span><br>
+Model assumptions, consistency, independent validation, and controls over inputs.</p>
+<p class="translation">회계감사인: 모델 가정, 일관성, 독립적 검증, 입력값 통제를 중점적으로 봅니다.</p>
+
+<p><span class="role">Junior Staff:</span><br>
+What inputs are usually the most sensitive?</p>
+<p class="translation">신입 직원: 보통 어떤 입력값이 가장 민감한가요?</p>
+
+<p><span class="role">Auditor:</span><br>
+Volatility is often the most sensitive input, but correlation, dividend assumptions, discount rates, and exercise behavior can also materially affect value.</p>
+<p class="translation">회계감사인: 대개 변동성이 가장 민감하지만, 상관계수, 배당 가정, 할인율, 행사 행태도 가치에 큰 영향을 줄 수 있습니다.</p>
+
+<p><span class="role">Head of Finance:</span><br>
+So even a small change in assumptions can create a large valuation difference?</p>
+<p class="translation">재무팀장: 그럼 가정이 조금만 바뀌어도 평가금액 차이가 크게 날 수 있겠네요?</p>
+
+<p><span class="role">Auditor:</span><br>
+Exactly. That is why sensitivity analysis is important, especially for Level 3 measurements.</p>
+<p class="translation">회계감사인: 맞습니다. 그래서 특히 Level 3 평가에서는 민감도 분석이 중요합니다.</p>
+
+<p><span class="role">Junior Staff:</span><br>
+So even a sophisticated model can fail audit?</p>
+<p class="translation">신입 직원: 그럼 모델이 좋아도 감사에서 문제가 될 수 있나요?</p>
+
+<p><span class="role">Auditor:</span><br>
+Absolutely. A complex model without proper controls is a red flag.</p>
+<p class="translation">회계감사인: 그렇습니다. 통제가 없는 복잡한 모델은 오히려 위험 신호입니다.</p>
+
+<p><span class="role">Head of Finance:</span><br>
+So the key is not just the model—but governance around it.</p>
+<p class="translation">재무팀장: 결국 중요한 건 모델 자체가 아니라 그에 대한 통제군요.</p>
+
+<p><span class="role">Auditor:</span><br>
+Exactly. In accounting, discipline matters as much as sophistication.</p>
+<p class="translation">회계감사인: 맞습니다. 회계에서는 정교함만큼이나 규율이 중요합니다.</p>
+
+<hr>
+
+<p><span class="role">Head of Finance:</span><br>
+If we use Black-Scholes for one population and Monte Carlo for another, is that acceptable from a policy standpoint?</p>
+<p class="translation">재무팀장: 어떤 옵션군은 Black-Scholes, 다른 옵션군은 Monte Carlo를 쓰는 것이 회계정책상 괜찮을까요?</p>
+
+<p><span class="role">Auditor:</span><br>
+Yes, as long as the policy is applied consistently and the model selection is based on the nature of the instrument.</p>
+<p class="translation">회계감사인: 네. 다만 정책이 일관되게 적용되어야 하고, 모델 선택 근거가 상품 특성에 기반해야 합니다.</p>
+
+<p><span class="role">Junior Staff:</span><br>
+So we should not switch models just to get a better number?</p>
+<p class="translation">신입 직원: 그럼 더 유리한 숫자를 만들려고 모델을 바꾸면 안 되겠네요?</p>
+
+<p><span class="role">Auditor:</span><br>
+Correct. Model shopping would be a serious audit concern.</p>
+<p class="translation">회계감사인: 그렇습니다. 모델 쇼핑은 심각한 감사 이슈가 됩니다.</p>
+
+<p><span class="role">Head of Finance:</span><br>
+Then our policy memo should define which models apply to which structures, what data sources we use, and who reviews the output.</p>
+<p class="translation">재무팀장: 그러면 정책 메모에 어떤 구조에 어떤 모델을 쓰는지, 어떤 데이터 소스를 쓰는지, 누가 결과를 검토하는지까지 정의해야겠군요.</p>
+
+<p><span class="role">Auditor:</span><br>
+That would be a strong control framework. Include model change approval, threshold-based variance investigation, and end-of-period review signoff.</p>
+<p class="translation">회계감사인: 매우 좋은 통제 체계입니다. 모델 변경 승인, 중요 차이 분석 기준, 결산 시점 검토 승인도 포함하면 좋습니다.</p>
+
+<p><span class="role">Junior Staff:</span><br>
+Understood. So valuation is not just math—it’s process, evidence, and accountability.</p>
+<p class="translation">신입 직원: 이해했습니다. 결국 평가는 단순 계산이 아니라 프로세스, 증빙, 책임까지 포함하는 거네요.</p>
+
+<p><span class="role">Head of Finance:</span><br>
+Exactly. That’s the mindset we need across the team.</p>
+<p class="translation">재무팀장: 맞아요. 팀 전체가 그렇게 이해해야 합니다.</p>
+
+<hr>
+
+<p><span class="role">Korea Finance Manager:</span><br>
+We also prepare statutory financial statements under Korean IFRS. Does the conclusion change much?</p>
+<p class="translation">한국 재무매니저: 저희는 한국 법정재무제표도 K-IFRS로 작성하는데, 결론이 많이 달라지나요?</p>
+
+<p><span class="role">Technical Accounting Lead:</span><br>
+Not dramatically in many vanilla option cases, but the memo should cite K-IFRS instead of U.S. GAAP. Under K-IFRS, derivatives are also generally measured at fair value.</p>
+<p class="translation">기술회계 담당: 일반적인 옵션 거래라면 결론이 크게 달라지지는 않지만, 메모에는 US GAAP 대신 K-IFRS를 인용해야 합니다. K-IFRS에서도 파생상품은 일반적으로 공정가치로 측정합니다.</p>
+
+<p><span class="role">Korea Finance Manager:</span><br>
+Which standards should we reference specifically?</p>
+<p class="translation">한국 재무매니저: 구체적으로 어떤 기준서를 인용해야 하나요?</p>
+
+<p><span class="role">Technical Accounting Lead:</span><br>
+K-IFRS 1109 for recognition and measurement, K-IFRS 1032 for presentation, K-IFRS 1113 for fair value measurement, and K-IFRS 1107 for disclosures.</p>
+<p class="translation">기술회계 담당: 인식과 측정은 K-IFRS 1109호, 표시 분류는 1032호, 공정가치 측정은 1113호, 공시는 1107호를 보시면 됩니다.</p>
+
+<p><span class="role">Junior Staff:</span><br>
+So if we buy a call option under K-IFRS, the initial premium is still recognized as an asset?</p>
+<p class="translation">신입 직원: 그럼 K-IFRS에서도 콜옵션을 매입하면 최초 프리미엄은 자산으로 인식하는 건가요?</p>
+
+<p><span class="role">Technical Accounting Lead:</span><br>
+In normal cases, yes. If you write an option, the premium received typically results in a derivative liability at inception, subject to the exact terms.</p>
+<p class="translation">기술회계 담당: 일반적인 경우 그렇습니다. 반대로 옵션을 매도하면 수취 프리미엄은 통상 파생부채로 이어집니다. 다만 정확한 계약 조건은 봐야 합니다.</p>
+
+<p><span class="role">Korea Finance Manager:</span><br>
+And subsequent fair value changes go to profit or loss unless hedge accounting applies?</p>
+<p class="translation">한국 재무매니저: 그리고 이후 공정가치 변동은 헤지회계를 쓰지 않으면 손익으로 가는 거죠?</p>
+
+<p><span class="role">Technical Accounting Lead:</span><br>
+Yes, that is the usual answer under K-IFRS as well.</p>
+<p class="translation">기술회계 담당: 네, K-IFRS에서도 일반적으로 그렇게 보시면 됩니다.</p>
+
+<p><span class="role">Junior Staff:</span><br>
+What about hedge accounting under K-IFRS? Is it similar?</p>
+<p class="translation">신입 직원: K-IFRS 헤지회계도 비슷한가요?</p>
+
+<p><span class="role">Technical Accounting Lead:</span><br>
+Yes. If you designate a qualifying hedging relationship, you still need formal documentation at inception and ongoing assessment of whether the hedge relationship continues to qualify.</p>
+<p class="translation">기술회계 담당: 네. 적격 헤지관계를 지정하려면 최초 시점의 공식 문서화와 이후 지속적인 적격성 평가가 필요합니다.</p>
+
+<p><span class="role">Korea Finance Manager:</span><br>
+And for a cash flow hedge, the effective portion goes to OCI first?</p>
+<p class="translation">한국 재무매니저: 현금흐름 헤지라면 효과적인 부분은 먼저 OCI로 가는 거죠?</p>
+
+<p><span class="role">Technical Accounting Lead:</span><br>
+Correct. It is accumulated in equity through OCI and later reclassified when the hedged item affects profit or loss.</p>
+<p class="translation">기술회계 담당: 맞습니다. OCI를 통해 자본에 누적되었다가 헤지대상이 손익에 영향을 미치는 시점에 재분류됩니다.</p>
+
+<p><span class="role">Junior Staff:</span><br>
+Does K-IFRS say anything about which valuation model to use?</p>
+<p class="translation">신입 직원: K-IFRS가 어떤 평가모델을 쓰라고 정해주나요?</p>
+
+<p><span class="role">Technical Accounting Lead:</span><br>
+It does not mandate one single model for all cases. The key is to use an appropriate valuation technique, maximize observable inputs where possible, and apply the method consistently.</p>
+<p class="translation">기술회계 담당: 모든 경우에 하나의 모델만 쓰라고 하지는 않습니다. 중요한 것은 적절한 평가기법을 사용하고, 가능하면 관측가능한 입력값을 최대화하며, 그 방법을 일관되게 적용하는 것입니다.</p>
+
+<p><span class="role">Korea Finance Manager:</span><br>
+So using Black-Scholes for plain vanilla options and Monte Carlo for complex structures can be acceptable under K-IFRS too?</p>
+<p class="translation">한국 재무매니저: 그러면 일반 옵션은 Black-Scholes, 복잡한 구조는 Monte Carlo를 쓰는 것도 K-IFRS에서 가능하겠네요?</p>
+
+<p><span class="role">Technical Accounting Lead:</span><br>
+Yes, provided the model fits the economics of the instrument and the inputs are supportable.</p>
+<p class="translation">기술회계 담당: 네. 다만 모델이 상품의 경제적 실질에 맞아야 하고, 입력값도 뒷받침되어야 합니다.</p>
+
+<p><span class="role">Junior Staff:</span><br>
+Would broker marks be enough support for K-IFRS reporting?</p>
+<p class="translation">신입 직원: K-IFRS 결산에서도 브로커 평가값만 있으면 충분한가요?</p>
+
+<p><span class="role">Technical Accounting Lead:</span><br>
+Usually no. Broker marks are helpful as corroborative evidence, but management remains responsible for the final fair value and the related controls.</p>
+<p class="translation">기술회계 담당: 보통은 아닙니다. 브로커 값은 보강 증빙으로는 유용하지만, 최종 공정가치와 관련 통제의 책임은 경영진에게 있습니다.</p>
+
+<p><span class="role">Korea Finance Manager:</span><br>
+So for our Korean audit file, we should prepare a separate valuation memo that references K-IFRS terminology and disclosures?</p>
+<p class="translation">한국 재무매니저: 그럼 한국 감사 파일에는 K-IFRS 용어와 공시 요구사항을 반영한 별도의 valuation memo를 준비해야겠네요?</p>
+
+<p><span class="role">Technical Accounting Lead:</span><br>
+Exactly. The economics may be similar, but the technical memo, standard references, disclosure checklist, and hedge documentation should be aligned to K-IFRS.</p>
+<p class="translation">기술회계 담당: 맞습니다. 경제적 실질은 유사할 수 있지만 기술 메모, 기준서 인용, 공시 체크리스트, 헤지 문서는 K-IFRS에 맞춰 정리해야 합니다.</p>
+
+<p><span class="role">Head of Finance:</span><br>
+That means our group policy should include both frameworks—U.S. GAAP for reporting to headquarters and K-IFRS for local statutory reporting.</p>
+<p class="translation">재무팀장: 그렇다면 그룹 회계정책에는 본사용 US GAAP과 국내 법정용 K-IFRS를 모두 반영해야겠군요.</p>
+
+<p><span class="role">Technical Accounting Lead:</span><br>
+Yes, and where the accounting outcome is similar, the policy should still explain the framework-specific references and disclosure requirements.</p>
+<p class="translation">기술회계 담당: 네. 그리고 회계 결과가 유사하더라도, 각 프레임워크별 기준서 인용과 공시 요구사항은 따로 설명해야 합니다.</p>
+
+</div>
+
+<h2>5 K-IFRS Practical Notes</h2>
+
+<div class="questions">
+<ul>
+  <li>K-IFRS 메모에는 최소한 K-IFRS 1109, 1032, 1113, 1107을 기준서 축으로 명시한다.</li>
+  <li>단순 옵션은 Black-Scholes, 복잡 옵션은 Monte Carlo 등으로 구분할 수 있지만, 핵심은 “모델 이름”보다 “상품 적합성 + 입력값 통제 + 일관성”이다.</li>
+  <li>브로커 valuation은 참고자료 및 대사자료로는 유용하지만, 내부 valuation control을 대체하지는 못한다.</li>
+  <li>현금흐름 헤지라면 OCI 누적 및 재분류 시점을 문서화해야 하고, 옵션의 time value 처리도 지정 방식에 따라 구분 검토가 필요하다.</li>
+  <li>한국 감사 대응용으로는 기준서 인용, valuation memo, fair value hierarchy 판단, disclosure checklist를 별도로 갖추는 것이 좋다.</li>
+</ul>
+</div>
+
+<h2>6 Discussion Questions</h2>
+
+<div class="questions">
+<ul>
+  <li>Should broker statements be treated as accounting evidence or only as supporting reference?</li>
+  <li>When would Black-Scholes no longer be sufficient for fair value measurement?</li>
+  <li>What controls should a finance team maintain over internally developed valuation models?</li>
+  <li>What additional documentation is required when hedge accounting is applied?</li>
+  <li>How should a company evaluate whether OCI treatment is appropriate in a cash flow hedge?</li>
+  <li>What should be different in a K-IFRS memo versus a U.S. GAAP memo, even if the economics are similar?</li>
+</ul>
+</div>
+
+<div class="back">
+  <a href="../">← Back to Home</a>
+  <a href="../biz.html">← Back to Articles</a>
+</div>
+
+</div>
+
+<footer>
+  © <span id="year"></span> Cha GPTs. All rights reserved.
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

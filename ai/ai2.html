@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>AI OCR Accounting Platform</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand&display=swap" rel="stylesheet" />
+
+<style>
+body {
+  font-family: 'Quicksand', sans-serif;
+  background:
+    linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
+    url("../verse.png") no-repeat center center / cover;
+  padding: 60px 20px;
+}
+
+.container {
+  max-width: 980px;
+  margin: auto;
+  background: rgba(255,255,255,0.95);
+  padding: 50px 60px;
+  border-radius: 28px;
+}
+
+h1, h2, h3 {
+  font-family: 'Baloo 2', cursive;
+}
+
+h1 {
+  margin-bottom: 28px;
+  line-height: 1.2;
+}
+
+h2 {
+  margin-top: 50px;
+  margin-bottom: 16px;
+}
+
+h3 {
+  margin-top: 28px;
+  margin-bottom: 10px;
+}
+
+p {
+  line-height: 1.8;
+  margin-bottom: 14px;
+  font-size: 15px;
+}
+
+ul {
+  margin-left: 20px;
+  margin-bottom: 18px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 14px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 14px;
+  vertical-align: top;
+}
+
+th {
+  background: #f2f2f2;
+  font-weight: 600;
+}
+
+.highlight {
+  background: #f7f7f7;
+  padding: 22px 26px;
+  border-radius: 18px;
+  margin: 24px 0;
+  font-size: 14px;
+}
+
+.questions {
+  background: #f7f7f7;
+  padding: 25px 30px;
+  border-radius: 18px;
+  margin-top: 30px;
+}
+
+.link-block {
+  background: #eef2f7;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+.link-block a {
+  color: #1a0dab;
+  text-decoration: underline;
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  background: #f7f7f7;
+  border: 1px solid #e7e7e7;
+  margin: 4px 6px 6px 0;
+}
+
+.codeblock {
+  background: #0f172a;
+  color: #e5e7eb;
+  padding: 16px 18px;
+  border-radius: 14px;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.65;
+  margin: 16px 0 22px 0;
+}
+
+.small {
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+/* Dialogue */
+.dialogue {
+  background: #fafafa;
+  padding: 26px 30px;
+  border-radius: 18px;
+  margin-top: 25px;
+  font-size: 14px;
+  border: 1px solid #eee;
+}
+
+.dialogue .meta {
+  font-size: 13px;
+  opacity: 0.85;
+  margin-bottom: 12px;
+}
+
+.turn {
+  margin: 14px 0;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: #ffffff;
+  border: 1px solid #efefef;
+}
+
+.role {
+  font-weight: 700;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.role.dev { color: #1f4b99; }
+.role.acc { color: #0b6b3a; }
+.role.pm  { color: #7a3bb2; }
+.role.it  { color: #8a4d00; }
+
+.turn p {
+  margin: 6px 0 0 0;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.back {
+  text-align: center;
+  margin-top: 55px;
+}
+
+.back a {
+  display: inline-block;
+  padding: 12px 26px;
+  background: #333;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 6px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 13px;
+  background: rgba(255,255,255,0.75);
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 20px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 30px 24px;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+  <h1>
+    AI OCR Accounting Platform (Local-Only, No Paid APIs)
+  </h1>
+
+  <p>
+    This plan outlines a 24-week build for an end-to-end accounting automation system:
+    Receipt/PDF upload → OCR → AI-assisted extraction & classification → draft journal entries →
+    approval/posting → ledger updates → automated financial statements (BS/IS/CF).
+  </p>
+
+  <div class="highlight">
+    <p style="margin:0;">
+      <strong>Target Environment:</strong> Ubuntu + Docker + Node.js + MongoDB + Ollama (local LLM) + Tesseract OCR<br />
+      <strong>Cost Policy:</strong> No paid APIs. No external AI inference. Everything runs locally.
+    </p>
+  </div>
+
+  <div class="link-block">
+    <p style="margin-bottom:10px;"><strong>Tech Stack (Free)</strong></p>
+    <span class="badge">Node.js (API)</span>
+    <span class="badge">Worker + Queue (optional Redis)</span>
+    <span class="badge">MongoDB</span>
+    <span class="badge">Ollama (Local LLM)</span>
+    <span class="badge">Tesseract OCR</span>
+    <span class="badge">Poppler (PDF → Image)</span>
+    <span class="badge">Docker Compose</span>
+    <span class="badge">GitHub + GitHub Actions</span>
+    <p style="margin-top:12px; margin-bottom:0;">
+      <em>Note:</em> Hugging Face can be used only as a model repository (download), not as an inference API.
+    </p>
+  </div>
+
+  <h2>Milestones at a Glance</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Month</th>
+        <th>Main Goal</th>
+        <th>Milestone Output</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Month 1</td>
+        <td>Accounting core engine (double-entry)</td>
+        <td>Manual journal entries → Trial Balance → BS/IS (v1)</td>
+      </tr>
+      <tr>
+        <td>Month 2</td>
+        <td>Upload + OCR pipeline</td>
+        <td>Upload → OCR → extracted fields → review/correction</td>
+      </tr>
+      <tr>
+        <td>Month 3</td>
+        <td>Local AI classification + draft journal entries</td>
+        <td>Receipt → OCR → classify → draft JE → approve → post</td>
+      </tr>
+      <tr>
+        <td>Month 4</td>
+        <td>Close & statements (BS/IS/CF) + drill-down</td>
+        <td>Period close + BS/IS/CF + drill-down reports</td>
+      </tr>
+      <tr>
+        <td>Month 5</td>
+        <td>Reliability, security, metrics, accuracy loop</td>
+        <td>Queue + roles + measurable automation/accuracy improvement</td>
+      </tr>
+      <tr>
+        <td>Month 6</td>
+        <td>Packaging, demo, testing, documentation</td>
+        <td>One-command deploy + end-to-end demo + docs</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ========================================================= -->
+  <!-- ENGLISH MATERIAL (AFTER: "But we have zero training data") -->
+  <!-- ========================================================= -->
+  <h2>English Reference Notes — “What if We Have Zero Training Data?”</h2>
+
+  <div class="highlight">
+    <p style="margin:0;">
+      <strong>Core point:</strong> You can start with <strong>training data = 0</strong> and still deliver a usable MVP by combining:
+      (1) OCR + rule-based extraction with confidence scoring, (2) accounting review only for low-confidence fields,
+      (3) merchant-to-account mappings as the primary classifier, (4) local LLM only for ambiguous cases, and
+      (5) “draft-only + approval required” posting workflow, while storing all corrections/rejections to improve rules and mappings over time.
+    </p>
+  </div>
+
+  <h3>1) Why This Works Without Training</h3>
+  <ul>
+    <li><strong>Extraction is mostly deterministic:</strong> totals, dates, VAT, and payment indicators can be found via regex + validation rules.</li>
+    <li><strong>Classification can be policy-driven:</strong> merchant mapping tables often outperform LLMs for stability and consistency.</li>
+    <li><strong>LLM is used as a helper, not a source of truth:</strong> only for “unknown” or ambiguous cases, and always behind schema validation.</li>
+    <li><strong>Safety comes from workflow:</strong> the system generates draft journal entries; humans approve and post.</li>
+    <li><strong>Accuracy improves through operations:</strong> every correction becomes a “signal” to refine rules, mappings, and prompts.</li>
+  </ul>
+
+  <h3>2) MVP Flow (Safe When Training Data = 0)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Step</th>
+        <th>What the System Does</th>
+        <th>Why It’s Safe</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>OCR</td>
+        <td>Convert PDF→image (Poppler), run Tesseract, store raw text.</td>
+        <td>No AI decisions; just text extraction.</td>
+      </tr>
+      <tr>
+        <td>Rule-based Field Extraction</td>
+        <td>Regex + validation → merchant/date/total/VAT/payment + confidence per field.</td>
+        <td>Deterministic; confidence indicates uncertainty.</td>
+      </tr>
+      <tr>
+        <td>Accounting Review (Selective)</td>
+        <td>Only route low-confidence fields to review UI; store corrections.</td>
+        <td>Humans fix uncertainty; reduced workload.</td>
+      </tr>
+      <tr>
+        <td>Classification (Tiered)</td>
+        <td>Tier 1: merchant mapping table. Tier 2: local LLM only when needed.</td>
+        <td>Stable rules first; LLM is fallback.</td>
+      </tr>
+      <tr>
+        <td>Draft Journal Entry</td>
+        <td>Create a balanced JE draft using templates; never auto-post.</td>
+        <td>Prevents incorrect posting; audit-ready.</td>
+      </tr>
+      <tr>
+        <td>Approve & Post</td>
+        <td>Accountant approves; system posts if period open; logs everything.</td>
+        <td>Controlled posting + period locks.</td>
+      </tr>
+      <tr>
+        <td>Improve Loop</td>
+        <td>Store corrections/rejections; update mappings/rules/prompts weekly.</td>
+        <td>Continuous accuracy improvement without model training.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>3) Concrete Example (One Receipt End-to-End)</h3>
+  <p class="small">
+    Example OCR text (Starbucks-like receipt):
+  </p>
+  <div class="codeblock"><pre>STARBUCKS KOREA
+2026-02-20  14:33
+AMERICANO T  4,500
+TOTAL        4,500
+VAT          409
+CARD         5678</pre></div>
+
+  <p><strong>3.1 Extracted Fields (Rule-Based + Confidence)</strong></p>
+  <div class="codeblock"><pre>{
+  "merchantName":  { "value": "STARBUCKS KOREA", "confidence": 0.92, "source": "top_lines" },
+  "transactionAt": { "value": "2026-02-20T14:33:00+09:00", "confidence": 0.85, "source": "regex_ymd_time" },
+  "totalAmount":   { "value": 4500, "confidence": 0.95, "source": "keyword_total" },
+  "vatAmount":     { "value": 409,  "confidence": 0.90, "source": "keyword_vat" },
+  "paymentMethod": { "value": "CARD","confidence": 0.80, "source": "keyword_card" },
+  "currency":      { "value": "KRW", "confidence": 0.99, "source": "default" }
+}</pre></div>
+
+  <p><strong>3.2 Review Routing Rule (Only When Needed)</strong></p>
+  <div class="codeblock"><pre>// Example routing logic
+needsReview =
+  (total.confidence   &lt; 0.75) ||
+  (transaction.confidence &lt; 0.75) ||
+  (merchant.confidence &lt; 0.70) ||
+  (vat.value == null) ||
+  (payment.confidence &lt; 0.70);</pre></div>
+
+  <p><strong>3.3 Merchant Mapping Table (Tier 1 Classifier)</strong></p>
+  <div class="codeblock"><pre>{
+  "merchantPattern": "STARBUCKS|스타벅스",
+  "defaultDebitAccount": "5100_MEALS",
+  "defaultCreditAccountByPayment": {
+    "CARD": "2105_CARD_CLEARING",
+    "CASH": "1101_CASH",
+    "TRANSFER": "1102_BANK"
+  },
+  "vatRule": "DEDUCTIBLE_IF_VAT_PRESENT",
+  "confidenceBoost": 0.25
+}</pre></div>
+
+  <p><strong>3.4 LLM Fallback (Tier 2 Only When Ambiguous)</strong></p>
+  <ul>
+    <li>Call the local LLM only if merchant mapping fails or required fields are uncertain.</li>
+    <li>Force strict JSON output, validate against schema, retry on invalid output; otherwise route to manual review.</li>
+  </ul>
+
+  <p><strong>3.5 Draft Journal Entry (Balanced, Not Posted Automatically)</strong></p>
+  <div class="codeblock"><pre>{
+  "status": "draft",
+  "date": "2026-02-20",
+  "documentId": "doc_001",
+  "lines": [
+    { "account": "5100_MEALS",        "debit": 4091, "credit": 0,    "memo": "STARBUCKS" },
+    { "account": "1350_INPUT_VAT",    "debit": 409,  "credit": 0,    "memo": "VAT" },
+    { "account": "2105_CARD_CLEARING","debit": 0,    "credit": 4500, "memo": "Corporate card" }
+  ],
+  "totals": { "debit": 4500, "credit": 4500 },
+  "proposedBy": { "method": "MERCHANT_MAPPING", "confidence": 0.92 }
+}</pre></div>
+
+  <h3>4) What Must Be Stored to Improve Without Training</h3>
+  <ul>
+    <li><strong>Extraction corrections:</strong> field-level “from → to”, user, timestamp, reason.</li>
+    <li><strong>Classification overrides:</strong> which account/category was changed and why.</li>
+    <li><strong>Rejection reasons:</strong> codes such as WRONG_MERCHANT / WRONG_VAT / WRONG_ACCOUNT / MISSING_DATE.</li>
+  </ul>
+
+  <p><strong>Example: classification override record</strong></p>
+  <div class="codeblock"><pre>{
+  "documentId": "doc_002",
+  "override": {
+    "from": { "debitAccount": "5100_MEALS" },
+    "to":   { "debitAccount": "5203_OFFICE_SUPPLIES" },
+    "reasonCode": "WRONG_ACCOUNT",
+    "by": "u_hana",
+    "at": "2026-02-21T04:02:00Z"
+  }
+}</pre></div>
+
+  <h3>5) Practical Success Criteria (Realistic Expectations)</h3>
+  <ul>
+    <li><strong>MVP success:</strong> reduces manual typing by extracting fields and generating balanced drafts.</li>
+    <li><strong>Safety:</strong> no auto-posting; approvals + audit trail + period locks are mandatory.</li>
+    <li><strong>Accuracy growth:</strong> merchant mapping coverage improves weekly; LLM is gradually used less.</li>
+  </ul>
+
+  <!-- ========================================================= -->
+  <!-- ROLE PLAY (ENGLISH) BASED ON THE ABOVE REFERENCE NOTES     -->
+  <!-- ========================================================= -->
+  <h2>Role Play — Dev, Accounting, PM Alignment (Based on the Notes Above)</h2>
+
+  <div class="dialogue">
+    <div class="meta">
+      <strong>Context:</strong> The team is concerned about starting with <em>zero training data</em>.
+      They agree on a safe MVP: rule-based extraction + selective review + merchant mapping first + LLM only for ambiguous cases + draft-only entries + approval required.
+    </div>
+
+    <div class="turn">
+      <span class="role pm">PM (Mina):</span>
+      <p>
+        We keep hearing the same concern: “We have no training data.” Before we commit, I want a clear plan
+        for how the MVP works safely from day one, and how it improves over time.
+      </p>
+    </div>
+
+    <div class="turn">
+      <span class="role dev">Developer (Alex):</span>
+      <p>
+        The MVP doesn’t depend on training. We’ll start deterministic:
+        OCR with Tesseract, then rule-based extraction for merchant/date/total/VAT/payment.
+        Every extracted field carries a confidence score. Only low-confidence fields go to accounting review.
+      </p>
+    </div>
+
+    <div class="turn">
+      <span class="role acc">Accounting Lead (Jisoo):</span>
+      <p>
+        I’m okay with that if the review is selective and fast. But I don’t want a system that posts entries automatically.
+        Drafting is fine; posting must be a deliberate action with audit logs.
+      </p>
+    </div>
+
+    <div class="turn">
+      <span class="role dev">Developer (Alex):</span>
+      <p>
+        Agreed. We’ll do “draft-only” journal entries by default. The system generates a balanced draft using templates,
+        but it never posts without an accountant’s approval. We’ll also enforce period locks so nothing posts to a closed month.
+      </p>
+    </div>
+
+    <div class="turn">
+      <span class="role it">IT/Security (Daniel):</span>
+      <p>
+        The other risk is unreliable AI. If you use an LLM at all, we need predictable outputs, schema validation,
+        and no external calls. Everything must run locally.
+      </p>
+    </div>
+
+    <div class="turn">
+      <span class="role dev">Developer (Alex):</span>
+      <p>
+        The LLM is strictly a fallback. First classification tier is a merchant mapping table that accounting can maintain:
+        “STARBUCKS → Meals”, “Korean Air → Travel”, etc. Only when mapping fails or the document is ambiguous do we call the local LLM.
+        Even then, it must output strict JSON, validated by schema, with retries; otherwise it routes back to manual review.
+      </p>
+    </div>
+
+    <div class="turn">
+      <span class="role acc">Senior Accountant (Hana):</span>
+      <p>
+        That merchant mapping table is the key. If it’s easy to update, our accuracy will jump quickly.
+        But I also want metrics: how often we correct totals, how often we override the suggested account,
+        and what the auto-approval rate is over time.
+      </p>
+    </div>
+
+    <div class="turn">
+      <span class="role dev">Developer (Alex):</span>
+      <p>
+        We’ll log everything: extraction confidence, corrections (from → to), classification confidence, overrides,
+        rejection reasons, and end-to-end processing time. Each correction becomes a signal:
+        if a merchant is frequently overridden, we update the mapping; if VAT is frequently missing, we improve the extraction rules.
+      </p>
+    </div>
+
+    <div class="turn">
+      <span class="role pm">PM (Mina):</span>
+      <p>
+        Let’s test with one receipt. Starbucks-like: total 4,500 KRW, VAT 409, paid by corporate card.
+        What happens in the system?
+      </p>
+    </div>
+
+    <div class="turn">
+      <span class="role dev">Developer (Alex):</span>
+      <p>
+        OCR extracts text. Rule-based extraction finds merchant/date/total/VAT/payment with confidence scores.
+        Because VAT is present and total is high-confidence, it likely skips review.
+        Merchant mapping matches STARBUCKS, so classification is stable. We generate a draft JE:
+        debit Meals net, debit Input VAT (if deductible), credit Card Clearing total.
+        Then accounting reviews and approves; only then can it post.
+      </p>
+    </div>
+
+    <div class="turn">
+      <span class="role acc">Accounting Lead (Jisoo):</span>
+      <p>
+        Great. One more constraint: VAT deductibility depends on our policy and document type.
+        If VAT is missing or unclear, the system must not guess silently. It must flag “VAT unknown” and require review.
+      </p>
+    </div>
+
+    <div class="turn">
+      <span class="role dev">Developer (Alex):</span>
+      <p>
+        We’ll implement that explicitly. If VAT is missing, or policy conditions aren’t met, we set VATUnknown=true and route to review.
+        We’ll keep the default conservative: require manual confirmation unless a known merchant mapping indicates consistent VAT behavior.
+      </p>
+    </div>
+
+    <div class="turn">
+      <span class="role it">IT/Security (Daniel):</span>
+      <p>
+        Reliability wise, OCR and LLM can fail. We need retries, idempotency, and no duplicates—especially around posting.
+      </p>
+    </div>
+
+    <div class="turn">
+      <span class="role dev">Developer (Alex):</span>
+      <p>
+        We’ll process documents via a queue (BullMQ/Redis recommended) with idempotent steps.
+        Posting requires a unique posting key so it cannot run twice even if a worker restarts.
+        Failures are logged and routed to a retry or manual review state.
+      </p>
+    </div>
+
+    <div class="turn">
+      <span class="role pm">PM (Mina):</span>
+      <p>
+        So the MVP definition is clear: no training required, no auto-posting, and accuracy improves via mapping + corrections.
+        Let’s lock that scope and build Month 2 (OCR + extraction + review) first, then Month 3 (mapping + LLM fallback + draft JE).
+      </p>
+    </div>
+  </div>
+
+  <h2>Suggested Discussion / Next Steps</h2>
+  <div class="questions">
+    <ul>
+      <li>Do we start with <strong>receipts only</strong> (recommended) and add invoices later?</li>
+      <li>Who owns the <strong>merchant mapping table</strong> updates (accounting lead vs shared ownership)?</li>
+      <li>What are the initial <strong>confidence thresholds</strong> for routing to review (e.g., 0.70 / 0.75)?</li>
+      <li>Should we build a minimal review UI in Month 2 (recommended) instead of API-only?</li>
+    </ul>
+  </div>
+
+  <div class="back">
+    <a href="../">← Back to Home</a>
+    <a href="../ai.html">← Back to Projects</a>
+  </div>
+
+</div>
+
+<footer>
+  © <span id="year"></span> Cha GPTs. All rights reserved.
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Article - Stripe API & Accounting Audit</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
+                        url("../verse.png") no-repeat center center / cover;
+            padding: 60px 20px;
+        }
+
+        .container {
+            max-width: 920px;
+            margin: auto;
+            background: rgba(255,255,255,0.95);
+            padding: 50px 60px;
+            border-radius: 28px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        h1, h2, h3 { font-family: 'Baloo 2', cursive; }
+        h1 { margin-bottom: 28px; color: #2c3e50; }
+        h2 { margin-top: 50px; margin-bottom: 16px; color: #34495e; }
+        h3 { margin-top: 35px; margin-bottom: 12px; }
+
+        p { line-height: 1.8; margin-bottom: 18px; font-size: 15px; }
+        ul { margin-left: 20px; margin-bottom: 22px; }
+        li { margin-bottom: 8px; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 28px 0;
+            font-size: 14px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px 14px;
+            vertical-align: top;
+        }
+
+        th { background: #f2f2f2; font-weight: 600; }
+
+        .note { font-size: 13px; color: #555; margin-top: 12px; border-left: 3px solid #3498db; padding-left: 10px; }
+
+        .highlight {
+            background: #f7f7f7;
+            padding: 22px 26px;
+            border-radius: 18px;
+            margin: 30px 0;
+            font-size: 14px;
+        }
+
+        .link-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+            border: 1px solid #eee;
+        }
+
+        .link-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        .category {
+            font-size: 0.75rem;
+            color: #3498db;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .link-title { font-size: 1.2rem; margin: 0 0 10px 0; font-family: 'Quicksand', sans-serif; font-weight: bold; }
+        .link-title a { color: #2c3e50; text-decoration: none; }
+        
+        .description { color: #666; margin-bottom: 12px; font-size: 14px; }
+        .url { font-size: 0.85rem; color: #999; word-break: break-all; }
+
+        .back { text-align: center; margin-top: 55px; }
+        .back a {
+            display: inline-block;
+            padding: 12px 26px;
+            background: #333;
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 14px;
+            margin: 6px;
+        }
+
+        footer {
+            text-align: center;
+            margin: 60px auto 20px;
+            font-size: 13px;
+            background: rgba(255,255,255,0.75);
+            display: block;
+            width: fit-content;
+            padding: 10px 18px;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Stripe Payment Intents API — Accounting & Audit Perspective</h1>
+        
+        <p class="note">
+            <strong>Disclaimer:</strong> This content is for educational purposes regarding English terminology and general API concepts. It does not constitute professional tax or legal advice.
+        </p>
+
+        <h2>Why Auditors Care About API Events</h2>
+        <p>
+            In modern digital business, auditors no longer just look at bank statements. They look at <strong>API logs</strong>. 
+            The primary reason is the <strong>Cut-off Principle</strong>: ensuring revenue is recorded in the correct fiscal period.
+        </p>
+
+        <div class="highlight">
+            <h3>The Danger of "Available" vs. "Created"</h3>
+            <p>If a company recognizes revenue based on when funds become <code>available</code> in the Stripe balance rather than when the <code>charge.succeeded</code> event occurs, several issues arise:</p>
+            <ul>
+                <li><strong>Deferred Revenue Errors:</strong> Funds often take 2-7 days to move from 'Pending' to 'Available'. A sale made on Dec 30th might not be 'Available' until Jan 2nd. Recognizing it in January understates December's revenue.</li>
+                <li><strong>Inaccurate Receivables:</strong> At year-end, money sitting in Stripe (not yet paid out) should be recorded as a <em>Receivable</em> or <em>Other Cash Equivalent</em>. Ignoring API timestamps leads to a messy balance sheet.</li>
+                <li><strong>Audit Risk:</strong> Auditors will flag this as a "systemic timing error," potentially leading to a qualified audit opinion.</li>
+            </ul>
+        </div>
+
+        <h2>IFRS 15: Five-Step Revenue Recognition Model</h2>
+
+        <h3>Step 1: Identify the Contract</h3>
+        <p>
+        A contract is established at order confirmation, creating enforceable rights and obligations between the customer and the merchant.
+        </p>
+        
+        <h3>Step 2: Identify the Performance Obligations</h3>
+        <p>
+        The merchant identifies distinct goods or services promised in the contract. 
+        In most online transactions, this is a single performance obligation: delivery of the product or service.
+        </p>
+        
+        <h3>Step 3: Determine the Transaction Price</h3>
+        <p>
+        The transaction price is the amount the merchant expects to be entitled to in exchange for fulfilling the performance obligation.
+        This is typically the charged amount, net of discounts, refunds, and variable consideration.
+        </p>
+        
+        <h3>Step 4: Allocate the Transaction Price</h3>
+        <p>
+        If multiple performance obligations exist, the transaction price is allocated based on relative standalone selling prices.
+        For simple transactions with one obligation, allocation is straightforward: 100% to that obligation.
+        </p>
+        
+        <h3>Step 5: Recognize Revenue</h3>
+        <p>
+        Revenue is recognized when control of the good or service transfers to the customer.
+        This typically aligns with <strong><code>charge.succeeded</code></strong>, the point at which the customer’s obligation is fulfilled
+        and the merchant’s right to payment is secured.
+        </p>
+
+
+        <h2>Learning Resources & Tools</h2>
+        
+        <div class="link-card">
+            <div class="category">Documentation</div>
+            <h2 class="link-title"><a href="https://docs.stripe.com/api" target="_blank">Stripe API Reference</a></h2>
+            <p class="description">created & available: Official guide for payment integration, customer management, and subscription logic.</p>
+            <div class="url">https://docs.stripe.com/api</div>
+        </div>
+
+        <div class="link-card">
+            <div class="category">YouTube Tutorial</div>
+            <h2 class="link-title"><a href="https://www.youtube.com/watch?v=GMXkC0Dk5Xg" target="_blank">Stripe Sales & Fees Calculation</a></h2>
+            <p class="description">Technical walkthrough on how to extract and reconcile sales and fee data from Stripe.</p>
+            <div class="url">https://www.youtube.com/watch?v=GMXkC0Dk5Xg</div>
+        </div>
+
+        <div class="link-card">
+            <div class="category">Tool</div>
+            <h2 class="link-title"><a href="https://coefficient.io/stripe/connect-stripe-to-excel" target="_blank">Stripe Data Connector</a></h2>
+            <p class="description">[Hash for numbering: completeness ] Connects Stripe API data directly to Excel/Google Sheets for financial reporting.</p>
+            <div class="url">https://coefficient.io/stripe/connect-stripe-to-excel</div>
+        </div>
+
+        <div class="link-card">
+            <div class="category">YouTube Tutorial</div>
+            <h2 class="link-title"><a href="https://www.youtube.com/watch?v=lrilhJ-jpPc&list=PLgRxBCVPaZ_269IOayEny-_aq0LUQ2fGl" target="_blank">Building Apps with Public APIs</a></h2>
+            <p class="description">공공데이터: A Flutter development series focusing on integrating various public data APIs into mobile apps.</p>
+            <div class="url">https://www.youtube.com/watch?v=lrilhJ-jpPc</div>
+        </div>
+
+        <div class="link-card">
+            <div class="category">Tool</div>
+            <h2 class="link-title"><a href="https://www.codepunker.com/tools/string-converter" target="_blank">String & Hash Utilities</a></h2>
+            <p class="description">Tools for converting strings and decoding hashes (MD5, SHA) used in API security.</p>
+            <div class="url">https://www.codepunker.com/tools/string-converter</div>
+            <div class="url">https://md5hashing.net/hash</div>
+        </div>
+
+        <h2>What Is an API? (The Accountant's Version)</h2>
+        <p>An <strong>API (Application Programming Interface)</strong> is the "digital paper trail" that records every financial event with a precise timestamp.</p>
+
+        <div class="highlight">
+            <p><strong>The API "Menu" Analogy:</strong><br>
+            • <strong>Request:</strong> Your system asks for a report.<br>
+            • <strong>Processing:</strong> Stripe's server verifies the data.<br>
+            • <strong>Response:</strong> You receive a JSON file containing the transaction details.</p>
+        </div>
+
+
+
+
+        <!-- Stripe Objects -->
+        <h2>Stripe API Objects Often Confused with Revenue</h2>
+        
+        <table>
+        <thead>
+        <tr>
+        <th>Stripe Object</th>
+        <th>Meaning</th>
+        <th>Revenue?</th>
+        <th>Reason</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>payment_intent.succeeded</td>
+        <td>Payment flow completed</td>
+        <td>❌</td>
+        <td>No settlement guarantee</td>
+        </tr>
+        <tr>
+        <td>balance.available</td>
+        <td>Withdrawable funds</td>
+        <td>❌</td>
+        <td>Cash timing only</td>
+        </tr>
+        <tr>
+        <td><strong>charge.created</strong></td>
+        <td>Legal charge established</td>
+        <td>⚠️</td>
+        <td>Authorization risk remains</td>
+        </tr>
+        <tr>
+        <td><strong>charge.succeeded</strong></td>
+        <td>Approved and settled</td>
+        <td>✅</td>
+        <td>Enforceable right exists</td>
+        </tr>
+        </tbody>
+        </table>
+        
+        <!-- Internal Discussion -->
+        <h2>Internal Discussion: Revenue Timing</h2>
+        
+        <div class="highlight">
+        <p><strong>Manager:</strong>  
+        Why are we recognizing revenue based on <code>balance.available</code>?</p>
+        
+        <p><strong>Staff:</strong>  
+        Because that’s when cash becomes available in Stripe.</p>
+        
+        <p><strong>Manager:</strong>  
+        Cash availability does not define revenue under IFRS 15.</p>
+        
+        <p><strong>Staff:</strong>  
+        Then what timing is more appropriate?</p>
+        
+        <p><strong>Manager:</strong>  
+        Revenue aligns more closely with
+        <code>charge.created</code> or <code>charge.succeeded</code>,
+        when the right to consideration exists.</p>
+        </div>
+        
+        <h2>One-Line Accounting Quiz</h2>
+
+            <p>
+            Based on the Stripe events below,
+            how would you record the <strong>journal entries</strong>?
+            </p>
+            
+            <div class="highlight">
+            <pre>
+            charge.succeeded        → ?
+            balance_transaction.fee → ?
+            payout.paid             → ?
+            </pre>
+            </div>
+            
+            <p class="note">
+            Assume a simple sale with no deferred revenue and a single performance obligation.
+            </p>
+
+        <h2>Sample Answer: Journal Entries</h2>
+
+        <div class="highlight">
+        <pre>
+        (1) When charge.succeeded
+        Dr. Accounts Receivable / Stripe Clearing
+            Cr. Revenue
+        
+        (2) When Stripe fee is recorded
+        Dr. Payment Processing Fee Expense
+            Cr. Accounts Receivable / Stripe Clearing
+        
+        (3) When payout.paid
+        Dr. Cash
+            Cr. Accounts Receivable / Stripe Clearing
+        </pre>
+        </div>
+        
+        <p class="note">
+        Stripe-related balances are often tracked using
+        a temporary <em>Stripe clearing account</em>
+        to reconcile charges, fees, and payouts.
+        Under US GAAP, accounts receivable arises only from a customer.
+Stripe is a payment processor acting as an agent, so the balance should be classified as a payment processor receivable, not accounts receivable.    
+        </p>
+
+        <div class="back">
+            <a href="../">← Back to Home</a>
+            <a href="../biz.html">← Back to Articles</a>
+        </div>
+        
+        </div>
+
+    </div>
+
+
+
+
+    
+    <footer>
+        © <span id="year"></span> Cha GPTs. All rights reserved.
+    </footer>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

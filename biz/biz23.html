@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI OCR Accounting Study Case</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Quicksand', sans-serif;
+  background:
+    linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
+    url("../verse.png") no-repeat center center / cover;
+  padding: 60px 20px;
+}
+
+.container {
+  max-width: 920px;
+  margin: auto;
+  background: rgba(255,255,255,0.95);
+  padding: 50px 60px;
+  border-radius: 28px;
+}
+
+h1, h2, h3 {
+  font-family: 'Baloo 2', cursive;
+}
+
+h1 { margin-bottom: 28px; }
+
+h2 {
+  margin-top: 50px;
+  margin-bottom: 16px;
+}
+
+p {
+  line-height: 1.8;
+  margin-bottom: 18px;
+  font-size: 15px;
+}
+
+ul { margin-left: 20px; margin-bottom: 22px; }
+li { margin-bottom: 8px; }
+
+.highlight {
+  background: #f7f7f7;
+  padding: 22px 26px;
+  border-radius: 18px;
+  margin: 30px 0;
+  font-size: 14px;
+}
+
+.dialogue {
+  background: #fafafa;
+  padding: 26px 30px;
+  border-radius: 18px;
+  margin-top: 25px;
+  font-size: 14px;
+  border: 1px solid #eee;
+}
+
+.dialogue h3 { margin-top: 0; margin-bottom: 12px; }
+
+.role { font-weight: 600; }
+
+.translation {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed #ddd;
+}
+
+.translation h4 {
+  margin: 0 0 10px 0;
+  font-family: 'Baloo 2', cursive;
+  font-size: 15px;
+}
+
+.back {
+  text-align: center;
+  margin-top: 55px;
+}
+
+.back a {
+  display: inline-block;
+  padding: 12px 26px;
+  background: #333;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 6px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 13px;
+  background: rgba(255,255,255,0.75);
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>AI OCR Accounting Automation  
+— English Study Case</h1>
+
+<p>
+This study case simulates a real discussion between an accounting team and a programmer.
+The team wants to build a simple AI OCR system that can read receipt images and classify expenses automatically.
+</p>
+
+<div class="highlight">
+<p><b>Study Goal</b></p>
+<p>
+Practice workplace English while discussing AI automation, OCR technology, and accounting workflow improvements.
+</p>
+</div>
+
+<h2>1 Manager Introduces the AI Idea</h2>
+
+<div class="dialogue">
+<h3>Scene 1</h3>
+
+<p><span class="role">Finance Manager:</span>
+Our accounting team spends too much time entering receipt data manually. Every day we receive many receipts from employees, and someone has to type the vendor and the amount into the system. I recently heard that AI OCR technology can read text from images automatically. I wonder if we could experiment with a simple OCR prototype.</p>
+
+<p><span class="role">Programmer:</span>
+That is definitely possible. OCR technology can recognize text inside images and convert it into digital data. We could build a simple prototype that reads receipts and extracts the price. Once we have the text data, we can connect it to the accounting system.</p>
+
+<div class="translation">
+<h4>Korean Translation</h4>
+
+<p><span class="role">재무팀장:</span>
+우리 회계팀은 영수증 데이터를 수동으로 입력하는 데 너무 많은 시간을 쓰고 있습니다. 매일 직원들이 제출하는 영수증이 많고, 누군가는 거래처와 금액을 시스템에 입력해야 합니다. AI OCR 기술이 이미지에서 글자를 읽을 수 있다고 들었습니다. 간단한 OCR 프로토타입을 만들어 볼 수 있을까요?</p>
+
+<p><span class="role">개발자:</span>
+충분히 가능합니다. OCR 기술은 이미지 속 글자를 인식하여 디지털 데이터로 변환합니다. 영수증을 읽고 금액을 추출하는 간단한 시스템을 만들 수 있습니다. 그 데이터를 회계 시스템과 연결할 수도 있습니다.</p>
+</div>
+
+</div>
+
+<h2>2 Testing a Coffee Receipt</h2>
+
+<div class="dialogue">
+<h3>Scene 2</h3>
+
+<p><span class="role">Accountant:</span>
+I tested the system using a receipt from Starbucks. The image clearly shows “Starbucks $1,000,000,000”. However, the system detected the amount as only “$1”. If this error appears in real accounting data, it could create serious problems.</p>
+
+<p><span class="role">Programmer:</span>
+The OCR probably read the text correctly, but the amount extraction logic is incorrect. It is likely caused by a weak regular expression pattern. The system probably stops reading the number when it encounters a comma. We need to improve the pattern so it supports large numbers.</p>
+
+<div class="translation">
+<h4>Korean Translation</h4>
+
+<p><span class="role">회계담당자:</span>
+스타벅스 영수증으로 테스트를 했습니다. 이미지에는 “Starbucks $1,000,000,000”이라고 명확히 보입니다. 그런데 시스템은 금액을 "$1"로만 인식했습니다. 실제 회계 데이터에서 이런 오류가 발생하면 큰 문제가 될 수 있습니다.</p>
+
+<p><span class="role">개발자:</span>
+OCR 자체는 제대로 읽었을 가능성이 높습니다. 문제는 금액을 추출하는 로직에 있습니다. 정규식 패턴이 콤마를 처리하지 못하기 때문에 숫자를 중간에서 멈춘 것입니다. 더 강력한 패턴으로 수정해야 합니다.</p>
+</div>
+
+</div>
+
+<h2>3 Fixing the Regex Pattern</h2>
+
+<div class="dialogue">
+<h3>Scene 3</h3>
+
+<p><span class="role">Programmer:</span>
+Currently the system probably uses a simple pattern like this:</p>
+
+<pre>/\$?\d+/</pre>
+
+<p>
+This pattern only reads the first sequence of digits. We should replace it with a better pattern such as:
+</p>
+
+<pre>/\$?\d{1,3}(,\d{3})*(\.\d+)?/</pre>
+
+<p>
+This version can detect commas and decimal values.
+</p>
+
+<div class="translation">
+<h4>Korean Translation</h4>
+
+<p>
+현재 시스템은 다음과 같은 간단한 정규식을 사용하고 있을 가능성이 높습니다.
+</p>
+
+<p>
+이 패턴은 숫자의 첫 부분만 읽습니다. 따라서 콤마가 나오면 인식을 멈춥니다.
+</p>
+
+<p>
+대신 아래와 같은 패턴을 사용하면 큰 숫자와 소수점까지 인식할 수 있습니다.
+</p>
+</div>
+
+</div>
+
+<h2>4 Expense Classification</h2>
+
+<div class="dialogue">
+<h3>Scene 4</h3>
+
+<p><span class="role">Accountant:</span>
+If the receipt vendor is Starbucks, it usually means employees bought coffee during work hours. In accounting, we normally record that as Employee Welfare Expense. However, sometimes coffee is purchased during meetings with clients. In those situations, the expense should be classified as Entertainment Expense.</p>
+
+<p><span class="role">Programmer:</span>
+Then the system should suggest a default category but still allow manual changes. When the vendor name is Starbucks, we can automatically suggest Employee Welfare Expense. However, the accountant can still change the account if necessary. This approach balances automation and human judgment.</p>
+
+<div class="translation">
+<h4>Korean Translation</h4>
+
+<p><span class="role">회계담당자:</span>
+거래처가 스타벅스라면 보통 직원들이 근무 중 커피를 산 경우입니다. 회계에서는 일반적으로 복리후생비로 처리합니다. 하지만 거래처와 미팅 중에 커피를 구매한 경우도 있습니다. 그런 경우에는 접대비로 처리해야 합니다.</p>
+
+<p><span class="role">개발자:</span>
+그렇다면 시스템이 기본 계정을 추천하되 변경할 수 있도록 해야 합니다. 스타벅스가 인식되면 복리후생비를 기본으로 제안할 수 있습니다. 하지만 회계 담당자가 필요하면 계정을 변경할 수 있어야 합니다. 이렇게 하면 자동화와 사람의 판단을 모두 활용할 수 있습니다.</p>
+
+</div>
+
+</div>
+
+<h2>5 Automatic Journal Entry</h2>
+
+<div class="dialogue">
+<h3>Scene 5</h3>
+
+<p><span class="role">Accountant:</span>
+If the OCR result and account classification are both correct, we could automate journal entries. That would reduce the manual workload for our accounting team. Instead of typing each entry, accountants would only review the result. This could save a lot of time.</p>
+
+<p><span class="role">Programmer:</span>
+Yes, the system could automatically generate a journal entry. For example, if employees bought coffee, the entry might debit Employee Welfare Expense and credit Accounts Payable. The accountant would then review the entry before posting it. This is a common approach in AI-assisted accounting systems.</p>
+
+<div class="translation">
+<h4>Korean Translation</h4>
+
+<p><span class="role">회계담당자:</span>
+OCR 결과와 계정 분류가 정확하다면 자동 분개도 가능할 것입니다. 그러면 회계팀의 수작업이 크게 줄어듭니다. 회계사는 데이터를 입력하는 대신 결과를 검토만 하면 됩니다. 업무 시간을 많이 절약할 수 있을 것입니다.</p>
+
+<p><span class="role">개발자:</span>
+맞습니다. 시스템이 자동으로 분개를 생성할 수 있습니다. 예를 들어 직원 커피라면 복리후생비 차변, 미지급금 대변으로 분개할 수 있습니다. 회계 담당자는 게시 전에 분개를 검토하면 됩니다. 많은 AI 회계 시스템이 이런 방식으로 작동합니다.</p>
+
+</div>
+
+</div>
+
+<h2>Discussion Questions</h2>
+
+<ul>
+<li>Why did the OCR system detect only "$1" instead of "$1,000,000,000"?</li>
+<li>How does a regular expression affect price detection?</li>
+<li>Why should accountants still review AI results?</li>
+<li>What accounting categories could apply to coffee receipts?</li>
+<li>How could AI change accounting work in the future?</li>
+</ul>
+
+<div class="back">
+<a href="../">← Back to Home</a>
+</div>
+
+</div>
+
+<footer>
+© <span id="year"></span> AI OCR Accounting Study
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

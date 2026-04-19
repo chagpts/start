@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AWS English Study </title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Quicksand', sans-serif;
+  background:
+    linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
+    url("../verse.png") no-repeat center center / cover;
+  padding: 60px 20px;
+}
+
+.container {
+  max-width: 920px;
+  margin: auto;
+  background: rgba(255,255,255,0.95);
+  padding: 50px 60px;
+  border-radius: 28px;
+}
+
+h1, h2, h3 {
+  font-family: 'Baloo 2', cursive;
+}
+
+h1 {
+  margin-bottom: 28px;
+}
+
+h2 {
+  margin-top: 50px;
+  margin-bottom: 16px;
+}
+
+p {
+  line-height: 1.8;
+  margin-bottom: 18px;
+  font-size: 15px;
+}
+
+ul {
+  margin-left: 20px;
+  margin-bottom: 22px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 28px 0;
+  font-size: 14px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 14px;
+  vertical-align: top;
+}
+
+th {
+  background: #f2f2f2;
+  font-weight: 600;
+}
+
+.highlight {
+  background: #f7f7f7;
+  padding: 22px 26px;
+  border-radius: 18px;
+  margin: 30px 0;
+  font-size: 14px;
+}
+
+.questions {
+  background: #f7f7f7;
+  padding: 25px 30px;
+  border-radius: 18px;
+  margin-top: 30px;
+}
+
+.link-block {
+  background: #eef2f7;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+.link-block a {
+  color: #1a0dab;
+  text-decoration: underline;
+}
+
+.dialogue {
+  background: #fafafa;
+  padding: 26px 30px;
+  border-radius: 18px;
+  margin-top: 25px;
+  font-size: 14px;
+}
+
+.role {
+  font-weight: 600;
+}
+
+.back {
+  text-align: center;
+  margin-top: 55px;
+}
+
+.back a {
+  display: inline-block;
+  padding: 12px 26px;
+  background: #333;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 6px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 13px;
+  background: rgba(255,255,255,0.75);
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 20px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 30px 24px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>AWS English Study
+— Cloud Computing Basics in English</h1>
+
+<div class="link-block">
+  <p><strong>Useful References (Optional)</strong></p>
+  <p>
+    <a href="https://aws.amazon.com/what-is-aws/" target="_blank" rel="noreferrer noopener">
+      AWS: What is AWS?
+    </a>
+  </p>
+  <p>
+    <a href="https://aws.amazon.com/products/" target="_blank" rel="noreferrer noopener">
+      AWS Products Overview
+    </a>
+  </p>
+  <p>
+    <a href="https://aws.amazon.com/getting-started/" target="_blank" rel="noreferrer noopener">
+      Getting Started with AWS
+    </a>
+  </p>
+  <p>
+    Tip: Skim the pages for key terms like EC2, S3, and Regions.
+  </p>
+</div>
+
+<h2>What is AWS?</h2>
+
+<p>
+AWS (Amazon Web Services) is a cloud computing platform provided by Amazon.
+Instead of buying physical servers, companies can rent computing resources using the internet.
+</p>
+
+<ul>
+  <li>servers</li>
+  <li>storage</li>
+  <li>databases</li>
+  <li>networking</li>
+  <li>AI tools</li>
+</ul>
+
+<div class="highlight">
+<p>
+AWS is widely used because it helps businesses build and run services faster, scale more easily, and reduce the burden of managing hardware.
+</p>
+</div>
+
+<h2>Part 1 – Warm-up </h2>
+
+<div class="questions">
+<ul>
+  <li>Have you ever used cloud services?</li>
+  <li>Why do companies move to the cloud?</li>
+  <li>Do you think cloud is cheaper than owning servers?</li>
+</ul>
+</div>
+
+<div class="highlight">
+<p><strong>Useful Expressions</strong></p>
+<ul>
+  <li>"I think cloud is useful because..."</li>
+  <li>"In my experience..."</li>
+  <li>"It depends on..."</li>
+</ul>
+</div>
+
+<h2>Part 2 – Core Reading </h2>
+
+<h3>Reading Passage</h3>
+
+<p>
+AWS provides on-demand IT resources through a pay-as-you-go model.
+</p>
+
+<p>
+For example, if a company needs a server for only one week, they can rent it from AWS and shut it down later.
+They do not need to maintain hardware.
+</p>
+
+<p>
+AWS also offers global infrastructure.
+Companies can run applications in many regions around the world to reduce latency and improve user experience.
+</p>
+
+<p>
+Security and scalability are major benefits.
+Businesses can grow quickly without rebuilding their systems.
+</p>
+
+<h3>Comprehension Questions</h3>
+
+<div class="questions">
+<ul>
+  <li>What payment model does AWS use?</li>
+  <li>Why is global infrastructure important?</li>
+  <li>What are two major benefits mentioned?</li>
+</ul>
+</div>
+
+<h2>Part 3 – Key Services Vocabulary </h2>
+
+<table>
+<thead>
+<tr>
+  <th>Category</th>
+  <th>Service / Term</th>
+  <th>Meaning (Simple English)</th>
+  <th>Example Sentence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Compute</td>
+  <td>
+    <a href="https://aws.amazon.com/ec2/" target="_blank">
+      <strong>EC2</strong>
+    </a> (virtual servers)
+  </td>
+  <td>Rent a server to run apps</td>
+  <td>We use EC2 to run our web application.</td>
+</tr>
+<tr>
+  <td>Storage</td>
+  <td>
+    <a href="https://aws.amazon.com/s3/" target="_blank">
+      <strong>S3</strong>
+    </a> (object storage)
+  </td>
+  <td>Store files and data</td>
+  <td>S3 is good for storing images and backups.</td>
+</tr>
+<tr>
+  <td>Database</td>
+  <td>
+    <a href="https://aws.amazon.com/rds/" target="_blank">
+      <strong>RDS</strong>
+    </a> (managed database)
+  </td>
+  <td>A database you don’t manage yourself</td>
+  <td>RDS helps us manage a relational database easily.</td>
+</tr>
+<tr>
+  <td>Networking</td>
+  <td>
+    <a href="https://aws.amazon.com/vpc/" target="_blank">VPC</a> /
+    <a href="https://aws.amazon.com/elasticloadbalancing/" target="_blank">Load Balancer</a> /
+    <a href="https://aws.amazon.com/cloudfront/" target="_blank">CDN</a>
+  </td>
+  <td>Connect services and handle traffic</td>
+  <td>A load balancer distributes traffic to multiple servers.</td>
+</tr>
+</tbody>
+</table>
+
+<div class="highlight">
+<p><strong>Practice</strong> (Speak and write)</p>
+<ul>
+  <li>"We use EC2 to..."</li>
+  <li>"S3 is good for..."</li>
+  <li>"RDS helps us..."</li>
+</ul>
+</div>
+
+<h2>Part 4 – How Companies Use AWS </h2>
+
+<p>
+Many companies migrate to AWS to reduce cost, deploy faster, and scale globally.
+Startups love AWS because they can launch services without large upfront investment.
+</p>
+
+<div class="questions">
+<ul>
+  <li>Why would a startup prefer AWS?</li>
+  <li>What is one benefit for global companies?</li>
+</ul>
+</div>
+
+<h2>Part 5 – Dialogue Practice </h2>
+
+<p><strong>Situation:</strong> A manager asks why the team should move to AWS.</p>
+
+<div class="dialogue"> 
+  <p><span class="role">Manager (Finance):</span> Why are you auditing our AWS environment?</p> 
+  <p><span class="role">IT Auditor:</span> Because your financial data is generated from systems hosted in AWS. We need to verify the reliability of the controls.</p> 
+  <p><span class="role">Manager:</span> But the numbers look correct. Why is this necessary?</p> 
+  <p><span class="role">IT Auditor:</span> Even if the numbers look fine, weak access or change controls can make the reports unreliable.</p> 
+  <p><span class="role">Manager:</span> What areas are you focusing on?</p> 
+  <p><span class="role">IT Auditor:</span> We are reviewing user access, change management, backups, and security monitoring.</p> 
+</div> <div class="highlight"> 
+  <p><strong>Key Expressions</strong></p> 
+  <ul> 
+    <li>We need audit evidence.</li> 
+    <li>We must rely on system controls.</li> <li>Who has access to production?</li> 
+    <li>Is there an approval record?</li> 
+  </ul> 
+</div>
+
+<h2>Part 6 – Important Terms </h2>
+
+<table>
+<thead>
+<tr>
+  <th>Term</th>
+  <th>Meaning</th>
+  <th>Try explaining in English</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>cloud computing</td>
+  <td>Using computing resources over the internet</td>
+  <td>Cloud computing means...</td>
+</tr>
+<tr>
+  <td>scalability</td>
+  <td>Ability to grow or shrink resources easily</td>
+  <td>Scalability is important because...</td>
+</tr>
+<tr>
+  <td>availability</td>
+  <td>System is up and running</td>
+  <td>High availability means...</td>
+</tr>
+<tr>
+  <td>region / availability zone</td>
+  <td>Geographic areas / isolated data centers</td>
+  <td>A region is..., an AZ is...</td>
+</tr>
+<tr>
+  <td>pay-as-you-go</td>
+  <td>Pay only for what you use</td>
+  <td>Pay-as-you-go means...</td>
+</tr>
+<tr>
+  <td>migration</td>
+  <td>Moving systems to the cloud</td>
+  <td>Migration is when...</td>
+</tr>
+<tr>
+  <td>deployment</td>
+  <td>Releasing software to users</td>
+  <td>Deployment happens when...</td>
+</tr>
+</tbody>
+</table>
+
+<h2>Part 7 – Real Business Reading </h2>
+
+<p>
+Cloud adoption is accelerating across industries.
+Enterprises are modernizing legacy systems and using managed services to innovate faster.
+</p>
+
+<p>
+AWS supports automation, monitoring, and analytics,
+helping companies focus on business value instead of infrastructure management.
+</p>
+
+<div class="questions">
+<ul>
+  <li>What does “business value” mean in this context?</li>
+  <li>What is a “legacy system”?</li>
+  <li>Why do managed services help companies innovate faster?</li>
+</ul>
+</div>
+
+<div class="back">
+  <a href="../">← Back to Home</a>
+  <a href="../biz.html">← Back to Articles</a>
+</div>
+
+</div>
+
+<footer>
+  © <span id="year"></span> Cha GPTs. All rights reserved.
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
