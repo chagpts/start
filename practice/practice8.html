@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>8. 외주업체 및 개발자 통제 실습</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { margin:0; font-family:'Quicksand', Arial, sans-serif; min-height:100vh; background:linear-gradient(rgba(255,255,255,0.72), rgba(255,255,255,0.72)), url("../verse.png") no-repeat center center / cover; display:flex; justify-content:center; align-items:center; padding:24px; box-sizing:border-box; }
+    .card { width:100%; max-width:760px; background:rgba(255,255,255,0.97); padding:34px 26px; border-radius:26px; box-shadow:0 10px 24px rgba(0,0,0,0.18); }
+    h1 { font-family:'Baloo 2', cursive; color:#1e3a5f; margin:0 0 14px; font-size:30px; }
+    h2 { color:#1e3a5f; font-size:18px; margin-top:24px; margin-bottom:10px; }
+    p, li { color:#555; line-height:1.8; font-size:15px; }
+    ul { padding-left:22px; }
+    .btn { display:inline-block; text-decoration:none; color:#fff; background:#1e3a5f; padding:12px 22px; border-radius:18px; margin-top:24px; font-size:14px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>8. 외주업체 및 개발자 통제 실습</h1>
+
+    <p>
+      외주 프로그래머가 개인정보를 조회할 수 있는 사이트를 별도로 만들어 유출한 사례를 바탕으로,
+      AI OCR 회계 프로그램에서 외주업체 접근권한과 데이터 조회통제를 실습합니다.
+    </p>
+
+    <h2>사고 포인트</h2>
+    <ul>
+      <li>외주 개발자가 DB에 직접 연결 가능</li>
+      <li>업무 목적 외 개인정보 조회 기능 생성</li>
+      <li>휴대전화 번호 등 일부 정보만으로 전체 개인정보 조회 가능</li>
+      <li>협력업체를 통한 정보 유출 가능성 존재</li>
+    </ul>
+
+    <h2>AI OCR 회계 프로그램 실습</h2>
+    <ul>
+      <li>외주 인력 전용 계정과 접근시간 제한 설정하기</li>
+      <li>운영 DB 직접조회 금지 원칙 정하기</li>
+      <li>테스트 데이터는 비식별 처리하도록 설계하기</li>
+      <li>화면·API·DB 권한을 역할별로 분리하기</li>
+    </ul>
+
+    <h2>감사체크리스트 연계</h2>
+    <ul>
+      <li>외주업체 보안서약 및 권한관리 여부</li>
+      <li>운영데이터 접근 최소화 여부</li>
+      <li>개발자 직접조회 통제 여부</li>
+      <li>비인가 조회기능 생성 점검 여부</li>
+    </ul>
+
+    <h2>실습 결론</h2>
+    <p>
+      외주업체와 개발자는 시스템 개선에 필요하지만, 접근 권한은 최소한으로 제한해야 합니다.
+      AI OCR 회계 프로그램도 운영 데이터 보호와 외주 통제를 분리해서 설계해야 합니다.
+    </p>
+
+    <a href="../practice.html" class="btn">목록으로 돌아가기</a>
+  </div>
+</body>
+</html>
