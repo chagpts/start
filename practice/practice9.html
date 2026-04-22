@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>9. 급여 횡령 및 프로그램 조작 방지 실습</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { margin:0; font-family:'Quicksand', Arial, sans-serif; min-height:100vh; background:linear-gradient(rgba(255,255,255,0.72), rgba(255,255,255,0.72)), url("../verse.png") no-repeat center center / cover; display:flex; justify-content:center; align-items:center; padding:24px; box-sizing:border-box; }
+    .card { width:100%; max-width:760px; background:rgba(255,255,255,0.97); padding:34px 26px; border-radius:26px; box-shadow:0 10px 24px rgba(0,0,0,0.18); }
+    h1 { font-family:'Baloo 2', cursive; color:#1e3a5f; margin:0 0 14px; font-size:30px; }
+    h2 { color:#1e3a5f; font-size:18px; margin-top:24px; margin-bottom:10px; }
+    p, li { color:#555; line-height:1.8; font-size:15px; }
+    ul { padding-left:22px; }
+    .btn { display:inline-block; text-decoration:none; color:#fff; background:#1e3a5f; padding:12px 22px; border-radius:18px; margin-top:24px; font-size:14px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>9. 급여 횡령 및 프로그램 조작 방지 실습</h1>
+
+    <p>
+      개발자와 운영자의 직무가 분리되지 않은 상태에서 급여시스템과 배치프로그램을 조작해
+      소액을 빼돌린 사례를 바탕으로, AI OCR 회계 프로그램의 변경통제와 직무분리를 실습합니다.
+    </p>
+
+    <h2>사고 포인트</h2>
+    <ul>
+      <li>개발과 운영 권한을 동시에 보유</li>
+      <li>배치 프로그램을 몰래 수정</li>
+      <li>소액 분산 이체로 장기간 횡령</li>
+      <li>사후에 원래 프로그램으로 복구해 흔적 축소</li>
+    </ul>
+
+    <h2>AI OCR 회계 프로그램 실습</h2>
+    <ul>
+      <li>개발계와 운영계 권한 분리 정책 만들기</li>
+      <li>배포 전 승인 및 형상관리 절차 설계하기</li>
+      <li>배치 실행 전후 해시값 또는 버전 확인 절차 정하기</li>
+      <li>소액 반복 이체 탐지 보고서 만들기</li>
+    </ul>
+
+    <h2>감사체크리스트 연계</h2>
+    <ul>
+      <li>개발-운영 직무분리 적용 여부</li>
+      <li>배치 프로그램 변경 승인 절차 존재 여부</li>
+      <li>프로그램 무결성 점검 여부</li>
+      <li>반복 소액 이체 이상징후 분석 여부</li>
+    </ul>
+
+    <h2>실습 결론</h2>
+    <p>
+      AI OCR 회계 프로그램도 운영 중인 로직이 임의로 수정되지 않도록 통제해야 합니다.
+      특히 배치와 자동전표 처리 영역은 직무분리와 변경관리 없이는 매우 위험합니다.
+    </p>
+
+    <a href="../practice.html" class="btn">목록으로 돌아가기</a>
+  </div>
+</body>
+</html>
