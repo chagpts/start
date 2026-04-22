@@ -1,1 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI OCR 회계 프로그램 실습</title>
 
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', Arial, sans-serif;
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)),
+        url("verse.png") no-repeat center center / cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 28px 16px;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      font-family: 'Baloo 2', cursive;
+      font-size: 30px;
+      margin-bottom: 6px;
+      color: #1e3a5f;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 20px;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .back-home {
+      margin-bottom: 26px;
+      text-decoration: none;
+      color: #1e3a5f;
+      background: white;
+      padding: 10px 22px;
+      border-radius: 20px;
+      box-shadow: 0 5px 14px rgba(0,0,0,0.18);
+      font-size: 13px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .back-home:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+    }
+
+    .articles {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      width: 100%;
+      max-width: 700px;
+    }
+
+    .article {
+      display: block;
+      background: rgba(255,255,255,0.96);
+      padding: 24px 22px;
+      border-radius: 24px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .article:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+    }
+
+    .article h2 {
+      font-family: 'Baloo 2', cursive;
+      font-size: 20px;
+      margin: 0 0 10px;
+      color: #1e3a5f;
+    }
+
+    .article p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #555;
+      margin: 0 0 16px;
+    }
+
+    .read {
+      font-size: 13px;
+      color: #1e3a5f;
+      font-weight: 500;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>AI OCR 실습</h1>
+  <div class="subtitle">
+    사고사례 기반 AI OCR 회계 프로그램 실습 교육 자료
+  </div>
+
+  <a href="index.html" class="back-home">Back to Home</a>
+
+  <div class="articles">
+    <a href="./practice/practice1.html" class="article">
+      <h2>1. 프로젝트 위험관리 실습</h2>
+      <p>사용자 요구사항, 투자 타당성, 운영 전 검증 절차를 AI OCR 회계 프로그램에 적용해 봅니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./practice/practice2.html" class="article">
+      <h2>2. 횡령 방지 통제 실습</h2>
+      <p>가짜 장부, 이중 시스템, 원장 미기록 등의 위험을 AI OCR 회계 프로그램에서 어떻게 차단할지 실습합니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./practice/practice3.html" class="article">
+      <h2>3. 승인절차와 지급통제 실습</h2>
+      <p>복지비·세금·지출명령 처리 시 승인과 검증이 왜 중요한지 실습 중심으로 학습합니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./practice/practice4.html" class="article">
+      <h2>4. 전산망 마비 대응 실습</h2>
+      <p>악성코드 감염, 관리자 정보 탈취, 백업센터 전환 실패 사례를 기반으로 대응 절차를 점검합니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./practice/practice5.html" class="article">
+      <h2>5. 고객정보 보호 실습</h2>
+      <p>계정 오남용, 로그 보안, 마스킹 미적용 등 개인정보 유출 위험을 AI OCR 회계 프로그램에서 점검합니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./practice/practice6.html" class="article">
+      <h2>6. 퇴직자 계정 및 외부접속 통제 실습</h2>
+      <p>퇴직자 계정 삭제, VPN 강제, 내부망 접근통제 등 자료 유출 방지 통제를 실습합니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./practice/practice7.html" class="article">
+      <h2>7. 개인 기밀정보 관리 실습</h2>
+      <p>외장 저장매체, 재택 PC, 악성코드 감염과 같은 위험을 업무자료 관리 측면에서 점검합니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./practice/practice8.html" class="article">
+      <h2>8. 외주업체 및 개발자 통제 실습</h2>
+      <p>외주 개발자와 협력업체 접근권한, DB 조회권한, 개인정보 유출 통제를 실습합니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./practice/practice9.html" class="article">
+      <h2>9. 급여 횡령 및 프로그램 조작 방지 실습</h2>
+      <p>개발·운영 미분리, 배치 프로그램 조작, 급여 이체 변조를 막기 위한 통제를 실습합니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./practice/practice10.html" class="article">
+      <h2>10. 종합 IT 감사체크리스트 실습</h2>
+      <p>전체 사례를 AI OCR 회계 프로그램에 연결해 감사체크리스트로 사고 예방 점검을 수행합니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+  </div>
+</body>
+</html>
