@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>AI Tax Automation Debate</title>
+<title>문서 유형 분석과 필드 정의</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -16,7 +16,6 @@ body {
     url("../verse.png") no-repeat center center / cover;
   padding: 60px 20px;
 }
-
 .container {
   max-width: 920px;
   margin: auto;
@@ -24,53 +23,39 @@ body {
   padding: 50px 60px;
   border-radius: 28px;
 }
-
 h1, h2, h3 {
   font-family: 'Baloo 2', cursive;
 }
-
-h1 {
-  margin-bottom: 28px;
-}
-
+h1 { margin-bottom: 28px; }
 h2 {
   margin-top: 50px;
   margin-bottom: 16px;
 }
-
 p {
   line-height: 1.8;
   margin-bottom: 18px;
   font-size: 15px;
 }
-
 ul {
   margin-left: 20px;
   margin-bottom: 22px;
 }
-
-li {
-  margin-bottom: 8px;
-}
-
+li { margin-bottom: 8px; }
 table {
   width: 100%;
   border-collapse: collapse;
   margin: 28px 0;
   font-size: 14px;
 }
-
 th, td {
   border: 1px solid #ddd;
   padding: 12px 14px;
   vertical-align: top;
 }
-
 th {
   background: #f2f2f2;
   font-weight: 600;
 }
-
 .highlight {
   background: #f7f7f7;
   padding: 22px 26px;
@@ -78,14 +63,12 @@ th {
   margin: 30px 0;
   font-size: 14px;
 }
-
 .questions {
   background: #f7f7f7;
   padding: 25px 30px;
   border-radius: 18px;
   margin-top: 30px;
 }
-
 .link-block {
   background: #eef2f7;
   padding: 18px 22px;
@@ -93,12 +76,6 @@ th {
   margin-top: 14px;
   font-size: 14px;
 }
-
-.link-block a {
-  color: #1a0dab;
-  text-decoration: underline;
-}
-
 .dialogue {
   background: #fafafa;
   padding: 26px 30px;
@@ -106,29 +83,11 @@ th {
   margin-top: 25px;
   font-size: 14px;
 }
-
-.role {
-  font-weight: 600;
-}
-
-.kr {
-  color: #444;
-  margin-top: -10px;
-  margin-bottom: 18px;
-}
-
-.term {
-  background: #f7f7f7;
-  padding: 18px 22px;
-  border-radius: 14px;
-  margin: 18px 0;
-}
-
+.role { font-weight: 600; }
 .back {
   text-align: center;
   margin-top: 55px;
 }
-
 .back a {
   display: inline-block;
   padding: 12px 26px;
@@ -139,7 +98,6 @@ th {
   font-size: 14px;
   margin: 6px;
 }
-
 footer {
   text-align: center;
   margin-top: 60px;
@@ -149,7 +107,6 @@ footer {
   padding: 10px 18px;
   border-radius: 20px;
 }
-
 @media (max-width: 600px) {
   .container {
     padding: 30px 24px;
@@ -159,333 +116,210 @@ footer {
 </head>
 
 <body>
-
 <div class="container">
 
-<h1>AI Tax Automation Debate  
-— CEO, Accountants, and an AI Engineer</h1>
+<h1>문서 유형 분석과 필드 정의</h1>
 
 <p>
-Modern accounting firms handle large volumes of tax documents such as W-2s, 1099s, receipts, invoices, and scanned PDFs.
-As firms consider adopting AI systems, tension often arises between leadership, practitioners, and technical teams.
-</p>
-
-<p>
-The dialogue below presents that conflict as a role-play.
-It includes plain explanations of IT and AI terms, product comparisons, and concerns about risk, workflow, and real-world adoption.
+AI OCR 회계 프로그램에서 가장 먼저 해야 할 일 중 하나는
+어떤 문서를 읽을 것인지, 그리고 그 문서에서 어떤 값을 뽑아낼 것인지를
+명확하게 정의하는 것입니다.
+문서 유형과 추출 필드가 흔들리면 이후의 학습, 검증, 분개 자동화, 내부통제까지 모두 불안정해집니다.
+그래서 이 단계는 기술 작업이 아니라 프로젝트의 기준서를 만드는 과정이라고 볼 수 있습니다.
 </p>
 
 <div class="link-block">
-  <p>Reference Topic:</p>
-  <p>
-    AI-powered tax document extraction tools such as Parseur, Docparser, Hubdoc, SurePrep, and ABBYY FlexiCapture.
-  </p>
-  <p>
-    Main technologies discussed: OCR, NLP, machine learning, deep learning, APIs, JSON, validation, confidence score, and human-in-the-loop review.
-  </p>
+  <p>이 과정의 핵심 목표</p>
+  <p>• 회계 문서 종류를 체계적으로 분류하기</p>
+  <p>• 각 문서별 핵심 추출 항목 정의하기</p>
+  <p>• 필드별 형식 규칙과 검증 규칙 정리하기</p>
+  <p>• 자동분개와 연결 가능한 데이터 구조 만들기</p>
 </div>
 
-<h2>1. Why This Debate Matters</h2>
+<h2>1. 왜 문서 유형 분석이 중요한가</h2>
 
 <p>
-During tax season, firms spend enormous time entering, cleaning, and verifying data from client documents.
-AI automation promises faster processing, fewer manual tasks, and better scalability.
+회계 업무에서 다루는 문서는 겉보기에는 비슷해 보여도
+실제 구조와 목적이 다릅니다.
+세금계산서는 공급자와 공급받는 자, 공급가액, 세액, 작성일자 같은 항목이 중요하고,
+영수증은 승인번호, 가맹점명, 거래일시, 합계금액이 중요합니다.
+거래명세서, 견적서, 입금표, 통장사본, 계약서처럼 문서 목적이 달라지면
+AI가 읽어야 하는 항목과 판단 기준도 달라집니다.
+문서 유형을 잘못 묶으면 성능이 떨어지고,
+같은 이름의 필드라도 의미가 달라져 회계 처리 오류가 발생할 수 있습니다.
 </p>
 
 <div class="highlight">
 <p>
-But accountants often worry about accuracy, responsibility, cost, and whether these tools actually fit real tax workflows.
+좋은 OCR 시스템은 글자를 많이 읽는 시스템이 아니라
+문서 성격에 맞는 정보를 정확하게 구조화하는 시스템입니다.
 </p>
 </div>
 
-<h2>2. Key Technologies Explained Simply</h2>
+<h2>2. 회계 프로그램에서 자주 다루는 문서 유형</h2>
 
 <table>
 <thead>
 <tr>
-  <th>Term</th>
-  <th>Simple Meaning</th>
+  <th>문서 유형</th>
+  <th>주요 목적</th>
+  <th>핵심 추출 항목</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>OCR</td>
-  <td>Reads text from images, scans, or PDFs</td>
+  <td>세금계산서</td>
+  <td>매입·매출 증빙</td>
+  <td>작성일자, 공급자, 사업자등록번호, 공급가액, 세액, 합계금액</td>
 </tr>
 <tr>
-  <td>NLP</td>
-  <td>Helps the system understand what the text means</td>
+  <td>카드 영수증</td>
+  <td>지출 증빙</td>
+  <td>거래일시, 가맹점명, 승인번호, 공급가액, 부가세, 합계금액</td>
 </tr>
 <tr>
-  <td>Machine Learning</td>
-  <td>Lets the system improve by learning from data patterns</td>
+  <td>거래명세서</td>
+  <td>거래 내역 확인</td>
+  <td>거래처명, 품목, 수량, 단가, 공급가액, 합계금액</td>
 </tr>
 <tr>
-  <td>Deep Learning</td>
-  <td>A more advanced form of machine learning for complex patterns like handwriting or varied layouts</td>
+  <td>입금표</td>
+  <td>자금 수령 확인</td>
+  <td>입금일자, 입금자명, 금액, 계좌정보</td>
 </tr>
 <tr>
-  <td>API</td>
-  <td>A bridge that lets different software systems exchange data</td>
+  <td>견적서</td>
+  <td>거래 전 금액 제시</td>
+  <td>작성일자, 거래처명, 품목, 금액, 유효기간</td>
 </tr>
 <tr>
-  <td>JSON</td>
-  <td>A structured format used to send data between systems</td>
-</tr>
-<tr>
-  <td>Validation</td>
-  <td>Automatic checking of extracted data for possible errors</td>
-</tr>
-<tr>
-  <td>Confidence Score</td>
-  <td>A score showing how certain the AI is about extracted data</td>
-</tr>
-<tr>
-  <td>Human-in-the-loop</td>
-  <td>A process where AI extracts data and humans review uncertain parts</td>
+  <td>계약서</td>
+  <td>거래 조건 확인</td>
+  <td>계약일, 계약상대방, 계약금액, 기간, 지급조건</td>
 </tr>
 </tbody>
 </table>
 
-<h2>3. Product Comparison Mentioned in the Discussion</h2>
+<h2>3. 필드 정의는 어떻게 해야 하는가</h2>
+
+<p>
+필드는 단순히 이름만 정하면 끝나는 것이 아닙니다.
+필드명, 의미, 데이터 형식, 허용 길이, 필수 여부, 검증 규칙, 예외 처리 기준까지 정해야
+현업과 개발이 같은 기준으로 움직일 수 있습니다.
+예를 들어 “거래일자”라는 필드 하나만 해도
+문서 작성일인지 실제 승인일인지, 형식은 연월일인지 연월일시인지,
+누락될 수 있는지 등을 명확히 해야 합니다.
+</p>
 
 <table>
 <thead>
 <tr>
-  <th>Tool</th>
-  <th>Main Strength</th>
-  <th>Best Fit</th>
+  <th>필드명</th>
+  <th>설명</th>
+  <th>형식</th>
+  <th>필수 여부</th>
+  <th>검증 규칙</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>Parseur</td>
-  <td>Easy setup, AI extraction, email/PDF/scan support</td>
-  <td>Small to midsize firms</td>
+  <td>거래일자</td>
+  <td>실제 거래가 발생한 날짜</td>
+  <td>YYYY-MM-DD</td>
+  <td>필수</td>
+  <td>미래 날짜 불가</td>
 </tr>
 <tr>
-  <td>Docparser</td>
-  <td>Rule-based precision for fixed document formats</td>
-  <td>Standardized forms</td>
+  <td>사업자등록번호</td>
+  <td>공급자 또는 거래처 식별번호</td>
+  <td>숫자 10자리</td>
+  <td>문서 유형별 상이</td>
+  <td>숫자 외 문자 제거 후 길이 확인</td>
 </tr>
 <tr>
-  <td>Hubdoc</td>
-  <td>Automatic collection of receipts, bank docs, and bills</td>
-  <td>Small business bookkeeping workflows</td>
+  <td>공급가액</td>
+  <td>세전 금액</td>
+  <td>정수 또는 소수</td>
+  <td>필수</td>
+  <td>0 이상이어야 함</td>
 </tr>
 <tr>
-  <td>SurePrep</td>
-  <td>1040-focused tax workflow automation</td>
-  <td>Mid-to-large tax firms</td>
+  <td>세액</td>
+  <td>부가가치세 금액</td>
+  <td>정수 또는 소수</td>
+  <td>조건부 필수</td>
+  <td>공급가액과의 비율 검토</td>
 </tr>
 <tr>
-  <td>ABBYY FlexiCapture</td>
-  <td>Enterprise-level OCR and document intelligence</td>
-  <td>Large organizations with complex documents</td>
+  <td>합계금액</td>
+  <td>총 거래 금액</td>
+  <td>정수 또는 소수</td>
+  <td>필수</td>
+  <td>공급가액+세액과 일치 여부 확인</td>
 </tr>
 </tbody>
 </table>
 
-<h2>4. Extended Role-play Conversation</h2>
+<h2>4. 표준 필드와 문서 전용 필드를 구분해야 한다</h2>
 
-<div class="dialogue">
+<p>
+회계 OCR 시스템은 문서마다 제각각 필드를 만들면 나중에 관리가 어려워집니다.
+그래서 공통 필드와 문서 전용 필드를 구분하는 것이 좋습니다.
+공통 필드는 거래일자, 거래처명, 합계금액처럼 대부분 문서에 등장하는 항목이고,
+문서 전용 필드는 카드 승인번호, 세금계산서 작성번호, 계약 종료일처럼 특정 문서에서만 의미가 있는 항목입니다.
+이 구분이 잘 되어야 이후 데이터베이스 설계와 화면 설계가 깔끔해집니다.
+</p>
 
-<p><span class="role">CEO:</span> We are planning to introduce an AI automation system starting this quarter. It can drastically reduce the time spent processing tax documents. Manual data entry is no longer sustainable.</p>
-<p class="kr">대표: 이번 분기부터 AI 자동화 시스템 도입을 검토하려고 합니다. 세금 서류 처리 시간을 획기적으로 줄일 수 있습니다. 수작업 입력은 더 이상 지속 가능하지 않습니다.</p>
+<h2>5. 필드 정의 시 자주 하는 실수</h2>
 
-<p><span class="role">Accountant1:</span> That sounds ideal, but honestly, we do not really understand these IT terms. Before deciding anything, can you explain the basics clearly?</p>
-<p class="kr">회계사1: 이상적으로 들리지만 솔직히 저희는 IT 용어를 잘 모릅니다. 결정하기 전에 기본부터 쉽게 설명해주실 수 있나요?</p>
+<ul>
+  <li>같은 의미의 값을 문서마다 다른 이름으로 정의하는 경우</li>
+  <li>사람은 이해하지만 시스템은 검증하기 어려운 설명으로 적는 경우</li>
+  <li>형식 규칙 없이 자유 텍스트로 저장하는 경우</li>
+  <li>금액 필드에서 쉼표, 원 표시, 공백 처리 기준이 없는 경우</li>
+  <li>날짜 필드가 작성일, 승인일, 거래일 중 무엇인지 불명확한 경우</li>
+</ul>
 
-<p><span class="role">CEO:</span> Good point. That is exactly why I invited the AI engineer today. I do not want this to feel like management forcing technology onto the accounting team without explanation.</p>
-<p class="kr">대표: 좋은 지적입니다. 그래서 오늘 AI 개발자를 불렀습니다. 설명도 없이 경영진이 기술을 회계팀에 강요하는 것처럼 느껴지지 않길 바랍니다.</p>
-
-<p><span class="role">AI Engineer:</span> Hello. Let us start with OCR. OCR stands for Optical Character Recognition. In simple terms, it is a technology that reads text from images or PDFs, like turning a scanned receipt into editable text.</p>
-<p class="kr">AI개발자: 안녕하세요. 먼저 OCR부터 설명드리겠습니다. OCR은 Optical Character Recognition의 약자로, 이미지나 PDF에서 글자를 읽어 편집 가능한 텍스트로 바꿔주는 기술입니다.</p>
-
-<p><span class="role">Accountant2:</span> So OCR is basically automatic reading of scanned documents? Like copying text from an image without typing it ourselves?</p>
-<p class="kr">회계사2: 그럼 OCR은 스캔 문서를 자동으로 읽는 기술이네요? 우리가 직접 입력하지 않아도 이미지에서 글자를 복사하는 것처럼요?</p>
-
-<p><span class="role">AI Engineer:</span> Exactly. But OCR alone only reads the text. It does not understand whether a number is a tax amount, an invoice total, a date, or an employee ID.</p>
-<p class="kr">AI개발자: 맞습니다. 하지만 OCR만으로는 글자를 읽기만 할 뿐, 그 숫자가 세액인지 총액인지 날짜인지 직원 ID인지까지는 이해하지 못합니다.</p>
-
-<p><span class="role">Accountant3:</span> Then how does the system know which number is income and which one is withholding tax?</p>
-<p class="kr">회계사3: 그럼 시스템은 어떤 숫자가 소득이고 어떤 숫자가 원천징수세액인지 어떻게 구분하나요?</p>
-
-<p><span class="role">AI Engineer:</span> That is where AI and NLP come in. NLP stands for Natural Language Processing. It helps the system understand context, such as recognizing that the number next to “Total Income” is likely an income field.</p>
-<p class="kr">AI개발자: 그 부분이 AI와 NLP입니다. NLP는 자연어 처리라는 뜻이고, 문맥을 이해해서 예를 들어 “Total Income” 옆의 숫자가 소득 항목일 가능성이 높다고 판단하게 해줍니다.</p>
-
-<p><span class="role">Accountant1:</span> So OCR reads the words, and NLP helps the system understand what those words mean in context. That is already more advanced than I expected.</p>
-<p class="kr">회계사1: 그러니까 OCR은 글자를 읽고, NLP는 그 글자의 의미를 문맥 안에서 이해하게 해주는 거군요. 생각보다 훨씬 고급 기술이네요.</p>
-
-<p><span class="role">AI Engineer:</span> Yes. On top of that, we use machine learning. Machine learning means the system learns patterns from lots of examples. The more documents it processes, the better it gets at extracting the right data.</p>
-<p class="kr">AI개발자: 네. 거기에 머신러닝이 추가됩니다. 머신러닝은 많은 예시 문서를 통해 패턴을 학습하는 기술입니다. 문서를 많이 처리할수록 필요한 데이터를 더 정확하게 추출하게 됩니다.</p>
-
-<p><span class="role">Accountant2:</span> So it improves over time, almost like staff gaining experience after seeing the same documents again and again?</p>
-<p class="kr">회계사2: 그럼 시간이 지날수록 더 잘하게 되는 거네요. 직원이 같은 서류를 반복해서 보면서 익숙해지는 것처럼요?</p>
-
-<p><span class="role">AI Engineer:</span> That is a very good analogy. Yes, you can think of it that way.</p>
-<p class="kr">AI개발자: 아주 좋은 비유입니다. 네, 그렇게 이해하시면 됩니다.</p>
-
-<p><span class="role">CEO:</span> Now let us talk about the products we reviewed. They do not all work the same way, and that is why we cannot just say “AI is AI” and assume every tool fits us equally well.</p>
-<p class="kr">대표: 이제 우리가 검토한 제품들에 대해 이야기해봅시다. 이 도구들은 모두 같은 방식으로 동작하지 않기 때문에, “AI는 다 똑같다”라고 생각하면 안 됩니다.</p>
-
-<p><span class="role">Accountant3:</span> Yes, that part is confusing for us. If all of them are using OCR and AI, what exactly makes one different from another?</p>
-<p class="kr">회계사3: 네, 그 부분이 헷갈립니다. 다 OCR과 AI를 쓴다고 하면, 도대체 제품별 차이가 뭔가요?</p>
-
-<p><span class="role">CEO:</span> Let us start with Parseur. Parseur is easy to set up and can extract data from emails, PDFs, and scanned documents. It seems suitable for firms that want fast implementation without a complicated technical rollout.</p>
-<p class="kr">대표: 먼저 Parseur부터 보겠습니다. Parseur는 설정이 쉽고 이메일, PDF, 스캔 문서에서 데이터를 추출할 수 있습니다. 복잡한 기술 구축 없이 빠르게 도입하려는 법인에 적합해 보입니다.</p>
-
-<p><span class="role">AI Engineer:</span> Technically, Parseur combines machine learning with template matching. Template matching means it looks for repeated layout patterns in documents. So it is flexible, but still practical for business users who do not want to build custom models from scratch.</p>
-<p class="kr">AI개발자: 기술적으로 보면 Parseur는 머신러닝과 템플릿 매칭을 결합합니다. 템플릿 매칭은 문서에서 반복되는 레이아웃 패턴을 찾는 방식입니다. 그래서 유연하면서도, 사용자가 처음부터 맞춤형 모델을 만들 필요가 없다는 장점이 있습니다.</p>
-
-<p><span class="role">Accountant1:</span> That sounds manageable. So this one is more like a practical, easy-to-adopt option rather than a heavy enterprise system?</p>
-<p class="kr">회계사1: 그건 도입하기 쉬워 보이네요. 그러면 이 제품은 복잡한 기업용 시스템이라기보다, 실무적으로 빨리 적용할 수 있는 쪽이군요?</p>
-
-<p><span class="role">CEO:</span> Exactly. Now, Docparser is different. It is stronger when document formats are consistent, like standardized tax forms.</p>
-<p class="kr">대표: 맞습니다. 반면 Docparser는 다릅니다. W-2나 1099처럼 문서 양식이 일정할 때 강점이 있습니다.</p>
-
-<p><span class="role">AI Engineer:</span> Docparser is rule-based. That means users define extraction rules manually. For example, “take the number from this area of the page” or “capture the value after this label.” This makes it very accurate for fixed-format documents.</p>
-<p class="kr">AI개발자: Docparser는 규칙 기반입니다. 사용자가 “페이지의 이 영역에서 숫자를 뽑아라”, “이 라벨 뒤의 값을 캡처하라” 같은 규칙을 직접 정의합니다. 그래서 형식이 고정된 문서에서는 매우 정확합니다.</p>
-
-<p><span class="role">Accountant2:</span> So it is like giving the system detailed instructions step by step. That sounds accurate, but what happens if the form layout changes?</p>
-<p class="kr">회계사2: 그러면 시스템에 단계별로 세세하게 지시하는 방식이네요. 정확하긴 하겠지만, 양식이 바뀌면 어떻게 되나요?</p>
-
-<p><span class="role">AI Engineer:</span> That is the trade-off. Rule-based systems often deliver strong precision, but they are less flexible when layouts change or when the firm receives unexpected document types.</p>
-<p class="kr">AI개발자: 바로 그게 단점입니다. 규칙 기반 시스템은 정확도가 높지만, 양식이 바뀌거나 예상하지 못한 문서가 들어오면 유연성이 떨어집니다.</p>
-
-<p><span class="role">Accountant3:</span> So Parseur is more flexible, while Docparser can be more controlled and precise for standard forms. I think I understand that difference now.</p>
-<p class="kr">회계사3: 그러면 Parseur는 더 유연하고, Docparser는 표준 양식에서 더 통제되고 정확한 쪽이군요. 이제 차이가 조금 이해됩니다.</p>
-
-<p><span class="role">CEO:</span> Good. Now let us move to Hubdoc. Hubdoc is not just about reading documents. Its strength is collecting documents automatically from banks and vendors.</p>
-<p class="kr">대표: 좋습니다. 이제 Hubdoc을 보겠습니다. Hubdoc은 문서를 읽는 것만이 아니라, 은행과 거래처에서 문서를 자동으로 수집하는 데 강점이 있습니다.</p>
-
-<p><span class="role">AI Engineer:</span> Hubdoc uses OCR, but its workflow advantage comes from APIs. An API is like a bridge that allows one system to send data directly to another system. Instead of waiting for a client to email a statement, the software can fetch it automatically.</p>
-<p class="kr">AI개발자: Hubdoc도 OCR을 사용하지만, 핵심은 API 기반 연동입니다. API는 한 시스템이 다른 시스템으로 데이터를 직접 보내게 해주는 다리 같은 것입니다. 그래서 고객이 명세서를 이메일로 보내주길 기다리지 않고, 소프트웨어가 자동으로 가져올 수 있습니다.</p>
-
-<p><span class="role">Accountant1:</span> So API just means systems talking to each other directly? That actually sounds useful even before we get to AI extraction.</p>
-<p class="kr">회계사1: 그러면 API는 시스템끼리 직접 대화하는 거라고 보면 되나요? AI 추출 이전에 그 기능만으로도 꽤 유용해 보이네요.</p>
-
-<p><span class="role">AI Engineer:</span> Yes, that is a simple and accurate way to understand it.</p>
-<p class="kr">AI개발자: 네, 아주 간단하고 정확한 이해입니다.</p>
-
-<p><span class="role">Accountant2:</span> Then Hubdoc could reduce the time we spend requesting missing bank statements or receipts from clients. That alone could improve our workflow a lot.</p>
-<p class="kr">회계사2: 그러면 Hubdoc은 고객에게 누락된 은행 명세서나 영수증을 계속 요청하는 시간을 줄여주겠네요. 그것만으로도 업무 흐름이 많이 좋아질 것 같습니다.</p>
-
-<p><span class="role">CEO:</span> Exactly. Next is SurePrep. This one is more tax-specialized and is developed by Thomson Reuters. It focuses heavily on 1040 tax workflow automation.</p>
-<p class="kr">대표: 맞습니다. 다음은 SurePrep입니다. 이 제품은 Thomson Reuters가 만든 세무 특화 솔루션으로, 특히 1040 세금 신고 워크플로우 자동화에 강합니다.</p>
-
-<p><span class="role">AI Engineer:</span> SurePrep does not only extract data. It also includes validation layers. Validation means the system checks whether extracted data looks correct before it is used in downstream tax preparation.</p>
-<p class="kr">AI개발자: SurePrep은 단순 추출만 하지 않습니다. validation 계층도 포함되어 있습니다. validation은 추출된 데이터가 이후 세무 신고에 사용되기 전에 올바른지 자동으로 점검하는 과정입니다.</p>
-
-<p><span class="role">Accountant3:</span> So it is closer to a tax workflow system than a general document parser. That makes sense for larger firms with standardized filing processes.</p>
-<p class="kr">회계사3: 그러면 일반 문서 파서라기보다는 세무 워크플로우 시스템에 가깝네요. 표준화된 신고 절차를 가진 큰 법인에 더 어울릴 것 같습니다.</p>
-
-<p><span class="role">CEO:</span> That is right. Finally, there is ABBYY FlexiCapture. This is the enterprise-level option.</p>
-<p class="kr">대표: 맞습니다. 마지막으로 ABBYY FlexiCapture가 있습니다. 이건 기업용 수준의 솔루션입니다.</p>
-
-<p><span class="role">AI Engineer:</span> ABBYY uses advanced document intelligence and deep learning. Deep learning is a more complex form of machine learning that uses neural networks to identify patterns in difficult material, such as handwritten text, irregular forms, and unstructured documents.</p>
-<p class="kr">AI개발자: ABBYY는 고급 문서 인텔리전스와 딥러닝을 사용합니다. 딥러닝은 신경망을 활용하는 더 고급 형태의 머신러닝으로, 손글씨, 불규칙한 양식, 비정형 문서 같은 복잡한 자료에서 패턴을 찾아냅니다.</p>
-
-<p><span class="role">Accountant1:</span> That sounds powerful, but also expensive and complicated. Are we really the kind of firm that needs something like that?</p>
-<p class="kr">회계사1: 굉장히 강력해 보이지만, 동시에 비싸고 복잡해 보입니다. 우리 같은 법인이 정말 그런 수준의 제품이 필요한가요?</p>
-
-<p><span class="role">CEO:</span> Probably not at the beginning. That is why we are discussing options instead of jumping into the most advanced system immediately.</p>
-<p class="kr">대표: 처음부터는 아닐 가능성이 큽니다. 그래서 가장 고급 시스템에 바로 뛰어들기보다, 여러 선택지를 비교하고 있는 겁니다.</p>
-
-<p><span class="role">Accountant2:</span> My biggest concern is still accuracy. In tax work, even a small error in a number can create real problems.</p>
-<p class="kr">회계사2: 그래도 가장 걱정되는 건 정확도입니다. 세무 업무에서는 숫자 하나 틀려도 실제 문제가 생길 수 있으니까요.</p>
-
-<p><span class="role">AI Engineer:</span> That concern is completely valid. This is why these systems often provide confidence scores. A confidence score is a number that shows how certain the model is about each extracted field.</p>
-<p class="kr">AI개발자: 그 걱정은 아주 타당합니다. 그래서 이런 시스템들은 confidence score, 즉 신뢰도 점수를 제공합니다. 각 추출 항목에 대해 모델이 얼마나 확신하는지를 숫자로 보여주는 겁니다.</p>
-
-<p><span class="role">Accountant3:</span> So if the system is unsure, it warns us? Then we do not have to review every single field equally?</p>
-<p class="kr">회계사3: 그러면 시스템이 확신이 없을 때 경고를 주는 건가요? 그럼 모든 항목을 똑같이 다 확인할 필요는 없겠네요?</p>
-
-<p><span class="role">AI Engineer:</span> Exactly. That review structure is called human-in-the-loop. It means AI handles the first extraction pass, and humans focus their time on reviewing uncertain or sensitive items.</p>
-<p class="kr">AI개발자: 맞습니다. 그런 검토 구조를 human-in-the-loop라고 합니다. AI가 1차 추출을 하고, 사람은 불확실하거나 민감한 항목을 집중적으로 검토하는 방식입니다.</p>
-
-<p><span class="role">Accountant1:</span> That sounds much more realistic than full automation. I was worried you were saying the machine would replace all review work.</p>
-<p class="kr">회계사1: 완전 자동화보다 훨씬 현실적으로 들리네요. 기계가 모든 검토를 대체한다는 이야기인 줄 알고 걱정했습니다.</p>
-
-<p><span class="role">CEO:</span> No. This is not about removing professional judgment. It is about removing repetitive manual entry so your expertise can be used where it matters more.</p>
-<p class="kr">대표: 아닙니다. 이건 전문가의 판단을 없애려는 게 아닙니다. 반복적인 수작업 입력을 줄여서, 여러분의 전문성이 더 중요한 곳에 쓰이게 하려는 겁니다.</p>
-
-<p><span class="role">Accountant2:</span> What about our existing systems? We use accounting software already. How does extracted data actually move into those systems?</p>
-<p class="kr">회계사2: 기존 시스템은 어떻게 되나요? 저희는 이미 회계 소프트웨어를 쓰고 있는데, 추출된 데이터가 실제로 그 시스템으로 어떻게 들어가나요?</p>
-
-<p><span class="role">AI Engineer:</span> Through APIs again. The extracted data is usually packaged in a structured format such as JSON. JSON is just an organized way to represent data so software systems can read it consistently.</p>
-<p class="kr">AI개발자: 다시 API를 통해 들어갑니다. 추출된 데이터는 보통 JSON 같은 구조화된 형식으로 전달됩니다. JSON은 소프트웨어가 일관되게 읽을 수 있도록 데이터를 정리해 표현하는 방식입니다.</p>
-
-<p><span class="role">Accountant3:</span> So JSON is not something we have to manually learn or type. It is just the format used behind the scenes?</p>
-<p class="kr">회계사3: 그러면 JSON은 우리가 직접 입력하거나 배워야 하는 게 아니라, 시스템 뒤에서 데이터를 전달할 때 쓰는 형식이라는 거네요?</p>
-
-<p><span class="role">AI Engineer:</span> Exactly. The accounting team does not need to become programmers. You mainly need to understand what the system is doing, not write the code yourselves.</p>
-<p class="kr">AI개발자: 정확합니다. 회계팀이 프로그래머가 될 필요는 없습니다. 시스템이 무엇을 하는지 이해하는 것이 중요하지, 직접 코드를 작성하는 것은 아닙니다.</p>
-
-<p><span class="role">Accountant1:</span> That is a relief. But I still worry about whether these tools really match our daily workflow. Technology often sounds good in presentations and then creates more work in practice.</p>
-<p class="kr">회계사1: 그건 다행이네요. 그래도 여전히 걱정되는 건, 이런 도구들이 정말 우리 일상 업무에 맞느냐는 겁니다. 기술은 발표 때는 좋아 보이는데 실제로는 오히려 일을 더 만들 때도 많으니까요.</p>
-
-<p><span class="role">CEO:</span> I agree, and that is why we are not forcing a full rollout immediately. We will start with a pilot project. A pilot means a small-scale test before company-wide adoption.</p>
-<p class="kr">대표: 저도 동의합니다. 그래서 전면 도입을 바로 밀어붙이지 않을 겁니다. 먼저 파일럿 프로젝트로 시작하겠습니다. 파일럿은 전사 도입 전에 작은 규모로 먼저 시험해보는 것을 뜻합니다.</p>
-
-<p><span class="role">AI Engineer:</span> From a technical perspective, that is the safest approach. We can begin with limited document types, such as W-2s or 1099s, measure accuracy, review exceptions, and then expand only if the workflow proves reliable.</p>
-<p class="kr">AI개발자: 기술적으로도 그게 가장 안전한 접근입니다. W-2나 1099 같은 특정 문서 유형부터 시작해서 정확도를 측정하고, 예외 사항을 검토한 후, 워크플로우가 안정적일 때만 확대하면 됩니다.</p>
-
-<p><span class="role">Accountant2:</span> So we would actually get to test the system ourselves instead of just being told to trust it?</p>
-<p class="kr">회계사2: 그러면 저희가 직접 테스트해보고, 그냥 믿으라는 식이 아니라 실제로 확인할 수 있는 거군요?</p>
-
-<p><span class="role">CEO:</span> Yes. I want the accounting team involved from the start. If something does not work, I want to hear it early, not after we already committed to a bad system.</p>
-<p class="kr">대표: 네. 회계팀이 처음부터 참여하길 원합니다. 뭔가 제대로 작동하지 않으면, 이미 잘못된 시스템에 큰 비용을 투입한 뒤가 아니라 초기에 바로 알길 바랍니다.</p>
-
-<p><span class="role">Accountant3:</span> In that case, I am more open to it. I still want us to be strict, but this sounds more like controlled adoption than blind enthusiasm.</p>
-<p class="kr">회계사3: 그렇다면 저도 좀 더 긍정적으로 볼 수 있을 것 같습니다. 여전히 엄격하게 보겠지만, 맹목적인 도입보다는 통제된 도입에 가깝게 들립니다.</p>
-
-<p><span class="role">AI Engineer:</span> That is the right mindset. AI systems work best when domain experts and technical teams collaborate. Accountants understand the business meaning of the documents, and engineers understand how to structure the automation.</p>
-<p class="kr">AI개발자: 그게 올바른 태도입니다. AI 시스템은 현업 전문가와 기술팀이 협업할 때 가장 잘 작동합니다. 회계사는 문서의 업무적 의미를 이해하고, 엔지니어는 그 과정을 자동화 구조로 만드는 역할을 합니다.</p>
-
-<p><span class="role">Accountant1:</span> I understand much more now. At first, these terms just sounded like buzzwords. But if OCR reads, NLP interprets, machine learning improves, and people still review uncertain items, then the process actually makes sense.</p>
-<p class="kr">회계사1: 이제 훨씬 더 이해가 됩니다. 처음에는 이런 용어들이 그냥 유행어처럼 들렸는데, OCR이 읽고, NLP가 해석하고, 머신러닝이 개선하고, 사람이 불확실한 부분을 검토한다면 전체 과정이 꽤 논리적으로 느껴집니다.</p>
-
-<p><span class="role">Accountant2:</span> I am still cautious, but I can see the benefit now. Especially if we can reduce document chasing, repetitive typing, and manual keying into accounting systems.</p>
-<p class="kr">회계사2: 저도 아직 조심스럽지만, 이제 장점이 보입니다. 특히 자료 요청, 반복 입력, 회계 시스템에 일일이 타이핑하는 일을 줄일 수 있다면요.</p>
-
-<p><span class="role">Accountant3:</span> Same here. We should not adopt technology just because it is new, but we also should not reject it just because it sounds technical. Testing will tell us what really works.</p>
-<p class="kr">회계사3: 저도 같습니다. 새 기술이라고 무조건 도입하면 안 되지만, 기술 용어가 낯설다고 무조건 거부해서도 안 되겠네요. 결국 테스트가 실제로 무엇이 맞는지 말해줄 것 같습니다.</p>
-
-<p><span class="role">CEO:</span> That is exactly what I wanted to hear. This is not just about software. It is about changing our operating model so we spend less time on input and more time on judgment, review, and client value.</p>
-<p class="kr">대표: 바로 그 말씀을 듣고 싶었습니다. 이건 단순히 소프트웨어의 문제가 아니라, 입력보다 판단·검토·고객 가치에 더 많은 시간을 쓰는 방향으로 운영 방식을 바꾸는 문제입니다.</p>
-
-<p><span class="role">AI Engineer:</span> And from the technical side, we can keep explaining every step in business language. The goal is not to impress you with jargon. The goal is to make the system understandable, usable, and trustworthy.</p>
-<p class="kr">AI개발자: 그리고 기술팀도 계속 업무 언어로 설명드릴 수 있습니다. 목표는 어려운 용어로 인상 주는 것이 아니라, 시스템을 이해 가능하고, 사용 가능하고, 신뢰 가능하게 만드는 것입니다.</p>
-
-<p><span class="role">Accountant1:</span> Alright. I am willing to move forward with a pilot, as long as we evaluate accuracy, workflow fit, and risk carefully.</p>
-<p class="kr">회계사1: 좋습니다. 정확도, 업무 적합성, 위험을 신중하게 평가한다는 전제라면 파일럿 진행에 동의하겠습니다.</p>
-
-<p><span class="role">Accountant2:</span> I agree. Let us test first, learn the process properly, and then decide what level of automation actually helps us.</p>
-<p class="kr">회계사2: 저도 동의합니다. 먼저 테스트하고, 과정을 제대로 이해한 다음, 어느 수준의 자동화가 실제로 도움이 되는지 판단합시다.</p>
-
-<p><span class="role">Accountant3:</span> Same here. We will give direct feedback, especially where tax work requires professional judgment that no system should blindly override.</p>
-<p class="kr">회계사3: 저도 같습니다. 특히 세무 업무에서 전문가 판단이 필요한 부분은 어떤 시스템도 함부로 대체하면 안 되니, 그런 부분을 중심으로 직접 피드백하겠습니다.</p>
-
-<p><span class="role">CEO:</span> Good. Then we move carefully, but we move forward.</p>
-<p class="kr">대표: 좋습니다. 그럼 신중하게, 하지만 앞으로 나아갑시다.</p>
-
+<div class="highlight">
+<p>
+필드 정의서는 AI를 위한 문서이기도 하지만,
+더 중요하게는 현업, 개발, 검수, 감사 대응을 위한 공통 언어입니다.
+</p>
 </div>
 
-<h2>5. Discussion Questions</h2>
+<h2>6. 역할극으로 이해하기</h2>
+
+<div class="dialogue">
+<p><span class="role">기획 담당자:</span>  
+세금계산서와 영수증 둘 다 금액이 있으니 같은 구조로 처리하면 되지 않을까요?</p>
+
+<p><span class="role">회계 담당자:</span>  
+겉보기는 비슷하지만 목적이 다릅니다. 세금계산서는 세액 처리와 적격증빙 여부가 중요합니다.</p>
+
+<p><span class="role">개발 담당자:</span>  
+그럼 공통 필드는 묶고 문서별 전용 필드는 따로 두는 구조가 좋겠습니다.</p>
+
+<p><span class="role">검수 담당자:</span>  
+맞습니다. 그래야 검수 화면에서도 무엇을 확인해야 할지 분명해집니다.</p>
+
+<p><span class="role">기획 담당자:</span>  
+그럼 먼저 문서 유형 목록과 필드 정의서를 정리하겠습니다.</p>
+</div>
+
+<h2>학습 정리</h2>
 
 <div class="questions">
 <ul>
-  <li>Which type of tool would fit your firm best: flexible AI extraction, rule-based parsing, automatic document collection, or tax-specific workflow automation?</li>
-  <li>Where should human review remain mandatory, even if AI performs the initial extraction?</li>
-  <li>What would be the best document type to use in a pilot project first?</li>
-  <li>How should firms train non-technical accountants to understand AI tools without overwhelming them with jargon?</li>
+  <li>우리 시스템이 1차로 처리할 문서 유형은 무엇인가</li>
+  <li>문서별 필수 필드와 선택 필드는 어떻게 구분할 것인가</li>
+  <li>공통 필드와 문서 전용 필드를 어떻게 나눌 것인가</li>
+  <li>자동분개에 직접 연결되는 필드는 무엇인가</li>
 </ul>
 </div>
 
 <div class="back">
-  <a href="../">← Back to Home</a>
-  <a href="../biz.html">← Back to Articles</a>
+  <a href="../">← 홈으로</a>
+  <a href="../ai.html">← 목록으로</a>
 </div>
 
 </div>
@@ -497,6 +331,5 @@ But accountants often worry about accuracy, responsibility, cost, and whether th
 <script>
 document.getElementById("year").textContent = new Date().getFullYear();
 </script>
-
 </body>
 </html>
