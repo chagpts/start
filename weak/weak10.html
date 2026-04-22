@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>10. 종합 취약점 점검과 대응 방안</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', Arial, sans-serif;
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(255,255,255,0.72), rgba(255,255,255,0.72)),
+        url("../verse.png") no-repeat center center / cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+    .card {
+      width: 100%;
+      max-width: 760px;
+      background: rgba(255,255,255,0.97);
+      padding: 34px 26px;
+      border-radius: 26px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+    }
+    h1 {
+      font-family: 'Baloo 2', cursive;
+      color: #1e3a5f;
+      margin: 0 0 14px;
+      font-size: 30px;
+    }
+    h2 {
+      color: #1e3a5f;
+      font-size: 18px;
+      margin-top: 24px;
+      margin-bottom: 10px;
+    }
+    p, li {
+      color: #555;
+      line-height: 1.8;
+      font-size: 15px;
+    }
+    ul { padding-left: 22px; }
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      color: #fff;
+      background: #1e3a5f;
+      padding: 12px 22px;
+      border-radius: 18px;
+      margin-top: 24px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>10. 종합 취약점 점검과 대응 방안</h1>
+
+    <p>
+      회계 프로그램의 취약점 점검은 계정, 인증, 입력값, 데이터베이스, 로그, 변경관리,
+      서버·네트워크, 백업 등 여러 영역을 종합적으로 확인해야 효과가 있습니다.
+      어느 한 부분만 강화해서는 전체 통제 수준을 높이기 어렵습니다.
+    </p>
+
+    <h2>종합 점검 포인트</h2>
+    <ul>
+      <li>권한은 최소한으로 부여되고 정기 검토되는가</li>
+      <li>인증 정책은 충분히 강력한가</li>
+      <li>입력값 검증과 DB 접근통제가 적절한가</li>
+      <li>중요 행위가 로그로 남고 추적 가능한가</li>
+      <li>프로그램 변경이 통제된 절차로 운영되는가</li>
+      <li>백업과 복구가 실제로 가능한 수준인가</li>
+    </ul>
+
+    <h2>실무 대응 방안</h2>
+    <ul>
+      <li>정기 취약점 점검 일정 수립</li>
+      <li>신규 기능 개발 시 보안 검토 포함</li>
+      <li>권한 및 로그에 대한 관리자 리뷰 수행</li>
+      <li>운영자와 개발자 역할 분리</li>
+      <li>사고 대응 및 복구 절차 문서화</li>
+    </ul>
+
+    <h2>마무리</h2>
+    <p>
+      회계 프로그램은 단순한 업무 시스템이 아니라 기업의 재무 신뢰성과 연결되는 핵심 시스템입니다.
+      따라서 취약점 점검은 일회성 점검이 아니라 지속적인 관리 체계로 운영되어야 하며,
+      내부통제와 정보보안을 함께 고려하는 방식으로 발전시켜야 합니다.
+    </p>
+
+    <a href="../weak.html" class="btn">목록으로 돌아가기</a>
+  </div>
+</body>
+</html>
