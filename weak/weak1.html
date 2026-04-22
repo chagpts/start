@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1. 취약점 점검 개요</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', Arial, sans-serif;
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(255,255,255,0.72), rgba(255,255,255,0.72)),
+        url("../verse.png") no-repeat center center / cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+    .card {
+      width: 100%;
+      max-width: 760px;
+      background: rgba(255,255,255,0.97);
+      padding: 34px 26px;
+      border-radius: 26px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+    }
+    h1 {
+      font-family: 'Baloo 2', cursive;
+      color: #1e3a5f;
+      margin: 0 0 14px;
+      font-size: 30px;
+    }
+    h2 {
+      color: #1e3a5f;
+      font-size: 18px;
+      margin-top: 24px;
+      margin-bottom: 10px;
+    }
+    p, li {
+      color: #555;
+      line-height: 1.8;
+      font-size: 15px;
+    }
+    ul {
+      padding-left: 22px;
+    }
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      color: #fff;
+      background: #1e3a5f;
+      padding: 12px 22px;
+      border-radius: 18px;
+      margin-top: 24px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>1. 취약점 점검 개요</h1>
+
+    <p>
+      회계 프로그램은 전표, 결산, 매출·매입, 자금, 재무제표 등 중요한 회계정보를 처리하므로
+      시스템의 보안성과 무결성이 매우 중요합니다. 취약점 점검은 프로그램 운영 과정에서
+      발생할 수 있는 보안 약점을 사전에 발견하고 개선하여 정보 유출, 데이터 위변조,
+      업무 중단 등의 위험을 줄이기 위한 기본 활동입니다.
+    </p>
+
+    <h2>점검 목적</h2>
+    <ul>
+      <li>회계정보의 기밀성, 무결성, 가용성 확보</li>
+      <li>권한 오남용과 비인가 접근 방지</li>
+      <li>내부통제와 감사 대응 수준 향상</li>
+      <li>시스템 장애 및 사고 발생 가능성 최소화</li>
+    </ul>
+
+    <h2>주요 점검 대상</h2>
+    <ul>
+      <li>사용자 계정 및 권한</li>
+      <li>비밀번호와 인증 체계</li>
+      <li>입력값 검증 및 웹 보안</li>
+      <li>데이터베이스 접근통제</li>
+      <li>로그 관리와 감사 추적</li>
+      <li>프로그램 변경관리</li>
+      <li>서버, 네트워크, 백업 및 복구 체계</li>
+    </ul>
+
+    <h2>점검 기본 방향</h2>
+    <p>
+      취약점 점검은 단순히 문제를 찾는 것에서 끝나지 않고, 실제 운영 환경에 맞는 개선 조치와
+      재점검까지 포함해야 합니다. 특히 회계 프로그램은 실무 사용자가 많고 민감정보를 다루기 때문에
+      정기 점검과 변경 시 점검을 함께 수행하는 것이 바람직합니다.
+    </p>
+
+    <a href="../weak.html" class="btn">목록으로 돌아가기</a>
+  </div>
+</body>
+</html>
