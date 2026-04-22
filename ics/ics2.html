@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>내부회계와 전산감사의 연결 구조</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Quicksand', sans-serif;
+  background:
+    linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
+    url("../verse.png") no-repeat center center / cover;
+  padding: 60px 20px;
+}
+.container {
+  max-width: 920px;
+  margin: auto;
+  background: rgba(255,255,255,0.95);
+  padding: 50px 60px;
+  border-radius: 28px;
+}
+h1, h2, h3 { font-family: 'Baloo 2', cursive; }
+h1 { margin-bottom: 28px; }
+h2 { margin-top: 50px; margin-bottom: 16px; }
+p { line-height: 1.8; margin-bottom: 18px; font-size: 15px; }
+ul { margin-left: 20px; margin-bottom: 22px; }
+li { margin-bottom: 8px; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 28px 0;
+  font-size: 14px;
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 14px;
+  vertical-align: top;
+}
+th { background: #f2f2f2; font-weight: 600; }
+.highlight {
+  background: #f7f7f7;
+  padding: 22px 26px;
+  border-radius: 18px;
+  margin: 30px 0;
+  font-size: 14px;
+}
+.questions {
+  background: #f7f7f7;
+  padding: 25px 30px;
+  border-radius: 18px;
+  margin-top: 30px;
+}
+.link-block {
+  background: #eef2f7;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin-top: 14px;
+  font-size: 14px;
+}
+.link-block a {
+  color: #1a0dab;
+  text-decoration: underline;
+}
+.dialogue {
+  background: #fafafa;
+  padding: 26px 30px;
+  border-radius: 18px;
+  margin-top: 25px;
+  font-size: 14px;
+}
+.role { font-weight: 600; }
+.back {
+  text-align: center;
+  margin-top: 55px;
+}
+.back a {
+  display: inline-block;
+  padding: 12px 26px;
+  background: #333;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 6px;
+}
+footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 13px;
+  background: rgba(255,255,255,0.75);
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 20px;
+}
+@media (max-width: 600px) {
+  .container { padding: 30px 24px; }
+}
+</style>
+
+</head>
+<body>
+<div class="container">
+<h1>내부회계와 전산감사의 연결 구조</h1>
+
+<p>
+첨부된 가이드라인에서는 통제활동을 평가할 때
+재무보고와 연관된 정보기술 일반통제를 함께 확인하도록 설명합니다.
+즉, 회계통제와 전산통제는 별개가 아니라 연결된 구조입니다.
+특히 자동통제나 전산에 의존하는 수동통제가 핵심통제로 작동하는 경우,
+그 통제가 기대대로 동작하는 기반으로서 정보기술 일반통제가 중요해집니다.
+</p>
+
+<div class="link-block">
+  <p>이 과정의 핵심</p>
+  <p>• 내부회계관리제도 안에서 정보기술 통제가 어떤 위치에 있는지 이해하기</p>
+  <p>• 전사적 수준 통제, 거래수준 통제, 정보기술 일반통제의 연결 구조 파악하기</p>
+  <p>• 왜 감사인이 전산영역을 함께 보는지 이해하기</p>
+</div>
+
+<h2>1. 통제는 계층적으로 연결된다</h2>
+<p>
+가이드라인은 내부회계관리제도의 평가대상에
+통제환경, 위험평가, 통제활동, 정보 및 의사소통, 모니터링 활동을 포함한다고 설명합니다.
+이 가운데 통제활동에는 재무보고와 연관된 정보기술 일반통제가 포함됩니다.
+또 전사적 수준 통제의 결과는 거래수준 통제와 정보기술 일반통제의 평가 범위와 깊이에 영향을 미칩니다.
+즉, 상위 통제가 약하면 하위 통제를 더 넓게 보고,
+상위 통제가 강하면 하위 통제를 보다 효율적으로 평가할 수 있습니다.
+</p>
+
+<div class="highlight">
+<p>
+전산감사는 독립된 별도 점검이 아니라
+회계통제를 뒷받침하는 기반 통제를 확인하는 과정입니다.
+</p>
+</div>
+
+<h2>2. 세 가지 축으로 이해하기</h2>
+<table>
+<thead>
+<tr>
+  <th>구분</th>
+  <th>의미</th>
+  <th>전산감사와의 연결</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>전사적 수준 통제</td>
+  <td>전반적인 통제환경과 감독 체계</td>
+  <td>정보기술 조직과 변화관리 문화에 영향을 줍니다.</td>
+</tr>
+<tr>
+  <td>거래수준 통제</td>
+  <td>개별 업무처리 단계의 승인, 대사, 검토 통제</td>
+  <td>자동통제와 전산기반 수동통제가 이 영역에서 자주 등장합니다.</td>
+</tr>
+<tr>
+  <td>정보기술 일반통제</td>
+  <td>시스템 개발, 변경, 접근, 운영 전반 통제</td>
+  <td>자동통제와 시스템 산출정보의 신뢰성 기반이 됩니다.</td>
+</tr>
+</tbody>
+</table>
+
+<h2>3. 자동통제가 왜 중요해졌는가</h2>
+<p>
+업무가 수작업에서 시스템 중심으로 바뀌면서
+승인, 입력제한, 마스터 관리, 계산 로직, 배치 처리 같은 통제가 자동화되었습니다.
+이 경우 화면상 결과만 봐서는 충분하지 않습니다.
+누가 시스템을 바꿀 수 있는지,
+변경이 승인되고 테스트되었는지,
+권한이 과도하지 않은지,
+백업과 장애관리가 되는지까지 같이 봐야 자동통제를 신뢰할 수 있습니다.
+</p>
+
+<h2>4. 전산감사 실무에서 던지는 질문</h2>
+<ul>
+  <li>핵심 회계통제가 자동통제 또는 전산기반 수동통제인가</li>
+  <li>그 통제가 의존하는 시스템은 무엇인가</li>
+  <li>해당 시스템에 대한 접근보안과 변경관리는 적절한가</li>
+  <li>장애나 데이터 유실이 발생했을 때 재무보고에 영향이 없는가</li>
+</ul>
+
+<h2>5. 역할극으로 이해하기</h2>
+<div class="dialogue">
+<p><span class="role">회계 담당자:</span> 시스템에서 자동으로 막아 주니 통제는 이미 충분한 것 아닌가요?</p>
+<p><span class="role">전산감사 담당자:</span> 그 자동통제가 신뢰되려면 시스템 변경, 접근권한, 운영 안정성도 함께 봐야 합니다.</p>
+<p><span class="role">회계 담당자:</span> 그러면 전산통제가 약하면 회계통제도 약해질 수 있겠네요.</p>
+<p><span class="role">전산감사 담당자:</span> 맞습니다. 그래서 내부회계와 전산감사는 같은 흐름 안에서 평가됩니다.</p>
+</div>
+
+<h2>학습 정리</h2>
+<div class="questions">
+<ul>
+  <li>전사적 수준 통제, 거래수준 통제, 정보기술 일반통제의 관계를 설명할 수 있는가</li>
+  <li>자동통제의 신뢰성이 왜 정보기술 일반통제에 의존하는지 이해했는가</li>
+  <li>우리 회사의 핵심 회계통제 중 전산에 의존하는 통제가 무엇인지 떠올릴 수 있는가</li>
+</ul>
+</div>
+
+<div class="back">
+  <a href="./ics1.html">← 이전 과정</a>
+  <a href="./ics3.html">다음 과정 →</a>
+  <a href="../ics.html">← 목록으로</a>
+</div>
+</div>
+<footer>
+  © <span id="year"></span> Cha GPTs. All rights reserved.
+</footer>
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
