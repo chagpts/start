@@ -1,1 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>취약점 점검 교육 자료</title>
 
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', Arial, sans-serif;
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)),
+        url("verse.png") no-repeat center center / cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 28px 16px;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      font-family: 'Baloo 2', cursive;
+      font-size: 30px;
+      margin-bottom: 6px;
+      color: #1e3a5f;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 20px;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .back-home {
+      margin-bottom: 26px;
+      text-decoration: none;
+      color: #1e3a5f;
+      background: white;
+      padding: 10px 22px;
+      border-radius: 20px;
+      box-shadow: 0 5px 14px rgba(0,0,0,0.18);
+      font-size: 13px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .back-home:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+    }
+
+    .articles {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .article {
+      display: block;
+      background: rgba(255,255,255,0.96);
+      padding: 24px 22px;
+      border-radius: 24px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .article:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+    }
+
+    .article:active {
+      transform: scale(0.98);
+    }
+
+    .article h2 {
+      font-family: 'Baloo 2', cursive;
+      font-size: 20px;
+      margin: 0 0 10px;
+      color: #1e3a5f;
+    }
+
+    .article p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #555;
+      margin: 0 0 16px;
+    }
+
+    .read {
+      font-size: 13px;
+      color: #1e3a5f;
+      font-weight: 500;
+    }
+
+    @media (min-width: 768px) {
+      body {
+        padding: 40px 20px;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+
+      .articles {
+        max-width: 700px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>취약점 점검</h1>
+  <div class="subtitle">
+    회계 프로그램 운영 시 점검해야 할 취약점 교육 자료
+  </div>
+
+  <a href="index.html" class="back-home">Back to Home</a>
+
+  <div class="articles">
+    <a href="./weak/weak1.html" class="article">
+      <h2>1. 취약점 점검 개요</h2>
+      <p>회계 프로그램 운영 환경에서 왜 취약점 점검이 필요한지와 기본 점검 방향을 학습합니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./weak/weak2.html" class="article">
+      <h2>2. 사용자 계정 및 권한 관리</h2>
+      <p>과도한 권한 부여, 공용 계정 사용, 퇴직자 계정 방치 등 계정 관리 취약점을 점검합니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./weak/weak3.html" class="article">
+      <h2>3. 비밀번호 및 인증 보안</h2>
+      <p>약한 비밀번호, 초기 비밀번호 미변경, 다중 인증 미적용 등 인증 관련 취약점을 살펴봅니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./weak/weak4.html" class="article">
+      <h2>4. 데이터 입력값 검증</h2>
+      <p>입력값 검증 미흡으로 발생할 수 있는 SQL Injection, 스크립트 삽입 등의 취약점을 학습합니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./weak/weak5.html" class="article">
+      <h2>5. 데이터베이스 보안 점검</h2>
+      <p>회계 데이터 저장 시 암호화, 접근통제, 계정 분리 등 데이터베이스 보안 취약점을 점검합니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./weak/weak6.html" class="article">
+      <h2>6. 로그 관리와 감사 추적</h2>
+      <p>접속 기록, 변경 이력, 승인 내역이 제대로 남는지와 로그 위변조 위험을 점검합니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./weak/weak7.html" class="article">
+      <h2>7. 프로그램 변경관리 취약점</h2>
+      <p>회계 프로그램 수정, 배포, 패치 과정에서 발생할 수 있는 변경관리 취약점을 다룹니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./weak/weak8.html" class="article">
+      <h2>8. 서버 및 네트워크 보안</h2>
+      <p>서버 설정 오류, 불필요한 서비스 활성화, 방화벽 미흡 등 인프라 취약점을 점검합니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./weak/weak9.html" class="article">
+      <h2>9. 백업 및 복구 체계 점검</h2>
+      <p>데이터 백업 누락, 복구 테스트 미실시, 랜섬웨어 대응 미흡 등 운영상 취약점을 학습합니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./weak/weak10.html" class="article">
+      <h2>10. 종합 취약점 점검과 대응 방안</h2>
+      <p>주요 취약점을 종합적으로 정리하고 실무에서 적용할 개선 방안을 안내합니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+  </div>
+</body>
+</html>
