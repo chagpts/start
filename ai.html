@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>AI ACCT</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI OCR 교육 과정</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand:wght@400;500&display=swap" rel="stylesheet" />
 
   <style>
     body {
@@ -25,6 +26,7 @@
       font-family: 'Baloo 2', cursive;
       font-size: 30px;
       margin-bottom: 6px;
+      color: #1e3a5f;
     }
 
     .subtitle {
@@ -44,9 +46,14 @@
       border-radius: 20px;
       box-shadow: 0 5px 14px rgba(0,0,0,0.18);
       font-size: 13px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    /* ARTICLES */
+    .back-home:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+    }
+
     .articles {
       display: flex;
       flex-direction: column;
@@ -62,7 +69,12 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.18);
       text-decoration: none;
       color: inherit;
-      transition: transform 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .article:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.2);
     }
 
     .article:active {
@@ -72,7 +84,7 @@
     .article h2 {
       font-family: 'Baloo 2', cursive;
       font-size: 20px;
-      margin-bottom: 10px;
+      margin: 0 0 10px;
       color: #1e3a5f;
     }
 
@@ -80,7 +92,7 @@
       font-size: 14px;
       line-height: 1.6;
       color: #555;
-      margin-bottom: 16px;
+      margin: 0 0 16px;
     }
 
     .read {
@@ -89,7 +101,6 @@
       font-weight: 500;
     }
 
-    /* TABLET+ */
     @media (min-width: 768px) {
       body {
         padding: 40px 20px;
@@ -107,47 +118,73 @@
 </head>
 
 <body>
-
   <h1>AI OCR</h1>
   <div class="subtitle">
-    AI OCR
+    AI OCR 교육 과정
   </div>
 
   <a href="index.html" class="back-home">Back to Home</a>
 
   <div class="articles">
-    
-     <a href="./ai/ai1.html" class="article">
-      <h2>프로젝트 게획</h2>
-      <p>
-        프로젝트 세부 사항 
-      </p>
+    <a href="./ai/ai1.html" class="article">
+      <h2>1. 프로젝트 개요</h2>
+      <p>AI OCR 교육 과정의 전체 목표와 학습 방향을 소개합니다.</p>
       <div class="read">Tap to read →</div>
-     </a>
-     <a href="./ai/ai2.html" class="article">
-      <h2>머신 러닝</h2>
-      <p>
-        머신 러닝 기초 
-      </p>
-      <div class="read">Tap to read →</div>
-     </a>
-     <a href="./ai/ai3.html" class="article">
-      <h2>LORA VS. API</h2>
-      <p>
-        어떤 방식을 선택할 것인가? 
-      </p>
-      <div class="read">Tap to read →</div>
-     </a>
-     <a href="./ai/ai3.html" class="article">
-      <h2>로컬 AI 구축 필요성</h2>
-      <p>
-        프롬프트 인젝션, RAG DATA DUMPING
-      </p>
-      <div class="read">Tap to read →</div>
-     </a>
+    </a>
 
- 
+    <a href="./ai/ai2.html" class="article">
+      <h2>2. OCR의 기초 이해</h2>
+      <p>문자인식 기술의 기본 원리와 OCR 시스템의 구조를 학습합니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./ai/ai3.html" class="article">
+      <h2>3. 머신러닝 기초</h2>
+      <p>OCR 구현에 필요한 머신러닝의 핵심 개념을 정리합니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./ai/ai4.html" class="article">
+      <h2>4. 데이터 수집과 전처리</h2>
+      <p>학습용 이미지와 텍스트 데이터를 준비하고 정제하는 방법을 다룹니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./ai/ai5.html" class="article">
+      <h2>5. OCR 모델 학습 과정</h2>
+      <p>모델 학습 흐름과 학습 시 고려해야 할 요소들을 살펴봅니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./ai/ai6.html" class="article">
+      <h2>6. 성능 평가와 개선</h2>
+      <p>정확도 측정 방법과 OCR 성능을 높이기 위한 개선 전략을 배웁니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./ai/ai7.html" class="article">
+      <h2>7. LORA와 API 비교</h2>
+      <p>AI OCR 구축 시 LORA 방식과 API 방식의 차이점을 비교합니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./ai/ai8.html" class="article">
+      <h2>8. 로컬 AI 구축 필요성</h2>
+      <p>보안, 비용, 데이터 통제 측면에서 로컬 AI의 필요성을 설명합니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./ai/ai9.html" class="article">
+      <h2>9. 실전 적용 사례</h2>
+      <p>AI OCR 기술이 실제 업무와 서비스에서 활용되는 사례를 소개합니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./ai/ai10.html" class="article">
+      <h2>10. 최종 정리 및 확장 방향</h2>
+      <p>전체 학습 내용을 정리하고 향후 발전 방향을 안내합니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
   </div>
-
 </body>
 </html>
