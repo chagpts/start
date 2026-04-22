@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>5. 고객정보 보호 실습</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { margin:0; font-family:'Quicksand', Arial, sans-serif; min-height:100vh; background:linear-gradient(rgba(255,255,255,0.72), rgba(255,255,255,0.72)), url("../verse.png") no-repeat center center / cover; display:flex; justify-content:center; align-items:center; padding:24px; box-sizing:border-box; }
+    .card { width:100%; max-width:760px; background:rgba(255,255,255,0.97); padding:34px 26px; border-radius:26px; box-shadow:0 10px 24px rgba(0,0,0,0.18); }
+    h1 { font-family:'Baloo 2', cursive; color:#1e3a5f; margin:0 0 14px; font-size:30px; }
+    h2 { color:#1e3a5f; font-size:18px; margin-top:24px; margin-bottom:10px; }
+    p, li { color:#555; line-height:1.8; font-size:15px; }
+    ul { padding-left:22px; }
+    .btn { display:inline-block; text-decoration:none; color:#fff; background:#1e3a5f; padding:12px 22px; border-radius:18px; margin-top:24px; font-size:14px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>5. 고객정보 보호 실습</h1>
+
+    <p>
+      관리자 계정 탈취, 외주서버 침입, 로그에 비밀번호 평문 저장, 화면 마스킹 미적용 사례를 바탕으로
+      AI OCR 회계 프로그램의 개인정보 및 거래정보 보호를 실습합니다.
+    </p>
+
+    <h2>사고 포인트</h2>
+    <ul>
+      <li>관리자 계정과 비밀번호 유출</li>
+      <li>외부 서버를 통한 우회 침입</li>
+      <li>퇴직자 계정이 계속 사용됨</li>
+      <li>로그와 화면에 민감정보가 노출됨</li>
+    </ul>
+
+    <h2>AI OCR 회계 프로그램 실습</h2>
+    <ul>
+      <li>문서 조회 화면에서 주민번호·계좌번호 마스킹 규칙 만들기</li>
+      <li>OCR 결과 저장 로그에 민감정보 제외하기</li>
+      <li>퇴직자 계정 비활성화 프로세스 설계하기</li>
+      <li>의심 IP 차단 및 재시도 탐지 규칙 만들기</li>
+    </ul>
+
+    <h2>감사체크리스트 연계</h2>
+    <ul>
+      <li>계정 발급·회수 관리 여부</li>
+      <li>민감정보 암호화 및 마스킹 적용 여부</li>
+      <li>로그 저장 시 비밀번호·주민번호 보호 여부</li>
+      <li>침해시도 탐지 및 차단 절차 존재 여부</li>
+    </ul>
+
+    <h2>실습 결론</h2>
+    <p>
+      AI OCR 회계 프로그램은 문서 이미지뿐 아니라 추출된 데이터까지 보호해야 합니다.
+      조회 화면, 로그, 저장소, 외부 연계구간 모두에서 개인정보 보호 통제가 필요합니다.
+    </p>
+
+    <a href="../practice.html" class="btn">목록으로 돌아가기</a>
+  </div>
+</body>
+</html>
