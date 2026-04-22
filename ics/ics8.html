@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>접근보안 통제</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Quicksand', sans-serif;
+  background:
+    linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
+    url("../verse.png") no-repeat center center / cover;
+  padding: 60px 20px;
+}
+.container {
+  max-width: 920px;
+  margin: auto;
+  background: rgba(255,255,255,0.95);
+  padding: 50px 60px;
+  border-radius: 28px;
+}
+h1, h2, h3 { font-family: 'Baloo 2', cursive; }
+h1 { margin-bottom: 28px; }
+h2 { margin-top: 50px; margin-bottom: 16px; }
+p { line-height: 1.8; margin-bottom: 18px; font-size: 15px; }
+ul { margin-left: 20px; margin-bottom: 22px; }
+li { margin-bottom: 8px; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 28px 0;
+  font-size: 14px;
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 14px;
+  vertical-align: top;
+}
+th { background: #f2f2f2; font-weight: 600; }
+.highlight {
+  background: #f7f7f7;
+  padding: 22px 26px;
+  border-radius: 18px;
+  margin: 30px 0;
+  font-size: 14px;
+}
+.questions {
+  background: #f7f7f7;
+  padding: 25px 30px;
+  border-radius: 18px;
+  margin-top: 30px;
+}
+.link-block {
+  background: #eef2f7;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin-top: 14px;
+  font-size: 14px;
+}
+.link-block a {
+  color: #1a0dab;
+  text-decoration: underline;
+}
+.dialogue {
+  background: #fafafa;
+  padding: 26px 30px;
+  border-radius: 18px;
+  margin-top: 25px;
+  font-size: 14px;
+}
+.role { font-weight: 600; }
+.back {
+  text-align: center;
+  margin-top: 55px;
+}
+.back a {
+  display: inline-block;
+  padding: 12px 26px;
+  background: #333;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 6px;
+}
+footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 13px;
+  background: rgba(255,255,255,0.75);
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 20px;
+}
+@media (max-width: 600px) {
+  .container { padding: 30px 24px; }
+}
+</style>
+
+</head>
+<body>
+<div class="container">
+<h1>접근보안 통제</h1>
+
+<p>
+가이드라인은 재무제표의 신뢰성을 유지하기 위해
+프로그램과 데이터에 대한 접근보안이 전제되어야 한다고 설명합니다.
+접근보안 통제는 누가, 어떤 권한으로, 어떤 시스템과 데이터에 접근할 수 있는지를 관리하는 영역입니다.
+이 통제가 약하면 승인되지 않은 수정, 부정, 데이터 훼손이 발생할 가능성이 커집니다.
+</p>
+
+<div class="link-block">
+  <p>핵심 점검 항목</p>
+  <p>• 정보보안 정책 수립과 정기 검토</p>
+  <p>• 권한의 적정성 검토</p>
+  <p>• 물리적·논리적 접근통제</p>
+  <p>• 사용자 계정 추가·수정·삭제 절차</p>
+  <p>• 보안위반 식별과 대응 체계</p>
+</div>
+
+<h2>1. 접근보안이 곧 회계통제인 이유</h2>
+<p>
+회계시스템에서는 거래처 마스터, 계정, 단가, 전표, 결산 자료 등
+핵심 정보가 시스템 안에 있습니다.
+누군가 승인 없이 이 데이터에 접근하여 바꾸면
+정상 거래도 잘못 보고될 수 있습니다.
+따라서 접근보안은 단순 정보보안이 아니라
+재무보고 신뢰성을 지키는 직접적 통제입니다.
+</p>
+
+<div class="highlight">
+<p>
+권한이 넓을수록 편할 수는 있지만,
+그만큼 오류와 부정의 탐지 가능성은 낮아질 수 있습니다.
+</p>
+</div>
+
+<h2>2. 가이드라인이 제시하는 접근보안 요소</h2>
+<table>
+<thead>
+<tr>
+  <th>영역</th>
+  <th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>보안 정책</td>
+  <td>정보보안 정책 수립 및 적정성 정기 검토</td>
+</tr>
+<tr>
+  <td>권한 검토</td>
+  <td>업무 내용과 직무기술서를 고려한 권한 적정성 검토</td>
+</tr>
+<tr>
+  <td>접근통제</td>
+  <td>물리적 접근통제와 논리적 접근통제 수립 및 적용</td>
+</tr>
+<tr>
+  <td>계정 관리</td>
+  <td>사용자 계정 추가, 수정, 삭제 절차 운영</td>
+</tr>
+<tr>
+  <td>보안 모니터링</td>
+  <td>보안활동 기록, 위반 식별, 전달, 적시 대응 체계</td>
+</tr>
+</tbody>
+</table>
+
+<h2>3. 전산감사에서 자주 보는 위험</h2>
+<ul>
+  <li>퇴사자 계정이 그대로 남아 있는 경우</li>
+  <li>개발자나 운영자가 과도한 회계시스템 권한을 가진 경우</li>
+  <li>공용 계정 사용으로 행위자 추적이 어려운 경우</li>
+  <li>비밀번호 정책이나 인증 절차가 약한 경우</li>
+  <li>정기 권한 검토가 형식적으로만 수행되는 경우</li>
+</ul>
+
+<h2>4. 보완 통제도 함께 봐야 한다</h2>
+<p>
+가이드라인은 소규모 기업에서는 문서화 수준이 높지 않을 수 있다고 설명하면서도,
+접근제한과 업무분장 결여로 생기는 위험은
+적발통제나 모니터링 절차로 보완할 수 있다고 봅니다.
+즉, 이상적인 구조가 부족하더라도
+누가 어떤 보고서를 검토하고,
+어떤 예외를 잡아내는지까지 확인해야 합니다.
+</p>
+
+<h2>학습 정리</h2>
+<div class="questions">
+<ul>
+  <li>우리 회사에서 가장 민감한 회계시스템 권한은 무엇인가</li>
+  <li>권한 부여와 회수는 누가 승인하고 얼마나 빨리 처리하는가</li>
+  <li>공용 계정이나 추적 불가능한 접근 방식이 남아 있지는 않은가</li>
+</ul>
+</div>
+
+<div class="back">
+  <a href="./ics6.html">← 이전 과정</a>
+  <a href="./ics8.html">다음 과정 →</a>
+  <a href="../ics.html">← 목록으로</a>
+</div>
+</div>
+<footer>
+  © <span id="year"></span> Cha GPTs. All rights reserved.
+</footer>
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
