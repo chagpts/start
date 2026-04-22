@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>AI ACCT</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>내부회계관리제도 교육 자료</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand:wght@400;500&display=swap" rel="stylesheet" />
 
   <style>
     body {
@@ -25,6 +26,7 @@
       font-family: 'Baloo 2', cursive;
       font-size: 30px;
       margin-bottom: 6px;
+      color: #1e3a5f;
     }
 
     .subtitle {
@@ -44,9 +46,14 @@
       border-radius: 20px;
       box-shadow: 0 5px 14px rgba(0,0,0,0.18);
       font-size: 13px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    /* ARTICLES */
+    .back-home:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+    }
+
     .articles {
       display: flex;
       flex-direction: column;
@@ -56,13 +63,19 @@
     }
 
     .article {
+      display: block;
       background: rgba(255,255,255,0.96);
       padding: 24px 22px;
       border-radius: 24px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.18);
       text-decoration: none;
       color: inherit;
-      transition: transform 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .article:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.2);
     }
 
     .article:active {
@@ -72,7 +85,7 @@
     .article h2 {
       font-family: 'Baloo 2', cursive;
       font-size: 20px;
-      margin-bottom: 10px;
+      margin: 0 0 10px;
       color: #1e3a5f;
     }
 
@@ -80,7 +93,7 @@
       font-size: 14px;
       line-height: 1.6;
       color: #555;
-      margin-bottom: 16px;
+      margin: 0 0 16px;
     }
 
     .read {
@@ -89,7 +102,6 @@
       font-weight: 500;
     }
 
-    /* TABLET+ */
     @media (min-width: 768px) {
       body {
         padding: 40px 20px;
@@ -107,41 +119,73 @@
 </head>
 
 <body>
-
-  <h1>ICS</h1>
+  <h1>ICS 교육 자료</h1>
   <div class="subtitle">
-    내부회계관리
+    내부회계관리제도 및 전산감사 교육 자료
   </div>
 
   <a href="index.html" class="back-home">Back to Home</a>
 
   <div class="articles">
-
-    <a href="./acct/biz1.html" class="article">
-      <h2>내부회게관리란? </h2>
-      <p>
-        INTERNAL CONTROL SYSTEM
-      </p>
-      <div class="read">Tap to read →</div>
-    </a>
-    
-     <a href="./acct/biz1.html" class="article">
-      <h2>내부회게관리란? </h2>
-      <p>
-        INTERNAL CONTROL SYSTEM
-      </p>
-      <div class="read">Tap to read →</div>
-    </a>   
-    <a href="./acct/biz1.html" class="article">
-      <h2>내부회게관리란? </h2>
-      <p>
-        INTERNAL CONTROL SYSTEM
-      </p>
+    <a href="./ics/ics1.html" class="article">
+      <h2>1. 내부회계관리제도 운영위원회</h2>
+      <p>내부회계관리제도 운영위원회 관련 링크와 참고 자료를 확인합니다.</p>
       <div class="read">Tap to read →</div>
     </a>
 
- 
+    <a href="./ics/ics2.html" class="article">
+      <h2>2. 내부회계관리제도 개요</h2>
+      <p>내부회계관리제도의 개념과 목적, 기본 체계를 학습합니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./ics/ics3.html" class="article">
+      <h2>3. 전산감사의 이해</h2>
+      <p>전산감사의 기본 개념과 내부회계관리와의 연계성을 살펴봅니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./ics/ics4.html" class="article">
+      <h2>4. IT 일반통제(ITGC)</h2>
+      <p>접근통제, 변경관리, 운영통제 등 IT 일반통제의 핵심 내용을 다룹니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./ics/ics5.html" class="article">
+      <h2>5. 애플리케이션 통제</h2>
+      <p>업무 시스템 내 자동통제와 입력·처리·출력 통제를 학습합니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./ics/ics6.html" class="article">
+      <h2>6. 전산감사 절차와 방법론</h2>
+      <p>전산감사 수행 절차와 점검 방법, 문서화 방식을 정리합니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./ics/ics7.html" class="article">
+      <h2>7. 시스템 권한 및 접근통제 점검</h2>
+      <p>사용자 권한, 계정관리, 접근 로그 점검 방법을 다룹니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./ics/ics8.html" class="article">
+      <h2>8. 변경관리와 운영통제</h2>
+      <p>프로그램 변경관리, 배포 통제, 장애 및 백업 관리 절차를 학습합니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./ics/ics9.html" class="article">
+      <h2>9. 전산감사 사례 분석</h2>
+      <p>내부회계관리 관련 실제 전산감사 사례와 주요 지적 사항을 살펴봅니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./ics/ics10.html" class="article">
+      <h2>10. 종합 정리 및 실무 적용</h2>
+      <p>교육 내용을 정리하고 내부회계관리 실무에 적용하는 방향을 안내합니다.</p>
+      <div class="read">Tap to read →</div>
+    </a>
   </div>
-
 </body>
 </html>
