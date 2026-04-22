@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3. 승인절차와 지급통제 실습</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body { margin:0; font-family:'Quicksand', Arial, sans-serif; min-height:100vh; background:linear-gradient(rgba(255,255,255,0.72), rgba(255,255,255,0.72)), url("../verse.png") no-repeat center center / cover; display:flex; justify-content:center; align-items:center; padding:24px; box-sizing:border-box; }
+    .card { width:100%; max-width:760px; background:rgba(255,255,255,0.97); padding:34px 26px; border-radius:26px; box-shadow:0 10px 24px rgba(0,0,0,0.18); }
+    h1 { font-family:'Baloo 2', cursive; color:#1e3a5f; margin:0 0 14px; font-size:30px; }
+    h2 { color:#1e3a5f; font-size:18px; margin-top:24px; margin-bottom:10px; }
+    p, li { color:#555; line-height:1.8; font-size:15px; }
+    ul { padding-left:22px; }
+    .btn { display:inline-block; text-decoration:none; color:#fff; background:#1e3a5f; padding:12px 22px; border-radius:18px; margin-top:24px; font-size:14px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>3. 승인절차와 지급통제 실습</h1>
+
+    <p>
+      복지비 횡령과 근로소득세 횡령사례를 바탕으로, 우리 AI OCR 회계 프로그램에서
+      신청-승인-지급-사후검증 절차를 어떻게 설계해야 하는지 실습합니다.
+    </p>
+
+    <h2>사고 포인트</h2>
+    <ul>
+      <li>엑셀 조작을 통해 과다 신청 수행</li>
+      <li>승인절차가 있었지만 실질적인 검증이 부족함</li>
+      <li>전산 입력 전 금액을 쪼개어 횡령함</li>
+      <li>지출명령과 실제 송금 금액이 일치하지 않음</li>
+    </ul>
+
+    <h2>AI OCR 회계 프로그램 실습</h2>
+    <ul>
+      <li>OCR 추출 금액과 지급 승인 금액 자동 비교</li>
+      <li>금액 변경 이력과 변경자 추적 기능 설계</li>
+      <li>엑셀 업로드 자료와 시스템 원장 간 대사 규칙 만들기</li>
+      <li>분할 입력 또는 비정상 송금 패턴 경고 규칙 작성하기</li>
+    </ul>
+
+    <h2>감사체크리스트 연계</h2>
+    <ul>
+      <li>승인 전 원본 증빙 확인 절차 존재 여부</li>
+      <li>지급금액과 승인금액 자동 일치 점검 여부</li>
+      <li>수기 자료 업로드 후 검증 절차 존재 여부</li>
+      <li>이상금액 분할처리 탐지 기능 존재 여부</li>
+    </ul>
+
+    <h2>실습 결론</h2>
+    <p>
+      승인절차는 형식만 있으면 의미가 없습니다. 원본 문서, 승인 정보, 지급 결과가
+      자동으로 서로 연결되어야 하며, 금액 변경과 분할 입력을 실시간으로 감지해야 합니다.
+    </p>
+
+    <a href="../practice.html" class="btn">목록으로 돌아가기</a>
+  </div>
+</body>
+</html>
