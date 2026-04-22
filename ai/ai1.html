@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-<meta charset="UTF-8" />
-<title>AI OCR Accounting Platform — 3 Month Project Plan</title>
+<meta charset="UTF-8">
+<title>AI OCR 프로젝트 계획</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand&display=swap" rel="stylesheet">
 
 <style>
 body {
@@ -18,7 +18,7 @@ body {
 }
 
 .container {
-  max-width: 980px;
+  max-width: 920px;
   margin: auto;
   background: rgba(255,255,255,0.95);
   padding: 50px 60px;
@@ -31,7 +31,6 @@ h1, h2, h3 {
 
 h1 {
   margin-bottom: 28px;
-  line-height: 1.2;
 }
 
 h2 {
@@ -39,20 +38,15 @@ h2 {
   margin-bottom: 16px;
 }
 
-h3 {
-  margin-top: 28px;
-  margin-bottom: 10px;
-}
-
 p {
   line-height: 1.8;
-  margin-bottom: 14px;
+  margin-bottom: 18px;
   font-size: 15px;
 }
 
 ul {
   margin-left: 20px;
-  margin-bottom: 18px;
+  margin-bottom: 22px;
 }
 
 li {
@@ -62,7 +56,7 @@ li {
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: 20px 0;
+  margin: 28px 0;
   font-size: 14px;
 }
 
@@ -81,7 +75,7 @@ th {
   background: #f7f7f7;
   padding: 22px 26px;
   border-radius: 18px;
-  margin: 24px 0;
+  margin: 30px 0;
   font-size: 14px;
 }
 
@@ -105,71 +99,16 @@ th {
   text-decoration: underline;
 }
 
-.badge {
-  display: inline-block;
-  padding: 6px 12px;
-  border-radius: 999px;
-  font-size: 13px;
-  background: #f7f7f7;
-  border: 1px solid #e7e7e7;
-  margin: 4px 6px 6px 0;
-}
-
-.codeblock {
-  background: #0f172a;
-  color: #e5e7eb;
-  padding: 16px 18px;
-  border-radius: 14px;
-  overflow-x: auto;
-  font-size: 13px;
-  line-height: 1.65;
-  margin: 16px 0 22px 0;
-}
-
-.small {
-  font-size: 13px;
-  opacity: 0.9;
-}
-
-/* Dialogue */
 .dialogue {
   background: #fafafa;
   padding: 26px 30px;
   border-radius: 18px;
   margin-top: 25px;
   font-size: 14px;
-  border: 1px solid #eee;
-}
-
-.dialogue .meta {
-  font-size: 13px;
-  opacity: 0.85;
-  margin-bottom: 12px;
-}
-
-.turn {
-  margin: 14px 0;
-  padding: 12px 14px;
-  border-radius: 14px;
-  background: #ffffff;
-  border: 1px solid #efefef;
 }
 
 .role {
-  font-weight: 700;
-  display: inline-block;
-  margin-right: 8px;
-}
-
-.role.dev { color: #1f4b99; }
-.role.acc { color: #0b6b3a; }
-.role.pm  { color: #7a3bb2; }
-.role.it  { color: #8a4d00; }
-
-.turn p {
-  margin: 6px 0 0 0;
-  font-size: 14px;
-  line-height: 1.75;
+  font-weight: 600;
 }
 
 .back {
@@ -207,453 +146,230 @@ footer {
 </head>
 
 <body>
+
 <div class="container">
 
-  <h1>
-    AI OCR Accounting Platform — 3 Month MVP Plan
-  </h1>
+<h1>AI OCR 프로젝트 계획</h1>
 
-  <p>
-    This plan outlines a realistic 3-month build for a U.S.-focused AI OCR accounting web platform.
-    The product follows a QuickBooks-style accounting structure while adding OCR, Llama-based document understanding,
-    accounting recommendations, approval workflow, and posting integration.
-  </p>
+<p>
+AI OCR은 종이 문서, 스캔 파일, 이미지 속 문자를 자동으로 읽어
+구조화된 데이터로 바꾸는 기술입니다.
+단순히 글자를 인식하는 데서 끝나는 것이 아니라,
+문서 종류를 분류하고, 필요한 항목을 추출하고,
+업무 시스템에 연결하는 것까지 포함하면 진짜 프로젝트가 됩니다.
+</p>
 
-  <div class="highlight">
-    <p style="margin:0;">
-      <strong>Core Product Idea:</strong> Upload invoices, receipts, and utility bills → OCR extracts the document →
-      Llama normalizes and classifies the data → accounting rules generate posting candidates →
-      users review and approve → data is posted into a QuickBooks-compatible workflow.
-    </p>
-  </div>
+<div class="link-block">
+  <p>학습 포인트</p>
+  <p>• OCR과 AI OCR의 차이 이해</p>
+  <p>• 프로젝트 범위 정의 방법 익히기</p>
+  <p>• 정확도, 비용, 운영성을 함께 고려하는 방법 정리</p>
+  <p>• 실제 도입 전 점검해야 할 위험 요소 파악</p>
+</div>
 
-  <div class="link-block">
-    <p style="margin-bottom:10px;"><strong>Recommended MVP Stack</strong></p>
-    <span class="badge">FastAPI</span>
-    <span class="badge">PostgreSQL</span>
-    <span class="badge">S3 / Object Storage</span>
-    <span class="badge">Redis / Queue</span>
-    <span class="badge">OCR Engine</span>
-    <span class="badge">Llama</span>
-    <span class="badge">Rules Engine</span>
-    <span class="badge">Next.js Admin UI</span>
-    <span class="badge">QuickBooks API</span>
-    <p style="margin-top:12px; margin-bottom:0;">
-      <em>Product Principle:</em> OCR and LLM assist understanding, but accounting logic is finalized by rules and approval.
-    </p>
-  </div>
+<h2>1. AI OCR 프로젝트란 무엇인가</h2>
 
-  <h2>Milestones at a Glance</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Month</th>
-        <th>Main Goal</th>
-        <th>Milestone Output</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Month 1</td>
-        <td>Document intake + OCR pipeline</td>
-        <td>Upload → OCR → extracted JSON → document review screen</td>
-      </tr>
-      <tr>
-        <td>Month 2</td>
-        <td>Llama normalization + accounting recommendation</td>
-        <td>Vendor detection, account suggestion, confidence scoring, editable review flow</td>
-      </tr>
-      <tr>
-        <td>Month 3</td>
-        <td>Approval workflow + QuickBooks posting</td>
-        <td>Review → approve → post Bill/Expense/Vendor to QuickBooks-compatible flow</td>
-      </tr>
-    </tbody>
-  </table>
+<p>
+기존 OCR은 이미지 안에 있는 문자를 기계적으로 읽는 데 초점이 있습니다.
+반면 AI OCR은 문서 맥락을 이해하려고 시도합니다.
+예를 들어 영수증에서는 거래일자, 공급가액, 세액, 합계금액을 구분하고,
+계약서에서는 계약번호, 계약일, 당사자명, 금액 항목을 따로 뽑아낼 수 있습니다.
+즉, AI OCR 프로젝트는 단순 자동화가 아니라
+문서를 데이터 자산으로 전환하는 업무 혁신 프로젝트라고 볼 수 있습니다.
+</p>
 
-  <h2>Project Scope — What This MVP Is</h2>
+<div class="highlight">
+<p>
+핵심은 “문자를 읽는 기술”이 아니라
+“업무에 필요한 정보를 안정적으로 추출하는 체계”를 만드는 것입니다.
+</p>
+</div>
 
-  <div class="highlight">
-    <p style="margin:0;">
-      <strong>MVP Definition:</strong> A working accounting operations tool for U.S. business documents.
-      It should support receipt and bill ingestion, OCR extraction, LLM-assisted normalization, account recommendation,
-      approval workflow, duplicate detection, audit logging, and QuickBooks posting for core objects such as
-      <strong>Bill</strong>, <strong>Expense</strong>, and <strong>Vendor</strong>.
-    </p>
-  </div>
+<h2>2. 프로젝트 목표를 어떻게 정의해야 하는가</h2>
 
-  <h3>1) Product Flow</h3>
-  <ul>
-    <li><strong>Upload:</strong> User uploads PDF or image documents.</li>
-    <li><strong>OCR:</strong> The system extracts text and key fields from invoices, receipts, and utility bills.</li>
-    <li><strong>Llama Processing:</strong> The model normalizes vendor names, classifies document type, and suggests accounts.</li>
-    <li><strong>Accounting Recommendation:</strong> A rules engine converts extracted data into draft accounting actions.</li>
-    <li><strong>Review & Approval:</strong> Users verify, correct, and approve entries.</li>
-    <li><strong>Posting:</strong> Approved entries are pushed into a QuickBooks-compatible flow.</li>
-  </ul>
+<p>
+AI OCR 프로젝트는 기술보다 목표 정의가 먼저입니다.
+무엇을 자동화할 것인지, 어느 부서가 사용할 것인지,
+사람 검토를 어느 단계까지 남길 것인지가 명확해야 합니다.
+</p>
 
-  <h3>2) Key Design Principle</h3>
-  <table>
-    <thead>
-      <tr>
-        <th>Layer</th>
-        <th>Responsibility</th>
-        <th>Reason</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>OCR</td>
-        <td>Read document text and structure</td>
-        <td>Best used for extraction, not accounting decisions</td>
-      </tr>
-      <tr>
-        <td>Llama</td>
-        <td>Normalize, classify, explain, recommend</td>
-        <td>Good at ambiguity handling and document interpretation</td>
-      </tr>
-      <tr>
-        <td>Rules Engine</td>
-        <td>Generate deterministic accounting actions</td>
-        <td>Required for stable accounting behavior</td>
-      </tr>
-      <tr>
-        <td>User Approval</td>
-        <td>Validate final decision before posting</td>
-        <td>Ensures trust, control, and auditability</td>
-      </tr>
-    </tbody>
-  </table>
+<table>
+<thead>
+<tr>
+  <th>구분</th>
+  <th>잘못된 목표</th>
+  <th>좋은 목표</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>도입 목적</td>
+  <td>문서를 AI로 처리한다</td>
+  <td>세금계산서 입력 시간을 70퍼센트 줄인다</td>
+</tr>
+<tr>
+  <td>대상 문서</td>
+  <td>모든 문서</td>
+  <td>영수증, 세금계산서, 거래명세서부터 시작한다</td>
+</tr>
+<tr>
+  <td>성과 지표</td>
+  <td>정확도가 높아야 한다</td>
+  <td>핵심 항목 추출 정확도 95퍼센트 이상을 달성한다</td>
+</tr>
+<tr>
+  <td>운영 방식</td>
+  <td>자동으로 다 처리한다</td>
+  <td>신뢰도 낮은 문서는 담당자 검토로 넘긴다</td>
+</tr>
+</tbody>
+</table>
 
-  <h2>Month 1 — Foundation + OCR Pipeline</h2>
+<h2>3. 프로젝트 추진 단계</h2>
 
-  <p>
-    The first month focuses on building the intake and document processing pipeline.
-    The goal is simple: users can upload files, the system runs OCR, stores the outputs,
-    and displays structured document data in a reviewable UI.
-  </p>
+<p>
+AI OCR 프로젝트는 보통 다음 순서로 진행됩니다.
+먼저 어떤 문서를 대상으로 할지 정하고,
+문서 샘플을 모아 분석한 뒤,
+필드 정의와 정답 데이터를 만들고,
+모델 또는 서비스 테스트를 거쳐 실제 업무 시스템에 연결합니다.
+마지막으로 운영 기준과 예외 처리 절차를 정리해야 합니다.
+</p>
 
-  <h3>Month 1 Deliverables</h3>
-  <ul>
-    <li>Document upload system for PDF and image files</li>
-    <li>Document storage and metadata tracking</li>
-    <li>OCR integration and raw extraction pipeline</li>
-    <li>OCR results saved as structured JSON</li>
-    <li>Basic document list page and detail page</li>
-  </ul>
+<ul>
+  <li>대상 문서 선정: 가장 많이 들어오고 반복 처리되는 문서부터 시작</li>
+  <li>문서 분석: 문서 양식 종류, 품질, 훼손 정도, 손글씨 포함 여부 확인</li>
+  <li>추출 항목 정의: 날짜, 금액, 사업자번호, 문서번호 등 핵심 항목 확정</li>
+  <li>정답 데이터 구축: 학습 및 검증용 라벨 데이터 준비</li>
+  <li>기술 검토: 상용 API, 오픈소스, 자체 모델 중 선택</li>
+  <li>업무 연계: ERP, 그룹웨어, 저장소, 승인 프로세스와 연결</li>
+  <li>운영 체계 수립: 오류 검수, 재처리, 로그 관리, 보안 통제 마련</li>
+</ul>
 
-  <p><strong>Suggested database tables</strong></p>
-  <div class="codeblock"><pre>documents
-document_files
-ocr_runs
-ocr_results
-users
-audit_logs</pre></div>
+<h2>4. 사전 검토해야 할 문서 특성</h2>
 
-  <p><strong>Example OCR output schema</strong></p>
-  <div class="codeblock"><pre>{
-  "document_id": "doc_1001",
-  "document_type_raw": "invoice",
-  "vendor_raw": "Amazon Business",
-  "invoice_number": "INV-20391",
-  "document_date": "2026-04-05",
-  "subtotal": 120.00,
-  "tax": 9.60,
-  "total": 129.60,
-  "currency": "USD",
-  "line_items": [
-    {
-      "description": "Office supplies",
-      "amount": 129.60
-    }
-  ],
-  "confidence": 0.89
-}</pre></div>
+<p>
+많은 프로젝트가 기술 성능보다 입력 문서 품질 때문에 실패합니다.
+문서가 기울어져 있거나, 해상도가 낮거나,
+사진 그림자가 심하거나, 양식이 지나치게 다양하면
+정확도는 급격히 떨어질 수 있습니다.
+따라서 프로젝트 초기에 문서 현실을 객관적으로 보는 것이 중요합니다.
+</p>
 
-  <p><strong>Month 1 success condition</strong></p>
-  <div class="highlight">
-    <p style="margin:0;">
-      A user can upload a document and see OCR-extracted fields in the web UI.
-      At the end of Month 1, the system does not need to make accounting decisions yet.
-      It only needs to read, store, and display document data reliably.
-    </p>
-  </div>
+<table>
+<thead>
+<tr>
+  <th>점검 항목</th>
+  <th>확인 내용</th>
+  <th>영향</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>해상도</td>
+  <td>스캔 품질이 충분한가</td>
+  <td>낮으면 문자 인식 오류 증가</td>
+</tr>
+<tr>
+  <td>양식 다양성</td>
+  <td>문서 형태가 몇 종류인가</td>
+  <td>종류가 많을수록 모델 복잡도 증가</td>
+</tr>
+<tr>
+  <td>손글씨 여부</td>
+  <td>수기 작성 항목이 있는가</td>
+  <td>정확도 저하 가능성 큼</td>
+</tr>
+<tr>
+  <td>언어 혼합</td>
+  <td>한글, 영문, 숫자, 특수문자가 섞이는가</td>
+  <td>문자 분류 난이도 상승</td>
+</tr>
+<tr>
+  <td>보안 수준</td>
+  <td>개인정보, 계약정보 포함 여부</td>
+  <td>클라우드 사용 제한 가능</td>
+</tr>
+</tbody>
+</table>
 
-  <h2>Month 2 — Llama + Accounting Recommendation</h2>
+<h2>5. 성공 기준은 정확도만이 아니다</h2>
 
-  <p>
-    The second month adds business intelligence on top of OCR. Llama is introduced to normalize vendors,
-    identify document types, recommend account categories, and generate confidence-based accounting suggestions.
-    Users should be able to see and edit these recommendations before anything is finalized.
-  </p>
+<p>
+많은 팀이 “정확도 몇 퍼센트냐”만 묻지만,
+실제 업무에서는 처리 속도, 예외 처리, 사용자 피드백, 유지보수 비용도 중요합니다.
+예를 들어 정확도가 높아도 검수 화면이 불편하면 실무자가 사용하지 않습니다.
+또 모델이 조금만 환경이 바뀌어도 성능이 떨어지면 운영 부담이 커집니다.
+</p>
 
-  <h3>Month 2 Deliverables</h3>
-  <ul>
-    <li>Llama integration for normalization and classification</li>
-    <li>Strict JSON schema output from the model</li>
-    <li>Vendor normalization and alias handling</li>
-    <li>Chart of accounts mapping and recommendation engine</li>
-    <li>Confidence scores and review flags</li>
-    <li>Editable review UI for accounting staff</li>
-  </ul>
+<div class="highlight">
+<p>
+성공 기준은 정확도, 속도, 사용자 편의성, 운영 안정성, 보안 적합성까지 함께 봐야 합니다.
+</p>
+</div>
 
-  <p><strong>Structured Llama output</strong></p>
-  <div class="codeblock"><pre>{
-  "document_type": "vendor_bill",
-  "vendor_name_raw": "AMZN Mktp US",
-  "vendor_name_normalized": "Amazon",
-  "transaction_date": "2026-04-05",
-  "currency": "USD",
-  "amount_total": 129.60,
-  "category": "Office Supplies",
-  "suggested_account": "Office Supplies",
-  "recommended_qbo_entity": "Bill",
-  "risk_flags": ["new_vendor"],
-  "confidence": 0.91
-}</pre></div>
+<h2>6. 역할 분담 예시</h2>
 
-  <p><strong>Rules engine example</strong></p>
-  <div class="codeblock"><pre>// Pseudo logic
-if (document_type === "vendor_bill") {
-  entity = "Bill";
-}
+<div class="dialogue">
+<p><span class="role">기획 담당자:</span>  
+어떤 문서를 먼저 자동화해야 가장 효과가 클까요?</p>
 
-if (vendor_history.same_account_ratio > 0.8) {
-  suggested_account = vendor_history.most_common_account;
-}
+<p><span class="role">현업 담당자:</span>  
+영수증과 세금계산서가 입력량이 많아서 우선순위가 높습니다.</p>
 
-if (amount_total <= 0 || currency == null) {
-  status = "needs_review";
-}
+<p><span class="role">데이터 담당자:</span>  
+그 문서들에서 꼭 필요한 항목을 먼저 확정해야 합니다.</p>
 
-if (duplicate_check == true) {
-  status = "duplicate_alert";
-}</pre></div>
+<p><span class="role">개발 담당자:</span>  
+API를 쓸지 자체 모델을 쓸지 결정하려면 보안 요건도 알아야 합니다.</p>
 
-  <p><strong>Month 2 success condition</strong></p>
-  <div class="highlight">
-    <p style="margin:0;">
-      At the end of Month 2, the platform should not just read documents.
-      It should also understand them well enough to recommend vendors, document types,
-      and accounting categories, while allowing a human reviewer to adjust the result.
-    </p>
-  </div>
+<p><span class="role">보안 담당자:</span>  
+개인정보와 거래정보가 있다면 외부 전송 정책부터 검토해야 합니다.</p>
 
-  <h2>Month 3 — Approval Workflow + QuickBooks Posting</h2>
+<p><span class="role">현업 담당자:</span>  
+정확도가 완벽하지 않아도 괜찮습니다. 다만 검토 화면이 편해야 합니다.</p>
 
-  <p>
-    The third month turns the system into a usable accounting operations product.
-    This is where review states, approval workflow, duplicate protection, audit logs,
-    and posting integration are completed.
-  </p>
+<p><span class="role">기획 담당자:</span>  
+그럼 1차 목표는 핵심 항목 자동 추출과 검토 시간 단축으로 잡겠습니다.</p>
+</div>
 
-  <h3>Month 3 Deliverables</h3>
-  <ul>
-    <li>Approval status flow: Draft → Review → Approved → Posted</li>
-    <li>QuickBooks OAuth and posting integration</li>
-    <li>Posting support for Bill, Expense, and Vendor</li>
-    <li>Duplicate detection rules</li>
-    <li>Audit log for OCR result, AI result, edits, and posting action</li>
-    <li>Basic metrics dashboard for confidence and review rate</li>
-  </ul>
+<h2>7. 자주 발생하는 실패 원인</h2>
 
-  <p><strong>Workflow state example</strong></p>
-  <div class="codeblock"><pre>{
-  "document_id": "doc_1001",
-  "status": "review",
-  "reviewer_id": "user_22",
-  "recommended_action": {
-    "entity": "Bill",
-    "vendor": "Amazon",
-    "account": "Office Supplies",
-    "amount": 129.60
-  },
-  "approval_required": true,
-  "duplicate_check": false
-}</pre></div>
+<ul>
+  <li>문서 종류를 너무 넓게 잡아서 초기 범위가 과도해지는 경우</li>
+  <li>샘플 데이터가 적어서 실제 운영 환경을 반영하지 못하는 경우</li>
+  <li>정답 데이터 품질이 낮아 모델 평가가 왜곡되는 경우</li>
+  <li>검수 화면과 업무 흐름을 고려하지 않고 기술만 우선한 경우</li>
+  <li>예외 문서 처리 기준이 없어 사람이 다시 수작업하는 경우</li>
+  <li>운영 중 성능 저하를 모니터링하지 않는 경우</li>
+</ul>
 
-  <p><strong>Duplicate detection example</strong></p>
-  <div class="codeblock"><pre>// Duplicate rules
-same_vendor &&
-same_invoice_number &&
-same_amount &&
-date_within_30_days</pre></div>
+<h2>8. 실무 적용 시 추천 접근 방식</h2>
 
-  <p><strong>Audit log example</strong></p>
-  <div class="codeblock"><pre>{
-  "document_id": "doc_1001",
-  "event": "account_corrected",
-  "from": "Meals and Entertainment",
-  "to": "Office Supplies",
-  "by": "user_22",
-  "timestamp": "2026-04-11T10:14:22Z"
-}</pre></div>
+<p>
+처음부터 모든 문서를 자동화하려고 하기보다,
+반복량이 많고 구조가 비교적 일정한 문서부터 시작하는 것이 좋습니다.
+그리고 “완전 자동화”보다
+“사람 검토를 줄이는 반자동화”를 목표로 잡는 편이 더 현실적입니다.
+이 방식은 실패 위험을 낮추고, 현업 수용성을 높이며,
+데이터를 쌓아 점진적으로 고도화할 수 있게 해 줍니다.
+</p>
 
-  <p><strong>Month 3 success condition</strong></p>
-  <div class="highlight">
-    <p style="margin:0;">
-      At the end of Month 3, a user should be able to upload a document,
-      review AI suggestions, approve the final result, and send it into a QuickBooks-compatible accounting flow.
-      This is the point where the platform becomes a real MVP rather than a technical demo.
-    </p>
-  </div>
+<h2>학습 정리</h2>
 
-  <h2>Recommended MVP Scope</h2>
+<div class="questions">
+<ul>
+  <li>우리 조직에서 가장 먼저 AI OCR 대상으로 삼을 문서는 무엇인가</li>
+  <li>그 문서에서 반드시 추출해야 하는 핵심 항목은 무엇인가</li>
+  <li>정확도 외에 어떤 운영 지표를 함께 관리해야 하는가</li>
+  <li>예외 문서는 누구가 어떤 기준으로 검토할 것인가</li>
+</ul>
+</div>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Include</th>
-        <th>Exclude for Now</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Vendor bills</td>
-        <td>Payroll</td>
-      </tr>
-      <tr>
-        <td>Receipts</td>
-        <td>Multi-entity consolidation</td>
-      </tr>
-      <tr>
-        <td>Utility bills</td>
-        <td>Advanced tax filing</td>
-      </tr>
-      <tr>
-        <td>USD only</td>
-        <td>Multi-currency support</td>
-      </tr>
-      <tr>
-        <td>Bill / Expense / Vendor</td>
-        <td>Full ERP replacement</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h2>Example End-to-End Flow</h2>
-
-  <p class="small">
-    Example input: a U.S. office supply invoice uploaded as a PDF.
-  </p>
-
-  <div class="codeblock"><pre>1. User uploads invoice PDF
-2. OCR extracts vendor, invoice number, date, total, line items
-3. Llama normalizes "AMZN Mktp US" to "Amazon"
-4. Rules engine recommends:
-   - Document Type: Vendor Bill
-   - Account: Office Supplies
-   - QBO Entity: Bill
-5. Reviewer checks and approves
-6. System posts to QuickBooks-compatible workflow
-7. Audit trail stores every step</pre></div>
-
-  <h2>Team Alignment — How the Product Should Be Built</h2>
-
-  <div class="dialogue">
-    <div class="meta">
-      <strong>Context:</strong> The team is aligning on a 3-month MVP for a U.S. AI OCR accounting platform.
-      The product is based on a QuickBooks-style accounting structure, but adds OCR, Llama, rules, and approval workflow.
-    </div>
-
-    <div class="turn">
-      <span class="role pm">PM (Mina):</span>
-      <p>
-        We only have three months, so we need a focused MVP. I want a product that looks like a real accounting operations tool,
-        not just an OCR demo. What is the smallest version we can ship that still feels useful?
-      </p>
-    </div>
-
-    <div class="turn">
-      <span class="role dev">Developer (Alex):</span>
-      <p>
-        The minimum useful version is document upload, OCR extraction, Llama-based normalization,
-        accounting recommendation, review UI, and QuickBooks posting for core objects only.
-        We should keep the posting scope narrow: Bill, Expense, and Vendor.
-      </p>
-    </div>
-
-    <div class="turn">
-      <span class="role acc">Accounting Lead (Jisoo):</span>
-      <p>
-        That works as long as the AI does not directly post to the books.
-        I want accounting staff to review the recommendation first.
-        The model can suggest, but the workflow must require approval.
-      </p>
-    </div>
-
-    <div class="turn">
-      <span class="role dev">Developer (Alex):</span>
-      <p>
-        Agreed. OCR reads the document, Llama interprets it, and the rules engine generates a deterministic recommendation.
-        The final accounting action stays in draft or review state until a human approves it.
-      </p>
-    </div>
-
-    <div class="turn">
-      <span class="role it">IT/Security (Daniel):</span>
-      <p>
-        Then we also need auditability. I want a trace of the raw OCR result, the Llama output,
-        the reviewer edits, and the final posting action. Otherwise the system will be hard to trust.
-      </p>
-    </div>
-
-    <div class="turn">
-      <span class="role dev">Developer (Alex):</span>
-      <p>
-        We can make that part of the core design. Every document will keep its original file,
-        OCR result, normalized AI result, approval history, duplicate check result, and posting log.
-      </p>
-    </div>
-
-    <div class="turn">
-      <span class="role acc">Senior Accountant (Hana):</span>
-      <p>
-        I also want the recommendation layer to get smarter as we use it.
-        For example, if Amazon bills are usually mapped to Office Supplies,
-        the next similar document should come in with a stronger suggestion.
-      </p>
-    </div>
-
-    <div class="turn">
-      <span class="role dev">Developer (Alex):</span>
-      <p>
-        Yes. We can implement vendor alias mapping and historical account suggestions in Month 2.
-        That way the model is not working alone; it is supported by prior accounting behavior.
-      </p>
-    </div>
-
-    <div class="turn">
-      <span class="role pm">PM (Mina):</span>
-      <p>
-        Then the project should be staged clearly. Month 1 reads the document,
-        Month 2 understands the document, and Month 3 posts the approved result.
-      </p>
-    </div>
-
-    <div class="turn">
-      <span class="role acc">Accounting Lead (Jisoo):</span>
-      <p>
-        That sequencing makes sense. By the end, I want the team to be able to upload a bill,
-        review the suggested account, approve it, and push it into the accounting flow without manual re-entry.
-      </p>
-    </div>
-  </div>
-
-  <h2>Suggested Discussion / Next Steps</h2>
-  <div class="questions">
-    <ul>
-      <li>Should the MVP start with <strong>receipts + vendor bills only</strong> before customer invoices?</li>
-      <li>Who owns the initial <strong>chart of accounts mapping rules</strong> for Month 2?</li>
-      <li>Should duplicate detection be <strong>strict</strong> in Month 3 or advisory only?</li>
-      <li>Do we want the first release to support only <strong>USD + one business entity</strong>?</li>
-    </ul>
-  </div>
-
-  <div class="back">
-    <a href="../">← Back to Home</a>
-    <a href="../ai.html">← Back to Projects</a>
-  </div>
+<div class="back">
+  <a href="../">← 홈으로</a>
+  <a href="../ai.html">← 목록으로</a>
+</div>
 
 </div>
 
