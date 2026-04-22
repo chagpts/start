@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>운영, 모니터링, 고도화 전략</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Quicksand', sans-serif;
+  background:
+    linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
+    url("../verse.png") no-repeat center center / cover;
+  padding: 60px 20px;
+}
+.container {
+  max-width: 920px;
+  margin: auto;
+  background: rgba(255,255,255,0.95);
+  padding: 50px 60px;
+  border-radius: 28px;
+}
+h1, h2, h3 { font-family: 'Baloo 2', cursive; }
+h1 { margin-bottom: 28px; }
+h2 { margin-top: 50px; margin-bottom: 16px; }
+p { line-height: 1.8; margin-bottom: 18px; font-size: 15px; }
+ul { margin-left: 20px; margin-bottom: 22px; }
+li { margin-bottom: 8px; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 28px 0;
+  font-size: 14px;
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 14px;
+  vertical-align: top;
+}
+th { background: #f2f2f2; font-weight: 600; }
+.highlight {
+  background: #f7f7f7;
+  padding: 22px 26px;
+  border-radius: 18px;
+  margin: 30px 0;
+  font-size: 14px;
+}
+.questions {
+  background: #f7f7f7;
+  padding: 25px 30px;
+  border-radius: 18px;
+  margin-top: 30px;
+}
+.link-block {
+  background: #eef2f7;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin-top: 14px;
+  font-size: 14px;
+}
+.dialogue {
+  background: #fafafa;
+  padding: 26px 30px;
+  border-radius: 18px;
+  margin-top: 25px;
+  font-size: 14px;
+}
+.role { font-weight: 600; }
+.back {
+  text-align: center;
+  margin-top: 55px;
+}
+.back a {
+  display: inline-block;
+  padding: 12px 26px;
+  background: #333;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 6px;
+}
+footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 13px;
+  background: rgba(255,255,255,0.75);
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 20px;
+}
+@media (max-width: 600px) {
+  .container { padding: 30px 24px; }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h1>운영, 모니터링, 고도화 전략</h1>
+
+<p>
+AI OCR 회계 프로그램은 구축이 끝이 아니라 운영이 시작입니다.
+처음에는 잘 동작하던 시스템도 문서 양식이 바뀌고,
+새로운 거래처가 늘고,
+현업 사용 방식이 달라지면 성능이 떨어질 수 있습니다.
+그래서 운영 단계에서는 오류를 빨리 발견하고,
+패턴을 분석하고,
+규칙과 모델을 꾸준히 개선하는 체계가 필요합니다.
+</p>
+
+<div class="link-block">
+  <p>이 과정의 핵심 내용</p>
+  <p>• 운영 단계에서 봐야 할 핵심 지표</p>
+  <p>• 오류와 예외를 관리하는 방법</p>
+  <p>• 사용자 피드백을 개선으로 연결하는 구조</p>
+  <p>• 단계적 고도화 전략 수립</p>
+</div>
+
+<h2>1. 운영에서 가장 먼저 보는 지표</h2>
+
+<p>
+운영 단계에서는 단순 사용량보다 품질과 효율을 함께 봐야 합니다.
+얼마나 많은 문서가 들어왔는지,
+그중 얼마나 자동처리되었는지,
+검토로 넘어간 비율은 얼마인지,
+핵심 필드 정확도는 유지되는지,
+반복 오류는 무엇인지 확인해야 합니다.
+이 지표들이 쌓여야 시스템이 실제로 도움이 되는지 판단할 수 있습니다.
+</p>
+
+<table>
+<thead>
+<tr>
+  <th>운영 지표</th>
+  <th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>문서 처리 건수</td>
+  <td>일별, 주별, 월별 입력 규모 파악</td>
+</tr>
+<tr>
+  <td>자동처리율</td>
+  <td>사람 개입 없이 처리된 비율</td>
+</tr>
+<tr>
+  <td>검토 전환율</td>
+  <td>예외 또는 불확실성으로 검토가 필요한 비율</td>
+</tr>
+<tr>
+  <td>핵심 필드 정확도</td>
+  <td>금액, 날짜, 거래처 등 주요 항목의 성능</td>
+</tr>
+<tr>
+  <td>수정률</td>
+  <td>OCR 결과를 사람이 얼마나 자주 고치는지</td>
+</tr>
+<tr>
+  <td>중복 또는 오류 건수</td>
+  <td>운영 리스크를 보여주는 신호</td>
+</tr>
+</tbody>
+</table>
+
+<h2>2. 수정률은 매우 중요한 운영 신호다</h2>
+
+<p>
+현업 사용자가 자주 수정하는 필드는
+시스템이 아직 충분히 신뢰받지 못하고 있다는 의미일 수 있습니다.
+예를 들어 거래처명은 거의 수정이 없는데
+공급가액과 세액 수정이 자주 발생한다면
+금액 추출이나 매핑 규칙에 문제가 있을 가능성이 큽니다.
+이처럼 수정률은 단순 불편 지표가 아니라
+성능 개선 우선순위를 정하는 핵심 자료입니다.
+</p>
+
+<div class="highlight">
+<p>
+운영 데이터에서 가장 가치 있는 것은
+시스템이 틀린 건수보다 사람이 반복해서 고치는 패턴입니다.
+</p>
+</div>
+
+<h2>3. 오류를 어떻게 분류해야 하는가</h2>
+
+<p>
+모든 오류를 한 묶음으로 보면 개선이 어렵습니다.
+오류는 최소한 문서 품질 문제, OCR 인식 문제, 필드 매핑 문제, 마스터 데이터 문제,
+자동분개 규칙 문제, 사용자 입력 문제로 나누는 것이 좋습니다.
+그래야 원인을 따라 개선 담당 부서를 명확히 정할 수 있습니다.
+예를 들어 문서가 흐린 문제는 사용자 입력 가이드가 필요하고,
+거래처 매핑 오류는 마스터 정비가 필요합니다.
+</p>
+
+<table>
+<thead>
+<tr>
+  <th>오류 유형</th>
+  <th>예시</th>
+  <th>개선 방향</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>문서 품질 오류</td>
+  <td>기울어짐, 그림자, 저해상도</td>
+  <td>업로드 가이드 개선</td>
+</tr>
+<tr>
+  <td>인식 오류</td>
+  <td>문자를 잘못 읽음</td>
+  <td>모델 개선, 전처리 강화</td>
+</tr>
+<tr>
+  <td>필드 매핑 오류</td>
+  <td>합계금액을 공급가액으로 저장</td>
+  <td>규칙 보완, 라벨 재검토</td>
+</tr>
+<tr>
+  <td>마스터 오류</td>
+  <td>거래처 코드 연결 실패</td>
+  <td>거래처 사전 정비</td>
+</tr>
+<tr>
+  <td>분개 규칙 오류</td>
+  <td>잘못된 계정과목 추천</td>
+  <td>규칙 수정, 승인 강화</td>
+</tr>
+</tbody>
+</table>
+
+<h2>4. 고도화는 어떤 순서로 하는가</h2>
+
+<ul>
+  <li>문서 입력 품질 가이드 정비</li>
+  <li>핵심 필드 정확도 개선</li>
+  <li>거래처 및 계정과목 추천 품질 개선</li>
+  <li>예외 처리 화면 개선</li>
+  <li>반복 거래 자동확정 범위 확대</li>
+  <li>운영 패턴을 반영한 재학습 또는 규칙 고도화</li>
+</ul>
+
+<h2>5. 사용자 피드백을 시스템 개선으로 연결해야 한다</h2>
+
+<p>
+운영에서 가장 좋은 개선 재료는 실제 사용자 피드백입니다.
+어떤 문서에서 시간이 오래 걸리는지,
+어떤 화면이 불편한지,
+어떤 필드가 자주 틀리는지,
+왜 자동확정을 신뢰하지 못하는지를 주기적으로 수집해야 합니다.
+그리고 이 내용을 단순 민원으로 처리하지 말고
+개선 항목, 우선순위, 담당자, 반영 일정으로 관리해야 합니다.
+그래야 시스템이 현업과 함께 성장합니다.
+</p>
+
+<div class="highlight">
+<p>
+좋은 운영 체계는 오류를 숨기는 체계가 아니라
+오류를 빠르게 드러내고 개선으로 연결하는 체계입니다.
+</p>
+</div>
+
+<h2>6. 장기적으로 봐야 할 확장 방향</h2>
+
+<p>
+처음에는 세금계산서와 영수증처럼 구조가 비교적 명확한 문서부터 시작하고,
+이후 거래명세서, 계약서, 입금표, 정산서 등으로 확장할 수 있습니다.
+또 문서 읽기 기능에서 끝나지 않고
+승인 워크플로우, 전자증빙 보관, 감사 대응 화면, 대시보드, 이상 거래 탐지까지
+점차 연결 범위를 넓힐 수 있습니다.
+이처럼 AI OCR 회계 프로그램은 단독 기능이 아니라
+지능형 회계 운영 플랫폼으로 확장될 수 있습니다.
+</p>
+
+<h2>7. 역할극으로 이해하기</h2>
+
+<div class="dialogue">
+<p><span class="role">운영 관리자:</span>  
+자동처리율이 높아졌는데도 현업 만족도가 크게 오르지 않습니다.</p>
+
+<p><span class="role">현업 사용자:</span>  
+건수는 많아졌지만 여전히 금액 필드는 자주 확인해야 해서 불안합니다.</p>
+
+<p><span class="role">분석 담당자:</span>  
+수정률을 보니 공급가액과 세액 필드에서 수정이 집중되고 있습니다.</p>
+
+<p><span class="role">운영 관리자:</span>  
+그럼 다음 개선 우선순위는 금액 검증 규칙과 검토 화면 보완이 되겠네요.</p>
+
+<p><span class="role">현업 사용자:</span>  
+맞습니다. 저희는 무조건 자동화보다 안심하고 쓸 수 있는 흐름이 더 중요합니다.</p>
+</div>
+
+<h2>학습 정리</h2>
+
+<div class="questions">
+<ul>
+  <li>운영 단계에서 반드시 보는 핵심 지표는 무엇인가</li>
+  <li>오류를 어떤 기준으로 분류하고 있는가</li>
+  <li>사용자 수정 패턴을 개선 과제로 연결하고 있는가</li>
+  <li>다음 단계 고도화 우선순위는 무엇인가</li>
+</ul>
+</div>
+
+<div class="back">
+  <a href="../">← 홈으로</a>
+  <a href="../ai.html">← 목록으로</a>
+</div>
+
+</div>
+
+<footer>
+  © <span id="year"></span> Cha GPTs. All rights reserved.
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
