@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>내부통제와 감사 대응</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Quicksand', sans-serif;
+  background:
+    linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
+    url("../verse.png") no-repeat center center / cover;
+  padding: 60px 20px;
+}
+.container {
+  max-width: 920px;
+  margin: auto;
+  background: rgba(255,255,255,0.95);
+  padding: 50px 60px;
+  border-radius: 28px;
+}
+h1, h2, h3 { font-family: 'Baloo 2', cursive; }
+h1 { margin-bottom: 28px; }
+h2 { margin-top: 50px; margin-bottom: 16px; }
+p { line-height: 1.8; margin-bottom: 18px; font-size: 15px; }
+ul { margin-left: 20px; margin-bottom: 22px; }
+li { margin-bottom: 8px; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 28px 0;
+  font-size: 14px;
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 14px;
+  vertical-align: top;
+}
+th { background: #f2f2f2; font-weight: 600; }
+.highlight {
+  background: #f7f7f7;
+  padding: 22px 26px;
+  border-radius: 18px;
+  margin: 30px 0;
+  font-size: 14px;
+}
+.questions {
+  background: #f7f7f7;
+  padding: 25px 30px;
+  border-radius: 18px;
+  margin-top: 30px;
+}
+.link-block {
+  background: #eef2f7;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin-top: 14px;
+  font-size: 14px;
+}
+.dialogue {
+  background: #fafafa;
+  padding: 26px 30px;
+  border-radius: 18px;
+  margin-top: 25px;
+  font-size: 14px;
+}
+.role { font-weight: 600; }
+.back {
+  text-align: center;
+  margin-top: 55px;
+}
+.back a {
+  display: inline-block;
+  padding: 12px 26px;
+  background: #333;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 6px;
+}
+footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 13px;
+  background: rgba(255,255,255,0.75);
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 20px;
+}
+@media (max-width: 600px) {
+  .container { padding: 30px 24px; }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h1>내부통제와 감사 대응</h1>
+
+<p>
+AI OCR 회계 프로그램이 실제 회사에서 쓰이려면
+단지 편리한 도구가 아니라 통제 가능한 회계 시스템이어야 합니다.
+문서를 읽고 분개를 추천하는 기능이 생기면
+그만큼 오류 가능성, 권한 문제, 변경 관리, 로그 관리, 감사 대응 이슈도 함께 생깁니다.
+따라서 시스템 설계 단계부터 내부통제를 같이 넣어야 나중에 운영과 감사 대응이 가능합니다.
+</p>
+
+<div class="link-block">
+  <p>핵심 학습 포인트</p>
+  <p>• 회계용 AI 시스템에 필요한 내부통제 요소</p>
+  <p>• 권한, 승인, 로그, 변경관리의 중요성</p>
+  <p>• 감사인이 확인하고 싶어 하는 흔적 만들기</p>
+  <p>• 자동화와 통제를 함께 설계하는 방법</p>
+</div>
+
+<h2>1. 왜 내부통제가 필요한가</h2>
+
+<p>
+회계 프로그램은 최종적으로 재무정보에 영향을 줄 수 있습니다.
+문서 한 장을 잘못 읽거나,
+자동분개 규칙이 잘못 적용되거나,
+검토 없이 전표가 등록되면 재무제표나 세무 신고에 오류가 생길 수 있습니다.
+또 누가 어떤 문서를 수정했는지 기록이 남지 않으면
+사후 추적이 어려워집니다.
+그래서 AI OCR 회계 프로그램은 생산성 도구이면서 동시에 통제 시스템이어야 합니다.
+</p>
+
+<div class="highlight">
+<p>
+회계 자동화에서 중요한 것은 자동화 자체가 아니라
+오류가 발생했을 때 발견하고 설명할 수 있는 구조를 갖추는 것입니다.
+</p>
+</div>
+
+<h2>2. 반드시 필요한 통제 요소</h2>
+
+<table>
+<thead>
+<tr>
+  <th>통제 영역</th>
+  <th>필요한 내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>접근 권한</td>
+  <td>문서 조회, 수정, 승인, 전표 확정 권한을 역할별로 분리</td>
+</tr>
+<tr>
+  <td>승인 통제</td>
+  <td>중요 거래와 예외 거래는 검토 후 확정되도록 설계</td>
+</tr>
+<tr>
+  <td>로그 관리</td>
+  <td>누가 언제 어떤 값을 변경했는지 기록</td>
+</tr>
+<tr>
+  <td>변경 관리</td>
+  <td>분개 규칙, 모델 버전, 검증 규칙 변경 시 승인과 테스트 필요</td>
+</tr>
+<tr>
+  <td>예외 관리</td>
+  <td>오류 문서, 미확정 문서, 중복 의심 건을 별도로 관리</td>
+</tr>
+<tr>
+  <td>증빙 연결</td>
+  <td>전표와 원본 문서가 추적 가능하게 연결되어야 함</td>
+</tr>
+</tbody>
+</table>
+
+<h2>3. 감사 대응에서 중요한 질문들</h2>
+
+<p>
+감사나 내부 점검에서는 보통 다음과 같은 질문이 나옵니다.
+이 전표는 어떤 문서에서 생성되었는가,
+누가 검토하고 승인했는가,
+수정 전 값과 수정 후 값은 무엇인가,
+자동분개 규칙은 언제 바뀌었는가,
+예외 문서는 어떻게 처리되었는가 같은 내용입니다.
+즉, 감사 대응은 설명 자료를 따로 만드는 것이 아니라
+시스템 안에 설명 가능한 흔적을 남기는 구조를 만드는 것입니다.
+</p>
+
+<h2>4. 로그는 얼마나 남겨야 하는가</h2>
+
+<p>
+로그는 단순 접속 기록만으로는 부족합니다.
+문서 업로드 시간, OCR 실행 결과, 필드 수정 이력, 승인 상태 변경,
+전표 생성 시점, 사용자 식별정보, 모델 버전, 규칙 버전까지 남길 수 있어야
+문제가 발생했을 때 원인을 추적할 수 있습니다.
+특히 AI가 추천한 값과 사람이 최종 확정한 값을 비교할 수 있으면
+운영 개선과 통제 모두에 도움이 됩니다.
+</p>
+
+<table>
+<thead>
+<tr>
+  <th>로그 항목</th>
+  <th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>문서 업로드 기록</td>
+  <td>누가 어떤 파일을 언제 올렸는지</td>
+</tr>
+<tr>
+  <td>OCR 결과 기록</td>
+  <td>추출된 필드와 신뢰도 점수</td>
+</tr>
+<tr>
+  <td>수정 이력</td>
+  <td>수정 전 값, 수정 후 값, 수정 사용자, 수정 시각</td>
+</tr>
+<tr>
+  <td>승인 이력</td>
+  <td>검토자, 승인자, 반려 사유, 상태 변경 시각</td>
+</tr>
+<tr>
+  <td>규칙 버전</td>
+  <td>자동분개 및 검증 규칙 변경 이력</td>
+</tr>
+</tbody>
+</table>
+
+<h2>5. 권한 분리는 왜 중요한가</h2>
+
+<p>
+한 사람이 문서를 등록하고, 값을 수정하고, 전표를 확정하고, 승인까지 다 할 수 있다면
+오류나 부정이 발생해도 통제하기 어렵습니다.
+그래서 최소한 입력, 검토, 승인 역할을 어느 정도 분리할 필요가 있습니다.
+조직 규모가 작더라도 시스템적으로 승인 단계를 남기면
+나중에 통제 증빙으로 활용할 수 있습니다.
+특히 고액 거래, 수기 수정 거래, 신규 거래처 거래는 더 강한 통제가 필요합니다.
+</p>
+
+<div class="highlight">
+<p>
+자동화 수준이 높아질수록 사람의 개입은 줄어들 수 있지만,
+통제 수준은 오히려 더 명확해져야 합니다.
+</p>
+</div>
+
+<h2>6. 역할극으로 이해하기</h2>
+
+<div class="dialogue">
+<p><span class="role">감사 담당자:</span>  
+이 전표가 어떤 문서에서 생성되었는지 바로 확인할 수 있습니까?</p>
+
+<p><span class="role">운영 담당자:</span>  
+네, 전표 화면에서 원본 문서와 OCR 결과, 수정 이력을 함께 볼 수 있습니다.</p>
+
+<p><span class="role">감사 담당자:</span>  
+그럼 최초 OCR 결과와 최종 확정 값이 달라졌다면 누가 바꿨는지도 확인됩니까?</p>
+
+<p><span class="role">운영 담당자:</span>  
+예, 수정 사용자와 시각, 변경 전후 값이 모두 남습니다.</p>
+
+<p><span class="role">감사 담당자:</span>  
+자동분개 규칙이 바뀐 경우 승인 절차도 있습니까?</p>
+
+<p><span class="role">운영 담당자:</span>  
+있습니다. 테스트 후 승인된 버전만 운영에 반영됩니다.</p>
+</div>
+
+<h2>학습 정리</h2>
+
+<div class="questions">
+<ul>
+  <li>우리 시스템에 필요한 최소 통제 요소는 무엇인가</li>
+  <li>누가 어떤 권한을 가져야 하는가</li>
+  <li>감사인이 물어볼 질문에 시스템만으로 답할 수 있는가</li>
+  <li>로그와 변경관리 체계가 실제 운영 수준으로 설계되어 있는가</li>
+</ul>
+</div>
+
+<div class="back">
+  <a href="../">← 홈으로</a>
+  <a href="../ai.html">← 목록으로</a>
+</div>
+
+</div>
+
+<footer>
+  © <span id="year"></span> Cha GPTs. All rights reserved.
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
