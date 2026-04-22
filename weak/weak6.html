@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>6. 로그 관리와 감사 추적</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', Arial, sans-serif;
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(255,255,255,0.72), rgba(255,255,255,0.72)),
+        url("../verse.png") no-repeat center center / cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+    .card {
+      width: 100%;
+      max-width: 760px;
+      background: rgba(255,255,255,0.97);
+      padding: 34px 26px;
+      border-radius: 26px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+    }
+    h1 {
+      font-family: 'Baloo 2', cursive;
+      color: #1e3a5f;
+      margin: 0 0 14px;
+      font-size: 30px;
+    }
+    h2 {
+      color: #1e3a5f;
+      font-size: 18px;
+      margin-top: 24px;
+      margin-bottom: 10px;
+    }
+    p, li {
+      color: #555;
+      line-height: 1.8;
+      font-size: 15px;
+    }
+    ul { padding-left: 22px; }
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      color: #fff;
+      background: #1e3a5f;
+      padding: 12px 22px;
+      border-radius: 18px;
+      margin-top: 24px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>6. 로그 관리와 감사 추적</h1>
+
+    <p>
+      회계 프로그램은 누가 언제 어떤 데이터를 조회하고 변경했는지 확인할 수 있어야 합니다.
+      로그와 감사 추적 기능이 부족하면 사고 발생 시 원인 분석이 어렵고,
+      내부통제와 외부감사 대응에도 문제가 생깁니다.
+    </p>
+
+    <h2>주요 취약점</h2>
+    <ul>
+      <li>로그인 및 로그아웃 기록 미보관</li>
+      <li>전표 수정, 승인, 삭제 이력 미기록</li>
+      <li>관리자 작업 로그 누락</li>
+      <li>로그 위변조 방지 장치 미흡</li>
+      <li>로그 보관 기간 및 검토 절차 부재</li>
+    </ul>
+
+    <h2>점검 항목</h2>
+    <ul>
+      <li>중요 행위에 대한 사용자, 시간, 대상, 결과 기록 여부</li>
+      <li>로그 저장 위치 분리 여부</li>
+      <li>로그 변경·삭제 제한 여부</li>
+      <li>정기 로그 점검 수행 여부</li>
+      <li>이상행위 탐지 기준 존재 여부</li>
+    </ul>
+
+    <h2>개선 방안</h2>
+    <p>
+      회계 관련 핵심 행위는 모두 추적 가능해야 하며, 특히 승인·반려·마감·권한변경·마스터 수정은
+      반드시 로그가 남아야 합니다. 로그는 운영자가 임의로 삭제하기 어렵게 관리하고,
+      정기적으로 이상 패턴을 검토하는 체계를 갖추는 것이 중요합니다.
+    </p>
+
+    <a href="../weak.html" class="btn">목록으로 돌아가기</a>
+  </div>
+</body>
+</html>
