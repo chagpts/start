@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>프로그램 변경 통제</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Quicksand', sans-serif;
+  background:
+    linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
+    url("../verse.png") no-repeat center center / cover;
+  padding: 60px 20px;
+}
+.container {
+  max-width: 920px;
+  margin: auto;
+  background: rgba(255,255,255,0.95);
+  padding: 50px 60px;
+  border-radius: 28px;
+}
+h1, h2, h3 { font-family: 'Baloo 2', cursive; }
+h1 { margin-bottom: 28px; }
+h2 { margin-top: 50px; margin-bottom: 16px; }
+p { line-height: 1.8; margin-bottom: 18px; font-size: 15px; }
+ul { margin-left: 20px; margin-bottom: 22px; }
+li { margin-bottom: 8px; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 28px 0;
+  font-size: 14px;
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 14px;
+  vertical-align: top;
+}
+th { background: #f2f2f2; font-weight: 600; }
+.highlight {
+  background: #f7f7f7;
+  padding: 22px 26px;
+  border-radius: 18px;
+  margin: 30px 0;
+  font-size: 14px;
+}
+.questions {
+  background: #f7f7f7;
+  padding: 25px 30px;
+  border-radius: 18px;
+  margin-top: 30px;
+}
+.link-block {
+  background: #eef2f7;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin-top: 14px;
+  font-size: 14px;
+}
+.link-block a {
+  color: #1a0dab;
+  text-decoration: underline;
+}
+.dialogue {
+  background: #fafafa;
+  padding: 26px 30px;
+  border-radius: 18px;
+  margin-top: 25px;
+  font-size: 14px;
+}
+.role { font-weight: 600; }
+.back {
+  text-align: center;
+  margin-top: 55px;
+}
+.back a {
+  display: inline-block;
+  padding: 12px 26px;
+  background: #333;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 6px;
+}
+footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 13px;
+  background: rgba(255,255,255,0.75);
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 20px;
+}
+@media (max-width: 600px) {
+  .container { padding: 30px 24px; }
+}
+</style>
+
+</head>
+<body>
+<div class="container">
+<h1>프로그램 변경 통제</h1>
+
+<p>
+가이드라인은 프로그램 변경 과정이 적절히 통제되지 않으면
+재무제표의 신뢰성에 중요한 영향을 줄 수 있다고 설명합니다.
+프로그램 변경 통제는 운영 중인 시스템에 대한 수정이
+승인, 테스트, 문서화, 배포 통제 아래에서 이루어지도록 만드는 영역입니다.
+</p>
+
+<div class="highlight">
+<p>
+처음 개발이 잘되어도 이후 변경이 통제되지 않으면
+좋은 시스템도 빠르게 위험한 시스템이 될 수 있습니다.
+</p>
+</div>
+
+<h2>1. 왜 변경 통제가 중요한가</h2>
+<p>
+운영 중인 시스템은 법규 개정, 업무 변화, 오류 수정, 기능 추가 등으로 계속 바뀝니다.
+이때 승인 없이 수정하거나,
+테스트 없이 반영하거나,
+운영환경에 직접 접속해서 변경하면
+오류가 즉시 실거래에 반영될 수 있습니다.
+따라서 변경은 작은 수정일수록 더 쉽게 지나치기 쉬운 위험 영역입니다.
+</p>
+
+<h2>2. 가이드라인이 제시하는 변경 통제</h2>
+<table>
+<thead>
+<tr>
+  <th>통제 항목</th>
+  <th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>변경 요청 승인</td>
+  <td>시스템 변경은 적절한 경영진 승인을 받음</td>
+</tr>
+<tr>
+  <td>문서 수정</td>
+  <td>관련 시스템, 사용자, 통제 문서를 함께 업데이트</td>
+</tr>
+<tr>
+  <td>테스트와 결과 문서화</td>
+  <td>변경 내용을 테스트하고 결과를 남김</td>
+</tr>
+<tr>
+  <td>무단 변경 방지</td>
+  <td>운영환경은 승인 없이 변경되지 않도록 통제</td>
+</tr>
+<tr>
+  <td>운영 반영 승인</td>
+  <td>배포 전에 적절한 관리자가 승인</td>
+</tr>
+<tr>
+  <td>사용자 이해 확보</td>
+  <td>변경된 시스템을 사용할 수 있도록 필요한 지식 보유</td>
+</tr>
+</tbody>
+</table>
+
+<h2>3. 변경관리의 핵심 원칙</h2>
+<ul>
+  <li>요청, 검토, 승인, 개발, 테스트, 배포를 구분한다</li>
+  <li>운영환경 직접수정을 최소화한다</li>
+  <li>변경 영향이 통제설계에 미치는 부분까지 확인한다</li>
+  <li>긴급변경도 사후 승인과 검토를 남긴다</li>
+</ul>
+
+<h2>4. 전산감사에서 많이 보는 흔적</h2>
+<p>
+변경 요청서, 승인 기록, 테스트 증적, 배포 승인,
+변경 전후 비교표, 운영 반영 일시, 긴급변경 사유 등이 대표적인 확인 대상입니다.
+감사에서는 특정 변경이 실제로 존재했는지뿐 아니라
+그 변경이 통제된 절차를 거쳤는지, 관련 통제가 함께 수정되었는지를 봅니다.
+</p>
+
+<h2>5. 역할극으로 이해하기</h2>
+<div class="dialogue">
+<p><span class="role">개발 담당자:</span> 작은 문구 수정이라 간단히 운영에서 바로 고쳤습니다.</p>
+<p><span class="role">전산감사 담당자:</span> 작아 보여도 승인과 테스트 없이 운영을 바꾸면 변경 통제 위반이 될 수 있습니다.</p>
+<p><span class="role">개발 담당자:</span> 회계처리에 영향이 없는 것 같아도 문제가 되나요?</p>
+<p><span class="role">전산감사 담당자:</span> 영향 여부를 절차 없이 단정하는 것 자체가 위험합니다. 그 판단도 통제 아래 있어야 합니다.</p>
+</div>
+
+<h2>학습 정리</h2>
+<div class="questions">
+<ul>
+  <li>우리 회사의 변경관리 절차는 요청부터 배포까지 분리되어 있는가</li>
+  <li>운영환경 직접수정이 가능한 사용자는 누구인가</li>
+  <li>긴급변경도 사후 문서화와 승인이 남는가</li>
+</ul>
+</div>
+
+<div class="back">
+  <a href="./ics5.html">← 이전 과정</a>
+  <a href="./ics7.html">다음 과정 →</a>
+  <a href="../ics.html">← 목록으로</a>
+</div>
+</div>
+<footer>
+  © <span id="year"></span> Cha GPTs. All rights reserved.
+</footer>
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
