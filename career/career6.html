@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Audit Approach Training</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Quicksand', sans-serif;
+  background:
+    linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
+    url("../verse.png") no-repeat center center / cover;
+  padding: 60px 20px;
+  color: #222;
+}
+
+.container {
+  max-width: 920px;
+  margin: auto;
+  background: rgba(255,255,255,0.95);
+  padding: 50px 60px;
+  border-radius: 28px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+}
+
+h1, h2, h3 {
+  font-family: 'Baloo 2', cursive;
+  line-height: 1.2;
+}
+
+h1 {
+  margin-bottom: 28px;
+  font-size: 42px;
+}
+
+h2 {
+  margin-top: 50px;
+  margin-bottom: 16px;
+  font-size: 30px;
+}
+
+h3 {
+  margin-top: 26px;
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+p {
+  line-height: 1.8;
+  margin-bottom: 18px;
+  font-size: 15px;
+}
+
+ul, ol {
+  margin-left: 20px;
+  margin-bottom: 22px;
+}
+
+li {
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 28px 0;
+  font-size: 14px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 14px;
+  vertical-align: top;
+  line-height: 1.7;
+}
+
+th {
+  background: #f2f2f2;
+  font-weight: 600;
+}
+
+.highlight {
+  background: #f7f7f7;
+  padding: 22px 26px;
+  border-radius: 18px;
+  margin: 30px 0;
+  font-size: 14px;
+}
+
+.questions {
+  background: #f7f7f7;
+  padding: 25px 30px;
+  border-radius: 18px;
+  margin-top: 30px;
+}
+
+.link-block {
+  background: #eef2f7;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+.link-block a {
+  color: #1a0dab;
+  text-decoration: underline;
+}
+
+.dialogue {
+  background: #fafafa;
+  padding: 26px 30px;
+  border-radius: 18px;
+  margin-top: 25px;
+  font-size: 14px;
+}
+
+.role {
+  font-weight: 600;
+}
+
+.back {
+  text-align: center;
+  margin-top: 55px;
+}
+
+.back a {
+  display: inline-block;
+  padding: 12px 26px;
+  background: #333;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 6px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 13px;
+  background: rgba(255,255,255,0.75);
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 20px;
+}
+
+.code-box {
+  background: #f7f7f7;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin: 18px 0 24px;
+  overflow-x: auto;
+}
+
+.code-box pre {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.small-note {
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.badge {
+  display: inline-block;
+  background: #333;
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  margin-right: 8px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 30px 24px;
+  }
+
+  h1 {
+    font-size: 33px;
+  }
+
+  h2 {
+    font-size: 25px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Audit Approach  
+— 감사는 테스트가 아니라 리스크 기반 접근이다</h1>
+
+<p>
+본 자료는 감사 수행 방법을 처음 배우는 사람도 실무적으로 이해할 수 있도록 구성한 교육용 콘텐츠입니다.
+특히 Risk Assessment, Control Identification, Test of Control, Substantive Test의 관계를 설명하고,
+실제 감사가 어떻게 프로세스 이해에서 시작해 리스크 정의, 통제 식별, 테스트 수행으로 이어지는지를
+흐름 중심으로 정리했습니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>핵심 메시지</strong><br>
+“감사는 테스트가 아니라 리스크 기반 접근이다.”
+</p>
+</div>
+
+<div class="link-block">
+  <p><strong>교육 범위</strong></p>
+  <p>• 감사 접근법의 기본 개념</p>
+  <p>• Risk Assessment</p>
+  <p>• Control Identification</p>
+  <p>• Test of Control vs Substantive Test</p>
+  <p>• 실무 흐름: 프로세스 이해 → 리스크 정의 → 통제 식별 → 테스트 수행</p>
+</div>
+
+<h2>1. 감사는 왜 “리스크 기반 접근”인가</h2>
+
+<p>
+감사를 처음 배우면 흔히 “무엇을 테스트할까”부터 생각합니다.
+하지만 실제 감사는 테스트 자체가 출발점이 아닙니다.
+먼저 어떤 숫자와 어떤 프로세스에 오류 위험이 큰지 판단하고,
+그 위험을 줄이기 위해 어떤 통제가 설계되어 있는지 보고,
+그 통제를 믿을 수 있는지 또는 직접 숫자를 더 확인해야 하는지를 정하는 과정입니다.
+</p>
+
+<p>
+즉, 감사는 무작정 증빙을 많이 보는 작업이 아니라,
+어디에 중요한 왜곡 가능성이 있는지 먼저 판단하고,
+그 리스크에 맞게 감사 절차를 설계하는 작업입니다.
+이것이 바로 risk-based audit approach입니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>한 줄 요약</strong><br>
+감사는 “무엇을 볼까?”가 아니라
+“어디가 가장 틀릴 위험이 큰가?”에서 시작한다.
+</p>
+</div>
+
+<h2>2. 감사 접근법의 전체 흐름</h2>
+
+<p>
+감사 수행은 일반적으로 다음과 같은 흐름으로 진행됩니다.
+이 순서를 이해하면 Test of Control과 Substantive Test가 왜 필요한지도 자연스럽게 이해할 수 있습니다.
+</p>
+
+<div class="code-box">
+<pre>프로세스 이해
+→ 리스크 정의 (Risk Assessment)
+→ 통제 식별 (Control Identification)
+→ 감사 전략 결정
+→ Test of Control / Substantive Test 수행
+→ 결론 도출</pre>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>단계</th>
+      <th>핵심 질문</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>프로세스 이해</td>
+      <td>숫자가 어떻게 만들어지는가?</td>
+    </tr>
+    <tr>
+      <td>리스크 정의</td>
+      <td>어디서 중요한 왜곡이 날 수 있는가?</td>
+    </tr>
+    <tr>
+      <td>통제 식별</td>
+      <td>그 왜곡을 막는 통제가 존재하는가?</td>
+    </tr>
+    <tr>
+      <td>감사 전략 결정</td>
+      <td>통제를 믿고 갈 것인가, 직접 숫자를 더 볼 것인가?</td>
+    </tr>
+    <tr>
+      <td>테스트 수행</td>
+      <td>통제가 작동하는가? 숫자가 실제로 맞는가?</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>실무 감각</strong><br>
+좋은 감사인은 테스트를 많이 하는 사람이 아니라,
+어디를 왜 테스트해야 하는지 명확히 설명할 수 있는 사람이다.
+</p>
+</div>
+
+<h2>3. Step 1 — 프로세스 이해</h2>
+
+<p>
+감사에서 가장 먼저 해야 하는 일은 프로세스를 이해하는 것입니다.
+프로세스를 모르면 숫자가 어떻게 생성되는지 모르고,
+숫자가 어떻게 생성되는지 모르면 리스크도 제대로 정의할 수 없습니다.
+</p>
+
+<p>
+프로세스 이해란 단순히 담당자에게 설명을 듣는 것이 아니라,
+다음과 같은 흐름을 이해하는 것을 의미합니다.
+</p>
+
+<ul>
+  <li>원천 거래가 어디서 시작되는가</li>
+  <li>어떤 시스템 또는 모듈을 거치는가</li>
+  <li>어떤 승인, 인터페이스, batch, 계산 로직이 있는가</li>
+  <li>최종적으로 어떤 회계전표와 계정잔액이 생성되는가</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>프로세스 예시</th>
+      <th>이해해야 할 흐름</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Revenue</td>
+      <td>Order → Delivery → Billing → Accounting</td>
+    </tr>
+    <tr>
+      <td>Lease</td>
+      <td>계약 입력 → 분류 로직 → NPV 계산 → 전표 생성</td>
+    </tr>
+    <tr>
+      <td>Inventory</td>
+      <td>입고 → 재고이동 → valuation → impairment → GL 반영</td>
+    </tr>
+    <tr>
+      <td>Consolidation</td>
+      <td>법인별 TB 업로드 → IC 매칭 → elimination → 연결조정</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>핵심 이해</strong><br>
+프로세스를 이해한다는 것은 “전표를 이해하는 것”이 아니라
+“전표가 만들어지는 전체 경로를 이해하는 것”이다.
+</p>
+</div>
+
+<h2>4. Step 2 — Risk Assessment</h2>
+
+<p>
+Risk Assessment는 해당 프로세스나 계정에서 중요한 왜곡이 발생할 가능성을 정의하는 단계입니다.
+감사인은 이 단계에서 어디가 위험한지, 왜 위험한지,
+그리고 그 위험이 재무제표에 얼마나 중요한 영향을 줄 수 있는지를 판단합니다.
+</p>
+
+<h3>리스크를 정의할 때 보는 것</h3>
+
+<ul>
+  <li>회계처리가 복잡한가</li>
+  <li>판단과 추정이 많이 들어가는가</li>
+  <li>자동화 로직이나 시스템 의존도가 높은가</li>
+  <li>수동조정이 많은가</li>
+  <li>부정 가능성이 높은가</li>
+  <li>기말 cut-off나 대량거래가 있는가</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>영역</th>
+      <th>대표 리스크</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Revenue</td>
+      <td>조기 인식, cut-off 오류</td>
+    </tr>
+    <tr>
+      <td>Lease</td>
+      <td>분류 오류, 할인율 오류</td>
+    </tr>
+    <tr>
+      <td>Inventory</td>
+      <td>NRV 미반영, valuation 오류</td>
+    </tr>
+    <tr>
+      <td>Foreign Currency</td>
+      <td>잘못된 환율 적용</td>
+    </tr>
+    <tr>
+      <td>Consolidation</td>
+      <td>내부거래 제거 누락</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>리스크 정의의 핵심</strong><br>
+리스크는 단순히 “틀릴 수 있다”가 아니라,
+“왜 틀릴 수 있고, 그 결과 무엇이 왜곡되는가”까지 포함해서 정의해야 한다.
+</p>
+</div>
+
+<h2>5. Step 3 — Control Identification</h2>
+
+<p>
+리스크를 정의했다면 그다음은 그 리스크를 막거나 탐지하는 통제를 식별해야 합니다.
+이 단계가 바로 Control Identification입니다.
+즉, 회사가 해당 리스크를 관리하기 위해 어떤 통제를 설계해 두었는지를 찾는 단계입니다.
+</p>
+
+<p>
+통제는 수동 통제일 수도 있고, 자동 통제일 수도 있으며,
+예방 통제일 수도 있고 탐지 통제일 수도 있습니다.
+중요한 것은 “이 통제가 정말 해당 리스크와 연결되는가”입니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>리스크</th>
+      <th>가능한 통제 예시</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>매출 조기 인식</td>
+      <td>배송완료 시점 기반 자동 매출 인식 로직</td>
+    </tr>
+    <tr>
+      <td>Lease 분류 오류</td>
+      <td>Finance vs Operating 자동 classification rule</td>
+    </tr>
+    <tr>
+      <td>환율 적용 오류</td>
+      <td>환율 master 승인 및 rate type 자동 적용</td>
+    </tr>
+    <tr>
+      <td>중복 지급</td>
+      <td>duplicate invoice / payment 검증 통제</td>
+    </tr>
+    <tr>
+      <td>내부거래 제거 누락</td>
+      <td>IC flag 및 elimination mapping 통제</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>중요한 포인트</strong><br>
+통제는 많다고 좋은 것이 아니라,
+정의한 리스크를 실제로 줄여주는 핵심 통제를 정확히 식별하는 것이 중요하다.
+</p>
+</div>
+
+<h2>6. Test of Control이란 무엇인가</h2>
+
+<p>
+Test of Control은 식별한 통제가 실제로 설계대로 운영되고 있는지를 검증하는 절차입니다.
+즉, “이 통제가 문서상 존재하는가?”를 넘어서
+“실제로 작동했는가?”를 확인하는 것입니다.
+</p>
+
+<p>
+감사인이 통제를 신뢰하려면 그 통제가 운영 효과성을 가지고 있어야 합니다.
+예를 들어 승인 통제가 있다고 해도 실제로 승인 없이 처리된 거래가 많다면,
+그 통제는 존재해도 신뢰할 수 없습니다.
+</p>
+
+<h3>대표적인 Test of Control 방식</h3>
+<ul>
+  <li>승인 흔적 확인</li>
+  <li>로그 검토</li>
+  <li>sample transaction에 대한 통제 수행 여부 확인</li>
+  <li>configuration 및 parameter 검토</li>
+  <li>reperformance</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>통제</th>
+      <th>Test of Control 예시</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>수동 승인 통제</td>
+      <td>표본 거래에 승인 흔적이 있는지 확인</td>
+    </tr>
+    <tr>
+      <td>자동 매출 인식 통제</td>
+      <td>설정값과 trigger 조건 검토, sample reperformance</td>
+    </tr>
+    <tr>
+      <td>환율 master 변경 통제</td>
+      <td>변경 로그, 승인 이력 확인</td>
+    </tr>
+    <tr>
+      <td>배치 운영 통제</td>
+      <td>job log, 오류 log, 재실행 이력 확인</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>핵심 이해</strong><br>
+Test of Control은 “회사 통제를 믿어도 되는가?”를 검증하는 절차다.
+</p>
+</div>
+
+<h2>7. Substantive Test란 무엇인가</h2>
+
+<p>
+Substantive Test는 통제를 믿는지 여부와 별개로,
+숫자 자체가 중요한 왜곡 없이 적정한지를 직접 검증하는 절차입니다.
+즉, 최종 결과 숫자에 초점을 맞춘 감사 절차입니다.
+</p>
+
+<h3>대표적인 Substantive Test</h3>
+<ul>
+  <li>상세증빙 대사</li>
+  <li>재계산</li>
+  <li>외부조회</li>
+  <li>분석적 검토</li>
+  <li>cut-off test</li>
+  <li>잔액 확인</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>영역</th>
+      <th>Substantive Test 예시</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Revenue</td>
+      <td>배송일 vs 매출일 비교, 계약서 및 송장 확인</td>
+    </tr>
+    <tr>
+      <td>Lease</td>
+      <td>계약 검토, NPV 재계산</td>
+    </tr>
+    <tr>
+      <td>Inventory</td>
+      <td>aging 분석, NRV 재계산</td>
+    </tr>
+    <tr>
+      <td>Foreign Currency</td>
+      <td>환율 재확인, 재환산 테스트</td>
+    </tr>
+    <tr>
+      <td>Equity Method</td>
+      <td>investee FS와 반영 금액 비교</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>핵심 이해</strong><br>
+Substantive Test는 “통제가 좋다”는 말과 별개로,
+결국 숫자가 실제로 맞는지 직접 보는 절차다.
+</p>
+</div>
+
+<h2>8. Test of Control vs Substantive Test</h2>
+
+<p>
+이 둘은 대체 관계처럼 보일 수 있지만,
+실무에서는 서로 연결되어 있습니다.
+감사인은 통제가 강하고 신뢰할 수 있다고 판단하면
+상대적으로 substantive 절차의 범위나 강도를 조정할 수 있습니다.
+반대로 통제가 약하면 숫자 자체를 더 많이 직접 검증해야 합니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>구분</th>
+      <th>Test of Control</th>
+      <th>Substantive Test</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>초점</td>
+      <td>통제의 운영 효과성</td>
+      <td>숫자의 적정성</td>
+    </tr>
+    <tr>
+      <td>질문</td>
+      <td>이 통제가 실제로 작동하는가?</td>
+      <td>이 금액이 실제로 맞는가?</td>
+    </tr>
+    <tr>
+      <td>대상</td>
+      <td>승인, 설정, 로그, 통제 활동</td>
+      <td>전표, 계약, 증빙, 잔액, 재계산 결과</td>
+    </tr>
+    <tr>
+      <td>예시</td>
+      <td>권한 검토, 승인 흔적 확인, batch log 확인</td>
+      <td>매출 cut-off test, 외부조회, 재계산</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>실무 감각</strong><br>
+통제가 강하면 숫자를 직접 보는 범위를 효율화할 수 있고,
+통제가 약하면 숫자를 더 깊고 넓게 직접 봐야 한다.
+</p>
+</div>
+
+<h2>9. 실무 흐름으로 다시 보기</h2>
+
+<h3>① 프로세스 이해</h3>
+<p>
+거래가 어디서 시작되고, 어떤 시스템과 로직을 거쳐 숫자가 되는지 이해합니다.
+</p>
+
+<h3>② 리스크 정의</h3>
+<p>
+그 프로세스에서 중요한 왜곡이 생길 수 있는 지점을 정의합니다.
+</p>
+
+<h3>③ 통제 식별</h3>
+<p>
+그 왜곡을 막거나 탐지하는 통제를 찾습니다.
+</p>
+
+<h3>④ 테스트 수행</h3>
+<p>
+통제를 신뢰할 수 있는지 Test of Control을 수행하고,
+필요 시 숫자를 직접 검증하는 Substantive Test를 수행합니다.
+</p>
+
+<div class="code-box">
+<pre>Process Understanding
+→ Risk Assessment
+→ Control Identification
+→ Test of Control
+→ Substantive Test
+→ Audit Conclusion</pre>
+</div>
+
+<h2>10. 예시로 보는 Audit Approach</h2>
+
+<h3>예시: Revenue Recognition</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>단계</th>
+      <th>적용 예시</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>프로세스 이해</td>
+      <td>Order → Delivery → Billing → Accounting 흐름 이해</td>
+    </tr>
+    <tr>
+      <td>리스크 정의</td>
+      <td>배송 전 매출 인식, cut-off 오류 가능성</td>
+    </tr>
+    <tr>
+      <td>통제 식별</td>
+      <td>배송완료 시점 기반 자동 매출 인식 rule</td>
+    </tr>
+    <tr>
+      <td>Test of Control</td>
+      <td>trigger 설정, interface log, batch job control 확인</td>
+    </tr>
+    <tr>
+      <td>Substantive Test</td>
+      <td>배송일 vs 매출일 비교, 표본 계약서 검토</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>예시: Lease Accounting</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>단계</th>
+      <th>적용 예시</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>프로세스 이해</td>
+      <td>계약 입력 → classification → NPV 계산 → 전표 생성</td>
+    </tr>
+    <tr>
+      <td>리스크 정의</td>
+      <td>분류 오류, 할인율 오류, 기간 오류</td>
+    </tr>
+    <tr>
+      <td>통제 식별</td>
+      <td>자동 classification rule, 승인 통제, rate table 통제</td>
+    </tr>
+    <tr>
+      <td>Test of Control</td>
+      <td>설정 검토, override 승인 이력 검토</td>
+    </tr>
+    <tr>
+      <td>Substantive Test</td>
+      <td>계약 검토, 독립 NPV 재계산</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>핵심 이해</strong><br>
+같은 감사라도 프로세스와 리스크에 따라 통제 테스트 중심이 될 수도 있고,
+숫자 직접 검증 중심이 될 수도 있다.
+그 차이를 만드는 것이 바로 risk-based approach다.
+</p>
+</div>
+
+<h2>11. 왜 “테스트”만 생각하면 안 되는가</h2>
+
+<p>
+감사를 테스트 중심으로만 생각하면
+무엇을 왜 보는지보다 절차 자체에만 집중하게 됩니다.
+그러면 비슷한 절차를 반복해도 진짜 중요한 리스크를 놓칠 수 있습니다.
+반대로 리스크 기반으로 접근하면
+테스트는 목적이 아니라 결론을 위한 수단이 됩니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>테스트 중심 사고</th>
+      <th>리스크 중심 사고</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>무슨 샘플을 뽑지?</td>
+      <td>어디가 왜 틀릴 위험이 크지?</td>
+    </tr>
+    <tr>
+      <td>체크리스트를 다 했는가?</td>
+      <td>중요 리스크를 충분히 커버했는가?</td>
+    </tr>
+    <tr>
+      <td>절차 수행 자체에 집중</td>
+      <td>결론의 신뢰성을 높이는 데 집중</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>핵심 메시지 다시 보기</strong><br>
+감사는 테스트를 많이 하는 것이 아니라,
+리스크를 이해하고 그 리스크에 맞는 테스트를 설계하는 것이다.
+</p>
+</div>
+
+<h2>12. Role-play: 감사팀 내부 토론</h2>
+
+<div class="dialogue">
+<p><span class="role">Junior Auditor:</span>  
+이번 매출 계정은 일단 전표 샘플부터 많이 뽑아 보면 될까요?</p>
+
+<p><span class="role">Manager:</span>  
+그 전에 먼저 매출 프로세스를 이해해야 해요. 어떤 이벤트가 매출을 만들고 있는지 봐야 합니다.</p>
+
+<p><span class="role">Junior Auditor:</span>  
+그러면 샘플을 바로 뽑는 게 아니라, 리스크를 먼저 정의하는 거군요.</p>
+
+<p><span class="role">Manager:</span>  
+맞아요. 예를 들어 배송 전 매출 인식이 리스크라면, 그걸 막는 통제가 있는지 먼저 봐야죠.</p>
+
+<p><span class="role">Junior Auditor:</span>  
+그게 Control Identification이군요.</p>
+
+<p><span class="role">Manager:</span>  
+맞습니다. 그리고 그 통제를 믿을 수 있으면 Test of Control을 하고, 신뢰가 약하면 substantive 절차를 더 강화해야 합니다.</p>
+
+<p><span class="role">Junior Auditor:</span>  
+이제 왜 감사가 단순히 테스트 수행이 아닌지 알겠습니다.</p>
+
+<p><span class="role">Manager:</span>  
+그렇죠. 감사는 리스크를 이해하고, 그 리스크에 맞게 접근하는 과정입니다.</p>
+</div>
+
+<h2>13. Discussion Questions</h2>
+
+<div class="questions">
+<ul>
+  <li>감사를 테스트 중심이 아니라 리스크 중심으로 봐야 하는 이유는 무엇일까?</li>
+  <li>프로세스를 충분히 이해하지 못한 상태에서 테스트를 시작하면 어떤 문제가 생길까?</li>
+  <li>Control Identification이 약하면 감사 전략에 어떤 영향이 생길까?</li>
+  <li>Test of Control과 Substantive Test는 어떻게 서로 보완되는가?</li>
+  <li>현재 조직에서 가장 리스크 기반 접근이 필요한 프로세스는 무엇일까?</li>
+</ul>
+</div>
+
+<h2>14. 교육 핵심 메시지</h2>
+
+<div class="highlight">
+<p>
+<strong>정리</strong><br>
+• 감사는 테스트가 아니라 리스크 기반 접근이다.<br>
+• 감사는 프로세스 이해에서 시작해 리스크 정의, 통제 식별, 테스트 수행으로 이어진다.<br>
+• Risk Assessment는 어디가 왜 틀릴 수 있는지 정의하는 단계다.<br>
+• Control Identification은 그 리스크를 막거나 탐지하는 핵심 통제를 찾는 단계다.<br>
+• Test of Control은 통제가 실제로 작동하는지 보고, Substantive Test는 숫자가 실제로 맞는지 직접 본다.<br>
+• 좋은 감사는 절차를 많이 하는 감사가 아니라, 중요한 리스크를 정확히 겨냥하는 감사다.
+</p>
+</div>
+
+<p class="small-note">
+이 문서는 교육용 HTML 페이지로 바로 사용할 수 있도록 작성되었습니다.
+원하시면 다음 단계로 같은 디자인을 유지해서
+“Risk Assessment 실무 사례편”, “Test of Control vs Substantive Test 비교 심화편”, “감사 Planning부터 Conclusion까지 전체 흐름편”도 이어서 만들 수 있습니다.
+</p>
+
+<div class="back">
+  <a href="../">← Back to Home</a>
+  <a href="../biz.html">← Back to Articles</a>
+</div>
+
+</div>
+
+<footer>
+  © <span id="year"></span> Cha GPTs. All rights reserved.
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
