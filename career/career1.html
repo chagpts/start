@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Digital Audit Training</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Quicksand', sans-serif;
+  background:
+    linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
+    url("../verse.png") no-repeat center center / cover;
+  padding: 60px 20px;
+  color: #222;
+}
+
+.container {
+  max-width: 920px;
+  margin: auto;
+  background: rgba(255,255,255,0.95);
+  padding: 50px 60px;
+  border-radius: 28px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+}
+
+h1, h2, h3 {
+  font-family: 'Baloo 2', cursive;
+  line-height: 1.2;
+}
+
+h1 {
+  margin-bottom: 28px;
+  font-size: 42px;
+}
+
+h2 {
+  margin-top: 50px;
+  margin-bottom: 16px;
+  font-size: 30px;
+}
+
+h3 {
+  margin-top: 26px;
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+p {
+  line-height: 1.8;
+  margin-bottom: 18px;
+  font-size: 15px;
+}
+
+ul, ol {
+  margin-left: 20px;
+  margin-bottom: 22px;
+}
+
+li {
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 28px 0;
+  font-size: 14px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 14px;
+  vertical-align: top;
+  line-height: 1.7;
+}
+
+th {
+  background: #f2f2f2;
+  font-weight: 600;
+}
+
+.highlight {
+  background: #f7f7f7;
+  padding: 22px 26px;
+  border-radius: 18px;
+  margin: 30px 0;
+  font-size: 14px;
+}
+
+.questions {
+  background: #f7f7f7;
+  padding: 25px 30px;
+  border-radius: 18px;
+  margin-top: 30px;
+}
+
+.link-block {
+  background: #eef2f7;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+.link-block a {
+  color: #1a0dab;
+  text-decoration: underline;
+}
+
+.dialogue {
+  background: #fafafa;
+  padding: 26px 30px;
+  border-radius: 18px;
+  margin-top: 25px;
+  font-size: 14px;
+}
+
+.role {
+  font-weight: 600;
+}
+
+.back {
+  text-align: center;
+  margin-top: 55px;
+}
+
+.back a {
+  display: inline-block;
+  padding: 12px 26px;
+  background: #333;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 6px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 13px;
+  background: rgba(255,255,255,0.75);
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 20px;
+}
+
+.code-box {
+  background: #f7f7f7;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin: 18px 0 24px;
+  overflow-x: auto;
+}
+
+.code-box pre {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.small-note {
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.badge {
+  display: inline-block;
+  background: #333;
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  margin-right: 8px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 30px 24px;
+  }
+
+  h1 {
+    font-size: 33px;
+  }
+
+  h2 {
+    font-size: 25px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>What Is Digital Audit?  
+— 개념, 역할, 그리고 왜 중요한가</h1>
+
+<p>
+본 자료는 Digital Audit의 개념과 역할을 쉽게 이해할 수 있도록 구성한 교육용 콘텐츠입니다.
+특히 Financial Audit, IT Audit, Digital Audit의 차이를 비교하고,
+ITGC와 ITAC의 개념, Big4가 왜 Digital Audit 조직을 확대하는지,
+그리고 왜 회계 지식만으로는 부족한지까지 실무 관점에서 설명합니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>핵심 메시지</strong><br>
+“Digital Auditor는 숫자를 검증하는 사람이 아니라
+숫자가 생성되는 시스템을 검증하는 사람이다.”
+</p>
+</div>
+
+<div class="link-block">
+  <p><strong>교육 범위</strong></p>
+  <p>• Digital Audit의 정의</p>
+  <p>• Financial Audit vs IT Audit vs Digital Audit 차이</p>
+  <p>• ITGC vs ITAC 개념</p>
+  <p>• 왜 Big4가 Digital Audit 조직을 키우는지</p>
+  <p>• 회계 지식만으로는 부족한 이유</p>
+  <p>• SAP / ERP 이해가 왜 중요한지</p>
+</div>
+
+<h2>1. Digital Audit이란 무엇인가</h2>
+
+<p>
+Digital Audit은 단순히 IT 시스템을 점검하는 업무가 아닙니다.
+기업의 회계 숫자가 어떻게 생성되고, 어떤 시스템 로직을 거쳐,
+어떤 통제 아래 재무제표로 이어지는지를 검증하는 감사 영역입니다.
+즉, 숫자 자체만 보는 것이 아니라 숫자가 만들어지는 디지털 환경 전체를 보는 역할입니다.
+</p>
+
+<p>
+예전에는 감사가 전표, 계약서, 증빙 등 문서 중심으로 이루어졌다면,
+지금은 ERP, 인터페이스, 자동 분개 로직, 마스터 데이터, 배치 프로그램,
+엑셀 모델, 시스템 권한 구조까지 함께 보지 않으면 숫자의 신뢰성을 충분히 판단하기 어렵습니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>한 줄 정의</strong><br>
+Digital Audit은 “회계 숫자가 시스템 안에서 정확하고 통제된 방식으로 생성되는지”를 검증하는 감사다.
+</p>
+</div>
+
+<h2>2. 왜 이제는 Digital Audit이 중요한가</h2>
+
+<p>
+현대 기업의 회계는 거의 모두 시스템 위에서 돌아갑니다.
+매출 인식, 리스 회계, 외화환산, 연결제거, 재고평가, 지분법, 사업결합 같은 복잡한 회계처리도
+대부분 ERP와 주변 시스템에서 자동 또는 반자동으로 처리됩니다.
+이때 시스템 로직이 틀리거나, 인터페이스가 지연되거나, 마스터 데이터가 잘못 관리되면
+회계기준을 잘 알고 있어도 잘못된 숫자가 만들어질 수 있습니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>과거 감사 중심</th>
+      <th>현재 감사 중심</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>전표, 증빙, 계약서 확인</td>
+      <td>전표 + 시스템 로직 + 인터페이스 + 자동화 통제 확인</td>
+    </tr>
+    <tr>
+      <td>수작업 회계처리 검토</td>
+      <td>ERP 기반 자동 처리 결과 검토</td>
+    </tr>
+    <tr>
+      <td>사후 숫자 검증</td>
+      <td>숫자 생성 프로세스 자체 검증</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>중요한 이유</strong><br>
+시스템이 잘못되면 숫자는 대량으로, 반복적으로, 매우 빠르게 틀릴 수 있습니다.
+그래서 Digital Audit은 “오류 한 건”이 아니라 “오류를 만드는 구조”를 봅니다.
+</p>
+</div>
+
+<h2>3. Financial Audit vs IT Audit vs Digital Audit</h2>
+
+<p>
+이 세 영역은 서로 연결되어 있지만 초점이 다릅니다.
+Financial Audit은 재무제표 숫자와 공시의 적정성을 중심으로 보고,
+IT Audit은 IT 환경과 통제의 안정성을 중점적으로 봅니다.
+Digital Audit은 이 둘을 연결하면서 “IT가 회계 숫자에 미치는 영향”을 다룹니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>구분</th>
+      <th>무엇을 보나</th>
+      <th>핵심 질문</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Financial Audit</td>
+      <td>재무제표, 계정잔액, 공시, 회계처리</td>
+      <td>이 숫자가 회계기준상 맞는가?</td>
+    </tr>
+    <tr>
+      <td>IT Audit</td>
+      <td>시스템 통제, 권한, 변경관리, 운영통제</td>
+      <td>이 시스템은 통제된 환경에서 운영되는가?</td>
+    </tr>
+    <tr>
+      <td>Digital Audit</td>
+      <td>회계 숫자 생성 로직, ERP 처리, 인터페이스, ITAC</td>
+      <td>이 숫자는 시스템상 신뢰할 수 있게 생성되었는가?</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>쉽게 말하면</h3>
+
+<ul>
+  <li><strong>Financial Audit</strong>은 결과 숫자를 본다.</li>
+  <li><strong>IT Audit</strong>은 시스템 환경과 통제를 본다.</li>
+  <li><strong>Digital Audit</strong>은 시스템이 회계 숫자를 어떻게 만드는지 본다.</li>
+</ul>
+
+<div class="highlight">
+<p>
+<strong>Digital Audit의 위치</strong><br>
+Digital Audit은 회계와 IT 사이를 연결하는 실무 영역이다.
+회계만 알아도 부족하고, IT만 알아도 부족하다.
+두 영역이 만나는 지점을 이해해야 한다.
+</p>
+</div>
+
+<h2>4. ITGC와 ITAC란 무엇인가</h2>
+
+<p>
+Digital Audit을 이해하려면 ITGC와 ITAC를 구분할 수 있어야 합니다.
+둘 다 시스템 통제이지만 역할이 다릅니다.
+</p>
+
+<h3>ITGC (IT General Controls)</h3>
+
+<p>
+ITGC는 시스템이 신뢰할 수 있는 환경에서 운영되도록 하는 기본 통제입니다.
+예를 들면 사용자 권한 관리, 프로그램 변경관리, 배치 운영, 백업/복구, 접근통제 같은 것들입니다.
+이 통제가 약하면 시스템 전체의 신뢰성이 떨어집니다.
+</p>
+
+<h3>ITAC (IT Application Controls)</h3>
+
+<p>
+ITAC는 특정 회계 프로세스 안에서 정확한 데이터가 입력되고,
+정확한 로직으로 처리되고,
+정확한 결과가 출력되도록 하는 응용 통제입니다.
+예를 들면 매출 인식 trigger, 리스 분류 rule, 외화환산 rate type 적용,
+연결제거 자동 분개, 재고 valuation 계산 등이 여기에 해당합니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>구분</th>
+      <th>의미</th>
+      <th>예시</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ITGC</td>
+      <td>시스템 전체를 지탱하는 기본 통제</td>
+      <td>권한관리, 변경관리, 운영통제, 백업</td>
+    </tr>
+    <tr>
+      <td>ITAC</td>
+      <td>특정 업무 로직 안의 정확성 통제</td>
+      <td>자동 분개 rule, 매출 batch, 환율 적용 로직, 제거 분개 로직</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>핵심 차이</strong><br>
+ITGC는 “시스템 환경이 믿을 만한가”를 보는 것이고,
+ITAC는 “그 시스템이 회계 숫자를 제대로 계산하는가”를 보는 것이다.
+Digital Audit은 둘 다 중요하게 본다.
+</p>
+</div>
+
+<h2>5. Digital Auditor는 실제로 무슨 일을 하나</h2>
+
+<p>
+Digital Auditor는 단순히 시스템 화면을 보는 사람이 아닙니다.
+회계 프로세스를 이해하고,
+그 회계처리가 시스템에서 어떤 테이블, 어떤 인터페이스, 어떤 배치 로직,
+어떤 승인 통제를 통해 이루어지는지 분석합니다.
+그 다음 실제로 그 통제가 설계대로 작동하는지 검증합니다.
+</p>
+
+<h3>대표적인 업무</h3>
+
+<ul>
+  <li>ERP 회계 프로세스 흐름 이해</li>
+  <li>ITGC 테스트 수행</li>
+  <li>ITAC 식별 및 테스트</li>
+  <li>시스템 로직과 회계정책 간 정합성 확인</li>
+  <li>인터페이스, 배치 잡, 마스터 데이터 통제 검토</li>
+  <li>자동화된 계산 결과 재수행 또는 데이터 분석</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>업무 상황</th>
+      <th>Digital Auditor가 보는 것</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>매출 인식</td>
+      <td>출하/배송/검수 이벤트와 ERP 인식 로직이 맞는가</td>
+    </tr>
+    <tr>
+      <td>Lease Accounting</td>
+      <td>리스 분류 rule과 현재가치 계산 로직이 맞는가</td>
+    </tr>
+    <tr>
+      <td>Foreign Currency</td>
+      <td>환율 master와 closing/historical 적용 rule이 맞는가</td>
+    </tr>
+    <tr>
+      <td>Consolidation</td>
+      <td>IC flag와 elimination rule이 정상 작동하는가</td>
+    </tr>
+    <tr>
+      <td>Inventory</td>
+      <td>NRV 계산과 손상 전표 반영 통제가 존재하는가</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>6. 왜 Big4가 Digital Audit 조직을 키우는가</h2>
+
+<p>
+Big4가 Digital Audit 조직을 키우는 이유는 단순히 “IT가 중요해졌기 때문”만은 아닙니다.
+기업의 회계가 이미 시스템 중심으로 바뀌었기 때문입니다.
+감사 품질을 높이려면 숫자만 보는 방식으로는 한계가 있고,
+숫자를 만드는 디지털 프로세스를 이해하고 테스트할 수 있는 인력이 필요해졌습니다.
+</p>
+
+<h3>Big4가 Digital Audit을 확대하는 이유</h3>
+
+<ul>
+  <li>ERP 기반 회계처리 비중이 매우 커짐</li>
+  <li>자동화 로직 오류가 재무제표에 직접 영향</li>
+  <li>데이터 양이 많아져 수작업 감사만으로 한계 발생</li>
+  <li>ITGC / ITAC 테스트가 재무감사 품질에 직결됨</li>
+  <li>SAP, Oracle, Workday 등 대형 시스템 이해가 필수화됨</li>
+  <li>감사인이 시스템 기반 리스크를 더 깊게 다뤄야 함</li>
+</ul>
+
+<div class="highlight">
+<p>
+<strong>결론적으로</strong><br>
+Big4는 더 이상 “회계만 아는 감사인”만으로는 충분하지 않다고 본다.
+회계와 시스템을 함께 이해하는 Digital Auditor가 감사의 핵심 인력이 되고 있다.
+</p>
+</div>
+
+<h2>7. 왜 회계 지식만으로는 부족한가</h2>
+
+<p>
+회계 기준을 잘 아는 것은 기본입니다.
+하지만 실제 회사에서는 회계처리가 사람 머릿속에서 바로 숫자로 나오는 것이 아니라
+시스템 설정, 계정 매핑, 인터페이스, 배치 스케줄, 마스터 데이터, 승인 workflow를 거쳐 숫자가 생성됩니다.
+따라서 회계만 이해하고 시스템을 이해하지 못하면
+“왜 이 숫자가 이렇게 나왔는지”를 끝까지 설명하기 어렵습니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>회계만 알 때 한계</th>
+      <th>시스템까지 알면 가능한 것</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>숫자가 틀렸다는 건 알 수 있음</td>
+      <td>왜 틀렸는지 원인을 시스템 로직에서 찾을 수 있음</td>
+    </tr>
+    <tr>
+      <td>분개 결과만 볼 수 있음</td>
+      <td>분개가 생성된 원천 데이터와 룰까지 추적 가능</td>
+    </tr>
+    <tr>
+      <td>회계정책 검토 중심</td>
+      <td>회계정책이 시스템에 반영되었는지 검증 가능</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>핵심 메시지</strong><br>
+회계 지식은 “무엇이 맞는가”를 알려주고,
+시스템 이해는 “그 맞는 것이 실제로 어떻게 구현되는가”를 보여준다.
+Digital Audit은 이 두 가지를 동시에 요구한다.
+</p>
+</div>
+
+<h2>8. SAP / ERP 이해가 왜 중요한가</h2>
+
+<p>
+대부분의 대기업 회계 숫자는 SAP나 다른 ERP에서 생성됩니다.
+즉, ERP를 이해하지 못하면 숫자의 생성 구조를 깊이 있게 이해하기 어렵습니다.
+Digital Auditor에게 ERP는 단순한 소프트웨어가 아니라
+회계가 실제로 실행되는 현장입니다.
+</p>
+
+<h3>ERP를 이해해야 하는 이유</h3>
+
+<ul>
+  <li>회계전표가 어디서 생성되는지 알 수 있음</li>
+  <li>매출, 매입, 자산, 재고, 연결, 외화환산 로직이 어디에 있는지 파악 가능</li>
+  <li>마스터 데이터가 숫자에 어떻게 영향을 주는지 이해 가능</li>
+  <li>인터페이스 및 batch job 리스크를 식별 가능</li>
+  <li>자동화 통제(ITAC)를 실제로 테스트할 수 있음</li>
+</ul>
+
+<h3>SAP/ERP를 모르면 놓치기 쉬운 것</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>영역</th>
+      <th>왜 ERP 이해가 필요한가</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>매출</td>
+      <td>출하, 청구, revenue posting이 어떤 순서와 로직으로 연결되는지 봐야 함</td>
+    </tr>
+    <tr>
+      <td>재고</td>
+      <td>재고원가, valuation class, impairment 반영 방식 이해 필요</td>
+    </tr>
+    <tr>
+      <td>외화환산</td>
+      <td>환율 테이블, rate type, valuation run 구조 이해 필요</td>
+    </tr>
+    <tr>
+      <td>연결회계</td>
+      <td>intercompany flag, mapping, elimination logic 확인 필요</td>
+    </tr>
+    <tr>
+      <td>리스/고정자산</td>
+      <td>마스터 데이터와 계산 엔진 설정이 회계 결과를 좌우함</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>한 줄로 말하면</strong><br>
+SAP/ERP는 회계 숫자가 살아 움직이는 곳이다.
+Digital Auditor는 그 시스템 안에서 숫자가 어떻게 태어나는지 이해해야 한다.
+</p>
+</div>
+
+<h2>9. 좋은 Digital Auditor의 역량</h2>
+
+<p>
+좋은 Digital Auditor는 코딩만 잘하는 사람도 아니고,
+회계만 잘하는 사람도 아닙니다.
+회계와 시스템, 통제와 데이터, 프로세스와 리스크를 함께 연결해 볼 수 있는 사람입니다.
+</p>
+
+<ul>
+  <li>회계 프로세스 이해</li>
+  <li>ITGC / ITAC 개념 이해</li>
+  <li>SAP / ERP 구조 이해</li>
+  <li>프로세스 흐름도 읽는 능력</li>
+  <li>시스템 통제와 회계 리스크 연결 능력</li>
+  <li>데이터 분석 및 재수행 사고방식</li>
+  <li>현업과 IT, 재무팀 사이에서 설명하는 커뮤니케이션 능력</li>
+</ul>
+
+<div class="highlight">
+<p>
+<strong>Digital Auditor의 정체성</strong><br>
+Digital Auditor는 회계와 IT 사이의 번역가이자,
+숫자 뒤에 있는 시스템 리스크를 찾아내는 감사 전문가다.
+</p>
+</div>
+
+<h2>10. Role-play: 재무감사팀, IT감사팀, Digital Audit 담당자의 대화</h2>
+
+<div class="dialogue">
+<p><span class="role">Financial Auditor:</span>  
+이 매출 숫자가 전년보다 크게 늘었는데, 증빙만 보면 일단 맞아 보입니다.</p>
+
+<p><span class="role">IT Auditor:</span>  
+시스템 권한과 변경관리도 확인해 봐야 합니다. 최근 배치 로직이 바뀌었을 수도 있습니다.</p>
+
+<p><span class="role">Digital Auditor:</span>  
+맞습니다. 이번 건은 증빙만 볼 게 아니라 ERP에서 매출이 어떤 trigger로 생성됐는지 봐야 합니다.</p>
+
+<p><span class="role">Financial Auditor:</span>  
+회계처리 자체는 맞는 것 같은데요?</p>
+
+<p><span class="role">Digital Auditor:</span>  
+회계정책이 맞아도 시스템 로직이 출하 기준으로 잡혀 있으면 cut-off 오류가 날 수 있습니다.</p>
+
+<p><span class="role">IT Auditor:</span>  
+그렇다면 ITGC뿐 아니라 그 매출 로직 자체도 테스트해야겠네요.</p>
+
+<p><span class="role">Digital Auditor:</span>  
+네. 그게 바로 ITAC입니다. 숫자를 만드는 애플리케이션 통제를 보는 거죠.</p>
+
+<p><span class="role">Financial Auditor:</span>  
+그러니까 저는 결과 숫자를 보고, IT Auditor는 환경을 보고, 당신은 숫자가 만들어지는 시스템 로직을 본다는 거군요.</p>
+
+<p><span class="role">Digital Auditor:</span>  
+정확합니다. 세 영역이 같이 움직여야 감사 품질이 올라갑니다.</p>
+</div>
+
+<h2>11. Discussion Questions</h2>
+
+<div class="questions">
+<ul>
+  <li>Digital Audit은 Financial Audit의 일부인가, 별도 전문영역인가?</li>
+  <li>회계기준을 잘 알아도 시스템을 모르면 어떤 한계가 생길까?</li>
+  <li>ITGC와 ITAC 중 어느 쪽이 재무제표 숫자에 더 직접적인 영향을 줄까?</li>
+  <li>SAP/ERP를 모르는 감사인이 놓치기 쉬운 리스크는 무엇일까?</li>
+  <li>왜 Big4는 Digital Audit 인력을 계속 키우고 있을까?</li>
+</ul>
+</div>
+
+<h2>12. 교육 핵심 메시지</h2>
+
+<div class="highlight">
+<p>
+<strong>정리</strong><br>
+• Digital Audit은 숫자 자체보다 숫자가 만들어지는 시스템을 검증하는 감사 영역이다.<br>
+• Financial Audit은 결과 숫자, IT Audit은 시스템 환경, Digital Audit은 숫자 생성 로직을 본다.<br>
+• ITGC와 ITAC를 함께 이해해야 회계 숫자의 신뢰성을 제대로 평가할 수 있다.<br>
+• 회계 지식만으로는 부족하며, SAP/ERP 이해가 있어야 실제 리스크를 찾을 수 있다.<br>
+• Big4가 Digital Audit 조직을 키우는 이유는 회계가 이미 시스템 중심으로 움직이고 있기 때문이다.
+</p>
+</div>
+
+<p class="small-note">
+이 문서는 교육용 HTML 페이지로 바로 사용할 수 있도록 작성되었습니다.
+원하시면 다음 단계로 이 주제를 기준으로 2️⃣ “Digital Auditor가 실제로 뭘 보는가”, 3️⃣ “ITGC/ITAC 실무 사례”, 4️⃣ “SAP 기초 구조”까지 같은 디자인으로 이어서 확장할 수 있습니다.
+</p>
+
+<div class="back">
+  <a href="../">← Back to Home</a>
+  <a href="../biz.html">← Back to Articles</a>
+</div>
+
+</div>
+
+<footer>
+  © <span id="year"></span> Cha GPTs. All rights reserved.
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
