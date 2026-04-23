@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Foreign Currency Translation Training</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Quicksand', sans-serif;
+  background:
+    linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
+    url("../verse.png") no-repeat center center / cover;
+  padding: 60px 20px;
+  color: #222;
+}
+
+.container {
+  max-width: 920px;
+  margin: auto;
+  background: rgba(255,255,255,0.95);
+  padding: 50px 60px;
+  border-radius: 28px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+}
+
+h1, h2, h3 {
+  font-family: 'Baloo 2', cursive;
+  line-height: 1.2;
+}
+
+h1 {
+  margin-bottom: 28px;
+  font-size: 42px;
+}
+
+h2 {
+  margin-top: 50px;
+  margin-bottom: 16px;
+  font-size: 30px;
+}
+
+h3 {
+  margin-top: 26px;
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+p {
+  line-height: 1.8;
+  margin-bottom: 18px;
+  font-size: 15px;
+}
+
+ul, ol {
+  margin-left: 20px;
+  margin-bottom: 22px;
+}
+
+li {
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 28px 0;
+  font-size: 14px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 14px;
+  vertical-align: top;
+  line-height: 1.7;
+}
+
+th {
+  background: #f2f2f2;
+  font-weight: 600;
+}
+
+.highlight {
+  background: #f7f7f7;
+  padding: 22px 26px;
+  border-radius: 18px;
+  margin: 30px 0;
+  font-size: 14px;
+}
+
+.questions {
+  background: #f7f7f7;
+  padding: 25px 30px;
+  border-radius: 18px;
+  margin-top: 30px;
+}
+
+.link-block {
+  background: #eef2f7;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+.link-block a {
+  color: #1a0dab;
+  text-decoration: underline;
+}
+
+.dialogue {
+  background: #fafafa;
+  padding: 26px 30px;
+  border-radius: 18px;
+  margin-top: 25px;
+  font-size: 14px;
+}
+
+.role {
+  font-weight: 600;
+}
+
+.back {
+  text-align: center;
+  margin-top: 55px;
+}
+
+.back a {
+  display: inline-block;
+  padding: 12px 26px;
+  background: #333;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 6px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 13px;
+  background: rgba(255,255,255,0.75);
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 20px;
+}
+
+.code-box {
+  background: #f7f7f7;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin: 18px 0 24px;
+  overflow-x: auto;
+}
+
+.code-box pre {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.small-note {
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.badge {
+  display: inline-block;
+  background: #333;
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  margin-right: 8px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 30px 24px;
+  }
+
+  h1 {
+    font-size: 33px;
+  }
+
+  h2 {
+    font-size: 25px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Foreign Currency Translation Training  
+— 외화환산, 환율 적용, 시스템 리스크, ITAC, 감사 포인트 통합 교육</h1>
+
+<p>
+본 자료는 Foreign Currency 관련 핵심 회계 이슈, 환율 적용 원칙,
+시스템 환율 테이블 관리 리스크, IT Application Control 취약점, 감사 절차,
+그리고 실제 숫자를 이용한 실습 케이스를 한 번에 학습할 수 있도록 구성한 교육용 콘텐츠입니다.
+특히 closing rate와 historical rate를 잘못 적용했을 때 어떤 왜곡이 발생하는지,
+그리고 환율 master와 환율 source 통제가 왜 중요한지를 실무 관점에서 설명합니다.
+</p>
+
+<div class="link-block">
+  <p><strong>교육 범위</strong></p>
+  <p>• Foreign Currency 기본 구조</p>
+  <p>• Closing rate vs Historical rate</p>
+  <p>• 자산, 부채, 자본, 손익의 환산 원칙</p>
+  <p>• 환율 테이블 및 환율 source 관련 시스템 리스크</p>
+  <p>• ITAC 취약점 및 개선 통제</p>
+  <p>• 감사 포인트 및 실제 숫자 기반 실습 케이스</p>
+</div>
+
+<h2>1. Foreign Currency 핵심 개요</h2>
+
+<p>
+외화환산은 단순히 외화를 원화로 바꾸는 작업이 아닙니다.
+어떤 항목에 어떤 환율을 적용해야 하는지에 따라 자산, 부채, 손익, 자본 금액이 모두 달라질 수 있습니다.
+특히 closing rate와 historical rate를 혼동하면 재무제표 왜곡이 발생할 수 있습니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>핵심 포인트:</strong><br>
+외화환산의 본질은 “모든 항목에 같은 환율을 쓰는 것”이 아니라
+“항목의 성격에 맞는 환율을 정확히 적용하는 것”입니다.
+즉, 자산인지 부채인지, monetary item인지 non-monetary item인지,
+기말환율인지 역사적환율인지 구분이 핵심입니다.
+</p>
+</div>
+
+<h3>기본 구조</h3>
+
+<ul>
+  <li>기능통화(Functional Currency) 확인</li>
+  <li>외화거래 최초 인식 시 거래일 환율 적용</li>
+  <li>기말에 monetary item은 closing rate로 재환산</li>
+  <li>non-monetary item은 측정 기준에 따라 historical rate 또는 평가 시점 환율 적용</li>
+  <li>재환산 차이는 손익 또는 OCI 등 관련 기준에 따라 반영</li>
+</ul>
+
+<h3>핵심 판단 요소</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>판단 요소</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Monetary Item</td>
+      <td>현금, 외화채권, 외화채무 등 미래에 확정된 통화금액으로 회수·지급되는 항목</td>
+    </tr>
+    <tr>
+      <td>Non-monetary Item</td>
+      <td>재고, 유형자산, 선급금 등 통화금액으로 고정되어 있지 않은 항목</td>
+    </tr>
+    <tr>
+      <td>Closing Rate</td>
+      <td>보고기간 말 환율. 주로 monetary item 기말 재환산에 사용</td>
+    </tr>
+    <tr>
+      <td>Historical Rate</td>
+      <td>거래 발생 시점 환율. non-monetary item 또는 자본 항목 등에 중요</td>
+    </tr>
+    <tr>
+      <td>Rate Source</td>
+      <td>공식 환율 source가 일관되게 사용되어야 하며 임의 변경이 통제되어야 함</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>2. Closing Rate vs Historical Rate</h2>
+
+<p>
+외화환산에서 가장 흔한 오류 중 하나는 모든 항목에 기말환율을 일괄 적용하거나,
+반대로 역사적환율을 써야 할 항목에 기말환율을 사용하는 것입니다.
+이 차이는 자산·부채뿐 아니라 감가상각비, 매출원가, 환산손익에도 영향을 줍니다.
+</p>
+
+<h3>일반적인 적용 원칙</h3>
+<ul>
+  <li>외화 현금, 외화채권, 외화채무: <strong>Closing Rate</strong></li>
+  <li>역사적원가로 측정되는 재고, 유형자산: <strong>Historical Rate</strong></li>
+  <li>공정가치로 측정되는 non-monetary item: <strong>평가 시점 환율</strong></li>
+  <li>자본금 등 자본 항목: <strong>Historical Rate</strong></li>
+</ul>
+
+<div class="highlight">
+<p>
+<strong>대표 오류 사례:</strong><br>
+자산을 잘못된 환율로 환산하면 단순 환산 차이만 생기는 것이 아니라
+감가상각비, 처분손익, 재고원가, 환산손익까지 연쇄적으로 왜곡될 수 있습니다.
+</p>
+</div>
+
+<h2>3. 시스템 관점에서의 주요 리스크</h2>
+
+<p>
+외화환산 오류는 회계팀이 환율 개념을 몰라서만 발생하지 않습니다.
+실무에서는 환율 테이블 업데이트 누락, 잘못된 source 사용, ERP 환율 master overwrite,
+환율 batch job 실패 등 시스템 이슈가 더 자주 원인이 됩니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>시스템 이슈</th>
+      <th>왜 문제인가</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>환율 테이블 업데이트 누락</td>
+      <td>이전 일자 또는 이전 월 환율이 계속 적용되어 재무제표가 왜곡될 수 있음</td>
+    </tr>
+    <tr>
+      <td>잘못된 환율 source 사용</td>
+      <td>승인되지 않은 외부 source 또는 오기된 환율을 기준으로 환산될 수 있음</td>
+    </tr>
+    <tr>
+      <td>환율 입력 수동</td>
+      <td>오입력, 소수점 오류, 통화 방향 오류 발생 가능</td>
+    </tr>
+    <tr>
+      <td>승인 없이 overwrite 가능</td>
+      <td>이미 등록된 환율이 사후 변경되어도 탐지되지 않을 수 있음</td>
+    </tr>
+    <tr>
+      <td>환율 인터페이스 실패</td>
+      <td>외부 환율 source와 ERP 간 연계 실패 시 오래된 환율이 남을 수 있음</td>
+    </tr>
+    <tr>
+      <td>통화별 환산 rule 매핑 오류</td>
+      <td>특정 계정 또는 법인에 다른 환산 기준이 잘못 적용될 수 있음</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>4. ITAC 취약점</h2>
+
+<p>
+Foreign Currency 관련 ITAC는 단순히 환율 값 하나를 맞게 넣는 수준이 아닙니다.
+환율 source의 신뢰성, master 변경 통제, overwrite 제한, 재환산 로직의 일관성까지 포함해야 합니다.
+특히 수동 입력 구조에서는 작은 입력 오류 하나가 전체 재무제표에 영향을 줄 수 있습니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>핵심 취약점 정리</strong><br>
+• 환율 입력 수동<br>
+• 승인 없이 overwrite 가능<br>
+• 환율 source 검증 통제 없음<br>
+• 환율 master 변경 로그 검토 미흡<br>
+• 재환산 batch 결과 검증 리포트 부재
+</p>
+</div>
+
+<h3>권장 통제 설계</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>통제 영역</th>
+      <th>권장 통제</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Rate Source Control</td>
+      <td>공식 환율 source 지정 및 source 변경 시 승인 필수</td>
+    </tr>
+    <tr>
+      <td>Master Data Control</td>
+      <td>환율 master 등록·수정 권한 제한, 변경 로그 보관</td>
+    </tr>
+    <tr>
+      <td>Input Control</td>
+      <td>통화코드, 기준일자, 환율 방향, 소수점 범위 자동 검증</td>
+    </tr>
+    <tr>
+      <td>Overwrite Control</td>
+      <td>기존 환율 overwrite 시 승인 workflow 및 사유 기록</td>
+    </tr>
+    <tr>
+      <td>Processing Control</td>
+      <td>closing / historical / average rate 적용 rule을 계정별로 자동화</td>
+    </tr>
+    <tr>
+      <td>Output Control</td>
+      <td>재환산 전후 차이 분석, 이상 변동 리포트, 재환산 예외 보고서 생성</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>5. 감사 포인트</h2>
+
+<p>
+감사인은 외화환산에서 단순히 환산 결과 숫자만 보지 않습니다.
+환율 master가 언제 어떻게 바뀌었는지,
+사용된 환율 source가 적절한지,
+그리고 특정 자산이나 부채에 올바른 환율 유형이 적용되었는지를 함께 봅니다.
+</p>
+
+<h3>주요 감사 절차</h3>
+<ul>
+  <li>환율 master 변경 로그 확인</li>
+  <li>환율 source 검증</li>
+  <li>재환산 테스트 수행</li>
+  <li>closing vs historical rate 적용 적정성 검토</li>
+  <li>기말 환산손익 재계산</li>
+  <li>환율 테이블 업데이트 시점 및 승인 내역 확인</li>
+</ul>
+
+<div class="highlight">
+<p>
+<strong>감사 핵심 메시지:</strong><br>
+감사인은 “어떤 환율이 사용되었는가”뿐 아니라
+“왜 그 환율이 사용되었고, 누가 등록·변경했는가”를 함께 확인합니다.
+환율 master 통제가 약하면 재무제표 전체 환산 결과를 신뢰하기 어렵습니다.
+</p>
+</div>
+
+<h2>6. 실습 케이스 1 — Monetary Asset에 Historical Rate 적용 오류</h2>
+
+<p>
+아래 케이스는 외화 매출채권처럼 기말에 closing rate로 재환산해야 하는 항목에
+historical rate를 계속 사용한 상황입니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>값</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>외화 매출채권</td>
+      <td>USD 100,000</td>
+    </tr>
+    <tr>
+      <td>최초 인식 환율 (Historical)</td>
+      <td>1,250원/USD</td>
+    </tr>
+    <tr>
+      <td>기말 환율 (Closing)</td>
+      <td>1,320원/USD</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>정상 환산</h3>
+
+<div class="code-box">
+<pre>USD 100,000 × 1,320원 = 132,000,000원</pre>
+</div>
+
+<h3>잘못된 환산</h3>
+
+<div class="code-box">
+<pre>USD 100,000 × 1,250원 = 125,000,000원</pre>
+</div>
+
+<p>
+외화 매출채권은 monetary item이므로 기말에는 closing rate를 적용해야 합니다.
+하지만 historical rate를 유지하면 자산이 7,000,000원 과소계상되고,
+동시에 외화환산이익도 누락됩니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>오류 영향:</strong><br>
+• 매출채권 7,000,000원 과소계상<br>
+• 외화환산이익 7,000,000원 누락<br>
+• monetary item 재환산 로직 검증 필요
+</p>
+</div>
+
+<h2>7. 실습 케이스 2 — Non-monetary Asset에 Closing Rate 적용 오류</h2>
+
+<p>
+이 케이스는 역사적원가로 측정되는 외화 취득 유형자산에
+historical rate 대신 closing rate를 적용한 사례입니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>값</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>기계장치 취득금액</td>
+      <td>EUR 200,000</td>
+    </tr>
+    <tr>
+      <td>취득일 환율 (Historical)</td>
+      <td>1,400원/EUR</td>
+    </tr>
+    <tr>
+      <td>기말 환율 (Closing)</td>
+      <td>1,470원/EUR</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>정상 인식 금액</h3>
+
+<div class="code-box">
+<pre>EUR 200,000 × 1,400원 = 280,000,000원</pre>
+</div>
+
+<h3>잘못된 인식 금액</h3>
+
+<div class="code-box">
+<pre>EUR 200,000 × 1,470원 = 294,000,000원</pre>
+</div>
+
+<p>
+역사적원가로 측정되는 유형자산은 일반적으로 취득 시점의 historical rate를 기준으로 유지되어야 합니다.
+하지만 closing rate를 적용하면 자산이 14,000,000원 과대계상됩니다.
+이 오류는 이후 감가상각비 계산에도 연쇄적으로 영향을 줍니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>오류 영향:</strong><br>
+• 유형자산 14,000,000원 과대계상<br>
+• 이후 감가상각비 과대 인식 가능<br>
+• 자산 성격별 환율 적용 rule 통제 필요
+</p>
+</div>
+
+<h2>8. 실습 케이스 3 — 환율 테이블 업데이트 누락</h2>
+
+<p>
+이 케이스는 ERP 환율 master가 기말 환율로 업데이트되지 않아,
+전월 환율이 계속 적용된 사례입니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>값</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>외화차입금</td>
+      <td>JPY 50,000,000</td>
+    </tr>
+    <tr>
+      <td>전월말 환율</td>
+      <td>9.1원/JPY</td>
+    </tr>
+    <tr>
+      <td>당월말 환율</td>
+      <td>9.8원/JPY</td>
+    </tr>
+    <tr>
+      <td>ERP 적용 환율</td>
+      <td>9.1원/JPY</td>
+    </tr>
+    <tr>
+      <td>정상 적용 환율</td>
+      <td>9.8원/JPY</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>정상 환산</h3>
+
+<div class="code-box">
+<pre>JPY 50,000,000 × 9.8원 = 490,000,000원</pre>
+</div>
+
+<h3>잘못된 환산</h3>
+
+<div class="code-box">
+<pre>JPY 50,000,000 × 9.1원 = 455,000,000원</pre>
+</div>
+
+<p>
+외화차입금은 monetary liability이므로 closing rate가 적용되어야 합니다.
+환율 테이블 업데이트 누락으로 부채가 35,000,000원 과소계상되었고,
+관련 외화환산손실도 누락되었습니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>오류 원인:</strong><br>
+• 환율 테이블 자동 업데이트 실패<br>
+• 수동 확인 절차 부재<br>
+• 기말 환율 master 리뷰 미실시
+</p>
+</div>
+
+<h2>9. 실습 케이스 4 — 잘못된 환율 Source 사용</h2>
+
+<p>
+이 케이스는 승인된 공식 source가 아닌 임의의 외부 사이트 환율을 사용해
+외화 예금을 환산한 사례입니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>승인된 Source</th>
+      <th>잘못 사용한 Source</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>통화</td>
+      <td>GBP</td>
+      <td>GBP</td>
+    </tr>
+    <tr>
+      <td>환율</td>
+      <td>1,680원/GBP</td>
+      <td>1,724원/GBP</td>
+    </tr>
+    <tr>
+      <td>외화예금</td>
+      <td>GBP 80,000</td>
+      <td>GBP 80,000</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>정상 환산</h3>
+
+<div class="code-box">
+<pre>GBP 80,000 × 1,680원 = 134,400,000원</pre>
+</div>
+
+<h3>잘못된 환산</h3>
+
+<div class="code-box">
+<pre>GBP 80,000 × 1,724원 = 137,920,000원</pre>
+</div>
+
+<p>
+환율 source가 바뀌면 같은 외화 잔액도 전혀 다른 원화 금액으로 환산됩니다.
+이 사례에서는 외화예금이 3,520,000원 과대계상되었습니다.
+핵심은 환율 숫자 자체보다도 어떤 source가 승인되었는지를 통제하는 것입니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>핵심 리스크:</strong><br>
+환율 source 검증 통제가 없으면,
+담당자가 임의로 유리한 환율을 선택하거나 비공식 환율을 적용할 수 있습니다.
+</p>
+</div>
+
+<h2>10. 실습 케이스 5 — 승인 없이 환율 Master Overwrite</h2>
+
+<p>
+이 케이스는 환율 master에 등록된 USD 환율이 승인 없이 덮어쓰기(overwrite)된 상황입니다.
+이미 일부 재환산이 수행된 뒤 환율이 바뀌면 재무제표 일관성 자체가 무너질 수 있습니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>기존 값</th>
+      <th>Overwrite 후</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>기말 USD 환율</td>
+      <td>1,310원/USD</td>
+      <td>1,301원/USD</td>
+    </tr>
+    <tr>
+      <td>외화채무 잔액</td>
+      <td>USD 250,000</td>
+      <td>USD 250,000</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>기존 환산 금액</h3>
+
+<div class="code-box">
+<pre>USD 250,000 × 1,310원 = 327,500,000원</pre>
+</div>
+
+<h3>Overwrite 후 환산 금액</h3>
+
+<div class="code-box">
+<pre>USD 250,000 × 1,301원 = 325,250,000원</pre>
+</div>
+
+<p>
+환율이 9원만 바뀌어도 외화채무 금액은 2,250,000원 차이납니다.
+여러 계정, 여러 법인에 같은 환율이 적용된다면 그 영향은 더 커집니다.
+따라서 overwrite는 반드시 승인과 로그 추적이 필요합니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>오류 영향:</strong><br>
+• 외화채무 2,250,000원 과소계상<br>
+• 관련 환산손익 왜곡<br>
+• 동일 환율을 쓰는 다른 계정들까지 연쇄 영향 가능
+</p>
+</div>
+
+<h2>11. 통제 개선안</h2>
+
+<h3>필수 개선 통제</h3>
+<ul>
+  <li>공식 환율 source 지정 및 source 변경 승인 프로세스 운영</li>
+  <li>환율 master 입력·수정 권한 최소화</li>
+  <li>기존 환율 overwrite 시 승인 workflow 및 사유 입력 필수화</li>
+  <li>환율 테이블 자동 인터페이스 및 실패 알림 통제 도입</li>
+  <li>closing / historical / average rate 적용 rule 자동화</li>
+  <li>기말 재환산 결과 variance report 생성 및 검토</li>
+  <li>환율 master 변경 로그 월별 리뷰 수행</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>통제 목표</th>
+      <th>예시</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>환율 source 신뢰성 확보</td>
+      <td>공식 provider 고정, source 변경 시 재무팀 승인</td>
+    </tr>
+    <tr>
+      <td>입력 오류 방지</td>
+      <td>통화 방향, 소수점 범위, 기준일 자동 검증</td>
+    </tr>
+    <tr>
+      <td>무단 수정 방지</td>
+      <td>overwrite 금지 또는 승인 기반 예외 허용</td>
+    </tr>
+    <tr>
+      <td>환산 정확성 확보</td>
+      <td>계정별 rate type 매핑 관리</td>
+    </tr>
+    <tr>
+      <td>감사 추적성 확보</td>
+      <td>등록자, 수정자, 수정 시각, 이전 값/이후 값 로그 보관</td>
+    </tr>
+    <tr>
+      <td>사후 검토 강화</td>
+      <td>재환산 차이 분석, 전기 대비 변동 분석, 이상 환율 알림</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>12. 감사 체크리스트</h2>
+
+<div class="questions">
+<ul>
+  <li>환율 master는 승인된 source를 기준으로 생성·업데이트되는가?</li>
+  <li>환율 master 변경 로그에 비정상 수정 내역은 없는가?</li>
+  <li>closing rate를 적용해야 할 monetary item에 historical rate가 사용되지 않았는가?</li>
+  <li>historical rate를 적용해야 할 non-monetary item에 closing rate가 적용되지 않았는가?</li>
+  <li>기말 재환산 테스트를 독립적으로 수행했을 때 동일 결과가 나오는가?</li>
+  <li>환율 overwrite는 승인과 근거가 남아 있는가?</li>
+  <li>환율 테이블 업데이트 실패나 지연을 탐지하는 통제가 존재하는가?</li>
+</ul>
+</div>
+
+<h2>13. Role-play: 회계팀, Treasury, IT, 감사인의 대화</h2>
+
+<div class="dialogue">
+<p><span class="role">Auditor:</span>  
+이번 외화환산 검토에서 일부 자산과 부채에 잘못된 환율이 적용된 사례를 확인했습니다.</p>
+
+<p><span class="role">Finance Manager:</span>  
+모든 환율은 ERP에서 자동으로 불러오는 것 아닌가요?</p>
+
+<p><span class="role">IT Manager:</span>  
+자동 업로드 구조이긴 하지만, 일부 통화는 수동 보정도 가능합니다.</p>
+
+<p><span class="role">Treasury Manager:</span>  
+기말에 한 번 환율 table 업데이트가 지연된 적은 있습니다.</p>
+
+<p><span class="role">Auditor:</span>  
+그 영향으로 JPY 차입금에 전월 환율이 적용되어 부채가 과소계상되었습니다.</p>
+
+<p><span class="role">Finance Manager:</span>  
+그럼 환산손실도 같이 누락됐겠네요.</p>
+
+<p><span class="role">Auditor:</span>  
+맞습니다. 또 하나는 유형자산에 closing rate가 적용된 사례였습니다.</p>
+
+<p><span class="role">IT Manager:</span>  
+계정별 rate type mapping이 일부 잘못 설정된 것 같습니다.</p>
+
+<p><span class="role">Treasury Manager:</span>  
+환율 source도 현재는 일부 통화에 대해 팀에서 직접 확인 후 입력합니다.</p>
+
+<p><span class="role">Auditor:</span>  
+그렇다면 source 검증과 master overwrite 통제가 매우 중요합니다.</p>
+
+<p><span class="role">Finance Manager:</span>  
+결국 환율 source, 환율 master, 계정별 환산 로직을 모두 통제해야 한다는 의미군요.</p>
+
+<p><span class="role">Auditor:</span>  
+정확합니다. 어떤 항목에 어떤 환율이 왜 적용되었는지 설명 가능해야 숫자를 신뢰할 수 있습니다.</p>
+</div>
+
+<h2>14. Discussion Questions</h2>
+
+<div class="questions">
+<ul>
+  <li>외화환산 오류는 회계 판단 문제와 시스템 master 문제 중 어디서 더 자주 발생하는가?</li>
+  <li>환율 입력이 일부 수동인 환경에서 가장 현실적인 보완 통제는 무엇인가?</li>
+  <li>closing rate와 historical rate 구분을 시스템상 어떻게 자동화할 수 있을까?</li>
+  <li>환율 source 검증은 Treasury가 맡아야 하는가, Finance가 맡아야 하는가?</li>
+  <li>현재 조직에서 Foreign Currency 관련 가장 취약한 통제 포인트는 무엇인가?</li>
+</ul>
+</div>
+
+<h2>15. 교육 핵심 메시지</h2>
+
+<div class="highlight">
+<p>
+<strong>정리</strong><br>
+• 외화환산의 핵심은 항목의 성격에 맞는 환율을 정확히 적용하는 것입니다.<br>
+• closing rate와 historical rate를 혼동하면 자산, 부채, 손익이 모두 왜곡될 수 있습니다.<br>
+• 환율 테이블 업데이트, 환율 source, master overwrite 통제가 핵심 ITAC 영역입니다.<br>
+• 감사인은 환율 master 변경 로그, 환율 source, 재환산 테스트를 통해 외화환산 숫자의 신뢰성을 검증합니다.
+</p>
+</div>
+
+<p class="small-note">
+이 문서는 교육용 HTML 페이지로 바로 사용할 수 있도록 작성되었습니다.
+원하시면 다음 단계로 1번부터 5번까지 자료를 모두 묶는 통합 index 페이지와
+각 주제별 카드 메뉴 페이지까지 같은 디자인으로 이어서 정리해드릴 수 있습니다.
+</p>
+
+<div class="back">
+  <a href="../">← Back to Home</a>
+  <a href="../biz.html">← Back to Articles</a>
+</div>
+
+</div>
+
+<footer>
+  © <span id="year"></span> Cha GPTs. All rights reserved.
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
