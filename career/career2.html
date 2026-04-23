@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>ERP Understanding Training - SAP 중심 사고</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Quicksand', sans-serif;
+  background:
+    linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
+    url("../verse.png") no-repeat center center / cover;
+  padding: 60px 20px;
+  color: #222;
+}
+
+.container {
+  max-width: 920px;
+  margin: auto;
+  background: rgba(255,255,255,0.95);
+  padding: 50px 60px;
+  border-radius: 28px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+}
+
+h1, h2, h3 {
+  font-family: 'Baloo 2', cursive;
+  line-height: 1.2;
+}
+
+h1 {
+  margin-bottom: 28px;
+  font-size: 42px;
+}
+
+h2 {
+  margin-top: 50px;
+  margin-bottom: 16px;
+  font-size: 30px;
+}
+
+h3 {
+  margin-top: 26px;
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+p {
+  line-height: 1.8;
+  margin-bottom: 18px;
+  font-size: 15px;
+}
+
+ul, ol {
+  margin-left: 20px;
+  margin-bottom: 22px;
+}
+
+li {
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 28px 0;
+  font-size: 14px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 14px;
+  vertical-align: top;
+  line-height: 1.7;
+}
+
+th {
+  background: #f2f2f2;
+  font-weight: 600;
+}
+
+.highlight {
+  background: #f7f7f7;
+  padding: 22px 26px;
+  border-radius: 18px;
+  margin: 30px 0;
+  font-size: 14px;
+}
+
+.questions {
+  background: #f7f7f7;
+  padding: 25px 30px;
+  border-radius: 18px;
+  margin-top: 30px;
+}
+
+.link-block {
+  background: #eef2f7;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+.link-block a {
+  color: #1a0dab;
+  text-decoration: underline;
+}
+
+.dialogue {
+  background: #fafafa;
+  padding: 26px 30px;
+  border-radius: 18px;
+  margin-top: 25px;
+  font-size: 14px;
+}
+
+.role {
+  font-weight: 600;
+}
+
+.back {
+  text-align: center;
+  margin-top: 55px;
+}
+
+.back a {
+  display: inline-block;
+  padding: 12px 26px;
+  background: #333;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 6px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 13px;
+  background: rgba(255,255,255,0.75);
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 20px;
+}
+
+.code-box {
+  background: #f7f7f7;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin: 18px 0 24px;
+  overflow-x: auto;
+}
+
+.code-box pre {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.small-note {
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.badge {
+  display: inline-block;
+  background: #333;
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  margin-right: 8px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 30px 24px;
+  }
+
+  h1 {
+    font-size: 33px;
+  }
+
+  h2 {
+    font-size: 25px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>ERP 이해  
+— SAP 중심 사고로 보는 회계 숫자의 생성 구조</h1>
+
+<p>
+본 자료는 ERP를 처음 접하는 사람도 이해할 수 있도록,
+회계와 시스템이 어떻게 연결되는지 SAP 관점에서 설명하는 교육용 콘텐츠입니다.
+특히 FI / CO / SD / MM 구조, Order부터 Accounting까지 이어지는 전표 흐름,
+그리고 Subledger에서 GL로 연결되는 구조를 중심으로
+왜 Digital Auditor와 회계 실무자가 ERP를 이해해야 하는지를 실무적으로 풀어냈습니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>핵심 메시지</strong><br>
+“모든 재무제표 숫자는 ERP에서 나온다.”
+</p>
+</div>
+
+<div class="link-block">
+  <p><strong>교육 범위</strong></p>
+  <p>• ERP란 무엇인가</p>
+  <p>• SAP 구조 (FI / CO / SD / MM)</p>
+  <p>• Order → Delivery → Billing → Accounting 흐름</p>
+  <p>• Subledger → GL 연결 구조</p>
+  <p>• 어떤 모듈에서 어떤 오류가 발생하는지</p>
+  <p>• 시스템이 자동으로 만드는 분개 이해</p>
+</div>
+
+<h2>1. 왜 ERP를 이해해야 하는가</h2>
+
+<p>
+회계 숫자는 더 이상 대부분 사람이 손으로 만드는 숫자가 아닙니다.
+매출, 매입, 재고, 고정자산, 외화환산, 연결제거, 원가배부 같은 숫자들은
+ERP 안에서 생성되고 집계되고 전표로 반영됩니다.
+따라서 ERP를 이해하지 못하면 재무제표 숫자의 “출발점”을 이해하지 못하는 것과 같습니다.
+</p>
+
+<p>
+감사인이든 회계 담당자든 숫자를 검토할 때
+단순히 전표 결과만 보면 늦습니다.
+어떤 거래가 어떤 모듈에서 시작되었고,
+그 거래가 어떤 로직을 통해 회계전표가 되었는지까지 이해해야
+오류 원인과 통제 포인트를 정확히 볼 수 있습니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>한 줄 요약</strong><br>
+ERP를 모르면 숫자를 볼 수는 있어도,
+그 숫자가 왜 그렇게 나왔는지는 끝까지 설명하기 어렵다.
+</p>
+</div>
+
+<h2>2. ERP란 무엇인가</h2>
+
+<p>
+ERP(Enterprise Resource Planning)는 기업의 핵심 업무를 하나의 통합 시스템에서 처리하는 구조입니다.
+영업, 구매, 재고, 생산, 원가, 회계, 자산, 인사 등 여러 업무가 따로 놀지 않고
+하나의 데이터 구조 안에서 연결되도록 설계됩니다.
+</p>
+
+<p>
+SAP는 대표적인 ERP 중 하나이며,
+특히 대기업과 글로벌 기업에서 많이 사용됩니다.
+SAP의 강점은 회계 숫자가 단순히 회계팀 입력으로만 만들어지는 것이 아니라,
+영업, 물류, 구매, 재고, 생산 활동과 연결되어 자동으로 회계에 반영된다는 점입니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>ERP가 없는 경우</th>
+      <th>ERP가 있는 경우</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>부서별 시스템이 분리됨</td>
+      <td>영업, 구매, 재고, 회계가 하나로 연결됨</td>
+    </tr>
+    <tr>
+      <td>수동 재입력이 많음</td>
+      <td>한 번 입력한 데이터가 여러 프로세스로 이어짐</td>
+    </tr>
+    <tr>
+      <td>숫자 불일치가 자주 발생</td>
+      <td>원천 거래와 회계 결과가 시스템상 연결됨</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>3. SAP를 볼 때의 기본 사고방식</h2>
+
+<p>
+SAP를 단순히 메뉴가 많은 프로그램으로 보면 이해가 어렵습니다.
+SAP는 “업무 흐름이 회계전표로 이어지는 구조”로 이해해야 합니다.
+즉, 하나의 거래는 특정 모듈에서 시작되고,
+그 결과가 다른 모듈로 흘러가며,
+마지막에는 회계전표와 GL 잔액이 됩니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>SAP 중심 사고</strong><br>
+거래는 먼저 비즈니스 프로세스로 발생하고,
+그 다음 SAP 모듈을 통과하며,
+마지막에 회계 숫자가 된다.
+</p>
+</div>
+
+<h2>4. SAP 주요 모듈 구조</h2>
+
+<p>
+SAP 전체는 매우 크지만,
+회계와 감사 관점에서는 특히 FI, CO, SD, MM 네 가지를 먼저 이해하는 것이 중요합니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>모듈</th>
+      <th>의미</th>
+      <th>무엇을 다루나</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>FI</td>
+      <td>Financial Accounting</td>
+      <td>총계정원장, 매출채권, 매입채무, 자산, 외화환산, 재무회계 전표</td>
+    </tr>
+    <tr>
+      <td>CO</td>
+      <td>Controlling</td>
+      <td>원가배부, 원가센터, 수익성 분석, 내부관리회계</td>
+    </tr>
+    <tr>
+      <td>SD</td>
+      <td>Sales and Distribution</td>
+      <td>주문, 출하, 납품, 청구, 고객 관련 영업 프로세스</td>
+    </tr>
+    <tr>
+      <td>MM</td>
+      <td>Materials Management</td>
+      <td>구매, 입고, 재고, 자재 관리, 공급업체 관련 프로세스</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>모듈별 직관적 이해</h3>
+
+<ul>
+  <li><strong>SD</strong>는 “팔기”를 담당한다.</li>
+  <li><strong>MM</strong>는 “사기 / 받기 / 재고 관리”를 담당한다.</li>
+  <li><strong>FI</strong>는 “회계 숫자로 남기기”를 담당한다.</li>
+  <li><strong>CO</strong>는 “내부적으로 비용과 수익을 분석하기”를 담당한다.</li>
+</ul>
+
+<div class="highlight">
+<p>
+<strong>실무 감각</strong><br>
+매출 오류가 항상 FI에서 시작되는 것은 아니다.
+실제로는 SD 설정 오류가 매출 회계 오류로 이어지고,
+재고 오류는 MM 설정 오류가 FI 숫자를 왜곡하는 경우가 많다.
+</p>
+</div>
+
+<h2>5. SAP 구조를 회계 흐름으로 이해하기</h2>
+
+<p>
+회계팀은 흔히 FI만 보면 된다고 생각하기 쉽지만,
+실제 회계 숫자는 FI만으로 만들어지지 않습니다.
+예를 들어 매출은 SD에서 시작되고,
+매입과 재고는 MM에서 시작되며,
+원가배부는 CO에서 발생합니다.
+FI는 이런 결과가 최종 회계전표로 모이는 곳입니다.
+</p>
+
+<div class="code-box">
+<pre>비즈니스 거래 발생
+→ 운영 모듈(SD / MM / CO 등) 처리
+→ 시스템 로직에 따라 회계전표 생성
+→ FI / GL에 반영
+→ 재무제표 숫자로 집계</pre>
+</div>
+
+<h2>6. Order → Delivery → Billing → Accounting 흐름</h2>
+
+<p>
+SAP를 이해할 때 가장 대표적으로 보는 흐름이
+영업 프로세스의 Order → Delivery → Billing → Accounting 입니다.
+이 흐름은 “매출이 어떻게 재무제표 숫자가 되는가”를 보여주는 핵심 예시입니다.
+</p>
+
+<h3>1) Order</h3>
+<p>
+고객 주문을 등록하는 단계입니다.
+이 시점에는 보통 회계전표가 아직 생기지 않는 경우가 많습니다.
+하지만 가격, 수량, 고객, 출하 조건, 세금 조건 같은 핵심 데이터가 여기서 결정됩니다.
+즉, 뒤에 생길 회계 결과의 기초 정보가 이 단계에서 이미 세팅됩니다.
+</p>
+
+<h3>2) Delivery</h3>
+<p>
+실제 출하 또는 납품 단계입니다.
+기업의 설정에 따라 이 시점에 재고가 감소하고 매출원가 관련 전표가 생성될 수 있습니다.
+따라서 cut-off 오류는 종종 이 단계에서 발생합니다.
+</p>
+
+<h3>3) Billing</h3>
+<p>
+고객에게 청구하는 단계입니다.
+설정에 따라 매출과 매출채권이 이 시점에 FI 전표로 생성될 수 있습니다.
+즉, 회계상 매출 인식이 billing 기준으로 설정되어 있다면
+청구 타이밍이 재무제표에 직접 영향을 줍니다.
+</p>
+
+<h3>4) Accounting</h3>
+<p>
+최종적으로 회계전표가 FI에 반영되는 단계입니다.
+이 전표가 총계정원장(GL)에 반영되어 매출, 매출채권, 매출원가, 재고 감소 등이 숫자로 남습니다.
+</p>
+
+<div class="code-box">
+<pre>Order
+→ Delivery
+→ Billing
+→ Accounting (FI Posting)
+→ GL / Financial Statements</pre>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>단계</th>
+      <th>주요 의미</th>
+      <th>회계 영향</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Order</td>
+      <td>고객 주문 생성</td>
+      <td>보통 직접 전표 없음, 그러나 후속 회계의 기초 정보 형성</td>
+    </tr>
+    <tr>
+      <td>Delivery</td>
+      <td>출하 / 납품</td>
+      <td>재고 감소, 매출원가 관련 전표 가능</td>
+    </tr>
+    <tr>
+      <td>Billing</td>
+      <td>청구 / 송장 발행</td>
+      <td>매출 및 매출채권 전표 생성 가능</td>
+    </tr>
+    <tr>
+      <td>Accounting</td>
+      <td>FI 반영</td>
+      <td>GL 집계 및 재무제표 연결</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>핵심 이해</strong><br>
+매출은 “회계팀이 매출 전표를 직접 입력해서” 만들어지는 게 아니라,
+대부분 Order부터 Billing까지 이어진 업무 흐름이 자동으로 FI 전표를 만드는 구조다.
+</p>
+</div>
+
+<h2>7. Subledger → GL 연결 구조</h2>
+
+<p>
+회계 숫자를 이해하려면 Subledger와 GL의 관계를 알아야 합니다.
+Subledger는 세부 원장이고,
+GL(General Ledger)은 최종 총계정원장입니다.
+실무적으로는 고객별 채권, 공급업체별 채무, 자산별 상세 내역, 재고 상세 내역 등이 Subledger에 있고,
+이 결과가 집계되어 GL 계정잔액이 됩니다.
+</p>
+
+<h3>예시</h3>
+
+<ul>
+  <li>고객별 매출채권 상세는 AR Subledger</li>
+  <li>공급업체별 매입채무 상세는 AP Subledger</li>
+  <li>자산별 취득/감가상각은 Asset Subledger</li>
+  <li>품목별 수량/원가는 Inventory Subledger</li>
+  <li>최종 계정잔액은 GL에 반영</li>
+</ul>
+
+<div class="code-box">
+<pre>Subledger 상세 데이터
+→ Account Determination / Posting Logic
+→ FI Document
+→ GL Balance
+→ Financial Statements</pre>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Subledger</th>
+      <th>무엇을 담나</th>
+      <th>GL에 어떻게 연결되나</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>AR</td>
+      <td>고객별 채권, 청구, 입금</td>
+      <td>매출채권 및 관련 계정으로 집계</td>
+    </tr>
+    <tr>
+      <td>AP</td>
+      <td>공급업체별 채무, 송장, 지급</td>
+      <td>매입채무 및 비용 계정으로 집계</td>
+    </tr>
+    <tr>
+      <td>Asset</td>
+      <td>자산별 취득, 감가상각</td>
+      <td>유형자산, 감가상각누계액, 감가상각비로 반영</td>
+    </tr>
+    <tr>
+      <td>Inventory</td>
+      <td>품목별 재고수량, 원가, 이동</td>
+      <td>재고자산, 매출원가 등으로 연결</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>왜 중요한가</strong><br>
+재무제표는 GL에서 보이지만,
+오류의 시작점은 대부분 Subledger나 그 이전 운영 모듈에 있다.
+그래서 Digital Auditor는 GL만 보면 안 되고, Subledger까지 내려가야 한다.
+</p>
+</div>
+
+<h2>8. 시스템이 자동으로 만드는 분개 이해</h2>
+
+<p>
+SAP에서 중요한 것은 많은 전표가 사람이 직접 입력한 결과가 아니라
+시스템 설정에 따라 자동으로 생성된다는 점입니다.
+즉, 자동분개 로직을 이해해야 숫자의 원인을 이해할 수 있습니다.
+</p>
+
+<h3>대표 예시 1: 매출</h3>
+
+<div class="code-box">
+<pre>Billing 시점
+Dr. Accounts Receivable
+    Cr. Revenue</pre>
+</div>
+
+<p>
+고객 청구가 일어나면 시스템이 자동으로 매출채권과 매출을 반영할 수 있습니다.
+이때 어떤 계정으로 가는지는 계정결정(Account Determination) 로직에 따라 달라집니다.
+</p>
+
+<h3>대표 예시 2: 출하 / 재고 감소</h3>
+
+<div class="code-box">
+<pre>Delivery / Goods Issue 시점
+Dr. Cost of Goods Sold
+    Cr. Inventory</pre>
+</div>
+
+<p>
+출하가 일어나면 재고가 줄고 매출원가가 인식될 수 있습니다.
+즉, 물류 이벤트가 회계전표를 만든다는 뜻입니다.
+</p>
+
+<h3>대표 예시 3: 매입</h3>
+
+<div class="code-box">
+<pre>Invoice Posting 시점
+Dr. Expense or Inventory
+    Cr. Accounts Payable</pre>
+</div>
+
+<p>
+구매 모듈에서 송장을 처리하면 공급업체 채무와 비용 또는 재고가 자동 반영될 수 있습니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>핵심 포인트</strong><br>
+자동분개는 편리하지만,
+설정이 틀리면 잘못된 전표가 대량으로 반복 생성될 수 있다.
+그래서 시스템 로직 이해가 중요하다.
+</p>
+</div>
+
+<h2>9. 어떤 모듈에서 어떤 오류가 발생하는가</h2>
+
+<p>
+실무에서 중요한 것은 “숫자가 틀렸다”에서 끝나는 것이 아니라
+“어느 모듈의 어떤 설정 또는 데이터가 문제인가”를 보는 것입니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>모듈</th>
+      <th>자주 보는 오류</th>
+      <th>회계 영향</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SD</td>
+      <td>출하 기준/청구 기준 mismatch, pricing 오류, billing 지연</td>
+      <td>매출 인식 오류, cut-off 오류, AR 오류</td>
+    </tr>
+    <tr>
+      <td>MM</td>
+      <td>입고 누락, valuation class 오류, 재고이동 잘못 처리</td>
+      <td>재고 과대/과소, 매입원가 왜곡</td>
+    </tr>
+    <tr>
+      <td>FI</td>
+      <td>환율 master 오류, 계정매핑 오류, 수동 전표 오입력</td>
+      <td>재무제표 직접 왜곡</td>
+    </tr>
+    <tr>
+      <td>CO</td>
+      <td>원가배부 rule 오류, 수익성 분석 기준 오류</td>
+      <td>내부손익 왜곡, 제품/사업부 수익성 왜곡</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>쉽게 이해하면</h3>
+
+<ul>
+  <li><strong>SD 문제</strong>는 매출 숫자를 흔든다.</li>
+  <li><strong>MM 문제</strong>는 재고와 매입원가 숫자를 흔든다.</li>
+  <li><strong>FI 문제</strong>는 환율, 계정, GL 잔액을 흔든다.</li>
+  <li><strong>CO 문제</strong>는 원가배부와 내부관리 숫자를 흔든다.</li>
+</ul>
+
+<div class="highlight">
+<p>
+<strong>감사 관점</strong><br>
+매출이 틀렸다고 해서 항상 회계팀 잘못은 아니다.
+종종 SD 설정 오류가 원인이며,
+재고가 틀렸다고 해서 항상 재무팀 문제도 아니다.
+MM나 valuation setting 문제가 시작점일 수 있다.
+</p>
+</div>
+
+<h2>10. 실무에서 꼭 보는 포인트</h2>
+
+<h3>1) 원천 거래가 어디서 시작되는가</h3>
+<p>
+숫자를 보기 전에 먼저 그 숫자의 원천이 어느 모듈인지 확인해야 합니다.
+매출이면 SD, 매입/재고면 MM, 자산이면 FI-AA, 원가면 CO를 먼저 봐야 합니다.
+</p>
+
+<h3>2) 회계전표가 자동인지 수동인지</h3>
+<p>
+수동 전표인지 자동 생성 전표인지에 따라 리스크가 다릅니다.
+자동 전표면 설정과 인터페이스가 중요하고,
+수동 전표면 승인과 입력 통제가 중요합니다.
+</p>
+
+<h3>3) 마스터 데이터가 숫자에 미치는 영향</h3>
+<p>
+고객, 자재, 공급업체, 계정결정, valuation class, profit center 같은 마스터 데이터는
+회계전표 계정과 금액 흐름에 큰 영향을 줍니다.
+즉, 숫자는 거래만이 아니라 마스터 설정에 의해서도 결정됩니다.
+</p>
+
+<h3>4) Interface와 Batch Job</h3>
+<p>
+다른 시스템에서 SAP로 데이터가 들어오거나,
+정해진 시간에 batch job이 돌면서 전표를 만드는 경우가 많습니다.
+이때 지연, 실패, 재처리 오류가 있으면 재무제표 오류로 이어질 수 있습니다.
+</p>
+
+<h2>11. 회계 실무자와 Digital Auditor에게 ERP가 중요한 이유</h2>
+
+<p>
+회계 실무자에게 ERP 이해는 “내가 입력한 숫자가 어디로 가는지”를 아는 것입니다.
+Digital Auditor에게 ERP 이해는 “그 숫자가 왜 그렇게 생성되었는지”를 검증하는 능력입니다.
+결국 두 역할 모두 ERP를 모르면 숫자의 전체 흐름을 보기 어렵습니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>역할</th>
+      <th>ERP를 알아야 하는 이유</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>회계 실무자</td>
+      <td>자동분개, 계정결정, 마감 로직을 이해해야 숫자 오류를 줄일 수 있음</td>
+    </tr>
+    <tr>
+      <td>재무감사인</td>
+      <td>숫자의 결과뿐 아니라 생성 원인을 파악할 수 있음</td>
+    </tr>
+    <tr>
+      <td>Digital Auditor</td>
+      <td>모듈 흐름, ITAC, interface, batch, master data 통제를 검증할 수 있음</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>결론</strong><br>
+ERP 이해는 IT를 배우는 것이 아니라,
+회계 숫자가 실제 비즈니스 프로세스를 거쳐 어떻게 만들어지는지 배우는 것이다.
+</p>
+</div>
+
+<h2>12. Role-play: 회계팀, 영업팀, IT, Digital Auditor의 대화</h2>
+
+<div class="dialogue">
+<p><span class="role">Finance Manager:</span>  
+이번 달 매출이 예상보다 많이 잡혔는데, 회계팀은 직접 매출 전표를 입력하지 않았습니다.</p>
+
+<p><span class="role">Sales Manager:</span>  
+영업 쪽에서는 주문과 출하만 처리했습니다. 청구도 시스템에서 자동으로 나갔고요.</p>
+
+<p><span class="role">IT Manager:</span>  
+현재 SAP에서 Billing이 발생하면 자동으로 FI 전표가 생성되도록 설정되어 있습니다.</p>
+
+<p><span class="role">Digital Auditor:</span>  
+그럼 매출을 보려면 FI만 보면 안 되고, Order부터 Delivery, Billing 흐름까지 봐야 합니다.</p>
+
+<p><span class="role">Finance Manager:</span>  
+즉, 결과 숫자는 회계에 있지만 원인은 SD 쪽에 있을 수도 있다는 거군요.</p>
+
+<p><span class="role">Digital Auditor:</span>  
+맞습니다. 출하일, 청구일, 회계인식일이 어떻게 연결되는지 확인해야 합니다.</p>
+
+<p><span class="role">IT Manager:</span>  
+재고도 마찬가지입니다. MM에서 Goods Issue가 일어나면 자동으로 재고 감소와 매출원가 전표가 만들어집니다.</p>
+
+<p><span class="role">Finance Manager:</span>  
+그러면 재고 숫자가 틀려도 FI 전표만 수정해서는 근본 해결이 안 되겠네요.</p>
+
+<p><span class="role">Digital Auditor:</span>  
+정확합니다. 원천 모듈과 자동분개 로직을 같이 봐야 합니다.</p>
+</div>
+
+<h2>13. Discussion Questions</h2>
+
+<div class="questions">
+<ul>
+  <li>매출 오류는 왜 FI보다 SD에서 시작되는 경우가 많은가?</li>
+  <li>재고 숫자가 틀릴 때 MM과 FI 중 어디를 먼저 봐야 할까?</li>
+  <li>Subledger와 GL가 불일치하면 어떤 리스크를 의심해야 할까?</li>
+  <li>자동분개는 왜 편리하면서도 동시에 위험할 수 있을까?</li>
+  <li>ERP를 모르는 감사인이 놓치기 쉬운 핵심 리스크는 무엇일까?</li>
+</ul>
+</div>
+
+<h2>14. 교육 핵심 메시지</h2>
+
+<div class="highlight">
+<p>
+<strong>정리</strong><br>
+• 모든 재무제표 숫자는 ERP에서 나온다.<br>
+• SAP는 FI만이 아니라 SD, MM, CO 등 여러 모듈이 연결되어 회계 숫자를 만든다.<br>
+• Order → Delivery → Billing → Accounting 흐름을 이해하면 매출이 어떻게 숫자가 되는지 볼 수 있다.<br>
+• Subledger는 상세, GL은 결과이며, 오류의 시작점은 대개 Subledger나 운영 모듈이다.<br>
+• 자동분개를 이해해야 시스템이 만드는 회계전표를 이해할 수 있다.<br>
+• 어떤 모듈에서 어떤 오류가 발생하는지 아는 것이 실무와 감사의 핵심이다.
+</p>
+</div>
+
+<p class="small-note">
+이 문서는 교육용 HTML 페이지로 바로 사용할 수 있도록 작성되었습니다.
+원하시면 다음 단계로 같은 디자인을 유지해서
+“SAP에서 매출이 만들어지는 구조”, “재고와 매입 흐름”, “ITGC/ITAC를 SAP에 연결해서 보는 법”까지 이어서 만들 수 있습니다.
+</p>
+
+<div class="back">
+  <a href="../">← Back to Home</a>
+  <a href="../biz.html">← Back to Articles</a>
+</div>
+
+</div>
+
+<footer>
+  © <span id="year"></span> Cha GPTs. All rights reserved.
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
