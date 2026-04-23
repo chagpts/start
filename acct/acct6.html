@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Inventory Training</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Quicksand', sans-serif;
+  background:
+    linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
+    url("../verse.png") no-repeat center center / cover;
+  padding: 60px 20px;
+  color: #222;
+}
+
+.container {
+  max-width: 920px;
+  margin: auto;
+  background: rgba(255,255,255,0.95);
+  padding: 50px 60px;
+  border-radius: 28px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+}
+
+h1, h2, h3 {
+  font-family: 'Baloo 2', cursive;
+  line-height: 1.2;
+}
+
+h1 {
+  margin-bottom: 28px;
+  font-size: 42px;
+}
+
+h2 {
+  margin-top: 50px;
+  margin-bottom: 16px;
+  font-size: 30px;
+}
+
+h3 {
+  margin-top: 26px;
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+p {
+  line-height: 1.8;
+  margin-bottom: 18px;
+  font-size: 15px;
+}
+
+ul, ol {
+  margin-left: 20px;
+  margin-bottom: 22px;
+}
+
+li {
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 28px 0;
+  font-size: 14px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 14px;
+  vertical-align: top;
+  line-height: 1.7;
+}
+
+th {
+  background: #f2f2f2;
+  font-weight: 600;
+}
+
+.highlight {
+  background: #f7f7f7;
+  padding: 22px 26px;
+  border-radius: 18px;
+  margin: 30px 0;
+  font-size: 14px;
+}
+
+.questions {
+  background: #f7f7f7;
+  padding: 25px 30px;
+  border-radius: 18px;
+  margin-top: 30px;
+}
+
+.link-block {
+  background: #eef2f7;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+.link-block a {
+  color: #1a0dab;
+  text-decoration: underline;
+}
+
+.dialogue {
+  background: #fafafa;
+  padding: 26px 30px;
+  border-radius: 18px;
+  margin-top: 25px;
+  font-size: 14px;
+}
+
+.role {
+  font-weight: 600;
+}
+
+.back {
+  text-align: center;
+  margin-top: 55px;
+}
+
+.back a {
+  display: inline-block;
+  padding: 12px 26px;
+  background: #333;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 6px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 13px;
+  background: rgba(255,255,255,0.75);
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 20px;
+}
+
+.code-box {
+  background: #f7f7f7;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin: 18px 0 24px;
+  overflow-x: auto;
+}
+
+.code-box pre {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.small-note {
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.badge {
+  display: inline-block;
+  background: #333;
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  margin-right: 8px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 30px 24px;
+  }
+
+  h1 {
+    font-size: 33px;
+  }
+
+  h2 {
+    font-size: 25px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Inventory Training  
+— 재고평가, Lower of Cost or Market, 시스템 리스크, ITAC, 감사 포인트 통합 교육</h1>
+
+<p>
+본 자료는 Inventory 관련 핵심 회계 이슈, Lower of Cost or Market 개념,
+재고평가손실 및 NRV(Net Realizable Value) 반영, 시스템 계산 리스크,
+IT Application Control 취약점, 감사 절차, 그리고 실제 숫자를 이용한 실습 케이스를
+한 번에 학습할 수 있도록 구성한 교육용 콘텐츠입니다.
+특히 impairment 계산 batch가 없고 수동 journal로 조정하는 환경에서
+왜 재고 과대계상 리스크가 커지는지를 실무 관점에서 설명합니다.
+</p>
+
+<div class="link-block">
+  <p><strong>교육 범위</strong></p>
+  <p>• Inventory 기본 구조</p>
+  <p>• Lower of Cost or Market / NRV 반영</p>
+  <p>• 재고 valuation 및 impairment 계산 구조</p>
+  <p>• impairment batch 부재와 manual journal 리스크</p>
+  <p>• ITAC 취약점 및 개선 통제</p>
+  <p>• 감사 포인트 및 실제 숫자 기반 실습 케이스</p>
+</div>
+
+<h2>1. Inventory 핵심 개요</h2>
+
+<p>
+재고는 단순히 창고에 쌓여 있는 물건이 아니라,
+기업의 매출원가와 이익률에 직접 영향을 미치는 핵심 자산입니다.
+따라서 재고는 원가와 순실현가능가치(NRV)를 비교하여 더 낮은 금액으로 평가해야 하며,
+이 원칙이 지켜지지 않으면 재고와 이익이 동시에 과대계상될 수 있습니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>핵심 포인트:</strong><br>
+재고평가의 핵심은 “얼마에 샀는가”만이 아니라
+“지금 그 재고를 실제로 얼마에 회수할 수 있는가”를 함께 보는 것입니다.
+즉, 원가가 높더라도 회수 가능 금액이 더 낮다면 손실을 반영해야 합니다.
+</p>
+</div>
+
+<h3>기본 구조</h3>
+
+<ul>
+  <li>재고 취득원가 계산</li>
+  <li>품목별 또는 그룹별 재고 잔액 집계</li>
+  <li>판매가능가격, 처분예상가격, 완성원가, 판매비용 검토</li>
+  <li>NRV와 원가 비교</li>
+  <li>더 낮은 금액으로 평가 및 필요 시 재고평가손실 인식</li>
+</ul>
+
+<h3>핵심 계산 구조</h3>
+
+<div class="code-box">
+<pre>NRV (순실현가능가치) = 예상판매가 - 추가완성원가 - 예상판매비용</pre>
+</div>
+
+<div class="code-box">
+<pre>Inventory Valuation = Min(Cost, NRV)</pre>
+</div>
+
+<h3>핵심 판단 요소</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>판단 요소</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>원가(Cost)</td>
+      <td>매입원가, 가공원가, 기타 정상적으로 발생한 원가 포함</td>
+    </tr>
+    <tr>
+      <td>NRV</td>
+      <td>예상판매가에서 완성·판매에 필요한 원가를 차감한 금액</td>
+    </tr>
+    <tr>
+      <td>Aging</td>
+      <td>장기 보유 재고는 가격 하락, 진부화, 폐기 가능성이 높아 손상 검토 필요</td>
+    </tr>
+    <tr>
+      <td>Slow-moving / Obsolete</td>
+      <td>회전율이 낮거나 기술·트렌드 변화로 판매 가능성이 낮아진 재고</td>
+    </tr>
+    <tr>
+      <td>Valuation Logic</td>
+      <td>품목별, 카테고리별, location별 손상 계산 로직이 일관돼야 함</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>2. Lower of Cost or Market / NRV 반영</h2>
+
+<p>
+재고는 원가가 아니라 “원가와 NRV 중 낮은 금액”으로 평가되어야 합니다.
+즉, 재고가 오래되었거나 판매가격이 하락했거나,
+추가 가공원가가 많이 들어 실제 회수 가능 금액이 줄었다면
+재고평가손실을 인식해야 합니다.
+</p>
+
+<h3>대표 오류</h3>
+<ul>
+  <li>NRV 반영 안함 → 재고 과대계상</li>
+  <li>aging 기준이 오래되어 실제 진부화 반영 안 됨</li>
+  <li>판매가능성이 낮은 재고를 정상 재고로 유지</li>
+  <li>손상 계산은 했지만 분개 반영 누락</li>
+</ul>
+
+<div class="highlight">
+<p>
+<strong>대표 오류 사례:</strong><br>
+NRV를 반영하지 않으면 재고가 과대계상될 뿐 아니라
+당기 매출원가 또는 재고평가손실이 과소계상되어 당기이익도 함께 과대계상됩니다.
+</p>
+</div>
+
+<h2>3. 시스템 관점에서의 주요 리스크</h2>
+
+<p>
+재고평가 오류는 회계팀이 원칙을 몰라서만 생기지 않습니다.
+실무에서는 impairment 계산 batch가 없거나,
+재고 손상 계산이 별도 엑셀에서 수행된 뒤 수동 journal로 반영되기 때문에
+누락, 중복, 계산 오류, 승인 누락이 자주 발생합니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>시스템 이슈</th>
+      <th>왜 문제인가</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>impairment 계산 batch 없음</td>
+      <td>NRV 비교 및 손상 계산이 시스템상 자동 수행되지 않아 누락 가능성 높음</td>
+    </tr>
+    <tr>
+      <td>수동 journal로 조정</td>
+      <td>계산과 전표 반영이 분리되어 있어 입력 오류·누락 위험 존재</td>
+    </tr>
+    <tr>
+      <td>valuation calculation 자동화 미흡</td>
+      <td>aging, 판매단가, 폐기 예정 정보가 통합 반영되지 않음</td>
+    </tr>
+    <tr>
+      <td>품목별 valuation rule 부재</td>
+      <td>동일한 손상 기준이 일관되게 적용되지 않을 수 있음</td>
+    </tr>
+    <tr>
+      <td>manual adjustment 승인 통제 없음</td>
+      <td>담당자가 손실 인식 규모를 임의 조정할 위험 존재</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>4. ITAC 취약점</h2>
+
+<p>
+Inventory 관련 ITAC는 재고수량 통제뿐 아니라
+valuation calculation과 impairment posting 통제까지 포함해야 합니다.
+특히 수동 journal 의존도가 높을수록
+계산 정확성, 승인, 추적성 통제가 매우 중요합니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>핵심 취약점 정리</strong><br>
+• valuation calculation 자동화 미흡<br>
+• impairment 계산 batch 없음<br>
+• 수동 조정 승인 통제 없음<br>
+• aging 기준 업데이트 통제 없음<br>
+• manual JE 생성·반영 내역 검토 미흡
+</p>
+</div>
+
+<h3>권장 통제 설계</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>통제 영역</th>
+      <th>권장 통제</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Input Control</td>
+      <td>재고수량, 원가, 최근 판매단가, 폐기 예정 정보 등 valuation 입력값 정합성 검증</td>
+    </tr>
+    <tr>
+      <td>Processing Control</td>
+      <td>Cost vs NRV 비교, aging별 impairment rule, slow-moving logic 자동화</td>
+    </tr>
+    <tr>
+      <td>Batch Control</td>
+      <td>정기 impairment calculation batch 실행 및 결과 로그 보관</td>
+    </tr>
+    <tr>
+      <td>Manual JE Control</td>
+      <td>수동 재고손상 전표는 승인, 근거 첨부, 독립 검토 필수</td>
+    </tr>
+    <tr>
+      <td>Output Control</td>
+      <td>aging report, valuation variance report, 손상 전/후 비교 리포트 운영</td>
+    </tr>
+    <tr>
+      <td>Exception Control</td>
+      <td>장기재고, 음수재고, 무매출 재고, NRV 급락 품목에 대한 예외 모니터링</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>5. 감사 포인트</h2>
+
+<p>
+감사인은 재고평가에서 단순히 기말 재고 금액만 보지 않습니다.
+aging 분석, NRV 계산 로직, valuation 재계산, 수동 전표 승인 여부까지 함께 검토합니다.
+특히 손상 계산이 시스템이 아닌 수동 방식으로 수행되는 경우,
+manual JE 테스트가 매우 중요해집니다.
+</p>
+
+<h3>주요 감사 절차</h3>
+<ul>
+  <li>aging 분석 수행</li>
+  <li>재고 valuation 재계산</li>
+  <li>manual JE 테스트</li>
+  <li>NRV 근거 자료 검토</li>
+  <li>slow-moving / obsolete 재고 식별 로직 검토</li>
+  <li>손상 반영 전후 재고금액 비교 분석</li>
+</ul>
+
+<div class="highlight">
+<p>
+<strong>감사 핵심 메시지:</strong><br>
+감사인은 “재고수량이 맞는가”만이 아니라
+“그 재고가 그 금액으로 회수 가능한가”를 검증합니다.
+특히 aging, NRV 계산, manual JE는 재고평가 감사의 핵심입니다.
+</p>
+</div>
+
+<h2>6. 실습 케이스 1 — NRV 미반영으로 인한 재고 과대계상</h2>
+
+<p>
+아래 케이스는 제품 재고에 대해 원가만 유지하고 NRV를 반영하지 않은 사례입니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>값</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>품목</td>
+      <td>Product A</td>
+    </tr>
+    <tr>
+      <td>수량</td>
+      <td>1,000개</td>
+    </tr>
+    <tr>
+      <td>단위 원가</td>
+      <td>50,000원</td>
+    </tr>
+    <tr>
+      <td>예상판매가</td>
+      <td>46,000원</td>
+    </tr>
+    <tr>
+      <td>예상판매비용</td>
+      <td>2,000원</td>
+    </tr>
+    <tr>
+      <td>추가완성원가</td>
+      <td>0원</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>NRV 계산</h3>
+
+<div class="code-box">
+<pre>NRV = 46,000 - 2,000 = 44,000원</pre>
+</div>
+
+<h3>평가 비교</h3>
+
+<div class="code-box">
+<pre>원가 = 50,000원
+NRV = 44,000원
+평가금액 = 더 낮은 금액인 44,000원</pre>
+</div>
+
+<h3>총 재고평가손실</h3>
+
+<div class="code-box">
+<pre>(50,000 - 44,000) × 1,000개 = 6,000,000원</pre>
+</div>
+
+<p>
+NRV를 반영하지 않으면 재고가 6,000,000원 과대계상되고,
+동시에 재고평가손실 또는 매출원가가 그만큼 과소계상됩니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>오류 영향:</strong><br>
+• 재고 6,000,000원 과대계상<br>
+• 재고평가손실 6,000,000원 과소계상<br>
+• 당기이익 6,000,000원 과대계상
+</p>
+</div>
+
+<h2>7. 실습 케이스 2 — Aging 반영 누락</h2>
+
+<p>
+이 케이스는 장기보유 재고에 대해 aging 분석은 존재하지만,
+실제 valuation에 반영하지 않은 사례입니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Aging 구간</th>
+      <th>재고 금액</th>
+      <th>회사 정책 손상률</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0~90일</td>
+      <td>80,000,000원</td>
+      <td>0%</td>
+    </tr>
+    <tr>
+      <td>91~180일</td>
+      <td>30,000,000원</td>
+      <td>10%</td>
+    </tr>
+    <tr>
+      <td>181~365일</td>
+      <td>20,000,000원</td>
+      <td>30%</td>
+    </tr>
+    <tr>
+      <td>365일 초과</td>
+      <td>10,000,000원</td>
+      <td>70%</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>정상 손상 계산</h3>
+
+<div class="code-box">
+<pre>91~180일: 30,000,000 × 10% = 3,000,000
+181~365일: 20,000,000 × 30% = 6,000,000
+365일 초과: 10,000,000 × 70% = 7,000,000
+
+총 손상 = 16,000,000원</pre>
+</div>
+
+<p>
+하지만 시스템상 impairment batch가 없어 손상 전표가 생성되지 않았고,
+결과적으로 aging 정책상 인식되어야 할 16,000,000원이 누락되었습니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>오류 영향:</strong><br>
+• 재고 16,000,000원 과대계상<br>
+• 손상비용 16,000,000원 누락<br>
+• aging 분석은 존재하지만 회계 반영이 안 된 전형적 사례
+</p>
+</div>
+
+<h2>8. 실습 케이스 3 — 수동 Journal 입력 오류</h2>
+
+<p>
+이 케이스는 재고 손상 계산은 맞았지만,
+수동 전표 입력 시 금액을 잘못 입력한 사례입니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>정상 값</th>
+      <th>실제 입력</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>손상 계산 금액</td>
+      <td>24,800,000원</td>
+      <td>2,480,000원</td>
+    </tr>
+    <tr>
+      <td>전표 유형</td>
+      <td>재고평가손실 JE</td>
+      <td>재고평가손실 JE</td>
+    </tr>
+    <tr>
+      <td>승인 여부</td>
+      <td>필요</td>
+      <td>승인 없이 반영</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+수동 journal 환경에서는 소수점 자리수, 0 누락, 계정 반대 입력 같은 오류가 자주 발생합니다.
+이 사례에서는 22,320,000원의 손상 인식이 누락되었습니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>오류 영향:</strong><br>
+• 재고 22,320,000원 과대계상<br>
+• 손상비용 22,320,000원 과소계상<br>
+• manual JE 승인 및 입력 검증 통제 필요
+</p>
+</div>
+
+<h2>9. 실습 케이스 4 — Slow-moving 재고 미반영</h2>
+
+<p>
+이 케이스는 최근 12개월간 판매가 거의 없는 재고에 대해
+slow-moving reserve를 잡아야 하지만 이를 전혀 반영하지 않은 사례입니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>품목군</th>
+      <th>재고 금액</th>
+      <th>최근 12개월 판매량</th>
+      <th>정책 손상률</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Old Model Parts</td>
+      <td>45,000,000원</td>
+      <td>전체 재고의 5%</td>
+      <td>50%</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>정상 손상 계산</h3>
+
+<div class="code-box">
+<pre>45,000,000 × 50% = 22,500,000원</pre>
+</div>
+
+<p>
+제품 수명주기가 짧은 업종에서는 단순 aging보다 판매회전 데이터가 더 중요할 수 있습니다.
+이 사례에서는 slow-moving reserve 22,500,000원이 누락되어 재고가 과대계상되었습니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>핵심 리스크:</strong><br>
+aging만 보고 valuation을 수행하면,
+실제 판매가능성이 매우 낮은 재고를 정상 재고로 남길 수 있습니다.
+</p>
+</div>
+
+<h2>10. 실습 케이스 5 — Manual JE 승인 통제 부재</h2>
+
+<p>
+이 케이스는 담당자가 재고평가손실 규모를 임의로 줄여 전표를 입력했지만,
+별도 승인 통제가 없어 그대로 반영된 사례입니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>계산 결과</th>
+      <th>실제 반영</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>필요 손상 금액</td>
+      <td>38,000,000원</td>
+      <td>18,000,000원</td>
+    </tr>
+    <tr>
+      <td>차이</td>
+      <td colspan="2">20,000,000원</td>
+    </tr>
+    <tr>
+      <td>근거 문서 첨부</td>
+      <td>필요</td>
+      <td>없음</td>
+    </tr>
+    <tr>
+      <td>승인자 검토</td>
+      <td>필요</td>
+      <td>없음</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+수동 조정 승인 통제가 없으면 담당자가 손실 규모를 임의로 낮춰
+당기이익을 높게 보이도록 만들 수 있습니다.
+이 사례에서는 재고가 20,000,000원 과대계상되었습니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>오류 영향:</strong><br>
+• 재고 20,000,000원 과대계상<br>
+• 재고평가손실 20,000,000원 과소계상<br>
+• 승인·근거 문서 통제가 없을 때 발생 가능한 대표적 조정 리스크
+</p>
+</div>
+
+<h2>11. 통제 개선안</h2>
+
+<h3>필수 개선 통제</h3>
+<ul>
+  <li>impairment calculation batch 도입</li>
+  <li>Cost vs NRV 비교 로직 자동화</li>
+  <li>aging 정책 및 slow-moving 정책 시스템 반영</li>
+  <li>manual JE 생성 시 근거 첨부 및 승인 workflow 필수화</li>
+  <li>valuation variance report 및 장기재고 예외 보고서 운영</li>
+  <li>품목별/창고별 valuation parameter 정기 검토</li>
+  <li>재고평가 결과와 GL 반영 결과 자동 대사</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>통제 목표</th>
+      <th>예시</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>자동 계산 신뢰성 확보</td>
+      <td>NRV, aging, 판매회전 기반 손상 계산 엔진 도입</td>
+    </tr>
+    <tr>
+      <td>수동 개입 최소화</td>
+      <td>손상 전표 자동 생성, 예외 거래만 수동 검토</td>
+    </tr>
+    <tr>
+      <td>임의 조정 방지</td>
+      <td>manual JE 승인, 근거 첨부, 변경 로그 저장</td>
+    </tr>
+    <tr>
+      <td>감사 추적성 확보</td>
+      <td>valuation report → JE → GL 금액 trace 가능하도록 설계</td>
+    </tr>
+    <tr>
+      <td>사후 검토 강화</td>
+      <td>전기 대비 손상률, aging 구조, 재고회전율 분석</td>
+    </tr>
+    <tr>
+      <td>예외 모니터링</td>
+      <td>무매출 품목, 장기체화 품목, 반복 반품 품목 경보 설정</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>12. 감사 체크리스트</h2>
+
+<div class="questions">
+<ul>
+  <li>재고는 원가와 NRV 중 낮은 금액으로 평가되고 있는가?</li>
+  <li>aging 분석이 실제 손상 계산과 연결되어 있는가?</li>
+  <li>재고 valuation을 독립적으로 재계산했을 때 동일 결과가 나오는가?</li>
+  <li>manual JE는 승인과 근거 문서를 갖추고 있는가?</li>
+  <li>slow-moving 또는 obsolete 재고 식별 기준이 존재하고 운영되는가?</li>
+  <li>impairment batch가 없다면 이를 대체할 수 있는 보완 통제가 존재하는가?</li>
+  <li>재고평가 결과와 총계정원장(GL) 반영 금액은 일치하는가?</li>
+</ul>
+</div>
+
+<h2>13. Role-play: 물류팀, 원가회계팀, IT, 감사인의 대화</h2>
+
+<div class="dialogue">
+<p><span class="role">Auditor:</span>  
+이번 재고평가 검토에서 일부 장기재고에 대한 손상 반영이 누락된 것으로 보입니다.</p>
+
+<p><span class="role">Cost Accountant:</span>  
+aging report는 매달 보고 있습니다. 그런데 왜 손상이 누락된 걸까요?</p>
+
+<p><span class="role">IT Manager:</span>  
+현재 시스템에는 impairment 계산 batch가 없습니다. 필요한 경우 회계팀이 수동 전표를 입력합니다.</p>
+
+<p><span class="role">Warehouse Manager:</span>  
+장기재고와 판매부진 재고는 현장에서 알고 있지만 시스템에는 별도 flag가 없습니다.</p>
+
+<p><span class="role">Auditor:</span>  
+그렇다면 aging 분석과 회계 반영이 분리되어 있는 구조네요. 그 사이에서 누락이 발생할 수 있습니다.</p>
+
+<p><span class="role">Cost Accountant:</span>  
+실제로 이번 달에는 계산은 했지만 전표 금액을 일부만 반영한 것 같습니다.</p>
+
+<p><span class="role">Auditor:</span>  
+그 부분이 바로 핵심입니다. 계산 결과와 journal 반영 결과가 같아야 합니다.</p>
+
+<p><span class="role">IT Manager:</span>  
+manual JE 승인 workflow도 현재는 강제되어 있지 않습니다.</p>
+
+<p><span class="role">Warehouse Manager:</span>  
+현장에서는 이미 판매 불가능한 품목도 있는데 장부에는 정상 재고로 남아 있습니다.</p>
+
+<p><span class="role">Auditor:</span>  
+그래서 aging 분석, valuation 재계산, manual JE 테스트를 같이 보는 것입니다.</p>
+
+<p><span class="role">Cost Accountant:</span>  
+결국 impairment 계산 자동화와 manual JE 통제 둘 다 필요하겠네요.</p>
+
+<p><span class="role">Auditor:</span>  
+맞습니다. 재고수량이 맞는 것만으로는 충분하지 않고, 그 금액이 회수 가능한 금액인지까지 검증되어야 합니다.</p>
+</div>
+
+<h2>14. Discussion Questions</h2>
+
+<div class="questions">
+<ul>
+  <li>재고 손상은 aging 기준이 더 중요한가, 아니면 실제 판매회전 데이터가 더 중요한가?</li>
+  <li>impairment batch가 없는 환경에서 가장 현실적인 보완 통제는 무엇인가?</li>
+  <li>manual JE를 완전히 금지할 수 없다면 어떤 승인 통제가 반드시 필요할까?</li>
+  <li>재고평가 오류는 수량 통제보다 valuation 통제에서 더 자주 발생하는가?</li>
+  <li>현재 조직에서 Inventory 관련 가장 취약한 통제 포인트는 무엇인가?</li>
+</ul>
+</div>
+
+<h2>15. 교육 핵심 메시지</h2>
+
+<div class="highlight">
+<p>
+<strong>정리</strong><br>
+• 재고는 원가와 NRV 중 낮은 금액으로 평가되어야 합니다.<br>
+• NRV 반영 누락은 재고 과대계상과 이익 과대계상으로 직결됩니다.<br>
+• impairment calculation batch, valuation 자동화, manual JE 승인 통제가 핵심 ITAC 영역입니다.<br>
+• 감사인은 aging 분석, 재고 valuation 재계산, manual JE 테스트를 통해 재고평가 숫자의 신뢰성을 검증합니다.
+</p>
+</div>
+
+<p class="small-note">
+이 문서는 교육용 HTML 페이지로 바로 사용할 수 있도록 작성되었습니다.
+원하시면 다음 단계로 1번부터 6번까지 자료를 모두 묶는 통합 index 페이지,
+카드형 목록 페이지, 또는 각 주제를 한 사이트 안에서 넘겨보는 navigation 버전까지 이어서 정리할 수 있습니다.
+</p>
+
+<div class="back">
+  <a href="../">← Back to Home</a>
+  <a href="../biz.html">← Back to Articles</a>
+</div>
+
+</div>
+
+<footer>
+  © <span id="year"></span> Cha GPTs. All rights reserved.
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
