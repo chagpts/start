@@ -1,1 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Audit Career</title>
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', Arial, sans-serif;
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)),
+        url("verse.png") no-repeat center center / cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 28px 16px;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      font-family: 'Baloo 2', cursive;
+      font-size: 30px;
+      margin-bottom: 6px;
+      color: #1e3a5f;
+      text-align: center;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 20px;
+      text-align: center;
+      line-height: 1.5;
+      max-width: 700px;
+    }
+
+    .back-home {
+      margin-bottom: 26px;
+      text-decoration: none;
+      color: #1e3a5f;
+      background: white;
+      padding: 10px 22px;
+      border-radius: 20px;
+      box-shadow: 0 5px 14px rgba(0,0,0,0.18);
+      font-size: 13px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .back-home:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 7px 16px rgba(0,0,0,0.2);
+    }
+
+    .articles {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .article {
+      background: rgba(255,255,255,0.96);
+      padding: 24px 22px;
+      border-radius: 24px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .article:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.2);
+    }
+
+    .article:active {
+      transform: scale(0.98);
+    }
+
+    .article h2 {
+      font-family: 'Baloo 2', cursive;
+      font-size: 20px;
+      margin: 0 0 10px;
+      color: #1e3a5f;
+    }
+
+    .article p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #555;
+      margin: 0 0 16px;
+    }
+
+    .read {
+      font-size: 13px;
+      color: #1e3a5f;
+      font-weight: 500;
+    }
+
+    @media (min-width: 768px) {
+      body {
+        padding: 40px 20px;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+
+      .articles {
+        max-width: 700px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Digital Audit Career</h1>
+  <div class="subtitle">
+    Digital Audit 커리어 준비를 위한 핵심 교육자료
+  </div>
+
+  <a href="index.html" class="back-home">Back to Home</a>
+
+  <div class="articles">
+
+    <a href="./career/career1.html" class="article">
+      <h2>1. What is Digital Audit?</h2>
+      <p>Digital Audit의 개념, 역할, Financial Audit 및 IT Audit과의 차이</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./career/career2.html" class="article">
+      <h2>2. ERP Understanding</h2>
+      <p>SAP 중심으로 배우는 ERP 구조와 재무 데이터 흐름</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./career/career3.html" class="article">
+      <h2>3. ITGC vs ITAC</h2>
+      <p>전산감사의 핵심 통제인 ITGC와 ITAC의 차이와 연결 구조</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./career/career4.html" class="article">
+      <h2>4. Data Analytics</h2>
+      <p>SQL, 데이터 구조, 이상거래 분석 등 디지털 감사의 분석 역량</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./career/career5.html" class="article">
+      <h2>5. Accounting + IT</h2>
+      <p>회계 이슈를 시스템 관점으로 연결해서 보는 사고 훈련</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./career/career6.html" class="article">
+      <h2>6. Audit Approach</h2>
+      <p>리스크 평가부터 통제 식별과 테스트까지의 감사 접근법</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="./career/career7.html" class="article">
+      <h2>7. Career Roadmap</h2>
+      <p>Digital Audit 취업과 성장을 위한 현실적인 준비 전략</p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+  </div>
+
+</body>
+</html>
