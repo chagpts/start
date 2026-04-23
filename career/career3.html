@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>ITGC vs ITAC Training</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Quicksand', sans-serif;
+  background:
+    linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
+    url("../verse.png") no-repeat center center / cover;
+  padding: 60px 20px;
+  color: #222;
+}
+
+.container {
+  max-width: 920px;
+  margin: auto;
+  background: rgba(255,255,255,0.95);
+  padding: 50px 60px;
+  border-radius: 28px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+}
+
+h1, h2, h3 {
+  font-family: 'Baloo 2', cursive;
+  line-height: 1.2;
+}
+
+h1 {
+  margin-bottom: 28px;
+  font-size: 42px;
+}
+
+h2 {
+  margin-top: 50px;
+  margin-bottom: 16px;
+  font-size: 30px;
+}
+
+h3 {
+  margin-top: 26px;
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+p {
+  line-height: 1.8;
+  margin-bottom: 18px;
+  font-size: 15px;
+}
+
+ul, ol {
+  margin-left: 20px;
+  margin-bottom: 22px;
+}
+
+li {
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 28px 0;
+  font-size: 14px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 14px;
+  vertical-align: top;
+  line-height: 1.7;
+}
+
+th {
+  background: #f2f2f2;
+  font-weight: 600;
+}
+
+.highlight {
+  background: #f7f7f7;
+  padding: 22px 26px;
+  border-radius: 18px;
+  margin: 30px 0;
+  font-size: 14px;
+}
+
+.questions {
+  background: #f7f7f7;
+  padding: 25px 30px;
+  border-radius: 18px;
+  margin-top: 30px;
+}
+
+.link-block {
+  background: #eef2f7;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+.link-block a {
+  color: #1a0dab;
+  text-decoration: underline;
+}
+
+.dialogue {
+  background: #fafafa;
+  padding: 26px 30px;
+  border-radius: 18px;
+  margin-top: 25px;
+  font-size: 14px;
+}
+
+.role {
+  font-weight: 600;
+}
+
+.back {
+  text-align: center;
+  margin-top: 55px;
+}
+
+.back a {
+  display: inline-block;
+  padding: 12px 26px;
+  background: #333;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 6px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 13px;
+  background: rgba(255,255,255,0.75);
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 20px;
+}
+
+.code-box {
+  background: #f7f7f7;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin: 18px 0 24px;
+  overflow-x: auto;
+}
+
+.code-box pre {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.small-note {
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.badge {
+  display: inline-block;
+  background: #333;
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  margin-right: 8px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 30px 24px;
+  }
+
+  h1 {
+    font-size: 33px;
+  }
+
+  h2 {
+    font-size: 25px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>ITGC vs ITAC  
+— 핵심 통제를 이해하는 가장 중요한 출발점</h1>
+
+<p>
+본 자료는 ITGC와 ITAC를 처음 배우는 사람도 실무적으로 이해할 수 있도록 구성한 교육용 콘텐츠입니다.
+특히 ITGC의 Access Control, Change Management, Operation Control과
+ITAC의 Input Control, Processing Control, Interface Control을 비교하며,
+왜 ITGC가 깨지면 ITAC도 신뢰하기 어려운지를 Digital Audit 관점에서 설명합니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>핵심 메시지</strong><br>
+“ITGC는 환경을 통제하고, ITAC는 숫자를 통제한다.”
+</p>
+</div>
+
+<div class="link-block">
+  <p><strong>교육 범위</strong></p>
+  <p>• ITGC와 ITAC의 개념</p>
+  <p>• ITGC: Access Control, Change Management, Operation Control</p>
+  <p>• ITAC: Input Control, Processing Control, Interface Control</p>
+  <p>• 왜 ITGC가 깨지면 ITAC도 신뢰 못하는지</p>
+  <p>• 실무에서 통제를 어떻게 연결해서 보는지</p>
+</div>
+
+<h2>1. 왜 ITGC와 ITAC를 같이 이해해야 하는가</h2>
+
+<p>
+회계 숫자는 시스템에서 만들어집니다.
+그런데 숫자가 맞으려면 두 가지가 동시에 필요합니다.
+첫째, 시스템이 통제된 환경에서 운영되어야 합니다.
+둘째, 그 시스템 안의 업무 로직이 정확하게 작동해야 합니다.
+이 두 가지를 각각 보는 개념이 바로 ITGC와 ITAC입니다.
+</p>
+
+<p>
+많은 사람들이 ITGC와 ITAC를 따로 외우지만,
+실무에서는 둘을 따로 보지 않습니다.
+환경이 무너지면 로직을 믿기 어렵고,
+로직이 약하면 환경이 좋아도 숫자가 틀릴 수 있기 때문입니다.
+즉, ITGC와 ITAC는 경쟁 개념이 아니라 함께 작동해야 하는 통제 구조입니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>한 줄 요약</strong><br>
+ITGC는 시스템이 “안전하게 운영되도록” 만들고,
+ITAC는 그 시스템이 “정확한 숫자를 만들도록” 만든다.
+</p>
+</div>
+
+<h2>2. ITGC란 무엇인가</h2>
+
+<p>
+ITGC는 IT General Controls의 약자로,
+특정 회계 업무 하나만이 아니라 시스템 전체가 신뢰할 수 있는 환경에서 운영되도록 하는 기본 통제입니다.
+쉽게 말하면 “이 시스템을 믿어도 되는가”를 묻는 통제입니다.
+</p>
+
+<p>
+예를 들어 아무나 시스템 설정을 바꿀 수 있고,
+프로그램 변경이 승인 없이 운영에 반영되며,
+배치 실패가 모니터링되지 않는다면
+아무리 좋은 자동 계산 로직이 있어도 그 결과를 신뢰하기 어렵습니다.
+바로 이런 기반을 보는 것이 ITGC입니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>ITGC의 역할</strong><br>
+시스템 전체가 통제된 상태에서 운영되는지 확인하는 것.
+즉, “누가 들어올 수 있는가”, “무엇을 바꿀 수 있는가”, “시스템이 안정적으로 돌아가는가”를 본다.
+</p>
+</div>
+
+<h2>3. ITAC란 무엇인가</h2>
+
+<p>
+ITAC는 IT Application Controls의 약자로,
+특정 업무 프로세스 안에서 입력, 처리, 출력이 정확하게 이루어지도록 설계된 응용 통제입니다.
+쉽게 말하면 “이 시스템이 회계 숫자를 제대로 만들고 있는가”를 묻는 통제입니다.
+</p>
+
+<p>
+예를 들어 리스 분류 로직, 매출 인식 trigger, 외화환산 rate type 적용,
+연결 제거 rule, 재고 손상 계산, 인터페이스 금액 대사 같은 것이 ITAC입니다.
+즉, 숫자와 직접 연결되는 로직을 보는 통제입니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>ITAC의 역할</strong><br>
+시스템 안에서 데이터가 정확히 입력되고,
+정확한 로직으로 처리되며,
+정확한 결과가 생성되도록 통제하는 것.
+즉, “숫자가 맞게 만들어지는가”를 본다.
+</p>
+</div>
+
+<h2>4. ITGC vs ITAC 한눈에 비교</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>구분</th>
+      <th>ITGC</th>
+      <th>ITAC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>초점</td>
+      <td>시스템 환경 전체</td>
+      <td>업무 로직과 숫자 생성</td>
+    </tr>
+    <tr>
+      <td>핵심 질문</td>
+      <td>이 시스템은 통제된 환경에서 운영되는가?</td>
+      <td>이 시스템은 정확한 숫자를 만들고 있는가?</td>
+    </tr>
+    <tr>
+      <td>대표 통제</td>
+      <td>권한관리, 변경관리, 운영통제</td>
+      <td>입력통제, 처리통제, 인터페이스통제</td>
+    </tr>
+    <tr>
+      <td>영향 범위</td>
+      <td>전 시스템 공통</td>
+      <td>특정 프로세스 또는 애플리케이션</td>
+    </tr>
+    <tr>
+      <td>예시</td>
+      <td>승인 없는 프로그램 변경 금지</td>
+      <td>매출은 배송완료 시점에만 자동 인식</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>쉽게 말하면</strong><br>
+ITGC는 “도로와 신호등”이고,
+ITAC는 “그 도로 위를 달리는 회계 숫자의 경로와 규칙”이다.
+도로가 무너지면 차가 제대로 가는지 믿기 어렵고,
+도로가 멀쩡해도 경로가 틀리면 목적지에 잘못 도착한다.
+</p>
+</div>
+
+<h2>5. ITGC ① Access Control (권한 통제)</h2>
+
+<p>
+Access Control은 누가 어떤 시스템에 접근할 수 있고,
+무엇을 조회, 입력, 수정, 승인할 수 있는지를 통제하는 영역입니다.
+가장 기본적이지만 가장 중요한 통제 중 하나입니다.
+왜냐하면 권한이 잘못 설정되면 사용자가 자기 거래를 직접 승인하거나,
+민감한 마스터 데이터를 바꾸거나,
+자동화 로직을 우회할 수 있기 때문입니다.
+</p>
+
+<h3>대표 포인트</h3>
+
+<ul>
+  <li>사용자 ID는 개인별로 부여되는가</li>
+  <li>권한은 업무상 필요한 수준으로 제한되는가</li>
+  <li>퇴사자·휴직자 권한이 적시에 제거되는가</li>
+  <li>Segregation of Duties(SOD)가 충돌하지 않는가</li>
+  <li>민감한 테이블 / 설정에 대한 접근이 제한되는가</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>권한 통제 미흡 사례</th>
+      <th>가능한 리스크</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>공유 ID 사용</td>
+      <td>누가 변경했는지 추적 불가</td>
+    </tr>
+    <tr>
+      <td>개발자가 운영 직접 접근 가능</td>
+      <td>로직 임의 변경 가능</td>
+    </tr>
+    <tr>
+      <td>한 사용자가 입력과 승인 모두 가능</td>
+      <td>부정 또는 오류 탐지 어려움</td>
+    </tr>
+    <tr>
+      <td>퇴사자 권한 미삭제</td>
+      <td>무단 접근 가능성</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>핵심 이해</strong><br>
+Access Control이 약하면,
+시스템 안의 숫자뿐 아니라 시스템 자체의 신뢰가 흔들린다.
+</p>
+</div>
+
+<h2>6. ITGC ② Change Management (변경관리)</h2>
+
+<p>
+Change Management는 시스템 프로그램, 설정, 인터페이스, 리포트, 마스터 구조가 변경될 때
+그 변경이 승인되고, 테스트되고, 문서화되고, 적절히 운영 반영되는지를 보는 통제입니다.
+이 통제가 약하면 회계 로직이 조용히 바뀌어도 아무도 모를 수 있습니다.
+</p>
+
+<h3>대표 포인트</h3>
+
+<ul>
+  <li>변경 요청이 공식적으로 접수되는가</li>
+  <li>변경 전에 승인과 테스트가 이루어지는가</li>
+  <li>운영 반영 전 검토가 있는가</li>
+  <li>변경 이력과 결과가 문서화되는가</li>
+  <li>긴급 변경도 사후 승인 및 검토가 되는가</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>변경관리 미흡 사례</th>
+      <th>가능한 리스크</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>테스트 없이 운영 반영</td>
+      <td>매출, 환율, 분개 로직 오류 발생</td>
+    </tr>
+    <tr>
+      <td>승인 없는 설정 변경</td>
+      <td>회계정책과 다른 처리 가능</td>
+    </tr>
+    <tr>
+      <td>긴급 변경 후 문서화 없음</td>
+      <td>누가 왜 바꿨는지 추적 어려움</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>핵심 이해</strong><br>
+회계 로직이 시스템 안에 구현되어 있다면,
+프로그램과 설정 변경은 곧 회계처리 변경과 같다.
+그래서 Change Management는 재무감사와도 직접 연결된다.
+</p>
+</div>
+
+<h2>7. ITGC ③ Operation Control (운영 통제)</h2>
+
+<p>
+Operation Control은 시스템이 일상적으로 안정적으로 돌아가도록 하는 통제입니다.
+배치 실행, 백업, 장애 대응, 스케줄 관리, 인터페이스 운영, 작업 로그 검토 등이 여기에 포함됩니다.
+운영 통제가 약하면 정상 로직이 있어도 실제 실행 결과가 틀릴 수 있습니다.
+</p>
+
+<h3>대표 포인트</h3>
+
+<ul>
+  <li>배치 잡이 예정대로 실행되는가</li>
+  <li>실패 시 알림과 재처리 절차가 있는가</li>
+  <li>백업과 복구 테스트가 수행되는가</li>
+  <li>운영 로그가 검토되는가</li>
+  <li>인터페이스 실패건이 누락 없이 처리되는가</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>운영통제 미흡 사례</th>
+      <th>가능한 리스크</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>매출 batch job 실패</td>
+      <td>매출 누락 또는 지연 인식</td>
+    </tr>
+    <tr>
+      <td>환율 update batch 미실행</td>
+      <td>이전 환율 계속 사용</td>
+    </tr>
+    <tr>
+      <td>interface 오류 미모니터링</td>
+      <td>배송/재고/청구 데이터 누락</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>핵심 이해</strong><br>
+좋은 로직이 있어도 운영이 흔들리면 숫자는 틀릴 수 있다.
+Operation Control은 “설계된 시스템”이 아니라 “실제로 돌아가는 시스템”을 보는 통제다.
+</p>
+</div>
+
+<h2>8. ITAC ① Input Control</h2>
+
+<p>
+Input Control은 시스템에 들어오는 데이터가 정확하고 완전하며 유효한지를 통제하는 영역입니다.
+즉, 잘못된 데이터가 처음부터 들어오지 못하게 하거나,
+들어와도 탐지되도록 하는 통제입니다.
+</p>
+
+<h3>대표 예시</h3>
+
+<ul>
+  <li>필수 입력값 강제</li>
+  <li>형식 검증</li>
+  <li>유효한 마스터 코드만 입력 허용</li>
+  <li>금액 범위 및 부호 검증</li>
+  <li>중복 입력 방지</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>Input Control 예시</th>
+      <th>목적</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>IC 여부 필드 필수 입력</td>
+      <td>내부거래 제거 누락 방지</td>
+    </tr>
+    <tr>
+      <td>환율 master 기준일 검증</td>
+      <td>잘못된 환율 등록 방지</td>
+    </tr>
+    <tr>
+      <td>investee data 부호/단위 검증</td>
+      <td>지분법 손익 오입력 방지</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>핵심 이해</strong><br>
+Input이 틀리면 그 뒤의 모든 자동화도 틀릴 수 있다.
+그래서 좋은 ITAC는 입력 단계부터 시작된다.
+</p>
+</div>
+
+<h2>9. ITAC ② Processing Control</h2>
+
+<p>
+Processing Control은 시스템 안에서 데이터가 정확한 룰로 계산, 분류, 집계, 전표 생성되는지를 보는 통제입니다.
+실무적으로 가장 “숫자와 직접 연결된” 통제라고 볼 수 있습니다.
+</p>
+
+<h3>대표 예시</h3>
+
+<ul>
+  <li>리스 분류 자동 로직</li>
+  <li>매출 인식 trigger 및 batch 로직</li>
+  <li>외화환산 rate type 적용</li>
+  <li>연결 제거 rule</li>
+  <li>재고 NRV 계산 및 손상 로직</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>Processing Control 예시</th>
+      <th>목적</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Finance lease vs Operating lease rule</td>
+      <td>리스 분류 오류 방지</td>
+    </tr>
+    <tr>
+      <td>배송완료 후에만 매출 인식</td>
+      <td>cut-off 오류 방지</td>
+    </tr>
+    <tr>
+      <td>기말환율 vs 역사적환율 자동 적용</td>
+      <td>외화환산 오류 방지</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>핵심 이해</strong><br>
+Processing Control은 “숫자가 시스템 안에서 어떻게 계산되는가”를 통제한다.
+즉, 회계정책이 실제 시스템 로직으로 구현된 모습이다.
+</p>
+</div>
+
+<h2>10. ITAC ③ Interface Control</h2>
+
+<p>
+Interface Control은 한 시스템의 데이터가 다른 시스템으로 이동할 때
+누락, 중복, 지연, 오류 없이 정확하게 전달되는지를 통제하는 영역입니다.
+현대 ERP 환경에서는 단일 시스템만으로 끝나는 경우가 드물기 때문에 매우 중요합니다.
+</p>
+
+<h3>대표 예시</h3>
+
+<ul>
+  <li>배송 시스템 ↔ ERP 매출 데이터 연계</li>
+  <li>외부 valuation 결과 ↔ ERP 업로드</li>
+  <li>investee data 파일 ↔ 회계 시스템 입력</li>
+  <li>자회사 Trial Balance ↔ 연결 시스템 업로드</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>Interface Control 예시</th>
+      <th>목적</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>송신 건수 = 수신 건수 대사</td>
+      <td>누락/중복 탐지</td>
+    </tr>
+    <tr>
+      <td>오류 로그 및 재처리 관리</td>
+      <td>실패 데이터 보완</td>
+    </tr>
+    <tr>
+      <td>기말 인터페이스 지연 보고서</td>
+      <td>cut-off 오류 방지</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>핵심 이해</strong><br>
+좋은 로직이 있어도 데이터가 중간에 깨지면 결과 숫자는 틀린다.
+Interface Control은 “시스템 사이의 연결부”를 지키는 통제다.
+</p>
+</div>
+
+<h2>11. 왜 ITGC가 깨지면 ITAC도 신뢰 못하는가</h2>
+
+<p>
+이 부분이 가장 중요합니다.
+실무에서는 종종 “ITAC가 잘 설계되어 있으니까 괜찮다”고 생각하지만,
+그 ITAC가 놓여 있는 시스템 환경 자체가 통제되지 않으면
+그 로직이 계속 그대로 유지되고 제대로 작동한다고 믿기 어렵습니다.
+</p>
+
+<h3>예를 들어</h3>
+
+<ul>
+  <li>Access Control이 약하면 사용자가 ITAC 설정을 임의로 바꿀 수 있습니다.</li>
+  <li>Change Management가 약하면 매출 로직이나 환율 로직이 승인 없이 수정될 수 있습니다.</li>
+  <li>Operation Control이 약하면 ITAC batch가 실행되지 않아 결과가 누락될 수 있습니다.</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>ITGC 문제</th>
+      <th>ITAC에 미치는 영향</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>권한 통제 실패</td>
+      <td>사용자가 자동 계산 rule을 변경할 수 있음</td>
+    </tr>
+    <tr>
+      <td>변경관리 실패</td>
+      <td>검증되지 않은 로직이 운영에 반영될 수 있음</td>
+    </tr>
+    <tr>
+      <td>운영통제 실패</td>
+      <td>정상 로직이 있어도 batch/interface가 실행 안 될 수 있음</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>가장 중요한 교육 포인트</strong><br>
+ITGC가 깨지면 ITAC가 “지금도 원래 설계대로 운영되고 있다”는 전제를 잃는다.
+즉, ITAC 자체를 문서상으로는 확인할 수 있어도,
+그 결과를 실제로 신뢰하기 어려워진다.
+</p>
+</div>
+
+<h2>12. ITGC와 ITAC를 실무에서 함께 보는 방법</h2>
+
+<p>
+실무에서는 먼저 해당 회계 프로세스에 중요한 ITAC를 식별하고,
+그 ITAC가 놓여 있는 시스템 환경의 ITGC 상태를 함께 봅니다.
+즉, “중요한 자동 통제”와 “그 자동 통제를 지탱하는 기반 통제”를 같이 보는 방식입니다.
+</p>
+
+<h3>예시 1: Revenue Recognition</h3>
+<ul>
+  <li><strong>ITAC</strong>: 배송완료 기준 매출 인식 로직</li>
+  <li><strong>관련 ITGC</strong>: 해당 로직을 변경할 수 있는 권한 통제, 변경 승인 통제, batch 운영 통제</li>
+</ul>
+
+<h3>예시 2: Lease Accounting</h3>
+<ul>
+  <li><strong>ITAC</strong>: Finance lease 분류 rule, NPV 계산 로직</li>
+  <li><strong>관련 ITGC</strong>: 분류 설정 변경 권한, 할인율 테이블 변경관리, 계산 batch 운영 통제</li>
+</ul>
+
+<h3>예시 3: Foreign Currency</h3>
+<ul>
+  <li><strong>ITAC</strong>: closing / historical rate 적용 로직</li>
+  <li><strong>관련 ITGC</strong>: 환율 master 접근권한, 환율 source 변경관리, 환율 update 운영통제</li>
+</ul>
+
+<div class="highlight">
+<p>
+<strong>실무 감각</strong><br>
+ITAC만 보면 “좋은 로직이 있다”는 것까지만 알 수 있다.
+ITGC까지 봐야 “그 좋은 로직이 실제로 안전하게 유지되고 있다”는 것을 알 수 있다.
+</p>
+</div>
+
+<h2>13. Role-play: 재무팀, IT팀, Digital Auditor의 대화</h2>
+
+<div class="dialogue">
+<p><span class="role">Finance Manager:</span>  
+우리 시스템에는 매출을 배송완료 기준으로만 인식하는 자동 로직이 있습니다. 그럼 괜찮은 것 아닌가요?</p>
+
+<p><span class="role">Digital Auditor:</span>  
+그 로직 자체는 좋은 ITAC입니다. 그런데 그 설정을 누가 바꿀 수 있는지도 봐야 합니다.</p>
+
+<p><span class="role">IT Manager:</span>  
+현재는 일부 운영 담당자가 설정 테이블을 직접 수정할 수 있습니다.</p>
+
+<p><span class="role">Finance Manager:</span>  
+그럼 로직이 있어도 누군가 바꾸면 의미가 없어질 수 있겠네요.</p>
+
+<p><span class="role">Digital Auditor:</span>  
+맞습니다. 그게 바로 ITGC와 ITAC의 관계입니다.</p>
+
+<p><span class="role">IT Manager:</span>  
+그리고 배치가 실패하면 배송완료 정보가 있어도 매출 인식이 안 될 수 있습니다.</p>
+
+<p><span class="role">Finance Manager:</span>  
+그러면 운영통제도 같이 봐야 하겠군요.</p>
+
+<p><span class="role">Digital Auditor:</span>  
+정확합니다. Access Control, Change Management, Operation Control이 안정적이어야 ITAC 결과를 신뢰할 수 있습니다.</p>
+</div>
+
+<h2>14. Discussion Questions</h2>
+
+<div class="questions">
+<ul>
+  <li>ITGC와 ITAC 중 어느 것이 더 중요하다고 볼 수 있을까?</li>
+  <li>좋은 ITAC가 있어도 ITGC가 약하면 실제로 어떤 위험이 발생할까?</li>
+  <li>권한 통제 실패는 왜 회계 숫자 신뢰성과 직접 연결될까?</li>
+  <li>Processing Control과 Interface Control 중 어느 쪽이 더 자주 문제를 만들까?</li>
+  <li>현재 조직에서 ITGC와 ITAC 중 더 취약한 영역은 어디일까?</li>
+</ul>
+</div>
+
+<h2>15. 교육 핵심 메시지</h2>
+
+<div class="highlight">
+<p>
+<strong>정리</strong><br>
+• ITGC는 시스템 환경을 통제하고, ITAC는 회계 숫자를 통제한다.<br>
+• ITGC의 핵심은 Access Control, Change Management, Operation Control이다.<br>
+• ITAC의 핵심은 Input Control, Processing Control, Interface Control이다.<br>
+• ITGC가 약하면 ITAC가 설계상 존재해도 실제로 신뢰하기 어렵다.<br>
+• 실무에서는 ITAC와 그 ITAC를 지탱하는 ITGC를 함께 봐야 한다.
+</p>
+</div>
+
+<p class="small-note">
+이 문서는 교육용 HTML 페이지로 바로 사용할 수 있도록 작성되었습니다.
+원하시면 다음 단계로 같은 디자인을 유지한 채
+“Access Control 상세편”, “Change Management 상세편”, “ITAC 실무 사례편”까지 이어서 만들 수 있습니다.
+</p>
+
+<div class="back">
+  <a href="../">← Back to Home</a>
+  <a href="../biz.html">← Back to Articles</a>
+</div>
+
+</div>
+
+<footer>
+  © <span id="year"></span> Cha GPTs. All rights reserved.
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
