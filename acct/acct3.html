@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Business Combination Training</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Quicksand', sans-serif;
+  background:
+    linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
+    url("../verse.png") no-repeat center center / cover;
+  padding: 60px 20px;
+  color: #222;
+}
+
+.container {
+  max-width: 920px;
+  margin: auto;
+  background: rgba(255,255,255,0.95);
+  padding: 50px 60px;
+  border-radius: 28px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+}
+
+h1, h2, h3 {
+  font-family: 'Baloo 2', cursive;
+  line-height: 1.2;
+}
+
+h1 {
+  margin-bottom: 28px;
+  font-size: 42px;
+}
+
+h2 {
+  margin-top: 50px;
+  margin-bottom: 16px;
+  font-size: 30px;
+}
+
+h3 {
+  margin-top: 26px;
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+p {
+  line-height: 1.8;
+  margin-bottom: 18px;
+  font-size: 15px;
+}
+
+ul, ol {
+  margin-left: 20px;
+  margin-bottom: 22px;
+}
+
+li {
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 28px 0;
+  font-size: 14px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 14px;
+  vertical-align: top;
+  line-height: 1.7;
+}
+
+th {
+  background: #f2f2f2;
+  font-weight: 600;
+}
+
+.highlight {
+  background: #f7f7f7;
+  padding: 22px 26px;
+  border-radius: 18px;
+  margin: 30px 0;
+  font-size: 14px;
+}
+
+.questions {
+  background: #f7f7f7;
+  padding: 25px 30px;
+  border-radius: 18px;
+  margin-top: 30px;
+}
+
+.link-block {
+  background: #eef2f7;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+.link-block a {
+  color: #1a0dab;
+  text-decoration: underline;
+}
+
+.dialogue {
+  background: #fafafa;
+  padding: 26px 30px;
+  border-radius: 18px;
+  margin-top: 25px;
+  font-size: 14px;
+}
+
+.role {
+  font-weight: 600;
+}
+
+.back {
+  text-align: center;
+  margin-top: 55px;
+}
+
+.back a {
+  display: inline-block;
+  padding: 12px 26px;
+  background: #333;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 6px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 13px;
+  background: rgba(255,255,255,0.75);
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 20px;
+}
+
+.code-box {
+  background: #f7f7f7;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin: 18px 0 24px;
+  overflow-x: auto;
+}
+
+.code-box pre {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.small-note {
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.badge {
+  display: inline-block;
+  background: #333;
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  margin-right: 8px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 30px 24px;
+  }
+
+  h1 {
+    font-size: 33px;
+  }
+
+  h2 {
+    font-size: 25px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Business Combination Training  
+— PPA, Goodwill, 시스템 리스크, ITAC, 감사 포인트 통합 교육</h1>
+
+<p>
+본 자료는 Business Combination 관련 핵심 회계 이슈, PPA(Purchase Price Allocation),
+Goodwill 계산, 시스템 및 스프레드시트 리스크, IT Application Control 취약점,
+감사 절차, 그리고 실제 숫자를 이용한 실습 케이스를 한 번에 학습할 수 있도록 구성한 교육용 콘텐츠입니다.
+특히 PPA를 엑셀에서 계산한 후 ERP에 수동 업로드하는 환경에서 어떤 오류와 통제 리스크가 발생하는지,
+그리고 valuation input parameter를 어떻게 검증해야 하는지를 실무 관점에서 설명합니다.
+</p>
+
+<div class="link-block">
+  <p><strong>교육 범위</strong></p>
+  <p>• Business Combination 기본 구조</p>
+  <p>• PPA (Purchase Price Allocation)</p>
+  <p>• Goodwill 계산</p>
+  <p>• 무형자산 과소/과대 인식 사례</p>
+  <p>• spreadsheet dependency, version control, upload validation 리스크</p>
+  <p>• 감사 포인트 및 실제 숫자 기반 실습 케이스</p>
+</div>
+
+<h2>1. Business Combination 핵심 개요</h2>
+
+<p>
+사업결합은 단순히 회사를 인수하는 거래가 아니라,
+취득일 기준으로 피취득자의 식별 가능한 자산과 부채를 공정가치로 재측정하고,
+그 차이를 Goodwill 또는 염가매수차익으로 인식하는 고난도 회계 이슈입니다.
+따라서 PPA의 정확성은 인수 후 재무제표의 신뢰성에 직접적인 영향을 줍니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>핵심 포인트:</strong><br>
+사업결합 회계의 본질은 “얼마를 샀는가”보다 “무엇을 얼마로 배분했는가”입니다.
+즉, 취득대가를 어떤 자산과 부채에 어떻게 배분하느냐에 따라 Goodwill과 이후 손익 구조가 달라집니다.
+</p>
+</div>
+
+<h3>기본 구조</h3>
+
+<ul>
+  <li>취득자 식별</li>
+  <li>취득일 결정</li>
+  <li>취득대가 측정</li>
+  <li>식별 가능한 자산·부채를 공정가치로 측정</li>
+  <li>잔액을 Goodwill 또는 염가매수차익으로 인식</li>
+</ul>
+
+<h3>핵심 계산 구조</h3>
+
+<div class="code-box">
+<pre>Goodwill = Consideration Transferred
+         + Non-controlling Interest
+         + Fair Value of Previously Held Interest
+         - Fair Value of Net Identifiable Assets Acquired</pre>
+</div>
+
+<p>
+실무에서는 이전 보유지분이나 비지배지분이 없는 경우가 많아,
+교육용 케이스에서는 다음과 같이 단순화하여 설명할 수 있습니다.
+</p>
+
+<div class="code-box">
+<pre>Goodwill = 취득대가 - 식별 가능한 순자산의 공정가치</pre>
+</div>
+
+<h3>핵심 판단 요소</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>판단 요소</th>
+      <th>설명</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>취득대가</td>
+      <td>현금, 주식, 조건부 대가 등 실제 이전한 경제적 가치</td>
+    </tr>
+    <tr>
+      <td>식별 가능한 무형자산</td>
+      <td>고객관계, 기술, 브랜드, 라이선스 등 개별 식별 및 측정 가능 여부가 핵심</td>
+    </tr>
+    <tr>
+      <td>공정가치 측정</td>
+      <td>할인율, 성장률, royalty rate, attrition rate 등 valuation input의 적정성이 중요</td>
+    </tr>
+    <tr>
+      <td>Goodwill</td>
+      <td>개별 식별이 어려운 미래 초과수익 기대치를 반영</td>
+    </tr>
+    <tr>
+      <td>업로드 정확성</td>
+      <td>엑셀 계산 결과가 ERP에 정확히 반영되는지 별도 통제가 필요</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>2. PPA (Purchase Price Allocation)</h2>
+
+<p>
+PPA는 취득대가를 피취득자의 자산과 부채에 공정가치 기준으로 배분하는 과정입니다.
+이 과정에서 유형자산뿐 아니라 고객관계, 기술, 상표권 등 무형자산을 식별해야 하며,
+이를 과소 또는 과대 인식하면 Goodwill도 자동으로 왜곡됩니다.
+</p>
+
+<h3>PPA에서 자주 식별되는 항목</h3>
+<ul>
+  <li>현금 및 운전자본</li>
+  <li>유형자산</li>
+  <li>고객관계(Customer Relationship)</li>
+  <li>기술(Developed Technology)</li>
+  <li>상표/브랜드(Trademark / Brand)</li>
+  <li>리스 관련 자산/부채</li>
+  <li>이연법인세 효과</li>
+</ul>
+
+<div class="highlight">
+<p>
+<strong>대표 오류 사례:</strong><br>
+무형자산을 과소 인식하면 Goodwill이 과대 인식되고,
+무형자산을 과대 인식하면 Goodwill이 과소 인식됩니다.
+즉, PPA 오류는 단순 분류 문제가 아니라 이후 상각, impairment, 공시까지 연쇄적으로 영향을 줍니다.
+</p>
+</div>
+
+<h2>3. Goodwill 계산 오류</h2>
+
+<p>
+Goodwill은 단순 잔액이 아니라 PPA 결과의 총합입니다.
+따라서 취득대가, 순자산 공정가치, 조건부 대가, 이전 보유지분, 비지배지분 중 어느 하나라도 잘못되면 Goodwill이 달라집니다.
+실무에서는 특히 엑셀 모델에서 수식 참조 오류, 버전 혼선, 입력값 변경 누락 때문에 Goodwill 오류가 자주 발생합니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>오류 유형</th>
+      <th>영향</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>무형자산 과소 인식</td>
+      <td>Goodwill 과대 인식</td>
+    </tr>
+    <tr>
+      <td>무형자산 과대 인식</td>
+      <td>Goodwill 과소 인식</td>
+    </tr>
+    <tr>
+      <td>취득대가 누락/중복</td>
+      <td>전체 PPA 왜곡</td>
+    </tr>
+    <tr>
+      <td>이연법인세 누락</td>
+      <td>순자산 공정가치 오류 및 goodwill 왜곡</td>
+    </tr>
+    <tr>
+      <td>엑셀 참조 오류</td>
+      <td>ERP 업로드 수치 전체 오류 가능</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>4. 시스템 관점에서의 주요 리스크</h2>
+
+<p>
+Business Combination 회계는 많은 기업에서 ERP 내 전용 엔진보다는
+외부 valuation report 또는 내부 Excel PPA 모델을 사용해 계산한 뒤,
+최종 결과만 ERP에 수동 업로드하는 방식으로 처리됩니다.
+이 구조는 유연하지만 통제 측면에서는 매우 취약할 수 있습니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>시스템 이슈</th>
+      <th>왜 문제인가</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>PPA를 엑셀로 처리 후 ERP에 수동 업로드</td>
+      <td>계산 오류와 입력 오류가 동시에 발생할 수 있음</td>
+    </tr>
+    <tr>
+      <td>valuation input 통제 없음</td>
+      <td>할인율, 성장률, royalty rate 등이 임의 변경될 수 있음</td>
+    </tr>
+    <tr>
+      <td>업로드 validation 없음</td>
+      <td>합계 불일치, 계정 매핑 오류, 누락 업로드를 탐지하기 어려움</td>
+    </tr>
+    <tr>
+      <td>ERP에는 결과값만 존재</td>
+      <td>원래 계산 근거와 연결이 끊겨 감사 추적성이 약화됨</td>
+    </tr>
+    <tr>
+      <td>버전별 파일 혼재</td>
+      <td>최종 승인본이 아닌 초안이 업로드될 수 있음</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>5. ITAC 취약점</h2>
+
+<p>
+Business Combination 영역은 전통적인 transaction processing 통제보다,
+spreadsheet governance와 upload validation이 핵심 통제 포인트가 됩니다.
+특히 valuation model이 엑셀에 의존하는 경우,
+파일 자체가 사실상 “시스템” 역할을 하므로 별도의 ITAC 수준 관리가 필요합니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>핵심 취약점 정리</strong><br>
+• spreadsheet dependency<br>
+• version control 없음<br>
+• upload validation 없음<br>
+• input parameter 변경 통제 없음<br>
+• 승인 전/후 파일 구분 미흡<br>
+• ERP 입력값과 source model trace 어려움
+</p>
+</div>
+
+<h3>권장 통제 설계</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>통제 영역</th>
+      <th>권장 통제</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Spreadsheet Control</td>
+      <td>보호 시트, 수식 잠금, 입력 셀 분리, 변경 이력 관리</td>
+    </tr>
+    <tr>
+      <td>Version Control</td>
+      <td>최종본 식별 규칙, 승인본 저장소, 변경 승인 이력 확보</td>
+    </tr>
+    <tr>
+      <td>Input Parameter Control</td>
+      <td>할인율, 성장률, royalty rate 등 핵심 가정 승인 및 근거 보관</td>
+    </tr>
+    <tr>
+      <td>Upload Control</td>
+      <td>ERP 업로드 전 합계 대사, 계정 매핑 체크, 필수값 검증</td>
+    </tr>
+    <tr>
+      <td>Traceability Control</td>
+      <td>엑셀 source cell → 업로드 파일 → ERP 분개 간 연결표 유지</td>
+    </tr>
+    <tr>
+      <td>Review Control</td>
+      <td>PPA model review와 ERP posting review를 독립적으로 수행</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>6. 감사 포인트</h2>
+
+<p>
+감사인은 사업결합 회계에서 valuation 전문성뿐 아니라
+실제 숫자가 어떤 파일에서 어떻게 계산되어 ERP에 반영되었는지를 추적합니다.
+즉, 단순히 valuation report가 있다는 사실만으로 충분하지 않으며,
+입력값과 결과값의 무결성이 확보되어야 합니다.
+</p>
+
+<h3>주요 감사 절차</h3>
+<ul>
+  <li>엑셀 → ERP 입력값 trace 수행</li>
+  <li>변경 이력 확인</li>
+  <li>input parameter 검증</li>
+  <li>무형자산 식별 논리 검토</li>
+  <li>Goodwill 재계산</li>
+  <li>업로드 파일과 최종 전표 금액 대사</li>
+</ul>
+
+<div class="highlight">
+<p>
+<strong>감사 핵심 메시지:</strong><br>
+감사인은 “valuation input”, “엑셀 계산 결과”, “ERP 업로드 금액”이 일관되는지를 확인합니다.
+이 연결이 끊겨 있으면 숫자가 맞아 보여도 신뢰하기 어렵습니다.
+</p>
+</div>
+
+<h2>7. 실습 케이스 1 — 무형자산 과소 인식으로 Goodwill 과대 계상</h2>
+
+<p>
+아래 케이스는 고객관계 무형자산이 과소 인식되면서 Goodwill이 과대 계상된 사례입니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>값</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>취득대가</td>
+      <td>500,000,000원</td>
+    </tr>
+    <tr>
+      <td>식별 가능한 순자산 공정가치 (기타 포함)</td>
+      <td>320,000,000원</td>
+    </tr>
+    <tr>
+      <td>고객관계 무형자산 (정상 평가액)</td>
+      <td>80,000,000원</td>
+    </tr>
+    <tr>
+      <td>엑셀 반영 금액</td>
+      <td>30,000,000원</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>정상 Goodwill 계산</h3>
+
+<div class="code-box">
+<pre>정상 순자산 공정가치 = 320,000,000 + 80,000,000
+                    = 400,000,000원
+
+정상 Goodwill = 500,000,000 - 400,000,000
+              = 100,000,000원</pre>
+</div>
+
+<h3>잘못된 Goodwill 계산</h3>
+
+<div class="code-box">
+<pre>잘못된 순자산 공정가치 = 320,000,000 + 30,000,000
+                     = 350,000,000원
+
+잘못된 Goodwill = 500,000,000 - 350,000,000
+               = 150,000,000원</pre>
+</div>
+
+<p>
+고객관계 무형자산이 50,000,000원 과소 인식되면서 Goodwill은 동일 금액만큼 과대 계상되었습니다.
+이 오류는 이후 상각비와 impairment 테스트에도 영향을 줍니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>오류 영향:</strong><br>
+• 무형자산 50,000,000원 과소 인식<br>
+• Goodwill 50,000,000원 과대 인식<br>
+• 이후 상각/손상검토 구조 왜곡
+</p>
+</div>
+
+<h2>8. 실습 케이스 2 — 무형자산 과대 인식으로 Goodwill 과소 계상</h2>
+
+<p>
+이 케이스는 기술자산 valuation input을 잘못 적용해 개발기술 무형자산을 과대 계상한 상황입니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>값</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>취득대가</td>
+      <td>900,000,000원</td>
+    </tr>
+    <tr>
+      <td>기타 식별 순자산 공정가치</td>
+      <td>500,000,000원</td>
+    </tr>
+    <tr>
+      <td>개발기술 무형자산 (정상 평가액)</td>
+      <td>180,000,000원</td>
+    </tr>
+    <tr>
+      <td>엑셀 반영 금액</td>
+      <td>260,000,000원</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>정상 Goodwill 계산</h3>
+
+<div class="code-box">
+<pre>정상 순자산 공정가치 = 500,000,000 + 180,000,000
+                    = 680,000,000원
+
+정상 Goodwill = 900,000,000 - 680,000,000
+              = 220,000,000원</pre>
+</div>
+
+<h3>잘못된 Goodwill 계산</h3>
+
+<div class="code-box">
+<pre>잘못된 순자산 공정가치 = 500,000,000 + 260,000,000
+                     = 760,000,000원
+
+잘못된 Goodwill = 900,000,000 - 760,000,000
+               = 140,000,000원</pre>
+</div>
+
+<p>
+기술 무형자산이 80,000,000원 과대 인식되면서 Goodwill은 그만큼 과소 계상되었습니다.
+이 경우 무형자산 상각비가 과도하게 인식될 수 있고, Goodwill impairment 구조도 달라집니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>오류 원인 예시:</strong><br>
+• 할인율 과소 적용<br>
+• 로열티율 또는 성장률 과대 입력<br>
+• valuation model parameter 변경 후 검토 누락
+</p>
+</div>
+
+<h2>9. 실습 케이스 3 — 엑셀 버전 혼선으로 Goodwill 계산 오류</h2>
+
+<p>
+이 케이스는 최종 승인본이 아닌 이전 버전의 PPA 엑셀 파일이 ERP 업로드에 사용된 사례입니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>Version A (초안)</th>
+      <th>Version B (최종 승인본)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>취득대가</td>
+      <td>1,200,000,000원</td>
+      <td>1,200,000,000원</td>
+    </tr>
+    <tr>
+      <td>순자산 공정가치</td>
+      <td>930,000,000원</td>
+      <td>1,020,000,000원</td>
+    </tr>
+    <tr>
+      <td>Goodwill</td>
+      <td>270,000,000원</td>
+      <td>180,000,000원</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+버전 관리가 없어서 초안 Version A가 ERP에 업로드되었고,
+그 결과 Goodwill이 90,000,000원 과대 계상되었습니다.
+이는 spreadsheet dependency와 version control 부재가 초래하는 전형적 오류입니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>핵심 리스크:</strong><br>
+파일명이 유사하거나 승인본 표시가 없으면,
+실무자가 잘못된 버전을 업로드해도 시스템이 이를 탐지하지 못할 수 있습니다.
+</p>
+</div>
+
+<h2>10. 실습 케이스 4 — Upload Validation 부재로 인한 ERP 입력 오류</h2>
+
+<p>
+이 케이스는 엑셀에서 계산된 PPA 금액을 ERP로 수동 업로드하는 과정에서 계정 매핑 오류가 발생했지만,
+업로드 validation이 없어 그대로 반영된 사례입니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>정상 입력</th>
+      <th>실제 업로드</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Customer Relationship</td>
+      <td>150,000,000원</td>
+      <td>15,000,000원</td>
+    </tr>
+    <tr>
+      <td>Developed Technology</td>
+      <td>120,000,000원</td>
+      <td>120,000,000원</td>
+    </tr>
+    <tr>
+      <td>Trademark</td>
+      <td>60,000,000원</td>
+      <td>60,000,000원</td>
+    </tr>
+    <tr>
+      <td>Goodwill</td>
+      <td>170,000,000원</td>
+      <td>305,000,000원</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+Customer Relationship 금액이 150,000,000원에서 15,000,000원으로 잘못 업로드되었고,
+그 차이 135,000,000원이 Goodwill로 흡수되었습니다.
+업로드 전 합계 검증, 계정별 tolerance check, source-to-target trace가 있었다면 탐지 가능했을 오류입니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>오류 영향:</strong><br>
+• 고객관계 무형자산 135,000,000원 과소 인식<br>
+• Goodwill 135,000,000원 과대 인식<br>
+• ERP 결과만 보면 총합은 맞아 보여 탐지 지연 가능
+</p>
+</div>
+
+<h2>11. 실습 케이스 5 — Input Parameter 변경 통제 부재</h2>
+
+<p>
+이 케이스는 valuation 모델의 할인율이 승인 없이 변경되면서,
+브랜드 무형자산 가치와 Goodwill이 왜곡된 상황입니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>항목</th>
+      <th>승인된 값</th>
+      <th>실제 입력값</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>할인율</td>
+      <td>12%</td>
+      <td>9%</td>
+    </tr>
+    <tr>
+      <td>브랜드 무형자산 평가액</td>
+      <td>110,000,000원</td>
+      <td>155,000,000원</td>
+    </tr>
+    <tr>
+      <td>취득대가</td>
+      <td>700,000,000원</td>
+      <td>700,000,000원</td>
+    </tr>
+    <tr>
+      <td>기타 순자산 공정가치</td>
+      <td>420,000,000원</td>
+      <td>420,000,000원</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>정상 Goodwill 계산</h3>
+
+<div class="code-box">
+<pre>정상 순자산 공정가치 = 420,000,000 + 110,000,000
+                    = 530,000,000원
+
+정상 Goodwill = 700,000,000 - 530,000,000
+              = 170,000,000원</pre>
+</div>
+
+<h3>잘못된 Goodwill 계산</h3>
+
+<div class="code-box">
+<pre>잘못된 순자산 공정가치 = 420,000,000 + 155,000,000
+                     = 575,000,000원
+
+잘못된 Goodwill = 700,000,000 - 575,000,000
+               = 125,000,000원</pre>
+</div>
+
+<p>
+할인율이 12%에서 9%로 낮아지면서 브랜드 가치가 45,000,000원 증가했고,
+Goodwill은 같은 금액만큼 과소 계상되었습니다.
+핵심 가정값에 대한 승인 통제가 없으면 이런 왜곡은 쉽게 발생할 수 있습니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>오류 원인:</strong><br>
+• input parameter 변경 승인 없음<br>
+• valuation specialist와 회계팀 간 최종 가정값 불일치<br>
+• 엑셀 내 입력 셀 보호 미흡
+</p>
+</div>
+
+<h2>12. 통제 개선안</h2>
+
+<h3>필수 개선 통제</h3>
+<ul>
+  <li>PPA 엑셀 모델의 입력 셀, 계산 셀, 결과 셀 분리</li>
+  <li>핵심 valuation input parameter 승인 및 근거 문서화</li>
+  <li>버전명 규칙과 승인본 저장소 운영</li>
+  <li>ERP 업로드 전 source-to-target reconciliation 수행</li>
+  <li>업로드 파일 합계 및 계정별 validation rule 도입</li>
+  <li>업로드 후 ERP 반영 금액 독립 검토</li>
+  <li>Goodwill 자동 재계산 check 삽입</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>통제 목표</th>
+      <th>예시</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Spreadsheet 신뢰성 확보</td>
+      <td>수식 잠금, 입력 셀 색상 구분, 시트 보호</td>
+    </tr>
+    <tr>
+      <td>Version 통제</td>
+      <td>Draft / Reviewed / Final Approved 상태 구분</td>
+    </tr>
+    <tr>
+      <td>Input 정확성 확보</td>
+      <td>할인율, 성장률, royalty rate 등 승인 워크플로우 운영</td>
+    </tr>
+    <tr>
+      <td>업로드 정확성 확보</td>
+      <td>계정 mapping table, 합계 검증, tolerance check</td>
+    </tr>
+    <tr>
+      <td>감사 추적성 확보</td>
+      <td>엑셀 셀 참조와 ERP 전표 라인 간 trace matrix 유지</td>
+    </tr>
+    <tr>
+      <td>사후 검토 강화</td>
+      <td>Goodwill 재계산, 무형자산 총액 분석, 전기 대비 변동 분석</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>13. 감사 체크리스트</h2>
+
+<div class="questions">
+<ul>
+  <li>최종 PPA 엑셀 파일이 승인된 버전임을 입증할 수 있는가?</li>
+  <li>핵심 valuation input parameter(할인율, 성장률, royalty rate 등)는 승인되었는가?</li>
+  <li>엑셀 계산 결과와 ERP 업로드 값이 line-by-line으로 trace 가능한가?</li>
+  <li>무형자산 식별 및 측정 논리가 valuation report와 일치하는가?</li>
+  <li>Goodwill 계산을 독립적으로 재수행했을 때 차이가 없는가?</li>
+  <li>업로드 validation control이 존재하며 실제로 운영되었는가?</li>
+  <li>변경 이력과 검토 흔적이 남아 있는가?</li>
+</ul>
+</div>
+
+<h2>14. Role-play: M&amp;A팀, 회계팀, IT, 감사인의 대화</h2>
+
+<div class="dialogue">
+<p><span class="role">Auditor:</span>  
+이번 사업결합 회계 검토에서 PPA 계산과 ERP 반영 과정에 몇 가지 통제 미비를 확인했습니다.</p>
+
+<p><span class="role">M&amp;A Manager:</span>  
+외부 valuation 보고서도 있고, 최종 숫자도 맞는 것 같은데 어떤 문제가 있나요?</p>
+
+<p><span class="role">Auditor:</span>  
+숫자 자체보다 더 중요한 것은 그 숫자가 어떤 입력값과 어떤 파일을 통해 산출되었는지 추적 가능해야 한다는 점입니다.</p>
+
+<p><span class="role">Finance Manager:</span>  
+현재는 valuation 결과를 엑셀에서 정리한 뒤 ERP에 수동 업로드하고 있습니다.</p>
+
+<p><span class="role">IT Manager:</span>  
+업로드 시 별도 validation은 없고, 사용자가 업로드 후 결과를 육안 검토합니다.</p>
+
+<p><span class="role">Auditor:</span>  
+그 구조에서는 버전 오류나 입력값 변경이 있어도 탐지되지 않을 수 있습니다.</p>
+
+<p><span class="role">M&amp;A Manager:</span>  
+실제로 어떤 위험이 있죠?</p>
+
+<p><span class="role">Auditor:</span>  
+예를 들어 고객관계 무형자산이 1억5천만 원이어야 하는데 1천5백만 원만 업로드되면,
+차액이 Goodwill로 흡수돼 총합은 맞아 보일 수 있습니다.</p>
+
+<p><span class="role">Finance Manager:</span>  
+그럼 ERP 숫자만 보면 이상을 발견하기 어려울 수도 있겠네요.</p>
+
+<p><span class="role">Auditor:</span>  
+맞습니다. 또 할인율 같은 valuation input이 승인 없이 바뀌면 무형자산 가치와 Goodwill이 함께 왜곡됩니다.</p>
+
+<p><span class="role">IT Manager:</span>  
+결국 spreadsheet control, version control, upload validation이 모두 필요하다는 뜻이군요.</p>
+
+<p><span class="role">Auditor:</span>  
+정확합니다. valuation input, 엑셀 계산, ERP 반영값이 모두 연결되어야 숫자를 신뢰할 수 있습니다.</p>
+</div>
+
+<h2>15. Discussion Questions</h2>
+
+<div class="questions">
+<ul>
+  <li>PPA에서 가장 오류가 많이 나는 영역은 무형자산 식별, valuation input, ERP 업로드 중 어디인가?</li>
+  <li>엑셀 기반 PPA 모델은 어느 수준까지 통제되어야 “시스템 수준 신뢰성”을 가질 수 있는가?</li>
+  <li>버전 관리가 없는 환경에서 가장 현실적인 보완 통제는 무엇인가?</li>
+  <li>Goodwill 계산 오류는 왜 단순 계산 실수보다 더 큰 문제를 만드는가?</li>
+  <li>현재 조직에서 business combination 회계의 가장 취약한 통제 포인트는 무엇인가?</li>
+</ul>
+</div>
+
+<h2>16. 교육 핵심 메시지</h2>
+
+<div class="highlight">
+<p>
+<strong>정리</strong><br>
+• 사업결합 회계의 핵심은 취득대가를 정확히 배분하는 PPA입니다.<br>
+• 무형자산 과소/과대 인식은 Goodwill 오류로 바로 연결됩니다.<br>
+• PPA를 엑셀로 계산하고 ERP에 수동 업로드하는 구조에서는 spreadsheet dependency, version control, upload validation이 핵심 통제 영역입니다.<br>
+• 감사인은 엑셀 source, input parameter, ERP 반영값의 traceability를 가장 중요하게 봅니다.
+</p>
+</div>
+
+<p class="small-note">
+이 문서는 교육용 HTML 페이지로 바로 사용할 수 있도록 작성되었습니다.
+원하시면 다음 단계로 Lease / Revenue / Business Combination 3개를 같은 사이트 메뉴 구조로 묶은 통합 버전,
+사례별 정답 숨김/표시 기능이 있는 학습형 버전, 또는 PPT 변환용 섹션 구조 버전으로 이어서 정리할 수 있습니다.
+</p>
+
+<div class="back">
+  <a href="../">← Back to Home</a>
+  <a href="../biz.html">← Back to Articles</a>
+</div>
+
+</div>
+
+<footer>
+  © <span id="year"></span> Cha GPTs. All rights reserved.
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
