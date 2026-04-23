@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Accounting + IT 연결 Training</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Quicksand', sans-serif;
+  background:
+    linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
+    url("../verse.png") no-repeat center center / cover;
+  padding: 60px 20px;
+  color: #222;
+}
+
+.container {
+  max-width: 920px;
+  margin: auto;
+  background: rgba(255,255,255,0.95);
+  padding: 50px 60px;
+  border-radius: 28px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+}
+
+h1, h2, h3 {
+  font-family: 'Baloo 2', cursive;
+  line-height: 1.2;
+}
+
+h1 {
+  margin-bottom: 28px;
+  font-size: 42px;
+}
+
+h2 {
+  margin-top: 50px;
+  margin-bottom: 16px;
+  font-size: 30px;
+}
+
+h3 {
+  margin-top: 26px;
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+p {
+  line-height: 1.8;
+  margin-bottom: 18px;
+  font-size: 15px;
+}
+
+ul, ol {
+  margin-left: 20px;
+  margin-bottom: 22px;
+}
+
+li {
+  margin-bottom: 8px;
+  line-height: 1.8;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 28px 0;
+  font-size: 14px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 14px;
+  vertical-align: top;
+  line-height: 1.7;
+}
+
+th {
+  background: #f2f2f2;
+  font-weight: 600;
+}
+
+.highlight {
+  background: #f7f7f7;
+  padding: 22px 26px;
+  border-radius: 18px;
+  margin: 30px 0;
+  font-size: 14px;
+}
+
+.questions {
+  background: #f7f7f7;
+  padding: 25px 30px;
+  border-radius: 18px;
+  margin-top: 30px;
+}
+
+.link-block {
+  background: #eef2f7;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+.link-block a {
+  color: #1a0dab;
+  text-decoration: underline;
+}
+
+.dialogue {
+  background: #fafafa;
+  padding: 26px 30px;
+  border-radius: 18px;
+  margin-top: 25px;
+  font-size: 14px;
+}
+
+.role {
+  font-weight: 600;
+}
+
+.back {
+  text-align: center;
+  margin-top: 55px;
+}
+
+.back a {
+  display: inline-block;
+  padding: 12px 26px;
+  background: #333;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 6px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 13px;
+  background: rgba(255,255,255,0.75);
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 20px;
+}
+
+.code-box {
+  background: #f7f7f7;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin: 18px 0 24px;
+  overflow-x: auto;
+}
+
+.code-box pre {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.small-note {
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.badge {
+  display: inline-block;
+  background: #333;
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  margin-right: 8px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 30px 24px;
+  }
+
+  h1 {
+    font-size: 33px;
+  }
+
+  h2 {
+    font-size: 25px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Accounting + IT 연결  
+— 회계 이슈를 시스템 리스크로 읽는 사고 훈련</h1>
+
+<p>
+본 자료는 앞서 다룬 acct1 ~ acct7 주제를 하나의 관점으로 묶어,
+회계 이슈를 단순 회계처리 문제가 아니라 시스템 문제로 연결해서 보는 훈련을 위한 교육용 콘텐츠입니다.
+핵심은 “회계 오류는 대개 시스템 안에서 반복적으로 만들어진다”는 점을 이해하는 것입니다.
+따라서 Lease, Revenue, Consolidation, Foreign Currency, Inventory, Equity Method, Business Combination을
+각각 따로 보는 것이 아니라, 회계와 IT를 동시에 보는 관점으로 연결해야 합니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>핵심 메시지</strong><br>
+“회계 이슈는 항상 시스템 이슈로 이어진다.”
+</p>
+</div>
+
+<div class="link-block">
+  <p><strong>교육 범위</strong></p>
+  <p>• 왜 회계와 IT를 같이 봐야 하는가</p>
+  <p>• 핵심 영역 7개를 회계 + 시스템 관점으로 연결</p>
+  <p>• Lease 오류 → 시스템 분류 문제</p>
+  <p>• Revenue 오류 → interface 문제</p>
+  <p>• Consolidation 오류 → mapping 문제</p>
+  <p>• 그 외 Business Combination, Foreign Currency, Inventory, Equity Method 연결 구조</p>
+  <p>• 회계 + IT 같이 보는 사고 훈련</p>
+</div>
+
+<h2>1. 왜 Accounting + IT 연결이 중요한가</h2>
+
+<p>
+많은 사람들이 회계 오류를 보면 먼저 분개나 기준서 해석을 떠올립니다.
+하지만 실제 기업에서는 숫자가 대부분 ERP, 인터페이스, 배치, 마스터 데이터, 자동 분개 로직을 통해 생성됩니다.
+즉, 회계 오류는 종종 사람의 단순 실수라기보다 시스템 설계, 설정, 데이터 흐름, 통제 부족에서 시작됩니다.
+</p>
+
+<p>
+예를 들어 매출이 잘못 잡혔다면 단순히 매출 전표가 틀린 것이 아니라,
+출하 시스템과 ERP 사이의 interface가 지연되었을 수도 있고,
+자동 인식 trigger가 잘못된 이벤트를 기준으로 동작했을 수도 있습니다.
+리스 분류가 틀렸다면 담당자의 판단 실수일 수도 있지만,
+더 근본적으로는 classification rule이 시스템에 없었을 가능성이 큽니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>중요한 관점 전환</strong><br>
+회계 문제를 볼 때는 “분개가 왜 틀렸는가?”만 묻지 말고,
+“그 분개를 만든 시스템 로직은 무엇이었는가?”를 함께 물어야 한다.
+</p>
+</div>
+
+<h2>2. Accounting + IT 연결의 기본 사고방식</h2>
+
+<p>
+회계와 IT를 연결해서 본다는 것은 단순히 시스템 메뉴를 아는 것이 아닙니다.
+각 회계 이슈가 시스템 안에서 어떤 데이터, 어떤 마스터, 어떤 로직, 어떤 통제에 의해 숫자가 되는지 이해하는 것입니다.
+즉, 회계 이슈를 다음과 같은 흐름으로 보는 사고가 필요합니다.
+</p>
+
+<div class="code-box">
+<pre>회계 이슈
+→ 원천 거래 / 계약 / 이벤트
+→ 시스템 입력값
+→ 처리 로직 / interface / batch / mapping
+→ 회계전표
+→ GL / 재무제표 숫자</pre>
+</div>
+
+<p>
+이 흐름으로 보면 회계와 IT는 분리된 영역이 아니라 하나의 연결된 체인입니다.
+오류도 이 체인 어디에서든 발생할 수 있습니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>회계 관점 질문</th>
+      <th>IT 관점 질문</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>이 회계처리가 기준서상 맞는가?</td>
+      <td>이 회계처리가 시스템에 어떻게 구현되어 있는가?</td>
+    </tr>
+    <tr>
+      <td>왜 숫자가 틀렸는가?</td>
+      <td>어느 로직, 인터페이스, 마스터, 배치가 문제인가?</td>
+    </tr>
+    <tr>
+      <td>어떤 분개가 필요했는가?</td>
+      <td>그 분개는 자동 생성인가, 수동 입력인가?</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>한 줄 요약</strong><br>
+회계는 “무엇이 맞는가”를 설명하고,
+IT는 “그 맞는 것이 시스템 안에서 어떻게 만들어지는가”를 설명한다.
+</p>
+</div>
+
+<h2>3. 핵심 영역 7개 한눈에 보기</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>영역</th>
+      <th>대표 회계 이슈</th>
+      <th>대표 시스템 이슈</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Lease</td>
+      <td>Finance vs Operating 분류</td>
+      <td>classification rule 부재, manual override</td>
+    </tr>
+    <tr>
+      <td>Revenue</td>
+      <td>Performance obligation 충족 시점 인식</td>
+      <td>trigger 오류, interface 지연, batch timing</td>
+    </tr>
+    <tr>
+      <td>Business Combination</td>
+      <td>PPA, Goodwill 계산</td>
+      <td>엑셀 의존, upload validation 부재</td>
+    </tr>
+    <tr>
+      <td>Consolidation</td>
+      <td>내부거래 제거</td>
+      <td>IC flag 누락, mapping 오류</td>
+    </tr>
+    <tr>
+      <td>Foreign Currency</td>
+      <td>closing vs historical rate 적용</td>
+      <td>환율 master 오류, source 문제</td>
+    </tr>
+    <tr>
+      <td>Inventory</td>
+      <td>NRV / valuation / impairment</td>
+      <td>valuation batch 부재, manual JE 의존</td>
+    </tr>
+    <tr>
+      <td>Equity Method</td>
+      <td>투자손익 반영</td>
+      <td>investee data 수동 입력, interface 부재</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>핵심 이해</strong><br>
+같은 회계 오류라도 실무에서는 거의 항상
+rule, mapping, interface, master, batch, manual upload 같은 시스템 문제와 연결된다.
+</p>
+</div>
+
+<h2>4. ① Lease 오류 → 시스템 분류 문제</h2>
+
+<p>
+Lease 회계에서 가장 대표적인 오류는 Finance Lease와 Operating Lease 분류 오류입니다.
+표면적으로는 “계약을 잘못 해석했다”는 회계 이슈처럼 보이지만,
+실무에서는 시스템에 classification rule이 없거나,
+사용자가 직접 manual override 할 수 있게 되어 있을 때 반복적으로 발생합니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>회계 이슈</th>
+      <th>시스템 이슈</th>
+      <th>결과</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Finance lease인데 operating 처리</td>
+      <td>자동 분류 rule 미설정</td>
+      <td>ROU asset / lease liability 누락</td>
+    </tr>
+    <tr>
+      <td>리스기간 잘못 반영</td>
+      <td>옵션 반영 로직 없음</td>
+      <td>NPV 과소/과대 계산</td>
+    </tr>
+    <tr>
+      <td>할인율 오류</td>
+      <td>수동 rate 입력 허용</td>
+      <td>부채·이자비용 왜곡</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>사고 훈련 포인트</strong><br>
+Lease 오류를 보면 “누가 잘못 판단했나?”에서 멈추지 말고,
+“왜 시스템이 그 판단을 통제하지 못했나?”까지 봐야 한다.
+</p>
+</div>
+
+<h2>5. ② Revenue 오류 → interface 문제</h2>
+
+<p>
+Revenue Recognition 오류는 회계 기준상 performance obligation 충족 시점 판단의 문제이기도 하지만,
+실무에서는 출하 시스템, 배송 시스템, ERP, 청구 시스템 사이의 연결 구조가 핵심 원인인 경우가 많습니다.
+즉, Revenue 오류는 종종 interface 문제입니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>회계 이슈</th>
+      <th>시스템 이슈</th>
+      <th>결과</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>아직 이행 안 했는데 매출 인식</td>
+      <td>출하 이벤트를 잘못 trigger로 사용</td>
+      <td>조기 매출 인식</td>
+    </tr>
+    <tr>
+      <td>기말 cut-off 오류</td>
+      <td>배송 시스템 ↔ ERP interface 지연</td>
+      <td>당기/차기 매출 왜곡</td>
+    </tr>
+    <tr>
+      <td>중복 매출 반영</td>
+      <td>수동 trigger, 재처리 통제 미흡</td>
+      <td>매출 과대계상</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>사고 훈련 포인트</strong><br>
+Revenue 오류를 볼 때는 계약서만 보지 말고,
+“어느 시스템 이벤트가 매출 인식을 일으키는가”를 같이 봐야 한다.
+</p>
+</div>
+
+<h2>6. ③ Business Combination 오류 → spreadsheet / upload 문제</h2>
+
+<p>
+사업결합 회계는 PPA와 Goodwill 계산이라는 고난도 회계 영역입니다.
+하지만 많은 회사가 이를 ERP 안에서 직접 계산하지 않고,
+외부 valuation 결과나 엑셀 모델을 사용해 수동 업로드합니다.
+그래서 이 영역의 핵심 IT 이슈는 spreadsheet dependency와 upload validation 문제입니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>회계 이슈</th>
+      <th>시스템 이슈</th>
+      <th>결과</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>무형자산 과소/과대 인식</td>
+      <td>엑셀 input parameter 통제 없음</td>
+      <td>Goodwill 왜곡</td>
+    </tr>
+    <tr>
+      <td>Goodwill 계산 오류</td>
+      <td>버전 관리 부재</td>
+      <td>초안 파일 업로드 가능</td>
+    </tr>
+    <tr>
+      <td>PPA 계정 반영 오류</td>
+      <td>upload validation 없음</td>
+      <td>ERP 금액 왜곡</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>사고 훈련 포인트</strong><br>
+PPA 오류를 볼 때는 valuation report만 보지 말고,
+엑셀 → 업로드 파일 → ERP 전표까지 trace 해야 한다.
+</p>
+</div>
+
+<h2>7. ④ Consolidation 오류 → mapping 문제</h2>
+
+<p>
+연결회계에서 내부거래 제거 오류는 흔히 회계팀이 제거 분개를 빼먹은 것으로 보입니다.
+하지만 실무에서는 intercompany flag 누락,
+상대법인 코드 오류,
+consolidation module mapping 오류가 시작점인 경우가 매우 많습니다.
+즉, 연결 오류는 매우 자주 mapping 문제입니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>회계 이슈</th>
+      <th>시스템 이슈</th>
+      <th>결과</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>내부매출 제거 누락</td>
+      <td>IC flag 누락</td>
+      <td>매출 과대계상</td>
+    </tr>
+    <tr>
+      <td>채권·채무 제거 실패</td>
+      <td>상대법인 코드 불일치</td>
+      <td>연결 BS 과대계상</td>
+    </tr>
+    <tr>
+      <td>자동 제거 안 됨</td>
+      <td>mapping table 오류</td>
+      <td>elimination journal 실패</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>사고 훈련 포인트</strong><br>
+Consolidation 오류는 “제거를 했는가”만 보지 말고,
+“제거 대상이 시스템상 제대로 식별되고 매핑되었는가”를 먼저 봐야 한다.
+</p>
+</div>
+
+<h2>8. ⑤ Foreign Currency 오류 → 환율 master 문제</h2>
+
+<p>
+외화환산 오류는 회계적으로는 closing rate와 historical rate 적용 문제입니다.
+하지만 실무에서는 환율 테이블 업데이트 누락, 환율 source 오류, overwrite 가능성 같은 master data 통제가 핵심입니다.
+즉, 환산 오류는 종종 master data 문제입니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>회계 이슈</th>
+      <th>시스템 이슈</th>
+      <th>결과</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>자산/부채 잘못된 환율 적용</td>
+      <td>rate type mapping 오류</td>
+      <td>환산 금액 왜곡</td>
+    </tr>
+    <tr>
+      <td>기말 환산 손익 누락</td>
+      <td>환율 master 업데이트 누락</td>
+      <td>FX gain/loss 왜곡</td>
+    </tr>
+    <tr>
+      <td>임의 환율 적용</td>
+      <td>수동 입력, overwrite 가능</td>
+      <td>재무제표 조작 위험</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>사고 훈련 포인트</strong><br>
+외화환산은 기준서만 아는 것으로 끝나지 않는다.
+“어떤 환율이 어디서 들어와 어떤 계정에 적용되는가”까지 봐야 한다.
+</p>
+</div>
+
+<h2>9. ⑥ Inventory 오류 → valuation batch / manual JE 문제</h2>
+
+<p>
+재고평가 오류는 NRV나 aging 정책을 제대로 적용하지 못하는 문제입니다.
+하지만 시스템 안에서 impairment 계산 batch가 없고,
+결국 수동 journal로 손상 전표를 올리는 구조라면 오류와 누락은 반복될 수 있습니다.
+즉, Inventory 오류는 calculation automation 문제로 이어집니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>회계 이슈</th>
+      <th>시스템 이슈</th>
+      <th>결과</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>NRV 반영 누락</td>
+      <td>valuation calculation 자동화 미흡</td>
+      <td>재고 과대계상</td>
+    </tr>
+    <tr>
+      <td>aging 손상 누락</td>
+      <td>impairment batch 없음</td>
+      <td>손상비용 누락</td>
+    </tr>
+    <tr>
+      <td>손상금액 임의 조정</td>
+      <td>manual JE 승인 통제 없음</td>
+      <td>이익 조정 가능</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>사고 훈련 포인트</strong><br>
+Inventory 오류를 볼 때는 원가계산만 보지 말고,
+손상 계산이 시스템에서 자동화되는지, 아니면 수동 전표에 의존하는지 봐야 한다.
+</p>
+</div>
+
+<h2>10. ⑦ Equity Method 오류 → 수동 데이터 입력 문제</h2>
+
+<p>
+지분법 회계는 investee의 재무정보를 지분율만큼 반영해야 하는 영역입니다.
+회계적으로는 투자손익 반영 문제처럼 보이지만,
+실무에서는 investee data를 수동 입력하고 interface가 없는 구조가 핵심 리스크입니다.
+즉, Equity Method 오류는 data flow 문제와 강하게 연결됩니다.
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>회계 이슈</th>
+      <th>시스템 이슈</th>
+      <th>결과</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>investee 손익 반영 누락</td>
+      <td>수동 입력 누락</td>
+      <td>투자손익 과소/과대계상</td>
+    </tr>
+    <tr>
+      <td>잘못된 기간 반영</td>
+      <td>지연 입력</td>
+      <td>cut-off 오류</td>
+    </tr>
+    <tr>
+      <td>초안 수치 반영</td>
+      <td>version control 없음</td>
+      <td>장부금액 왜곡</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="highlight">
+<p>
+<strong>사고 훈련 포인트</strong><br>
+Equity Method는 계산식보다 데이터 확보와 입력 시점이 더 큰 리스크일 수 있다.
+</p>
+</div>
+
+<h2>11. 회계 + IT 같이 보는 사고 훈련 방법</h2>
+
+<p>
+이 교육의 핵심은 각 회계 주제를 따로 외우는 것이 아니라,
+어떤 주제든 다음 질문을 반복하는 습관을 만드는 것입니다.
+</p>
+
+<div class="questions">
+<ul>
+  <li>이 회계 이슈의 핵심 판단 기준은 무엇인가?</li>
+  <li>그 판단 기준은 시스템 안에서 어떤 입력값으로 들어가는가?</li>
+  <li>그 입력값은 어떤 로직, rule, mapping, interface, batch를 거치는가?</li>
+  <li>그 결과 회계전표는 자동으로 생성되는가, 수동으로 조정되는가?</li>
+  <li>어느 통제가 깨지면 숫자가 틀릴 수 있는가?</li>
+</ul>
+</div>
+
+<p>
+이 다섯 가지 질문을 반복하면
+회계와 IT를 따로 보지 않고 하나의 흐름으로 보는 연습이 됩니다.
+</p>
+
+<div class="highlight">
+<p>
+<strong>훈련의 목적</strong><br>
+“이 숫자가 틀렸다”에서 멈추지 않고,
+“이 숫자를 틀리게 만든 시스템 구조는 무엇인가”까지 보는 사람이 되는 것.
+그것이 회계 + IT 같이 보는 사고다.
+</p>
+</div>
+
+<h2>12. 실무에서 자주 보이는 연결 패턴</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>겉으로 보이는 회계 오류</th>
+      <th>실제 시작점일 가능성이 큰 IT 문제</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>매출 과대계상</td>
+      <td>trigger 설정 오류, interface 지연, batch 재처리 문제</td>
+    </tr>
+    <tr>
+      <td>재고 과대계상</td>
+      <td>valuation batch 부재, 수동 JE 통제 부재</td>
+    </tr>
+    <tr>
+      <td>외화환산 오류</td>
+      <td>환율 master overwrite, rate type 설정 오류</td>
+    </tr>
+    <tr>
+      <td>리스부채 누락</td>
+      <td>분류 rule 부재, 옵션 반영 로직 없음</td>
+    </tr>
+    <tr>
+      <td>내부거래 제거 누락</td>
+      <td>IC flag 누락, entity code mismatch, mapping 오류</td>
+    </tr>
+    <tr>
+      <td>Goodwill 오류</td>
+      <td>spreadsheet dependency, upload validation 부재</td>
+    </tr>
+    <tr>
+      <td>지분법 손익 누락</td>
+      <td>investee FS 수동 입력 누락, timing control 부재</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>13. Role-play: 회계팀과 Digital Auditor의 대화</h2>
+
+<div class="dialogue">
+<p><span class="role">Finance Manager:</span>  
+이번 분기에는 여러 회계 이슈가 있었는데, 대부분 회계팀 판단 문제라고 생각했습니다.</p>
+
+<p><span class="role">Digital Auditor:</span>  
+판단 문제도 있지만, 실제로는 시스템 구조가 더 큰 원인일 때가 많습니다.</p>
+
+<p><span class="role">Finance Manager:</span>  
+예를 들면요?</p>
+
+<p><span class="role">Digital Auditor:</span>  
+Lease는 분류 rule이 없으면 사용자가 임의 선택할 수 있고, Revenue는 interface 지연만으로도 cut-off가 틀어질 수 있습니다.</p>
+
+<p><span class="role">Finance Manager:</span>  
+그럼 연결회계는요?</p>
+
+<p><span class="role">Digital Auditor:</span>  
+내부거래 제거 누락도 종종 회계팀 실수보다 IC flag나 mapping 오류에서 시작됩니다.</p>
+
+<p><span class="role">Finance Manager:</span>  
+즉, 회계 오류를 시스템 문제로 번역해서 봐야 한다는 거군요.</p>
+
+<p><span class="role">Digital Auditor:</span>  
+맞습니다. 회계 이슈는 거의 항상 입력, 로직, 인터페이스, 배치, 마스터, 업로드 중 하나와 연결됩니다.</p>
+
+<p><span class="role">Finance Manager:</span>  
+그럼 앞으로는 숫자만 보지 말고, 그 숫자가 어떻게 만들어졌는지도 같이 봐야겠네요.</p>
+
+<p><span class="role">Digital Auditor:</span>  
+정확합니다. 그게 바로 Accounting + IT를 연결해서 보는 사고입니다.</p>
+</div>
+
+<h2>14. Discussion Questions</h2>
+
+<div class="questions">
+<ul>
+  <li>회계 오류는 왜 단순 분개 실수보다 시스템 문제에서 반복적으로 발생할까?</li>
+  <li>Lease, Revenue, Consolidation 중 회계와 IT 연결이 가장 직접적으로 보이는 영역은 어디일까?</li>
+  <li>어떤 회계 이슈는 master data 문제와 더 가깝고, 어떤 이슈는 interface 문제와 더 가까울까?</li>
+  <li>회계팀이 시스템 이해 없이 숫자만 검토할 때 놓치기 쉬운 위험은 무엇일까?</li>
+  <li>현재 조직에서 회계 이슈를 시스템 이슈로 번역해 볼 때 가장 취약한 영역은 어디일까?</li>
+</ul>
+</div>
+
+<h2>15. 교육 핵심 메시지</h2>
+
+<div class="highlight">
+<p>
+<strong>정리</strong><br>
+• 회계 이슈는 항상 시스템 이슈로 이어진다.<br>
+• Lease 오류는 rule 문제, Revenue 오류는 interface 문제, Consolidation 오류는 mapping 문제로 연결되는 경우가 많다.<br>
+• Business Combination은 spreadsheet와 upload, Foreign Currency는 master data, Inventory는 valuation batch, Equity Method는 수동 입력 구조와 연결된다.<br>
+• 회계와 IT를 같이 본다는 것은 숫자 자체보다 숫자가 만들어지는 입력, 로직, 인터페이스, 배치, 마스터, 업로드 구조를 함께 본다는 뜻이다.<br>
+• 이 사고가 바로 Digital Audit과 현대 회계감사의 핵심이다.
+</p>
+</div>
+
+<p class="small-note">
+이 문서는 교육용 HTML 페이지로 바로 사용할 수 있도록 작성되었습니다.
+원하시면 다음 단계로 이 자료를 기준으로 acct1~7 링크가 붙는 통합 index 페이지,
+카드형 메뉴 페이지, 또는 “회계 이슈 → 시스템 이슈 → 감사 포인트” 3단 구조의 summary 페이지까지 이어서 정리할 수 있습니다.
+</p>
+
+<div class="back">
+  <a href="../">← Back to Home</a>
+  <a href="../biz.html">← Back to Articles</a>
+</div>
+
+</div>
+
+<footer>
+  © <span id="year"></span> Cha GPTs. All rights reserved.
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
