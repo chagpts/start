@@ -1,59 +1,200 @@
-<div class="articles">
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Accounting</title>
 
-  <a href="./acct/acct1.html" class="article">
-    <h2>Lease Accounting</h2>
-    <p>
-      Finance vs Operating Lease / ITAC 취약점
-    </p>
-    <div class="read">Tap to read →</div>
-  </a>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
 
-  <a href="./acct/acct2.html" class="article">
-    <h2>Revenue Recognition</h2>
-    <p>
-      수익 인식 타이밍 & Cut-off 오류
-    </p>
-    <div class="read">Tap to read →</div>
-  </a>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', Arial, sans-serif;
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)),
+        url("verse.png") no-repeat center center / cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 28px 16px;
+      box-sizing: border-box;
+    }
 
-  <a href="./acct/acct3.html" class="article">
-    <h2>Business Combination</h2>
-    <p>
-      PPA & Goodwill / Spreadsheet 리스크
-    </p>
-    <div class="read">Tap to read →</div>
-  </a>
+    h1 {
+      font-family: 'Baloo 2', cursive;
+      font-size: 30px;
+      margin-bottom: 6px;
+      color: #1e3a5f;
+      text-align: center;
+    }
 
-  <a href="./acct/acct4.html" class="article">
-    <h2>Consolidation</h2>
-    <p>
-      내부거래 제거 & Intercompany 오류
-    </p>
-    <div class="read">Tap to read →</div>
-  </a>
+    .subtitle {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 20px;
+      text-align: center;
+      line-height: 1.5;
+      max-width: 700px;
+    }
 
-  <a href="./acct/acct5.html" class="article">
-    <h2>Foreign Currency</h2>
-    <p>
-      환율 적용 오류 & 환산 리스크
-    </p>
-    <div class="read">Tap to read →</div>
-  </a>
+    .back-home {
+      margin-bottom: 26px;
+      text-decoration: none;
+      color: #1e3a5f;
+      background: white;
+      padding: 10px 22px;
+      border-radius: 20px;
+      box-shadow: 0 5px 14px rgba(0,0,0,0.18);
+      font-size: 13px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
 
-  <a href="./acct/acct6.html" class="article">
-    <h2>Inventory</h2>
-    <p>
-      재고 평가 (LCM/NRV) & 수동 조정 리스크
-    </p>
-    <div class="read">Tap to read →</div>
-  </a>
+    .back-home:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 7px 16px rgba(0,0,0,0.2);
+    }
 
-  <a href="./acct/acct7.html" class="article">
-    <h2>Equity Method</h2>
-    <p>
-      지분법 손익 반영 & 데이터 입력 통제
-    </p>
-    <div class="read">Tap to read →</div>
-  </a>
+    .articles {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      width: 100%;
+      max-width: 420px;
+    }
 
-</div>
+    .article {
+      background: rgba(255,255,255,0.96);
+      padding: 24px 22px;
+      border-radius: 24px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .article:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.2);
+    }
+
+    .article:active {
+      transform: scale(0.98);
+    }
+
+    .article h2 {
+      font-family: 'Baloo 2', cursive;
+      font-size: 20px;
+      margin: 0 0 10px;
+      color: #1e3a5f;
+    }
+
+    .article p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #555;
+      margin: 0 0 16px;
+    }
+
+    .read {
+      font-size: 13px;
+      color: #1e3a5f;
+      font-weight: 500;
+    }
+
+    @media (min-width: 768px) {
+      body {
+        padding: 40px 20px;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+
+      .articles {
+        max-width: 700px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Advanced Accounting</h1>
+  <div class="subtitle">
+    AICPA Advanced Accounting 기반 전산감사 취약점 교육자료
+  </div>
+
+  <a href="index.html" class="back-home">Back to Home</a>
+
+  <div class="articles">
+
+    <a href="acct1.html" class="article">
+      <h2>1. Lease Accounting</h2>
+      <p>
+        Finance lease를 operating lease로 잘못 처리하는 경우 등
+        리스 분류 오류와 ITAC 감사 포인트
+      </p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="acct2.html" class="article">
+      <h2>2. Revenue Recognition</h2>
+      <p>
+        수익 인식 시점 오류, cut-off 문제,
+        인터페이스 및 배치 처리 통제 취약점
+      </p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="acct3.html" class="article">
+      <h2>3. Business Combination</h2>
+      <p>
+        PPA, goodwill 계산, 엑셀 업로드 의존과
+        수동 입력 통제 미비 사례
+      </p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="acct4.html" class="article">
+      <h2>4. Consolidation</h2>
+      <p>
+        내부거래 제거 누락, intercompany flag 오류,
+        연결 시스템 매핑 취약점
+      </p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="acct5.html" class="article">
+      <h2>5. Foreign Currency</h2>
+      <p>
+        환율 테이블 업데이트 누락,
+        잘못된 환율 적용과 master data 통제 이슈
+      </p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="acct6.html" class="article">
+      <h2>6. Inventory</h2>
+      <p>
+        재고 평가 오류, NRV 미반영,
+        valuation batch 및 수동 분개 통제 문제
+      </p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+    <a href="acct7.html" class="article">
+      <h2>7. Equity Method</h2>
+      <p>
+        지분법 손익 반영 누락,
+        수동 입력과 데이터 검증 통제 미흡 사례
+      </p>
+      <div class="read">Tap to read →</div>
+    </a>
+
+  </div>
+
+</body>
+</html>
