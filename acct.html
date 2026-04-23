@@ -1,155 +1,59 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <title>Articles</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+<div class="articles">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Quicksand', Arial, sans-serif;
-      min-height: 100vh;
-      background:
-        linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)),
-        url("verse.png") no-repeat center center / cover;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 28px 16px;
-      box-sizing: border-box;
-    }
+  <a href="./acct/acct1.html" class="article">
+    <h2>Lease Accounting</h2>
+    <p>
+      Finance vs Operating Lease / ITAC 취약점
+    </p>
+    <div class="read">Tap to read →</div>
+  </a>
 
-    h1 {
-      font-family: 'Baloo 2', cursive;
-      font-size: 30px;
-      margin-bottom: 6px;
-    }
+  <a href="./acct/acct2.html" class="article">
+    <h2>Revenue Recognition</h2>
+    <p>
+      수익 인식 타이밍 & Cut-off 오류
+    </p>
+    <div class="read">Tap to read →</div>
+  </a>
 
-    .subtitle {
-      font-size: 14px;
-      color: #555;
-      margin-bottom: 20px;
-      text-align: center;
-      line-height: 1.5;
-    }
+  <a href="./acct/acct3.html" class="article">
+    <h2>Business Combination</h2>
+    <p>
+      PPA & Goodwill / Spreadsheet 리스크
+    </p>
+    <div class="read">Tap to read →</div>
+  </a>
 
-    .back-home {
-      margin-bottom: 26px;
-      text-decoration: none;
-      color: #1e3a5f;
-      background: white;
-      padding: 10px 22px;
-      border-radius: 20px;
-      box-shadow: 0 5px 14px rgba(0,0,0,0.18);
-      font-size: 13px;
-    }
+  <a href="./acct/acct4.html" class="article">
+    <h2>Consolidation</h2>
+    <p>
+      내부거래 제거 & Intercompany 오류
+    </p>
+    <div class="read">Tap to read →</div>
+  </a>
 
-    /* ARTICLES */
-    .articles {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      width: 100%;
-      max-width: 420px;
-    }
+  <a href="./acct/acct5.html" class="article">
+    <h2>Foreign Currency</h2>
+    <p>
+      환율 적용 오류 & 환산 리스크
+    </p>
+    <div class="read">Tap to read →</div>
+  </a>
 
-    .article {
-      background: rgba(255,255,255,0.96);
-      padding: 24px 22px;
-      border-radius: 24px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.18);
-      text-decoration: none;
-      color: inherit;
-      transition: transform 0.2s ease;
-    }
+  <a href="./acct/acct6.html" class="article">
+    <h2>Inventory</h2>
+    <p>
+      재고 평가 (LCM/NRV) & 수동 조정 리스크
+    </p>
+    <div class="read">Tap to read →</div>
+  </a>
 
-    .article:active {
-      transform: scale(0.98);
-    }
-
-    .article h2 {
-      font-family: 'Baloo 2', cursive;
-      font-size: 20px;
-      margin-bottom: 10px;
-      color: #1e3a5f;
-    }
-
-    .article p {
-      font-size: 14px;
-      line-height: 1.6;
-      color: #555;
-      margin-bottom: 16px;
-    }
-
-    .read {
-      font-size: 13px;
-      color: #1e3a5f;
-      font-weight: 500;
-    }
-
-    /* TABLET+ */
-    @media (min-width: 768px) {
-      body {
-        padding: 40px 20px;
-      }
-
-      h1 {
-        font-size: 34px;
-      }
-
-      .articles {
-        max-width: 700px;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <h1>Accounting</h1>
-  <div class="subtitle">
-    Accounting 
-  </div>
-
-  <a href="index.html" class="back-home">Back to Home</a>
-
- <div class="articles">
-  <a href="./biz/biz28.html" class="article">
-    <h2>Call & Put Option</h2>
-      <p>
-         옵션 평가 회계 
-      </p>
-      <div class="read">Tap to read →</div>
-   </a>   
-   
-   <a href="./biz/biz31.html" class="article">
-    <h2>리스 회계</h2>
-      <p>
-         Operating & Finance 리스 
-      </p>
-      <div class="read">Tap to read →</div>
-    </a>     
-  
-  <a href="./biz/biz30.html" class="article">
-    <h2>법인: Partnership </h2>
-      <p>
-         K-1 세금 보고
-      </p>
-      <div class="read">Tap to read →</div>
-  </a>    
-  <a href="./biz/biz26.html" class="article">
-    <h2>대여금</h2>
-      <p>
-        Loan 
-      </p>
-      <div class="read">Tap to read →</div>
-  </a>    
-   
-
+  <a href="./acct/acct7.html" class="article">
+    <h2>Equity Method</h2>
+    <p>
+      지분법 손익 반영 & 데이터 입력 통제
+    </p>
+    <div class="read">Tap to read →</div>
+  </a>
 
 </div>
-
-</body>
-</html>
