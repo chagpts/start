@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>Firebase 로그인</title>
+</head>
+<body>
+  <h1>로그인</h1>
+
+  <input id="email" type="email" placeholder="이메일" />
+  <input id="password" type="password" placeholder="비밀번호" />
+
+  <button id="signupBtn">회원가입</button>
+  <button id="loginBtn">로그인</button>
+  <button id="logoutBtn">로그아웃</button>
+
+  <p id="status"></p>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import {
+      getAuth,
+      createUserWithEmailAndPassword,
+      signInWithEmailAndPassword,
+      signOut,
+      onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "여기에_복사",
+      authDomain: "여기에_복사",
+      projectId: "여기에_복사",
+      appId: "여기에_복사"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    const email = document.getElementById("email");
+    const password = document.getElementById("password");
+    const status = document.getElementById("status");
+
+    document.getElementById("signupBtn").onclick = async () => {
+      try {
+        await createUserWithEmailAndPassword(auth, email.value, password.value);
+        status.textContent = "회원가입 성공";
+      } catch (error) {
+        status.textContent = error.message;
+      }
+    };
+
+    document.getElementById("loginBtn").onclick = async () => {
+      try {
+        await signInWithEmailAndPassword(auth, email.value, password.value);
+        status.textContent = "로그인 성공";
+      } catch (error) {
+        status.textContent = "로그인 실패: " + error.message;
+      }
+    };
+
+    document.getElementById("logoutBtn").onclick = async () => {
+      await signOut(auth);
+      status.textContent = "로그아웃됨";
+    };
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        status.textContent = `${user.email} 로그인 중`;
+      } else {
+        status.textContent = "로그인 안 됨";
+      }
+    });
+  </script>
+</body>
+</html>
