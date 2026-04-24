@@ -6,15 +6,53 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main>
-    <a href="posts.html">← 목록으로</a>
+  <main class="board-page">
+    <a href="posts.html" class="back-link">← 게시판 목록</a>
 
-    <h1>공지 게시판</h1>
-    <p>공지사항을 확인하는 공간입니다.</p>
+    <!-- 헤더 -->
+    <section class="board-hero notice">
+      <div>
+        <span class="badge">공지</span>
+        <h1>📢 공지 게시판</h1>
+        <p>중요한 공지사항과 안내를 확인하는 공간입니다.</p>
+      </div>
+    </section>
+
+    <!-- 공지 안내 -->
+    <section class="info-box">
+      <h2>공지 안내</h2>
+
+      <div class="info-grid">
+        <div>
+          <strong>공지 내용</strong>
+          <p>교육 일정, 변경 사항, 중요한 소식</p>
+        </div>
+        <div>
+          <strong>확인 대상</strong>
+          <p>모든 교육 참여자 및 신청자</p>
+        </div>
+        <div>
+          <strong>업데이트</strong>
+          <p>새로운 공지는 댓글 상단에 표시됩니다</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 중요 안내 -->
+    <section class="notice-box">
+      <h2>필독 사항</h2>
+      <pre>✔ 공지는 반드시 확인해주세요
+✔ 일정 변경 시 공지로 안내됩니다
+✔ 문의는 Q&A 게시판 이용</pre>
+    </section>
 
     <hr />
 
-    <script src="giscus-notice.js"></script>
+    <!-- 댓글 -->
+    <section class="comment-section">
+      <h2>공지 확인 / 문의</h2>
+      <script src="giscus-notice.js"></script>
+    </section>
   </main>
 </body>
 </html>
