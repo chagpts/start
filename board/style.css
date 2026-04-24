@@ -194,9 +194,7 @@ h1 {
   transition: background 0.2s;
 }
 
-.back-btn:hover {
-  background-color: #357abd;
-}
+
 .back-btn {
   display: inline-block;
   margin-bottom: 20px;
