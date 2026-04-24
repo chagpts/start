@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>게시글</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a href="index.html">← 목록으로</a>
+  <h1 id="title">게시글</h1>
+
+  <p>아래에 댓글을 남기면 GitHub Discussions에 저장됩니다.</p>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const post = params.get("post") || "default";
+    document.getElementById("title").textContent = post + " 게시판";
+  </script>
+
+  <!-- 여기에 Giscus 코드 넣기 -->
+</body>
+</html>
