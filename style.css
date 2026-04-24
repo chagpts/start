@@ -1,0 +1,10 @@
+body {
+  max-width: 720px;
+  margin: 40px auto;
+  font-family: sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: #2563eb;
+}
