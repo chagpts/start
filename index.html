@@ -1,1 +1,348 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Accounting & Audit Training</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 24px 14px;
+      min-height: 100vh;
+      font-family: 'Quicksand', Arial, sans-serif;
+      text-align: center;
+      background:
+        linear-gradient(rgba(255,255,255,0.78), rgba(255,255,255,0.78)),
+        url("verse.png") no-repeat center / cover;
+    }
+
+    .hero {
+      background: rgba(255,255,255,0.96);
+      padding: 24px 18px;
+      border-radius: 22px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      font-family: 'Baloo 2', cursive;
+      font-size: 26px;
+      margin: 0 0 6px;
+      color: #222;
+    }
+
+    .hero p {
+      font-size: 14px;
+      color: #444;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .meetup-info {
+      max-width: 520px;
+      margin: 0 auto 32px;
+      background: rgba(255,255,255,0.96);
+      padding: 20px;
+      border-radius: 22px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    }
+
+    .meetup-info h2,
+    .meetup-info h3 {
+      font-family: 'Baloo 2', cursive;
+      font-size: 20px;
+      margin-bottom: 14px;
+      color: #111;
+    }
+
+    .info-item {
+      font-size: 14px;
+      color: #444;
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    .info-item span {
+      font-weight: 600;
+      color: #222;
+    }
+
+    .button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 14px 0;
+      margin-top: 14px;
+      background: #333;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 28px;
+      font-size: 15px;
+    }
+
+    .button:active { background: #111; }
+
+    .order-step {
+      background: rgba(255,255,255,0.95);
+      border-radius: 16px;
+      padding: 14px 16px;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+
+    .step-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #222;
+    }
+
+    .order-step p {
+      font-size: 13px;
+      color: #555;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .topics {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .topic {
+      background: rgba(255,255,255,0.96);
+      padding: 22px 20px;
+      border-radius: 22px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    }
+
+    .topic h2 {
+      font-family: 'Baloo 2', cursive;
+      font-size: 20px;
+      margin-bottom: 8px;
+      color: #111;
+    }
+
+    .topic p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 16px;
+    }
+
+    footer {
+      margin-top: 36px;
+      font-size: 12px;
+      color: #555;
+      background: rgba(255,255,255,0.85);
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 18px;
+    }
+
+    @media (min-width: 768px) {
+      body { padding: 50px 20px; }
+      h1 { font-size: 40px; }
+      .hero { padding: 36px 50px; margin-bottom: 60px; }
+      .meetup-info { margin-bottom: 60px; }
+      .topics {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1100px;
+        gap: 30px;
+      }
+      .button {
+        width: auto;
+        padding: 14px 30px;
+        display: inline-block;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<div id="userBox" style="
+  max-width:520px;
+  margin:0 auto 20px;
+  background:rgba(255,255,255,0.96);
+  padding:16px;
+  border-radius:18px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.18);
+  display:none;
+">
+  <p id="userEmail" style="margin:0 0 10px;"></p>
+  <button onclick="logout()" style="
+    padding:10px 16px;
+    border:none;
+    border-radius:12px;
+    background:#ef4444;
+    color:white;
+    cursor:pointer;
+  ">
+    로그아웃
+  </button>
+</div>
+
+
+  
+  <!-- HERO -->
+  <div class="hero">
+    <h1>AI Accounting & Audit Training</h1>
+    <p>Build, audit, and secure real accounting systems with AI.</p>
+    <p>회계 + AI + 감사 + 보안을 한 번에 배우는 실습형 교육</p>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="meetup-info">
+    <h2>Program Overview</h2>
+
+    <div class="info-item"><span>Focus:</span> AI OCR 기반 회계 시스템 + 감사 실습</div>
+    <div class="info-item"><span>Target:</span> 회계사 / IT Audit / 내부회계 / 취준생</div>
+    <div class="info-item"><span>Mode:</span> 실습 중심 교육 (로컬 AI)</div>
+    <div class="info-item"><span>Goal:</span> 실무형 디지털 회계·감사 역량 확보</div>
+
+    <a class="button" href="log.html">Join Program</a>
+  </div>
+
+  <!-- CURRICULUM -->
+  <div class="meetup-info">
+    <h3>Program Structure</h3>
+    
+    <div class="order-step">
+      <div class="step-title">1. Accounting</div>
+      <p>
+        • AI 회계 프로그램 구축 대상 회계 토픽<br>
+        • IFRS, 일반기업회계기준, US-GAAP, 비영리회계기준, 국가회계기준 <br>
+        • 파생 상품 및 특수 회게
+      </p>
+    </div>
+    
+    <div class="order-step">
+      <div class="step-title">2. AI Accounting System</div>
+      <p>
+        • AI OCR System<br>
+        • LLM 기반 회계 자동화<br>
+        • 자동 분개 및 데이터 처리
+      </p>
+    </div>
+
+    <div class="order-step">
+      <div class="step-title">3. Audit & Internal Control</div>
+      <p>
+        • ITGC 및 내부통제<br>
+        • 전산감사 실습<br>
+        • 데이터 기반 감사
+      </p>
+    </div>
+
+    <div class="order-step">
+      <div class="step-title">4. Security Testing</div>
+      <p>
+        • SQL Injection<br>
+        • XSS / CSRF<br>
+        • 파일 업로드 취약점
+      </p>
+    </div>
+
+    <div class="order-step">
+      <div class="step-title">4. Real Case Training</div>
+      <p>
+        • 실제 기업 데이터 실습<br>
+        • End-to-End 감사 수행
+      </p>
+    </div>
+
+    <div class="order-step">
+      <div class="step-title">5. Career Track</div>
+      <p>
+        • Digital Audit<br>
+        • IT Audit<br>
+        • 회계 + IT 커리어
+      </p>
+    </div>
+  </div>
+
+  <!-- MODULES -->
+  <div class="topics">
+    <div class="topic">
+      <h2>Accounting</h2>
+      <p>회계 실습 이론</p>
+      <a class="button" href="./acct.html">Start</a>
+    </div>
+    
+    <div class="topic">
+      <h2>AI OCR System</h2>
+      <p>회계 증빙 인식 및 자동 회계 처리</p>
+      <a class="button" href="./ai.html">Start</a>
+    </div>
+
+    <div class="topic">
+      <h2>Audit & ITGC</h2>
+      <p>내부통제 및 데이터 감사</p>
+      <a class="button" href="./ics.html">Start</a>
+    </div>
+
+    <div class="topic">
+      <h2>Security</h2>
+      <p>취약점 분석 및 방어</p>
+      <a class="button" href="./weak.html">Start</a>
+    </div>
+
+    <div class="topic">
+      <h2>Real Case</h2>
+      <p>실제 데이터 기반 실습</p>
+      <a class="button" href="./practice.html">Start</a>
+    </div>
+
+    <div class="topic">
+      <h2>Career</h2>
+      <p>Digital Audit 커리어 준비</p>
+      <a class="button" href="./career.html">Start</a>
+    </div>
+  </div>
+
+  <footer>© 2026 AI Audit Edu</footer>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+
+<script>
+const firebaseConfig = {
+  apiKey: "여기에_복사",
+  authDomain: "여기에_복사",
+  projectId: "여기에_복사",
+  appId: "여기에_복사"
+};
+
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+
+// 로그인 상태 확인
+auth.onAuthStateChanged((user) => {
+  const box = document.getElementById("userBox");
+  const email = document.getElementById("userEmail");
+
+  if (user) {
+    box.style.display = "block";
+    email.textContent = "로그인: " + user.email;
+  } else {
+    // 로그인 안 되어 있으면 로그인 페이지로 이동
+    window.location.href = "log.html";
+  }
+});
+
+// 로그아웃
+function logout() {
+  auth.signOut();
+  window.location.href = "log.html";
+}
+</script>
+</body>
+</html>
