@@ -181,3 +181,19 @@ h1 {
 .board-hero.notice {
   background: linear-gradient(135deg, #10b981, #059669);
 }
+
+.back-btn {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 10px 16px;
+  background-color: #4a90e2;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.back-btn:hover {
+  background-color: #357abd;
+}
