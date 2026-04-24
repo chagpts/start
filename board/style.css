@@ -197,3 +197,10 @@ h1 {
 .back-btn:hover {
   background-color: #357abd;
 }
+.back-btn {
+  display: inline-block;
+  margin-bottom: 20px;
+  text-decoration: none;
+  color: #4a90e2;
+  font-size: 14px;
+}
