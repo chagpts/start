@@ -2,19 +2,165 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>Firebase 로그인</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Firebase Login</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background:
+        radial-gradient(circle at top left, #8b5cf6, transparent 35%),
+        linear-gradient(135deg, #0f172a, #1e293b);
+      color: #fff;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 420px;
+      padding: 36px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .title {
+      margin: 0 0 8px;
+      font-size: 32px;
+      font-weight: 800;
+    }
+
+    .subtitle {
+      margin: 0 0 28px;
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+
+    .field {
+      margin-bottom: 16px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: #e2e8f0;
+    }
+
+    input {
+      width: 100%;
+      padding: 15px 16px;
+      border: 0;
+      border-radius: 16px;
+      outline: none;
+      font-size: 15px;
+      color: #fff;
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    input::placeholder {
+      color: #94a3b8;
+    }
+
+    input:focus {
+      border-color: #a78bfa;
+      box-shadow: 0 0 0 4px rgba(167, 139, 250, 0.18);
+    }
+
+    .buttons {
+      display: grid;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    button {
+      cursor: pointer;
+      border: 0;
+      padding: 15px 18px;
+      border-radius: 16px;
+      font-size: 15px;
+      font-weight: 700;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+    }
+
+    .login {
+      color: white;
+      background: linear-gradient(135deg, #7c3aed, #2563eb);
+    }
+
+    .signup {
+      color: #e0e7ff;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .logout {
+      color: #fecaca;
+      background: rgba(239, 68, 68, 0.14);
+    }
+
+    #status {
+      margin-top: 22px;
+      padding: 14px;
+      min-height: 48px;
+      border-radius: 14px;
+      font-size: 14px;
+      color: #dbeafe;
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(147, 197, 253, 0.18);
+      line-height: 1.4;
+    }
+
+    .footer {
+      margin-top: 22px;
+      text-align: center;
+      font-size: 13px;
+      color: #94a3b8;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>로그인</h1>
+  <main class="card">
+    <h1 class="title">Welcome back</h1>
+    <p class="subtitle">Firebase Authentication으로 로그인하세요.</p>
 
-  <input id="email" type="email" placeholder="이메일" />
-  <input id="password" type="password" placeholder="비밀번호" />
+    <div class="field">
+      <label for="email">이메일</label>
+      <input id="email" type="email" placeholder="you@example.com" />
+    </div>
 
-  <button id="signupBtn">회원가입</button>
-  <button id="loginBtn">로그인</button>
-  <button id="logoutBtn">로그아웃</button>
+    <div class="field">
+      <label for="password">비밀번호</label>
+      <input id="password" type="password" placeholder="비밀번호 입력" />
+    </div>
 
-  <p id="status"></p>
+    <div class="buttons">
+      <button id="loginBtn" class="login">로그인</button>
+      <button id="signupBtn" class="signup">회원가입</button>
+      <button id="logoutBtn" class="logout">로그아웃</button>
+    </div>
+
+    <p id="status">로그인 상태를 확인하는 중...</p>
+
+    <div class="footer">
+      No server. Powered by Firebase.
+    </div>
+  </main>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
@@ -43,16 +189,16 @@
     document.getElementById("signupBtn").onclick = async () => {
       try {
         await createUserWithEmailAndPassword(auth, email.value, password.value);
-        status.textContent = "회원가입 성공";
+        status.textContent = "회원가입 성공!";
       } catch (error) {
-        status.textContent = error.message;
+        status.textContent = "회원가입 실패: " + error.message;
       }
     };
 
     document.getElementById("loginBtn").onclick = async () => {
       try {
         await signInWithEmailAndPassword(auth, email.value, password.value);
-        status.textContent = "로그인 성공";
+        status.textContent = "로그인 성공!";
       } catch (error) {
         status.textContent = "로그인 실패: " + error.message;
       }
@@ -60,14 +206,14 @@
 
     document.getElementById("logoutBtn").onclick = async () => {
       await signOut(auth);
-      status.textContent = "로그아웃됨";
+      status.textContent = "로그아웃되었습니다.";
     };
 
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        status.textContent = `${user.email} 로그인 중`;
+        status.textContent = `${user.email} 님, 로그인 중입니다.`;
       } else {
-        status.textContent = "로그인 안 됨";
+        status.textContent = "현재 로그인되어 있지 않습니다.";
       }
     });
   </script>
