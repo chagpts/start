@@ -36,131 +36,78 @@
 
     .title {
       margin: 0 0 8px;
-      font-size: 32px;
+      font-size: 30px;
       font-weight: 800;
     }
 
     .subtitle {
-      margin: 0 0 28px;
+      margin: 0 0 24px;
       color: #cbd5e1;
-      line-height: 1.5;
-    }
-
-    .field {
-      margin-bottom: 16px;
-    }
-
-    .field label {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 14px;
-      color: #e2e8f0;
     }
 
     input {
       width: 100%;
-      padding: 15px 16px;
-      border: 0;
-      border-radius: 16px;
+      padding: 14px;
+      margin-bottom: 12px;
+      border-radius: 12px;
+      border: none;
       outline: none;
-      font-size: 15px;
-      color: #fff;
-      background: rgba(15, 23, 42, 0.75);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-    }
-
-    input::placeholder {
-      color: #94a3b8;
-    }
-
-    input:focus {
-      border-color: #a78bfa;
-      box-shadow: 0 0 0 4px rgba(167, 139, 250, 0.18);
-    }
-
-    .buttons {
-      display: grid;
-      gap: 12px;
-      margin-top: 22px;
+      background: rgba(0,0,0,0.4);
+      color: white;
     }
 
     button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 8px;
+      border-radius: 12px;
+      border: none;
+      font-weight: bold;
       cursor: pointer;
-      border: 0;
-      padding: 15px 18px;
-      border-radius: 16px;
-      font-size: 15px;
-      font-weight: 700;
-      transition: transform 0.15s ease, opacity 0.15s ease;
-    }
-
-    button:hover {
-      transform: translateY(-1px);
     }
 
     .login {
-      color: white;
       background: linear-gradient(135deg, #7c3aed, #2563eb);
+      color: white;
     }
 
-    .signup {
-      color: #e0e7ff;
-      background: rgba(255, 255, 255, 0.12);
+    .google {
+      background: white;
+      color: black;
     }
 
     .logout {
+      background: rgba(255,0,0,0.2);
       color: #fecaca;
-      background: rgba(239, 68, 68, 0.14);
     }
 
     #status {
-      margin-top: 22px;
-      padding: 14px;
-      min-height: 48px;
-      border-radius: 14px;
+      margin-top: 16px;
       font-size: 14px;
-      color: #dbeafe;
-      background: rgba(59, 130, 246, 0.12);
-      border: 1px solid rgba(147, 197, 253, 0.18);
-      line-height: 1.4;
-    }
-
-    .footer {
-      margin-top: 22px;
-      text-align: center;
-      font-size: 13px;
-      color: #94a3b8;
+      color: #cbd5e1;
     }
   </style>
 </head>
 
 <body>
-  <main class="card">
-    <h1 class="title">Welcome back</h1>
-    <p class="subtitle">Firebase Authentication으로 로그인하세요.</p>
+  <div class="card">
+    <h1 class="title">로그인</h1>
+    <p class="subtitle">Firebase Auth</p>
 
-    <div class="field">
-      <label for="email">이메일</label>
-      <input id="email" type="email" placeholder="you@example.com" />
-    </div>
+    <input id="email" type="email" placeholder="이메일" />
+    <input id="password" type="password" placeholder="비밀번호" />
 
-    <div class="field">
-      <label for="password">비밀번호</label>
-      <input id="password" type="password" placeholder="비밀번호 입력" />
-    </div>
+    <button id="signupBtn" class="login">회원가입</button>
+    <button id="loginBtn" class="login">로그인</button>
 
-    <div class="buttons">
-      <button id="loginBtn" class="login">로그인</button>
-      <button id="signupBtn" class="signup">회원가입</button>
-      <button id="logoutBtn" class="logout">로그아웃</button>
-    </div>
+    <button id="googleLoginBtn" class="google">
+      Google로 로그인
+    </button>
 
-    <p id="status">로그인 상태를 확인하는 중...</p>
+    <button id="logoutBtn" class="logout">로그아웃</button>
 
-    <div class="footer">
-      No server. Powered by Firebase.
-    </div>
-  </main>
+    <p id="status">대기 중...</p>
+  </div>
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
@@ -168,55 +115,71 @@
       getAuth,
       createUserWithEmailAndPassword,
       signInWithEmailAndPassword,
+      GoogleAuthProvider,
+      signInWithPopup,
       signOut,
       onAuthStateChanged
     } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
+    // 🔥 여기에 네 firebaseConfig 붙여넣기
     const firebaseConfig = {
-      apiKey: "AIzaSyBlCm22OspcPACpLLi2xLdDG4vmIFD_yoQ",
-      authDomain: "ai-acct.firebaseapp.com",
-      projectId: "ai-acct",
-      storageBucket: "ai-acct.firebasestorage.app",
-      messagingSenderId: "393212959481",
-      appId: "1:393212959481:web:f3bf9e829e03fe69d32028",
-      measurementId: "G-1LTYJMMDWZ"
+      apiKey: "여기에_복사",
+      authDomain: "여기에_복사",
+      projectId: "여기에_복사",
+      appId: "여기에_복사"
     };
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
+    const provider = new GoogleAuthProvider();
+
     const email = document.getElementById("email");
     const password = document.getElementById("password");
     const status = document.getElementById("status");
 
+    // 회원가입
     document.getElementById("signupBtn").onclick = async () => {
       try {
         await createUserWithEmailAndPassword(auth, email.value, password.value);
         status.textContent = "회원가입 성공!";
-      } catch (error) {
-        status.textContent = "회원가입 실패: " + error.message;
+      } catch (e) {
+        status.textContent = e.message;
       }
     };
 
+    // 로그인
     document.getElementById("loginBtn").onclick = async () => {
       try {
         await signInWithEmailAndPassword(auth, email.value, password.value);
         status.textContent = "로그인 성공!";
-      } catch (error) {
-        status.textContent = "로그인 실패: " + error.message;
+      } catch (e) {
+        status.textContent = e.message;
       }
     };
 
-    document.getElementById("logoutBtn").onclick = async () => {
-      await signOut(auth);
-      status.textContent = "로그아웃되었습니다.";
+    // 구글 로그인
+    document.getElementById("googleLoginBtn").onclick = async () => {
+      try {
+        await signInWithPopup(auth, provider);
+        status.textContent = "Google 로그인 성공!";
+      } catch (e) {
+        status.textContent = e.message;
+      }
     };
 
+    // 로그아웃
+    document.getElementById("logoutBtn").onclick = async () => {
+      await signOut(auth);
+      status.textContent = "로그아웃됨";
+    };
+
+    // 상태 감지
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        status.textContent = `${user.email} 님, 로그인 중입니다.`;
+        status.textContent = user.email + " 로그인 중";
       } else {
-        status.textContent = "현재 로그인되어 있지 않습니다.";
+        status.textContent = "로그인 안됨";
       }
     });
   </script>
