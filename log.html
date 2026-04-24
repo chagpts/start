@@ -140,7 +140,7 @@ const firebaseConfig = {
       try {
         await auth.signInWithPopup(provider);
         status.textContent = "Google 로그인 성공!";
-        window.location.href = "main.html";
+        window.location.href = "index.html";
       } catch (e) {
         status.textContent = e.message;
       }
@@ -155,7 +155,7 @@ const firebaseConfig = {
     // 이미 로그인 상태면 자동 이동
     auth.onAuthStateChanged((user) => {
       if (user) {
-        window.location.href = "main.html";
+        window.location.href = "index.html";
       }
     });
   </script>
