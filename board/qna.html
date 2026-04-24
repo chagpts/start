@@ -6,15 +6,54 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main>
-    <a href="posts.html">← 목록으로</a>
+  <main class="board-page">
+    <a href="posts.html" class="back-link">← 게시판 목록</a>
 
-    <h1>질문 게시판</h1>
-    <p>질문을 남기는 공간입니다.</p>
+    <!-- 헤더 -->
+    <section class="board-hero qna">
+      <div>
+        <span class="badge">Q&A</span>
+        <h1>❓ 질문 게시판</h1>
+        <p>궁금한 점을 자유롭게 질문하고 답변을 받을 수 있는 공간입니다.</p>
+      </div>
+    </section>
+
+    <!-- 안내 -->
+    <section class="info-box">
+      <h2>이용 안내</h2>
+
+      <div class="info-grid">
+        <div>
+          <strong>질문 대상</strong>
+          <p>교육 관련 모든 질문 가능</p>
+        </div>
+        <div>
+          <strong>답변 방식</strong>
+          <p>댓글로 자유롭게 답변</p>
+        </div>
+        <div>
+          <strong>주의사항</strong>
+          <p>중복 질문은 피해주세요</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 작성 가이드 -->
+    <section class="notice-box">
+      <h2>질문 작성 가이드</h2>
+      <pre>제목:
+내용:
+시도한 것:
+궁금한 점:</pre>
+    </section>
 
     <hr />
 
-    <script src="giscus-qna.js"></script>
+    <!-- 댓글 영역 -->
+    <section class="comment-section">
+      <h2>질문 작성 / 답변</h2>
+      <script src="giscus-qna.js"></script>
+    </section>
   </main>
 </body>
 </html>
