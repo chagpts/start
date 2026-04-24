@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Firebase Login</title>
+  <title>AI Acct Login</title>
 
   <style>
     * {
@@ -122,12 +122,16 @@
     } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
     // 🔥 여기에 네 firebaseConfig 붙여넣기
-    const firebaseConfig = {
-      apiKey: "여기에_복사",
-      authDomain: "여기에_복사",
-      projectId: "여기에_복사",
-      appId: "여기에_복사"
+     const firebaseConfig = {
+      apiKey: "AIzaSyBlCm22OspcPACpLLi2xLdDG4vmIFD_yoQ",
+      authDomain: "ai-acct.firebaseapp.com",
+      projectId: "ai-acct",
+      storageBucket: "ai-acct.firebasestorage.app",
+      messagingSenderId: "393212959481",
+      appId: "1:393212959481:web:f3bf9e829e03fe69d32028",
+      measurementId: "G-1LTYJMMDWZ"
     };
+
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
