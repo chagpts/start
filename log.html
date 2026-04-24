@@ -129,7 +129,7 @@ const firebaseConfig = {
       try {
         await auth.signInWithEmailAndPassword(email.value, password.value);
         status.textContent = "로그인 성공!";
-        window.location.href = "main.html";
+        window.location.href = "index.html";
       } catch (e) {
         status.textContent = e.message;
       }
