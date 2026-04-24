@@ -2,20 +2,54 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>첫 번째 글</title>
+  <title>교육 신청 게시판</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main>
-    <a href="./post.html">← 목록으로</a>
+  <main class="board-page">
+    <a href="posts.html" class="back-link">← 게시판 목록</a>
 
-    <h1>첫 번째 글</h1>
-    <p>여기에 첫 번째 글 내용을 작성하세요.</p>
+    <section class="board-hero recruit">
+      <div>
+        <span class="badge">모집중</span>
+        <h1>🎓 교육 신청 게시판</h1>
+        <p>교육받을 사람을 모집하는 공간입니다. 신청 희망자는 아래 댓글로 이름, 연락처, 희망 교육 내용을 남겨주세요.</p>
+      </div>
+    </section>
+
+    <section class="info-box">
+      <h2>신청 안내</h2>
+
+      <div class="info-grid">
+        <div>
+          <strong>대상</strong>
+          <p>교육 참여를 희망하는 모든 사람</p>
+        </div>
+        <div>
+          <strong>신청 방법</strong>
+          <p>아래 댓글에 신청 정보 작성</p>
+        </div>
+        <div>
+          <strong>작성 예시</strong>
+          <p>홍길동 / 010-0000-0000 / 기초 교육 신청</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="notice-box">
+      <h2>댓글 작성 양식</h2>
+      <pre>이름:
+연락처:
+희망 교육:
+문의사항:</pre>
+    </section>
 
     <hr />
 
-    <h2>댓글</h2>
-    <script src="giscus.js"></script>
+    <section class="comment-section">
+      <h2>교육 신청하기</h2>
+      <script src="giscus.js"></script>
+    </section>
   </main>
 </body>
 </html>
