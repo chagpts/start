@@ -177,3 +177,7 @@ h1 {
 .board-hero.qna {
   background: linear-gradient(135deg, #f59e0b, #ef4444);
 }
+
+.board-hero.notice {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
