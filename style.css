@@ -1,10 +1,52 @@
 body {
-  max-width: 720px;
-  margin: 40px auto;
-  font-family: sans-serif;
-  line-height: 1.6;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f5f7fb;
+  color: #333;
 }
 
-a {
-  color: #2563eb;
+.container {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #777;
+  margin-bottom: 40px;
+}
+
+.board-list {
+  display: grid;
+  gap: 20px;
+}
+
+.card {
+  display: block;
+  padding: 25px;
+  border-radius: 16px;
+  background: white;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.card h2 {
+  margin: 0 0 10px;
+}
+
+.card p {
+  color: #666;
 }
