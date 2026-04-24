@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Acct Login</title>
+  <title>Firebase Login</title>
 
   <style>
     * {
       box-sizing: border-box;
-      font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     body {
@@ -20,177 +20,161 @@
       background:
         radial-gradient(circle at top left, #8b5cf6, transparent 35%),
         linear-gradient(135deg, #0f172a, #1e293b);
-      color: #fff;
+      color: white;
     }
 
     .card {
       width: 100%;
-      max-width: 420px;
-      padding: 36px;
-      border-radius: 28px;
+      max-width: 360px;
+      padding: 32px;
+      border-radius: 24px;
       background: rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(18px);
-      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
       border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
     }
 
-    .title {
+    h1 {
       margin: 0 0 8px;
-      font-size: 30px;
-      font-weight: 800;
+      font-size: 28px;
     }
 
     .subtitle {
-      margin: 0 0 24px;
+      margin-bottom: 22px;
       color: #cbd5e1;
+      font-size: 14px;
     }
 
     input {
       width: 100%;
       padding: 14px;
-      margin-bottom: 12px;
-      border-radius: 12px;
+      margin-bottom: 10px;
       border: none;
+      border-radius: 12px;
       outline: none;
-      background: rgba(0,0,0,0.4);
+      background: rgba(15, 23, 42, 0.85);
       color: white;
+    }
+
+    input::placeholder {
+      color: #94a3b8;
     }
 
     button {
       width: 100%;
       padding: 14px;
       margin-top: 8px;
-      border-radius: 12px;
       border: none;
-      font-weight: bold;
+      border-radius: 12px;
+      font-weight: 700;
       cursor: pointer;
     }
 
-    .login {
-      background: linear-gradient(135deg, #7c3aed, #2563eb);
+    .primary {
       color: white;
+      background: linear-gradient(135deg, #7c3aed, #2563eb);
     }
 
     .google {
+      color: #111827;
       background: white;
-      color: black;
     }
 
     .logout {
-      background: rgba(255,0,0,0.2);
       color: #fecaca;
+      background: rgba(239, 68, 68, 0.35);
     }
 
     #status {
-      margin-top: 16px;
+      margin-top: 18px;
       font-size: 14px;
-      color: #cbd5e1;
+      color: #e2e8f0;
+      line-height: 1.5;
+      word-break: break-all;
     }
   </style>
 </head>
 
 <body>
   <div class="card">
-    <h1 class="title">로그인</h1>
-    <p class="subtitle">Firebase Auth</p>
+    <h1>로그인</h1>
+    <div class="subtitle">Firebase Auth</div>
 
     <input id="email" type="email" placeholder="이메일" />
     <input id="password" type="password" placeholder="비밀번호" />
 
-    <button id="signupBtn" class="login">회원가입</button>
-    <button id="loginBtn" class="login">로그인</button>
-
-    <button id="googleLoginBtn" class="google">
-      Google로 로그인
-    </button>
-
+    <button id="signupBtn" class="primary">회원가입</button>
+    <button id="loginBtn" class="primary">로그인</button>
+    <button id="googleLoginBtn" class="google">Google로 로그인</button>
     <button id="logoutBtn" class="logout">로그아웃</button>
 
     <p id="status">대기 중...</p>
   </div>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-    import {
-      getAuth,
-      createUserWithEmailAndPassword,
-      signInWithEmailAndPassword,
-      GoogleAuthProvider,
-      signInWithPopup,
-      signOut,
-      onAuthStateChanged
-    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+  <!-- GitHub Pages에서도 잘 동작하는 compat 방식 -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 
-      // Import the functions you need from the SDKs you need
-      import { initializeApp } from "firebase/app";
-      import { getAnalytics } from "firebase/analytics";
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries
-      
-      // Your web app's Firebase configuration
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-      const firebaseConfig = {
-        apiKey: "AIzaSyBlCm22OspcPACpLLi2xLdDG4vmIFD_yoQ",
-        authDomain: "ai-acct.firebaseapp.com",
-        projectId: "ai-acct",
-        storageBucket: "ai-acct.firebasestorage.app",
-        messagingSenderId: "393212959481",
-        appId: "1:393212959481:web:f3bf9e829e03fe69d32028",
-        measurementId: "G-1LTYJMMDWZ"
-      };
+  <script>
+const firebaseConfig = {
+  apiKey: "AIzaSyBlCm22OspcPACpLLi2xLdDG4vmIFD_yoQ",
+  authDomain: "ai-acct.firebaseapp.com",
+  projectId: "ai-acct",
+  storageBucket: "ai-acct.firebasestorage.app",
+  messagingSenderId: "393212959481",
+  appId: "1:393212959481:web:f3bf9e829e03fe69d32028",
+  measurementId: "G-1LTYJMMDWZ"
+};
 
+    firebase.initializeApp(firebaseConfig);
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-
-    const provider = new GoogleAuthProvider();
+    const auth = firebase.auth();
+    const googleProvider = new firebase.auth.GoogleAuthProvider();
 
     const email = document.getElementById("email");
     const password = document.getElementById("password");
     const status = document.getElementById("status");
 
-    // 회원가입
-    document.getElementById("signupBtn").onclick = async () => {
+    document.getElementById("signupBtn").addEventListener("click", async () => {
       try {
-        await createUserWithEmailAndPassword(auth, email.value, password.value);
+        await auth.createUserWithEmailAndPassword(email.value, password.value);
         status.textContent = "회원가입 성공!";
-      } catch (e) {
-        status.textContent = e.message;
+      } catch (error) {
+        status.textContent = "회원가입 실패: " + error.message;
       }
-    };
+    });
 
-    // 로그인
-    document.getElementById("loginBtn").onclick = async () => {
+    document.getElementById("loginBtn").addEventListener("click", async () => {
       try {
-        await signInWithEmailAndPassword(auth, email.value, password.value);
+        await auth.signInWithEmailAndPassword(email.value, password.value);
         status.textContent = "로그인 성공!";
-      } catch (e) {
-        status.textContent = e.message;
+      } catch (error) {
+        status.textContent = "로그인 실패: " + error.message;
       }
-    };
+    });
 
-    // 구글 로그인
-    document.getElementById("googleLoginBtn").onclick = async () => {
+    document.getElementById("googleLoginBtn").addEventListener("click", async () => {
       try {
-        await signInWithPopup(auth, provider);
+        await auth.signInWithPopup(googleProvider);
         status.textContent = "Google 로그인 성공!";
-      } catch (e) {
-        status.textContent = e.message;
+      } catch (error) {
+        status.textContent = "Google 로그인 실패: " + error.message;
       }
-    };
+    });
 
-    // 로그아웃
-    document.getElementById("logoutBtn").onclick = async () => {
-      await signOut(auth);
-      status.textContent = "로그아웃됨";
-    };
+    document.getElementById("logoutBtn").addEventListener("click", async () => {
+      try {
+        await auth.signOut();
+        status.textContent = "로그아웃되었습니다.";
+      } catch (error) {
+        status.textContent = "로그아웃 실패: " + error.message;
+      }
+    });
 
-    // 상태 감지
-    onAuthStateChanged(auth, (user) => {
+    auth.onAuthStateChanged((user) => {
       if (user) {
         status.textContent = user.email + " 로그인 중";
       } else {
-        status.textContent = "로그인 안됨";
+        status.textContent = "로그인 안 됨";
       }
     });
   </script>
