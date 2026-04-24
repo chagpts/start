@@ -2,15 +2,10 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Firebase Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>로그인</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    }
-
     body {
       margin: 0;
       padding: 24px 14px;
@@ -20,80 +15,61 @@
       background:
         linear-gradient(rgba(255,255,255,0.78), rgba(255,255,255,0.78)),
         url("verse.png") no-repeat center / cover;
-    
+
       display: flex;
       justify-content: center;
       align-items: center;
-      color: #111827;
     }
-    
+
     .card {
       width: 100%;
       max-width: 360px;
-      padding: 32px;
-      border-radius: 24px;
-      background: rgba(255, 255, 255, 0.88);
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+      padding: 30px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
     }
 
     h1 {
-      margin: 0 0 8px;
-      font-size: 28px;
-    }
-
-    .subtitle {
-      margin-bottom: 22px;
-      color: #cbd5e1;
-      font-size: 14px;
+      margin-bottom: 10px;
     }
 
     input {
       width: 100%;
-      padding: 14px;
-      margin-bottom: 10px;
-      border: none;
-      border-radius: 12px;
-      outline: none;
-      background: rgba(15, 23, 42, 0.85);
-      color: white;
-    }
-
-    input::placeholder {
-      color: #94a3b8;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 10px;
+      border: 1px solid #ccc;
     }
 
     button {
       width: 100%;
-      padding: 14px;
+      padding: 12px;
       margin-top: 8px;
+      border-radius: 10px;
       border: none;
-      border-radius: 12px;
-      font-weight: 700;
+      font-weight: bold;
       cursor: pointer;
     }
 
     .primary {
+      background: #6366f1;
       color: white;
-      background: linear-gradient(135deg, #7c3aed, #2563eb);
     }
 
     .google {
-      color: #111827;
       background: white;
+      border: 1px solid #ccc;
     }
 
     .logout {
-      color: #fecaca;
-      background: rgba(239, 68, 68, 0.35);
+      background: #f87171;
+      color: white;
     }
 
     #status {
-      margin-top: 18px;
+      margin-top: 12px;
       font-size: 14px;
-      color: #e2e8f0;
-      line-height: 1.5;
-      word-break: break-all;
     }
   </style>
 </head>
@@ -101,10 +77,9 @@
 <body>
   <div class="card">
     <h1>로그인</h1>
-    <div class="subtitle">Firebase Auth</div>
 
-    <input id="email" type="email" placeholder="이메일" />
-    <input id="password" type="password" placeholder="비밀번호" />
+    <input id="email" type="email" placeholder="이메일">
+    <input id="password" type="password" placeholder="비밀번호">
 
     <button id="signupBtn" class="primary">회원가입</button>
     <button id="loginBtn" class="primary">로그인</button>
@@ -114,7 +89,7 @@
     <p id="status">대기 중...</p>
   </div>
 
-  <!-- GitHub Pages에서도 잘 동작하는 compat 방식 -->
+  <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 
@@ -129,56 +104,58 @@ const firebaseConfig = {
   measurementId: "G-1LTYJMMDWZ"
 };
 
+
     firebase.initializeApp(firebaseConfig);
 
     const auth = firebase.auth();
-    const googleProvider = new firebase.auth.GoogleAuthProvider();
+    const provider = new firebase.auth.GoogleAuthProvider();
 
     const email = document.getElementById("email");
     const password = document.getElementById("password");
     const status = document.getElementById("status");
 
-    document.getElementById("signupBtn").addEventListener("click", async () => {
+    // 회원가입
+    document.getElementById("signupBtn").onclick = async () => {
       try {
         await auth.createUserWithEmailAndPassword(email.value, password.value);
         status.textContent = "회원가입 성공!";
-      } catch (error) {
-        status.textContent = "회원가입 실패: " + error.message;
+      } catch (e) {
+        status.textContent = e.message;
       }
-    });
+    };
 
-    document.getElementById("loginBtn").addEventListener("click", async () => {
+    // 로그인 → 페이지 이동
+    document.getElementById("loginBtn").onclick = async () => {
       try {
         await auth.signInWithEmailAndPassword(email.value, password.value);
         status.textContent = "로그인 성공!";
-      } catch (error) {
-        status.textContent = "로그인 실패: " + error.message;
+        window.location.href = "main.html";
+      } catch (e) {
+        status.textContent = e.message;
       }
-    });
+    };
 
-    document.getElementById("googleLoginBtn").addEventListener("click", async () => {
+    // Google 로그인 → 페이지 이동
+    document.getElementById("googleLoginBtn").onclick = async () => {
       try {
-        await auth.signInWithPopup(googleProvider);
+        await auth.signInWithPopup(provider);
         status.textContent = "Google 로그인 성공!";
-      } catch (error) {
-        status.textContent = "Google 로그인 실패: " + error.message;
+        window.location.href = "main.html";
+      } catch (e) {
+        status.textContent = e.message;
       }
-    });
+    };
 
-    document.getElementById("logoutBtn").addEventListener("click", async () => {
-      try {
-        await auth.signOut();
-        status.textContent = "로그아웃되었습니다.";
-      } catch (error) {
-        status.textContent = "로그아웃 실패: " + error.message;
-      }
-    });
+    // 로그아웃
+    document.getElementById("logoutBtn").onclick = async () => {
+      await auth.signOut();
+      status.textContent = "로그아웃됨";
+    };
 
+    // 이미 로그인 상태면 자동 이동
     auth.onAuthStateChanged((user) => {
       if (user) {
-        status.textContent = user.email + " 로그인 중";
-      } else {
-        status.textContent = "로그인 안 됨";
+        window.location.href = "main.html";
       }
     });
   </script>
