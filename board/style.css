@@ -174,3 +174,6 @@ h1 {
   font-size: 13px;
   font-weight: 700;
 }
+.board-hero.qna {
+  background: linear-gradient(135deg, #f59e0b, #ef4444);
+}
