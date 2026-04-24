@@ -57,3 +57,120 @@ h1 {
   color: #666;
   font-size: 14px;
 }
+
+.board-page {
+  text-align: left;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.board-hero {
+  padding: 36px;
+  border-radius: 22px;
+  color: white;
+  margin-bottom: 24px;
+}
+
+.board-hero.recruit {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+}
+
+.board-hero.materials {
+  background: linear-gradient(135deg, #0891b2, #2563eb);
+}
+
+.board-hero h1 {
+  margin: 12px 0;
+  font-size: 34px;
+}
+
+.board-hero p {
+  margin: 0;
+  max-width: 680px;
+  line-height: 1.7;
+  opacity: 0.95;
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.2);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.info-box,
+.notice-box,
+.comment-section {
+  background: white;
+  border-radius: 18px;
+  padding: 26px;
+  margin-bottom: 22px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 16px;
+}
+
+.info-grid div {
+  padding: 18px;
+  border-radius: 14px;
+  background: #f8fafc;
+}
+
+.info-grid strong {
+  color: #4f46e5;
+}
+
+.info-grid p {
+  margin-bottom: 0;
+  color: #555;
+}
+
+.notice-box pre {
+  background: #0f172a;
+  color: white;
+  padding: 18px;
+  border-radius: 14px;
+  overflow-x: auto;
+  line-height: 1.7;
+}
+
+.resource-list {
+  display: grid;
+  gap: 16px;
+}
+
+.resource-card {
+  padding: 20px;
+  border-radius: 16px;
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+}
+
+.resource-card h3 {
+  margin-top: 0;
+}
+
+.resource-card p {
+  color: #555;
+}
+
+.resource-card span {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #e0f2fe;
+  color: #0369a1;
+  font-size: 13px;
+  font-weight: 700;
+}
