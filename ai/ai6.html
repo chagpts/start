@@ -1,1 +1,674 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>정답 데이터 구조와 라벨링</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand&display=swap" rel="stylesheet">
 
+<style>
+body {
+  font-family: 'Quicksand', sans-serif;
+  background:
+    linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
+    url("../verse.png") no-repeat center center / cover;
+  padding: 60px 20px;
+}
+.container {
+  max-width: 920px;
+  margin: auto;
+  background: rgba(255,255,255,0.95);
+  padding: 50px 60px;
+  border-radius: 28px;
+}
+h1, h2, h3 { font-family: 'Baloo 2', cursive; }
+h1 { margin-bottom: 28px; }
+h2 { margin-top: 50px; margin-bottom: 16px; }
+p {
+  line-height: 1.8;
+  margin-bottom: 18px;
+  font-size: 15px;
+}
+ul { margin-left: 20px; margin-bottom: 22px; }
+li { margin-bottom: 8px; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 28px 0;
+  font-size: 14px;
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 14px;
+  vertical-align: top;
+}
+th {
+  background: #f2f2f2;
+  font-weight: 600;
+}
+.highlight {
+  background: #f7f7f7;
+  padding: 22px 26px;
+  border-radius: 18px;
+  margin: 30px 0;
+  font-size: 14px;
+}
+.questions {
+  background: #f7f7f7;
+  padding: 25px 30px;
+  border-radius: 18px;
+  margin-top: 30px;
+}
+.link-block {
+  background: #eef2f7;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin-top: 14px;
+  font-size: 14px;
+}
+.dialogue {
+  background: #fafafa;
+  padding: 26px 30px;
+  border-radius: 18px;
+  margin-top: 25px;
+  font-size: 14px;
+}
+.role { font-weight: 600; }
+pre {
+  background: #f3f3f3;
+  padding: 16px 18px;
+  border-radius: 12px;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.6;
+}
+code {
+  background: #f3f3f3;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+.back {
+  text-align: center;
+  margin-top: 55px;
+}
+.back a {
+  display: inline-block;
+  padding: 12px 26px;
+  background: #333;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 6px;
+}
+footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 13px;
+  background: rgba(255,255,255,0.75);
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 20px;
+}
+.page-footer { text-align: center; }
+@media (max-width: 600px) {
+  .container { padding: 30px 24px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>정답 데이터 구조와 라벨링<br>AI OCR 회계 프로그램 구축</h1>
+
+<p>
+AI OCR 회계 프로그램을 구축할 때 가장 중요한 작업 중 하나는
+정답 데이터, 즉 Ground Truth 데이터를 만드는 것입니다.
+OCR 엔진이 읽은 결과가 맞는지 판단하고,
+AI 모델이 날짜, 거래처, 금액, 부가세 같은 회계 필드를 학습하려면
+사람이 확인한 정확한 정답 데이터가 필요합니다.
+</p>
+
+<div class="link-block">
+  <p><strong>이 문서에서 배우는 내용</strong></p>
+  <p>• 정답 데이터의 의미</p>
+  <p>• AI OCR 회계 프로그램에서 필요한 데이터 구조</p>
+  <p>• 문서 단위 라벨링과 필드 단위 라벨링</p>
+  <p>• 라벨링 기준서 작성 방법</p>
+  <p>• 라벨 품질 검수와 오류 관리 방법</p>
+</div>
+
+<h2>1. 정답 데이터란 무엇인가</h2>
+
+<p>
+정답 데이터는 AI 모델이 학습하거나 평가할 때 기준으로 삼는 정확한 데이터입니다.
+예를 들어 영수증 이미지에서 OCR이 <code>12,OOO</code>이라고 읽었더라도
+사람이 확인한 실제 금액이 <code>12,000</code>이라면,
+정답 데이터에는 <code>12000</code>이 저장되어야 합니다.
+</p>
+
+<div class="highlight">
+<p>
+정답 데이터는 AI가 맞혔는지 틀렸는지를 판단하는 기준입니다.
+정답 데이터가 부정확하면 모델도 잘못된 방향으로 학습합니다.
+</p>
+</div>
+
+<h2>2. AI OCR 회계 프로그램에서 정답 데이터가 중요한 이유</h2>
+
+<p>
+회계 문서는 일반 이미지보다 정확성이 훨씬 중요합니다.
+거래일, 거래처, 공급가액, 부가세, 총액 중 하나만 틀려도
+회계 처리와 세무 신고에 문제가 생길 수 있습니다.
+따라서 AI OCR 시스템은 단순히 글자를 읽는 것이 아니라,
+정확한 회계 필드를 추출하도록 학습되어야 합니다.
+</p>
+
+<table>
+<thead>
+<tr>
+  <th>정답 데이터가 필요한 이유</th>
+  <th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>모델 학습</td>
+  <td>AI가 어떤 텍스트가 날짜, 거래처, 금액인지 학습하는 기준이 됨</td>
+</tr>
+<tr>
+  <td>성능 평가</td>
+  <td>OCR 결과와 정답을 비교해 정확도, 오류율을 계산</td>
+</tr>
+<tr>
+  <td>오류 분석</td>
+  <td>어떤 문서, 어떤 필드에서 오류가 많은지 파악</td>
+</tr>
+<tr>
+  <td>자동 검증</td>
+  <td>총액, 공급가액, 부가세 관계를 확인하는 기준 데이터로 활용</td>
+</tr>
+<tr>
+  <td>재학습</td>
+  <td>실무에서 수정된 데이터를 다시 학습 데이터로 사용</td>
+</tr>
+</tbody>
+</table>
+
+<h2>3. 정답 데이터의 기본 구조</h2>
+
+<p>
+AI OCR 회계 프로그램의 정답 데이터는 보통 문서 정보, 이미지 정보,
+OCR 원문, 라벨링된 필드, 검증 결과로 구성됩니다.
+문서 단위 정보와 필드 단위 정보를 분리해 관리하면
+나중에 검색, 검수, 재학습이 쉬워집니다.
+</p>
+
+<table>
+<thead>
+<tr>
+  <th>구성 요소</th>
+  <th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>document_id</td>
+  <td>문서를 식별하는 고유 ID</td>
+</tr>
+<tr>
+  <td>document_type</td>
+  <td>영수증, 세금계산서, 인보이스, 거래명세서 등 문서 종류</td>
+</tr>
+<tr>
+  <td>image_path</td>
+  <td>원본 이미지 또는 PDF 파일 위치</td>
+</tr>
+<tr>
+  <td>ocr_text</td>
+  <td>OCR 엔진이 추출한 원문 텍스트</td>
+</tr>
+<tr>
+  <td>labels</td>
+  <td>사람이 확인한 정답 필드 값</td>
+</tr>
+<tr>
+  <td>validation_status</td>
+  <td>검수 완료, 수정 필요, 보류 등 상태</td>
+</tr>
+</tbody>
+</table>
+
+<h2>4. JSON 정답 데이터 예시</h2>
+
+<p>
+아래는 영수증 한 장에 대한 정답 데이터 예시입니다.
+OCR 원문과 사람이 확정한 정답 값을 함께 보관하면
+모델 평가와 오류 분석에 활용할 수 있습니다.
+</p>
+
+<pre><code>{
+  "document_id": "DOC-2026-0001",
+  "document_type": "receipt",
+  "image_path": "images/2026-03-01_starbucks_12000.jpg",
+  "ocr_text": "STARBUCKS\n2026.03.01\nTOTAL 12,OOO\nVAT 1,O91",
+  "labels": {
+    "transaction_date": "2026-03-01",
+    "vendor_name": "스타벅스",
+    "total_amount": 12000,
+    "vat_amount": 1091,
+    "supply_amount": 10909,
+    "payment_method": "card",
+    "expense_category": "식비"
+  },
+  "validation_status": "approved"
+}</code></pre>
+
+<h2>5. 문서 단위 라벨링</h2>
+
+<p>
+문서 단위 라벨링은 문서 전체의 종류와 속성을 정하는 작업입니다.
+예를 들어 업로드된 파일이 영수증인지, 세금계산서인지,
+거래명세서인지 구분해야 합니다.
+문서 종류에 따라 추출해야 할 필드와 검증 규칙이 달라집니다.
+</p>
+
+<table>
+<thead>
+<tr>
+  <th>문서 유형</th>
+  <th>주요 필드</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>영수증</td>
+  <td>거래일, 가맹점명, 총액, 부가세, 결제수단</td>
+</tr>
+<tr>
+  <td>세금계산서</td>
+  <td>작성일자, 공급자, 공급받는 자, 공급가액, 세액, 승인번호</td>
+</tr>
+<tr>
+  <td>인보이스</td>
+  <td>청구일, 거래처, 청구금액, 통화, 결제기한</td>
+</tr>
+<tr>
+  <td>거래명세서</td>
+  <td>거래일, 품목, 수량, 단가, 공급가액, 합계</td>
+</tr>
+</tbody>
+</table>
+
+<h2>6. 필드 단위 라벨링</h2>
+
+<p>
+필드 단위 라벨링은 문서 안에서 필요한 회계 항목을 정확히 표시하는 작업입니다.
+AI OCR 회계 프로그램에서는 전체 문장을 모두 저장하는 것보다
+회계 처리에 필요한 핵심 필드를 정확히 뽑아내는 것이 중요합니다.
+</p>
+
+<table>
+<thead>
+<tr>
+  <th>필드명</th>
+  <th>의미</th>
+  <th>예시</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>transaction_date</td>
+  <td>거래일 또는 작성일자</td>
+  <td>2026-03-01</td>
+</tr>
+<tr>
+  <td>vendor_name</td>
+  <td>가맹점명 또는 공급자명</td>
+  <td>스타벅스</td>
+</tr>
+<tr>
+  <td>business_number</td>
+  <td>사업자등록번호</td>
+  <td>123-45-67890</td>
+</tr>
+<tr>
+  <td>supply_amount</td>
+  <td>공급가액</td>
+  <td>10909</td>
+</tr>
+<tr>
+  <td>vat_amount</td>
+  <td>부가세</td>
+  <td>1091</td>
+</tr>
+<tr>
+  <td>total_amount</td>
+  <td>총액</td>
+  <td>12000</td>
+</tr>
+<tr>
+  <td>expense_category</td>
+  <td>비용 계정 분류</td>
+  <td>식비</td>
+</tr>
+</tbody>
+</table>
+
+<h2>7. 위치 정보 라벨링</h2>
+
+<p>
+OCR 모델이나 문서 이해 모델을 고도화하려면
+필드 값뿐 아니라 문서 안에서 해당 값이 어디에 있는지도 저장할 수 있습니다.
+이를 Bounding Box 라벨링이라고 합니다.
+이 정보는 AI가 문서 구조를 이해하는 데 도움을 줍니다.
+</p>
+
+<pre><code>{
+  "field_name": "total_amount",
+  "value": "12000",
+  "raw_text": "12,OOO",
+  "bbox": {
+    "x": 420,
+    "y": 680,
+    "width": 120,
+    "height": 32
+  }
+}</code></pre>
+
+<div class="highlight">
+<p>
+값 라벨링은 “정답이 무엇인가”를 알려주고,
+위치 라벨링은 “문서 어디에 그 정답이 있는가”를 알려줍니다.
+</p>
+</div>
+
+<h2>8. 라벨링 기준서</h2>
+
+<p>
+라벨링 기준서는 작업자들이 같은 기준으로 정답 데이터를 만들도록 돕는 문서입니다.
+라벨링 기준이 없으면 작업자마다 날짜, 거래처명, 부가세, 총액을 다르게 해석할 수 있습니다.
+그 결과 데이터 품질이 낮아지고 모델 성능도 흔들립니다.
+</p>
+
+<table>
+<thead>
+<tr>
+  <th>기준 항목</th>
+  <th>라벨링 규칙 예시</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>날짜</td>
+  <td>문서에 여러 날짜가 있으면 실제 거래일을 우선 사용</td>
+</tr>
+<tr>
+  <td>거래처명</td>
+  <td>브랜드명보다 실제 가맹점명 또는 공급자명을 우선 사용</td>
+</tr>
+<tr>
+  <td>금액</td>
+  <td>쉼표와 통화기호를 제거하고 숫자만 저장</td>
+</tr>
+<tr>
+  <td>부가세</td>
+  <td>표시된 부가세가 없으면 계산값이 아니라 null로 저장</td>
+</tr>
+<tr>
+  <td>카테고리</td>
+  <td>회사 계정과목 기준표에 따라 선택</td>
+</tr>
+</tbody>
+</table>
+
+<h2>9. 금액 라벨링 규칙</h2>
+
+<p>
+회계 문서에서 가장 중요한 필드는 금액입니다.
+총액, 공급가액, 부가세를 혼동하지 않도록 명확한 규칙이 필요합니다.
+</p>
+
+<ul>
+  <li>총액은 실제 결제되거나 청구된 최종 금액으로 라벨링한다</li>
+  <li>공급가액은 부가세를 제외한 금액으로 라벨링한다</li>
+  <li>부가세는 문서에 표시된 세액을 기준으로 한다</li>
+  <li>문서에 부가세가 없으면 임의 계산하지 않고 <code>null</code>로 처리한다</li>
+  <li>금액은 쉼표, 원, ₩ 기호를 제거하고 숫자형으로 저장한다</li>
+</ul>
+
+<pre><code>{
+  "supply_amount": 10909,
+  "vat_amount": 1091,
+  "total_amount": 12000
+}</code></pre>
+
+<h2>10. 날짜와 거래처 라벨링 규칙</h2>
+
+<p>
+날짜와 거래처명은 문서마다 표시 방식이 다를 수 있습니다.
+작성일, 승인일, 결제일이 함께 표시된 경우에는
+업무 기준상 어떤 날짜를 사용할지 미리 정해야 합니다.
+</p>
+
+<table>
+<thead>
+<tr>
+  <th>항목</th>
+  <th>권장 기준</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>거래일</td>
+  <td>영수증은 결제일, 세금계산서는 작성일자를 우선 사용</td>
+</tr>
+<tr>
+  <td>거래처명</td>
+  <td>상호명, 공급자명, 가맹점명을 우선 사용</td>
+</tr>
+<tr>
+  <td>사업자번호</td>
+  <td>하이픈 포함 표준 형식으로 저장</td>
+</tr>
+<tr>
+  <td>카드번호</td>
+  <td>개인정보 보호를 위해 전체 번호 저장 금지, 마스킹 값만 저장</td>
+</tr>
+</tbody>
+</table>
+
+<h2>11. 라벨링 상태 관리</h2>
+
+<p>
+정답 데이터는 한 번에 완성되지 않습니다.
+초기 OCR 결과를 사람이 수정하고,
+검수자가 다시 확인하고,
+승인된 데이터만 학습 데이터로 사용하는 흐름이 필요합니다.
+</p>
+
+<table>
+<thead>
+<tr>
+  <th>상태</th>
+  <th>의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>draft</td>
+  <td>OCR 결과를 기반으로 초안 생성된 상태</td>
+</tr>
+<tr>
+  <td>labeled</td>
+  <td>라벨러가 정답 값을 입력한 상태</td>
+</tr>
+<tr>
+  <td>reviewed</td>
+  <td>검수자가 확인한 상태</td>
+</tr>
+<tr>
+  <td>approved</td>
+  <td>학습 데이터로 사용할 수 있는 상태</td>
+</tr>
+<tr>
+  <td>rejected</td>
+  <td>품질 문제로 사용하지 않는 상태</td>
+</tr>
+</tbody>
+</table>
+
+<h2>12. 라벨 품질 검수</h2>
+
+<p>
+라벨링 품질은 모델 성능에 직접 영향을 줍니다.
+따라서 일부 샘플만 보는 것이 아니라,
+중요 필드는 자동 검증과 사람 검수를 함께 적용해야 합니다.
+</p>
+
+<ul>
+  <li>총액 = 공급가액 + 부가세인지 확인</li>
+  <li>날짜 형식이 표준 형식인지 확인</li>
+  <li>금액 필드가 숫자형인지 확인</li>
+  <li>필수 필드가 누락되지 않았는지 확인</li>
+  <li>거래처명이 너무 짧거나 의미 없는 값인지 확인</li>
+  <li>검수자와 라벨러가 동일하지 않도록 분리</li>
+</ul>
+
+<pre><code>if total_amount != supply_amount + vat_amount:
+    validation_status = "review_required"</code></pre>
+
+<h2>13. 학습용 데이터와 평가용 데이터 분리</h2>
+
+<p>
+정답 데이터가 충분히 쌓이면 학습용, 검증용, 평가용 데이터로 나누어야 합니다.
+모델이 학습에 사용한 데이터로 성능을 평가하면
+실제보다 성능이 좋아 보일 수 있습니다.
+</p>
+
+<table>
+<thead>
+<tr>
+  <th>데이터 구분</th>
+  <th>용도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Train</td>
+  <td>모델이 패턴을 학습하는 데이터</td>
+</tr>
+<tr>
+  <td>Validation</td>
+  <td>모델 설정을 조정하고 중간 성능을 확인하는 데이터</td>
+</tr>
+<tr>
+  <td>Test</td>
+  <td>최종 성능을 평가하는 데이터</td>
+</tr>
+</tbody>
+</table>
+
+<h2>14. 오류 유형 관리</h2>
+
+<p>
+라벨링 과정에서 발견된 오류는 따로 기록해야 합니다.
+오류 유형을 관리하면 어떤 문서에서 문제가 자주 발생하는지,
+어떤 필드를 개선해야 하는지 알 수 있습니다.
+</p>
+
+<table>
+<thead>
+<tr>
+  <th>오류 유형</th>
+  <th>예시</th>
+  <th>개선 방향</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>OCR 오인식</td>
+  <td>12,000을 12,OOO으로 인식</td>
+  <td>전처리 강화, 후처리 룰 추가</td>
+</tr>
+<tr>
+  <td>필드 혼동</td>
+  <td>공급가액을 총액으로 라벨링</td>
+  <td>라벨링 기준서 보완</td>
+</tr>
+<tr>
+  <td>날짜 선택 오류</td>
+  <td>승인일을 거래일로 저장</td>
+  <td>문서 유형별 날짜 우선순위 정의</td>
+</tr>
+<tr>
+  <td>거래처명 오류</td>
+  <td>카드사명을 거래처명으로 저장</td>
+  <td>거래처 필드 기준 명확화</td>
+</tr>
+</tbody>
+</table>
+
+<h2>15. 역할극으로 이해하는 라벨링</h2>
+
+<div class="dialogue">
+<p><span class="role">라벨러:</span><br>
+영수증에 날짜가 두 개 있습니다. 승인일과 매입일 중 어떤 것을 거래일로 넣어야 하나요?</p>
+
+<p><span class="role">회계 담당자:</span><br>
+우리 기준에서는 실제 결제일을 거래일로 사용합니다. 기준서에 그 규칙을 적어야 합니다.</p>
+
+<p><span class="role">AI 엔지니어:</span><br>
+그 기준이 일정해야 모델도 올바르게 학습할 수 있습니다.</p>
+
+<p><span class="role">라벨러:</span><br>
+부가세가 영수증에 표시되어 있지 않으면 계산해서 넣어도 되나요?</p>
+
+<p><span class="role">회계 담당자:</span><br>
+아니요. 표시되지 않은 값은 임의 계산하지 말고 null로 처리해야 합니다.</p>
+
+<p><span class="role">AI 엔지니어:</span><br>
+정답 데이터에는 실제 문서에서 확인 가능한 값과 회사의 회계 기준이 함께 반영되어야 합니다.</p>
+</div>
+
+<h2>학습 정리</h2>
+
+<div class="questions">
+<ul>
+  <li>정답 데이터는 AI가 학습하고 평가할 때 기준이 되는 데이터이다</li>
+  <li>문서 단위 라벨링과 필드 단위 라벨링을 구분해야 한다</li>
+  <li>회계 OCR에서는 날짜, 거래처, 공급가액, 부가세, 총액이 핵심 필드이다</li>
+  <li>라벨링 기준서가 없으면 작업자마다 다른 정답을 만들 수 있다</li>
+  <li>승인된 정답 데이터만 학습과 평가에 사용해야 한다</li>
+  <li>라벨 품질 검수와 오류 유형 관리는 모델 성능 개선의 핵심이다</li>
+</ul>
+</div>
+
+<div class="highlight">
+<p>
+<strong>한 줄 핵심 정리</strong><br>
+AI OCR 회계 프로그램의 성능은 모델보다 정답 데이터의 품질에서 먼저 결정됩니다.
+</p>
+</div>
+
+<div class="back">
+  <a href="../">← 홈으로</a>
+  <a href="../ai.html">← 목록으로</a>
+</div>
+
+</div>
+
+<div class="page-footer">
+  <footer>
+    © <span id="year"></span> Cha GPTs. All rights reserved.
+  </footer>
+</div>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
