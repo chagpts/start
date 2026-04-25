@@ -1,1 +1,656 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>데이터 수집과 전처리</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand&display=swap" rel="stylesheet">
 
+<style>
+body {
+  font-family: 'Quicksand', sans-serif;
+  background:
+    linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
+    url("../verse.png") no-repeat center center / cover;
+  padding: 60px 20px;
+}
+.container {
+  max-width: 920px;
+  margin: auto;
+  background: rgba(255,255,255,0.95);
+  padding: 50px 60px;
+  border-radius: 28px;
+}
+h1, h2, h3 { font-family: 'Baloo 2', cursive; }
+h1 { margin-bottom: 28px; }
+h2 { margin-top: 50px; margin-bottom: 16px; }
+p {
+  line-height: 1.8;
+  margin-bottom: 18px;
+  font-size: 15px;
+}
+ul { margin-left: 20px; margin-bottom: 22px; }
+li { margin-bottom: 8px; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 28px 0;
+  font-size: 14px;
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 14px;
+  vertical-align: top;
+}
+th {
+  background: #f2f2f2;
+  font-weight: 600;
+}
+.highlight {
+  background: #f7f7f7;
+  padding: 22px 26px;
+  border-radius: 18px;
+  margin: 30px 0;
+  font-size: 14px;
+}
+.questions {
+  background: #f7f7f7;
+  padding: 25px 30px;
+  border-radius: 18px;
+  margin-top: 30px;
+}
+.link-block {
+  background: #eef2f7;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin-top: 14px;
+  font-size: 14px;
+}
+.dialogue {
+  background: #fafafa;
+  padding: 26px 30px;
+  border-radius: 18px;
+  margin-top: 25px;
+  font-size: 14px;
+}
+.role { font-weight: 600; }
+pre {
+  background: #f3f3f3;
+  padding: 16px 18px;
+  border-radius: 12px;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.6;
+}
+code {
+  background: #f3f3f3;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+.back {
+  text-align: center;
+  margin-top: 55px;
+}
+.back a {
+  display: inline-block;
+  padding: 12px 26px;
+  background: #333;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 6px;
+}
+footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 13px;
+  background: rgba(255,255,255,0.75);
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 20px;
+}
+.page-footer { text-align: center; }
+@media (max-width: 600px) {
+  .container { padding: 30px 24px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>데이터 수집과 전처리</h1>
+
+<p>
+데이터 수집과 전처리는 AI, 머신러닝, OCR, 데이터 분석 프로젝트의 출발점입니다.
+좋은 모델이나 좋은 분석 도구가 있어도 데이터가 부정확하거나 정리되어 있지 않으면
+결과를 신뢰하기 어렵습니다.
+따라서 데이터를 어떻게 모으고, 어떻게 정리하고, 어떻게 사용할 수 있는 형태로 만드는지가 매우 중요합니다.
+</p>
+
+<div class="link-block">
+  <p><strong>이 문서에서 배우는 내용</strong></p>
+  <p>• 데이터 수집의 개념과 목적</p>
+  <p>• 수집 가능한 데이터 종류</p>
+  <p>• 데이터 품질 점검 기준</p>
+  <p>• 전처리의 주요 작업</p>
+  <p>• 실무에서 자주 발생하는 오류와 해결 방법</p>
+</div>
+
+<h2>1. 데이터 수집이란 무엇인가</h2>
+
+<p>
+데이터 수집은 분석이나 AI 학습에 필요한 원천 데이터를 모으는 과정입니다.
+데이터는 시스템에서 자동으로 생성될 수도 있고,
+문서, 엑셀, 이미지, 로그, 설문, 외부 API 등을 통해 수집될 수도 있습니다.
+</p>
+
+<div class="highlight">
+<p>
+데이터 수집의 핵심은 “많이 모으는 것”이 아니라,
+문제 해결에 필요한 데이터를 정확하고 일관되게 모으는 것입니다.
+</p>
+</div>
+
+<h2>2. 데이터 수집이 중요한 이유</h2>
+
+<p>
+데이터 품질은 전체 프로젝트 결과에 직접적인 영향을 줍니다.
+부정확한 데이터를 기반으로 모델을 만들면 모델도 부정확한 판단을 하게 됩니다.
+분석 결과가 틀리면 잘못된 의사결정으로 이어질 수 있습니다.
+</p>
+
+<table>
+<thead>
+<tr>
+  <th>문제</th>
+  <th>영향</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>누락된 데이터</td>
+  <td>분석 결과가 편향되거나 일부 상황을 반영하지 못함</td>
+</tr>
+<tr>
+  <td>중복 데이터</td>
+  <td>금액, 건수, 빈도가 실제보다 크게 계산될 수 있음</td>
+</tr>
+<tr>
+  <td>잘못된 형식</td>
+  <td>날짜, 금액, 코드가 제대로 처리되지 않음</td>
+</tr>
+<tr>
+  <td>오류 데이터</td>
+  <td>모델 학습 결과나 통계 분석 결과가 왜곡됨</td>
+</tr>
+<tr>
+  <td>출처 불명확</td>
+  <td>데이터 신뢰성과 감사 추적성이 낮아짐</td>
+</tr>
+</tbody>
+</table>
+
+<h2>3. 수집 가능한 데이터 종류</h2>
+
+<p>
+프로젝트 목적에 따라 수집해야 할 데이터는 달라집니다.
+회계 자동화에서는 영수증, 세금계산서, 거래 데이터가 중요하고,
+머신러닝 프로젝트에서는 정답 라벨이 포함된 학습 데이터가 중요할 수 있습니다.
+</p>
+
+<table>
+<thead>
+<tr>
+  <th>데이터 종류</th>
+  <th>예시</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>정형 데이터</td>
+  <td>엑셀, CSV, 데이터베이스 테이블, ERP 거래 내역</td>
+</tr>
+<tr>
+  <td>반정형 데이터</td>
+  <td>JSON, XML, 로그 파일, 이메일 메타데이터</td>
+</tr>
+<tr>
+  <td>비정형 데이터</td>
+  <td>PDF, 이미지, 영수증 사진, 계약서, 음성, 자유 텍스트</td>
+</tr>
+<tr>
+  <td>시스템 로그</td>
+  <td>로그인 이력, 권한 변경 이력, 배치 작업 로그</td>
+</tr>
+<tr>
+  <td>외부 데이터</td>
+  <td>공공 데이터, API 데이터, 웹 데이터, 시장 데이터</td>
+</tr>
+</tbody>
+</table>
+
+<h2>4. 데이터 수집 방법</h2>
+
+<p>
+데이터는 다양한 방식으로 수집할 수 있습니다.
+중요한 것은 수집 방법마다 장단점과 품질 문제가 다르다는 점입니다.
+자동 수집은 효율적이지만 시스템 연계 오류를 점검해야 하고,
+수동 입력은 유연하지만 입력 오류가 발생하기 쉽습니다.
+</p>
+
+<table>
+<thead>
+<tr>
+  <th>수집 방법</th>
+  <th>설명</th>
+  <th>주의사항</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>시스템 추출</td>
+  <td>ERP, 회계 프로그램, DB에서 데이터를 내려받음</td>
+  <td>추출 기준일, 필터 조건, 컬럼 정의 확인</td>
+</tr>
+<tr>
+  <td>파일 업로드</td>
+  <td>엑셀, CSV, PDF, 이미지 파일을 업로드</td>
+  <td>파일 형식과 컬럼 구조 표준화 필요</td>
+</tr>
+<tr>
+  <td>API 연계</td>
+  <td>외부 시스템과 자동으로 데이터를 주고받음</td>
+  <td>인증, 오류 처리, 호출 제한 확인</td>
+</tr>
+<tr>
+  <td>OCR 수집</td>
+  <td>이미지나 PDF에서 텍스트를 추출</td>
+  <td>이미지 품질과 OCR 오류 검증 필요</td>
+</tr>
+<tr>
+  <td>수동 입력</td>
+  <td>사용자가 화면에서 직접 입력</td>
+  <td>입력값 검증과 필수값 체크 필요</td>
+</tr>
+</tbody>
+</table>
+
+<h2>5. 수집 전 정의해야 할 것</h2>
+
+<p>
+데이터를 모으기 전에 무엇을 위해 데이터를 사용할지 명확히 해야 합니다.
+목적이 불명확하면 불필요한 데이터를 많이 모으거나,
+정작 필요한 데이터가 빠질 수 있습니다.
+</p>
+
+<ul>
+  <li>해결하려는 문제는 무엇인가</li>
+  <li>필요한 데이터 항목은 무엇인가</li>
+  <li>데이터 출처는 어디인가</li>
+  <li>수집 주기는 어떻게 할 것인가</li>
+  <li>데이터 기준일은 무엇인가</li>
+  <li>개인정보나 민감정보가 포함되는가</li>
+  <li>누가 데이터 품질을 책임지는가</li>
+</ul>
+
+<h2>6. 데이터 품질 기준</h2>
+
+<p>
+수집한 데이터는 바로 사용할 수 없습니다.
+먼저 품질을 확인해야 합니다.
+대표적인 품질 기준은 정확성, 완전성, 일관성, 유효성, 중복 여부, 최신성입니다.
+</p>
+
+<table>
+<thead>
+<tr>
+  <th>품질 기준</th>
+  <th>의미</th>
+  <th>예시</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>정확성</td>
+  <td>값이 실제 사실과 일치하는가</td>
+  <td>거래금액이 실제 영수증 금액과 일치</td>
+</tr>
+<tr>
+  <td>완전성</td>
+  <td>필수값이 빠지지 않았는가</td>
+  <td>거래일, 거래처, 금액 누락 없음</td>
+</tr>
+<tr>
+  <td>일관성</td>
+  <td>같은 의미의 값이 동일한 방식으로 표현되는가</td>
+  <td>스타벅스, STARBUCKS, Starbucks 표기 통일</td>
+</tr>
+<tr>
+  <td>유효성</td>
+  <td>값이 허용 가능한 범위와 형식에 맞는가</td>
+  <td>날짜가 YYYY-MM-DD 형식인지 확인</td>
+</tr>
+<tr>
+  <td>중복성</td>
+  <td>같은 데이터가 반복 저장되지 않았는가</td>
+  <td>동일 영수증 중복 업로드 확인</td>
+</tr>
+<tr>
+  <td>최신성</td>
+  <td>데이터가 필요한 시점 기준으로 최신인가</td>
+  <td>퇴사자 목록이 최신 인사 정보와 일치</td>
+</tr>
+</tbody>
+</table>
+
+<h2>7. 데이터 전처리란 무엇인가</h2>
+
+<p>
+데이터 전처리는 수집한 원천 데이터를 분석이나 모델 학습에 사용할 수 있도록 정리하는 과정입니다.
+원천 데이터에는 누락값, 중복값, 오탈자, 형식 불일치, 이상값 등이 포함될 수 있습니다.
+이 문제를 해결하지 않으면 분석 결과와 AI 모델 성능이 떨어집니다.
+</p>
+
+<div class="highlight">
+<p>
+데이터 전처리는 원천 데이터를 “그냥 모은 데이터”에서
+“분석 가능한 데이터”로 바꾸는 과정입니다.
+</p>
+</div>
+
+<h2>8. 전처리의 주요 작업</h2>
+
+<table>
+<thead>
+<tr>
+  <th>작업</th>
+  <th>설명</th>
+  <th>예시</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>결측값 처리</td>
+  <td>비어 있는 값을 제거하거나 대체</td>
+  <td>거래처명이 없으면 확인 필요 표시</td>
+</tr>
+<tr>
+  <td>중복 제거</td>
+  <td>같은 데이터가 여러 번 들어온 경우 정리</td>
+  <td>동일 날짜, 금액, 거래처 영수증 중복 제거</td>
+</tr>
+<tr>
+  <td>형식 통일</td>
+  <td>날짜, 금액, 코드 형식을 표준화</td>
+  <td>2026.03.01 → 2026-03-01</td>
+</tr>
+<tr>
+  <td>오류값 수정</td>
+  <td>잘못 입력되거나 잘못 인식된 값을 보정</td>
+  <td>1O,OOO → 10,000</td>
+</tr>
+<tr>
+  <td>이상값 확인</td>
+  <td>일반 범위를 벗어난 값을 검토</td>
+  <td>식비 5,000,000원 거래 확인</td>
+</tr>
+<tr>
+  <td>데이터 변환</td>
+  <td>분석에 맞게 값을 변환</td>
+  <td>문자형 금액을 숫자형으로 변환</td>
+</tr>
+</tbody>
+</table>
+
+<h2>9. 결측값 처리</h2>
+
+<p>
+결측값은 데이터가 비어 있는 상태를 의미합니다.
+결측값을 무조건 삭제하면 데이터가 줄어들고,
+무조건 대체하면 왜곡이 생길 수 있습니다.
+따라서 결측값의 원인과 중요도를 먼저 확인해야 합니다.
+</p>
+
+<table>
+<thead>
+<tr>
+  <th>처리 방법</th>
+  <th>설명</th>
+  <th>주의사항</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>삭제</td>
+  <td>결측값이 있는 행이나 컬럼을 제거</td>
+  <td>중요 데이터가 많이 사라질 수 있음</td>
+</tr>
+<tr>
+  <td>기본값 입력</td>
+  <td>알 수 없음, 0, 기타 등으로 표시</td>
+  <td>실제 의미와 맞는지 확인 필요</td>
+</tr>
+<tr>
+  <td>평균·중앙값 대체</td>
+  <td>숫자 데이터에서 대표값으로 대체</td>
+  <td>분포가 왜곡될 수 있음</td>
+</tr>
+<tr>
+  <td>수동 확인</td>
+  <td>중요 필드는 담당자가 직접 확인</td>
+  <td>시간은 걸리지만 정확도가 높음</td>
+</tr>
+</tbody>
+</table>
+
+<h2>10. 중복 데이터 처리</h2>
+
+<p>
+중복 데이터는 분석 결과를 왜곡할 수 있습니다.
+예를 들어 같은 영수증이 두 번 업로드되면 비용이 실제보다 크게 계산됩니다.
+중복 여부는 단순히 파일명이 같은지만 보지 않고,
+날짜, 거래처, 금액, 문서번호 등을 함께 비교해야 합니다.
+</p>
+
+<pre><code>중복 확인 예시
+
+1. 동일 날짜 + 동일 거래처 + 동일 금액 확인
+2. 동일 세금계산서 번호 확인
+3. 동일 파일 해시값 확인
+4. 동일 사용자가 짧은 시간 안에 같은 문서를 업로드했는지 확인</code></pre>
+
+<h2>11. 형식 통일</h2>
+
+<p>
+데이터 형식이 제각각이면 분석과 자동화가 어려워집니다.
+특히 날짜, 금액, 사업자등록번호, 전화번호, 계정코드처럼
+규칙이 있는 데이터는 표준 형식으로 통일해야 합니다.
+</p>
+
+<table>
+<thead>
+<tr>
+  <th>항목</th>
+  <th>원본 예시</th>
+  <th>표준 형식</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>날짜</td>
+  <td>2026.03.01, 26/03/01</td>
+  <td>2026-03-01</td>
+</tr>
+<tr>
+  <td>금액</td>
+  <td>₩12,000, 12,000원</td>
+  <td>12000</td>
+</tr>
+<tr>
+  <td>사업자등록번호</td>
+  <td>1234567890</td>
+  <td>123-45-67890</td>
+</tr>
+<tr>
+  <td>거래처명</td>
+  <td>스타벅스, STARBUCKS</td>
+  <td>스타벅스</td>
+</tr>
+</tbody>
+</table>
+
+<h2>12. 이상값 처리</h2>
+
+<p>
+이상값은 일반적인 범위에서 크게 벗어난 값입니다.
+이상값은 단순 오류일 수도 있고, 실제 중요한 사건일 수도 있습니다.
+따라서 무조건 삭제하기보다 원인을 확인해야 합니다.
+</p>
+
+<ul>
+  <li>입력 오류인지 확인</li>
+  <li>단위가 잘못 적용되었는지 확인</li>
+  <li>실제 예외 거래인지 확인</li>
+  <li>분석 목적상 제외할지 유지할지 결정</li>
+  <li>제외했다면 근거를 기록</li>
+</ul>
+
+<h2>13. 텍스트 데이터 전처리</h2>
+
+<p>
+문서, OCR 결과, 고객 의견, 이메일 같은 텍스트 데이터는 별도의 정리가 필요합니다.
+불필요한 공백, 특수문자, 줄바꿈, 오탈자를 정리하고
+분석 목적에 맞게 단어 또는 문장 단위로 변환해야 합니다.
+</p>
+
+<table>
+<thead>
+<tr>
+  <th>작업</th>
+  <th>예시</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>공백 정리</td>
+  <td>합   계 → 합계</td>
+</tr>
+<tr>
+  <td>특수문자 제거</td>
+  <td>₩12,000원 → 12000</td>
+</tr>
+<tr>
+  <td>오탈자 보정</td>
+  <td>T0TAL → TOTAL</td>
+</tr>
+<tr>
+  <td>표기 통일</td>
+  <td>VAT, 부가세, 세액 → 부가세</td>
+</tr>
+</tbody>
+</table>
+
+<h2>14. 데이터 전처리 예시</h2>
+
+<pre><code>원본 데이터
+
+날짜: 2026.03.01
+거래처: STARBUCKS
+금액: ₩12,000
+부가세: 1,O91
+파일명: receipt.jpg
+
+전처리 후
+
+date: 2026-03-01
+vendor: 스타벅스
+amount: 12000
+vat: 1091
+file_name: 2026-03-01_스타벅스_12000.jpg</code></pre>
+
+<h2>15. 전처리 결과 검증</h2>
+
+<p>
+전처리가 끝난 뒤에는 결과가 정확한지 검증해야 합니다.
+전처리 과정에서 데이터가 잘못 변환되거나 중요한 정보가 사라질 수 있기 때문입니다.
+</p>
+
+<ul>
+  <li>변환 전후 데이터 건수가 일치하는지 확인</li>
+  <li>필수 컬럼에 결측값이 남아 있는지 확인</li>
+  <li>금액 합계가 전처리 전후로 크게 달라지지 않았는지 확인</li>
+  <li>날짜 범위가 예상 범위 안에 있는지 확인</li>
+  <li>중복 제거 기준이 과도하지 않았는지 확인</li>
+  <li>삭제하거나 수정한 데이터의 근거를 기록</li>
+</ul>
+
+<h2>16. 역할극으로 이해하는 데이터 수집과 전처리</h2>
+
+<div class="dialogue">
+<p><span class="role">기획자:</span><br>
+데이터만 많이 모으면 AI 모델을 만들 수 있나요?</p>
+
+<p><span class="role">데이터 분석가:</span><br>
+많이 모으는 것보다 정확하고 필요한 데이터를 모으는 것이 더 중요합니다.</p>
+
+<p><span class="role">기획자:</span><br>
+수집한 데이터를 바로 모델에 넣으면 안 되나요?</p>
+
+<p><span class="role">데이터 분석가:</span><br>
+바로 넣으면 위험합니다. 누락값, 중복값, 오류값, 형식 불일치를 먼저 정리해야 합니다.</p>
+
+<p><span class="role">기획자:</span><br>
+전처리는 단순히 보기 좋게 정리하는 건가요?</p>
+
+<p><span class="role">데이터 분석가:</span><br>
+아닙니다. 분석과 학습이 가능한 형태로 데이터를 바꾸는 과정입니다.</p>
+
+<p><span class="role">기획자:</span><br>
+가장 조심해야 할 부분은 무엇인가요?</p>
+
+<p><span class="role">데이터 분석가:</span><br>
+전처리 과정에서 중요한 데이터를 잘못 삭제하거나 왜곡하지 않는 것입니다.</p>
+</div>
+
+<h2>학습 정리</h2>
+
+<div class="questions">
+<ul>
+  <li>데이터 수집은 문제 해결에 필요한 데이터를 정확히 모으는 과정이다</li>
+  <li>전처리는 원천 데이터를 분석 가능한 형태로 정리하는 과정이다</li>
+  <li>데이터 품질은 정확성, 완전성, 일관성, 유효성, 중복성, 최신성으로 점검한다</li>
+  <li>결측값, 중복값, 오류값, 이상값은 반드시 검토해야 한다</li>
+  <li>전처리 후에는 데이터 건수, 합계, 필수값, 형식이 정상인지 확인해야 한다</li>
+</ul>
+</div>
+
+<div class="highlight">
+<p>
+<strong>한 줄 핵심 정리</strong><br>
+데이터 수집과 전처리는 AI와 분석의 기반이며,
+좋은 결과는 좋은 데이터 준비에서 시작됩니다.
+</p>
+</div>
+
+<div class="back">
+  <a href="../">← 홈으로</a>
+  <a href="../ai.html">← 목록으로</a>
+</div>
+
+</div>
+
+<div class="page-footer">
+  <footer>
+    © <span id="year"></span> Cha GPTs. All rights reserved.
+  </footer>
+</div>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
