@@ -1,9 +1,18 @@
 body {
   margin: 0;
   font-family: "Segoe UI", sans-serif;
-  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+  
+  background:
+    linear-gradient(135deg, rgba(238,242,255,0.9), rgba(248,250,252,0.9)),
+    url("B.png");
+    
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
   color: #222;
 }
+
 
 main {
   max-width: 900px;
