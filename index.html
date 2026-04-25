@@ -162,12 +162,26 @@
         padding: 14px 30px;
         display: inline-block;
       }  
-    .logo {
-  width: 40px;
+     
+  .logo {
+  width: 58px;
+  height: auto;
   vertical-align: middle;
-  margin-right: 8px;
-    }  
-  
+  margin-right: 14px;
+  }
+
+
+
+      @media (max-width: 767px) {
+  .logo {
+    width: 46px;
+    margin-right: 8px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+}
   </style>
 </head>
 
@@ -177,12 +191,16 @@
 
 <div class="hero">
 <h1>
+  <img src="A.jpg" class="logo" alt="AuditSecu logo">
+  AI Accounting & Audit Training
+</h1>
+  
+<h1>
   <img src="logo.png" class="logo">
   AI Accounting & Audit Training</h1>
   <p>Build, audit, and secure real accounting systems with AI.</p>
   <p>회계 + AI + 감사 + 보안을 한 번에 배우는 실습형 교육</p>
 </div>
-
   
   <!-- OVERVIEW -->
   <div class="meetup-info">
