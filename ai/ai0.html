@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>내부회계 대응형 AI 회계증빙 통제 서버 구축 보고서</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand&display=swap" rel="stylesheet">
+
+<style>
+body {
+  font-family: 'Quicksand', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  background:
+    linear-gradient(rgba(255,255,255,0.68), rgba(255,255,255,0.68)),
+    url("../verse.png") no-repeat center center / cover;
+  padding: 60px 20px;
+  color: #222;
+}
+
+.container {
+  max-width: 920px;
+  margin: auto;
+  background: rgba(255,255,255,0.96);
+  padding: 50px 60px;
+  border-radius: 28px;
+  box-shadow: 0 18px 50px rgba(0,0,0,0.08);
+}
+
+h1, h2, h3 {
+  font-family: 'Baloo 2', 'Noto Sans KR', cursive;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 36px;
+  line-height: 1.25;
+}
+
+h2 {
+  margin-top: 55px;
+  margin-bottom: 16px;
+  font-size: 27px;
+}
+
+h3 {
+  margin-top: 30px;
+  margin-bottom: 12px;
+  font-size: 21px;
+}
+
+p {
+  line-height: 1.85;
+  margin-bottom: 18px;
+  font-size: 15px;
+}
+
+ul {
+  margin-left: 20px;
+  margin-bottom: 22px;
+  padding-left: 12px;
+}
+
+li {
+  margin-bottom: 8px;
+  line-height: 1.7;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 28px 0;
+  font-size: 14px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px 14px;
+  vertical-align: top;
+}
+
+th {
+  background: #f2f2f2;
+  font-weight: 600;
+}
+
+.highlight {
+  background: #f7f7f7;
+  padding: 22px 26px;
+  border-radius: 18px;
+  margin: 30px 0;
+  font-size: 14px;
+}
+
+.link-block {
+  background: #eef2f7;
+  padding: 18px 22px;
+  border-radius: 14px;
+  margin-top: 18px;
+  margin-bottom: 28px;
+  font-size: 14px;
+}
+
+.questions {
+  background: #f7f7f7;
+  padding: 25px 30px;
+  border-radius: 18px;
+  margin-top: 30px;
+}
+
+.dialogue {
+  background: #fafafa;
+  padding: 26px 30px;
+  border-radius: 18px;
+  margin-top: 25px;
+  font-size: 14px;
+}
+
+.role {
+  font-weight: 600;
+}
+
+.badge {
+  display: inline-block;
+  background: #333;
+  color: #fff;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 26px 0;
+}
+
+.summary-card {
+  background: #f7f7f7;
+  padding: 18px 20px;
+  border-radius: 16px;
+}
+
+.summary-card strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.back {
+  text-align: center;
+  margin-top: 55px;
+}
+
+.back a {
+  display: inline-block;
+  padding: 12px 26px;
+  background: #333;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 6px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 13px;
+  background: rgba(255,255,255,0.75);
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 20px;
+}
+
+.footer-wrap {
+  text-align: center;
+}
+
+@media (max-width: 760px) {
+  .container {
+    padding: 30px 24px;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  table {
+    font-size: 13px;
+  }
+
+  th, td {
+    padding: 10px;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h1>내부회계 대응형 AI 회계증빙 통제 서버 구축 보고서</h1>
+
+<p>
+이 보고서는 고객사 내부망에 설치되는 AI OCR 기반 회계증빙 통제 서버를
+1년 안에 현실적으로 개발하고, 파일럿 운영하며, 유료 구축형 제품으로 전환하기 위한
+전체 계획을 정리한 문서입니다.
+</p>
+
+<div class="link-block">
+  <p><strong>이 보고서의 핵심 내용</strong></p>
+  <p>• 고객사 내부망에서 회계문서를 자동 수집하고 처리하는 구조</p>
+  <p>• AI OCR, 필드추출, 전표초안, 검수, 승인, 감사로그의 전체 흐름</p>
+  <p>• 12개월 개발 로드맵과 분기별 목표</p>
+  <p>• 내부회계 대응을 위한 권한관리, 변경이력, 감사패키지 설계</p>
+  <p>• 개발팀 구성, 예산 계획, 구매 전략, 가격 전략</p>
+</div>
+
+<div class="summary-grid">
+  <div class="summary-card">
+    <strong>목표 기간</strong>
+    12개월
+  </div>
+  <div class="summary-card">
+    <strong>예산 기준</strong>
+    약 10억 원
+  </div>
+  <div class="summary-card">
+    <strong>목표 고객</strong>
+    중견기업, 세무법인, 프랜차이즈 본사
+  </div>
+</div>
+
+<h2>1. 제품 요약</h2>
+
+<p>
+이 제품은 단순 OCR 프로그램이 아니라 회계증빙의 수집, 검수, 승인, 보관,
+감사추적을 하나의 흐름으로 관리하는 내부회계 대응형 통제 서버입니다.
+</p>
+
+<div class="highlight">
+  <p>
+    회계증빙을 외부로 보내지 않고 내부망에서 AI OCR 처리하며,
+    전표와 증빙을 연결하고, 검수·승인·변경이력·접근로그·감사패키지를 제공하는 것이 핵심입니다.
+  </p>
+</div>
+
+<table>
+<thead>
+<tr>
+  <th>핵심 가치</th>
+  <th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>로컬 처리</td>
+  <td>민감한 회계증빙을 외부 클라우드로 보내지 않고 고객사 내부망에서 처리합니다.</td>
+</tr>
+<tr>
+  <td>입력 자동화</td>
+  <td>세금계산서, 영수증, 거래명세서 등에서 주요 회계 필드를 자동 추출합니다.</td>
+</tr>
+<tr>
+  <td>감사 대응</td>
+  <td>전표-증빙 연결, 변경이력, 승인로그, 감사 샘플 패키지를 제공합니다.</td>
+</tr>
+<tr>
+  <td>내부통제 강화</td>
+  <td>검수자와 승인자를 분리하고 승인 후 수정 통제를 적용합니다.</td>
+</tr>
+</tbody>
+</table>
+
+<div class="questions">
+  <ul>
+    <li>감사인 질문: 단순 OCR을 넘어 신뢰할 수 있는 감사 증거를 어떻게 제공합니까?</li>
+    <li>AI 개발자 답변: 원본 문서, 해시값, 추출 필드, 전표 초안, 검수·승인·수정·내보내기·접근 로그를 연결해 원본부터 회계 결과물까지 이어지는 감사추적을 만듭니다.</li>
+  </ul>
+</div>
+
+<h2>2. 목표 제품 구조</h2>
+
+<p>
+사용자는 웹 브라우저로 검수와 승인을 수행하고, AI 처리는 고객사 내부 GPU 서버에서 수행합니다.
+문서는 NAS 또는 스캐너 폴더에서 자동 수집되며, 처리 결과는 내부 데이터베이스와 파일 저장소에 남습니다.
+</p>
+
+<table>
+<thead>
+<tr>
+  <th>구성 요소</th>
+  <th>역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>NAS / 스캐너 폴더</td>
+  <td>세금계산서, 영수증, 거래명세서, 통장내역 등 회계증빙을 자동 수집합니다.</td>
+</tr>
+<tr>
+  <td>AI OCR 처리 서버</td>
+  <td>OCR, 문서 분류, 필드 추출, 금액 검산, 중복 탐지, 전표 초안 생성을 수행합니다.</td>
+</tr>
+<tr>
+  <td>검수 / 승인 웹 시스템</td>
+  <td>원본 증빙 확인, 필드 수정, 승인 요청, 승인자 승인, 승인 후 잠금을 지원합니다.</td>
+</tr>
+<tr>
+  <td>내보내기 모듈</td>
+  <td>엑셀, CSV, 회계 프로그램 업로드 양식을 생성합니다.</td>
+</tr>
+<tr>
+  <td>감사 대응 모듈</td>
+  <td>원본 해시값, 전표-증빙 연결, 변경이력, 접근로그, 감사 패키지를 제공합니다.</td>
+</tr>
+</tbody>
+</table>
+
+<h3>1년 최종 목표</h3>
+
+<ul>
+  <li>고객사 내부망 GPU 서버 설치 가능</li>
+  <li>NAS/스캐너 폴더 자동 수집 가능</li>
+  <li>OCR, 필드추출, 금액검산, 중복탐지 가능</li>
+  <li>검수자와 승인자 분리 가능</li>
+  <li>승인 후 잠금, 재오픈, 재승인 가능</li>
+  <li>전표-증빙 연결 가능</li>
+  <li>변경 전후 이력 저장 가능</li>
+  <li>접근로그, 다운로드로그, 권한변경로그 저장 가능</li>
+  <li>감사 샘플 패키지 출력 가능</li>
+  <li>백업 및 복구 기능 제공</li>
+</ul>
+
+<div class="questions">
+  <ul>
+    <li>재무팀장 질문: 회계 데이터가 외부로 나가지 않는다는 것을 어떻게 확인할 수 있습니까?</li>
+    <li>AI 개발자 답변: 운영 환경에서 외부 AI 호출을 차단하고, 내부 저장소와 내부 GPU 서버만 사용하며, 처리 로그와 네트워크 정책을 남기면 확인 가능합니다.</li>
+  </ul>
+</div>
+
+<h2>3. 1년 로드맵</h2>
+
+<p>
+1~3개월은 작동하는 MVP, 4~6개월은 파일럿 설치 가능 제품,
+7~9개월은 내부회계 통제 기능 강화, 10~12개월은 유료 구축형 제품 출시를 목표로 합니다.
+</p>
+
+<table>
+<thead>
+<tr>
+  <th>기간</th>
+  <th>목표</th>
+  <th>제품 상태</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1~3개월</td>
+  <td>OCR MVP 완성</td>
+  <td>내부망 설치 가능한 기본 제품</td>
+</tr>
+<tr>
+  <td>4~6개월</td>
+  <td>검수·승인·전표통제 강화</td>
+  <td>파일럿 설치 가능 제품</td>
+</tr>
+<tr>
+  <td>7~9개월</td>
+  <td>내부회계 감사 대응 기능 강화</td>
+  <td>엔터프라이즈 통제 베타</td>
+</tr>
+<tr>
+  <td>10~12개월</td>
+  <td>유료 구축형 제품 출시</td>
+  <td>판매 가능한 제품</td>
+</tr>
+</tbody>
+</table>
+
+<h3>월별 개발 목표</h3>
+
+<table>
+<thead>
+<tr>
+  <th>월</th>
+  <th>핵심 작업</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1개월</td>
+  <td>고객 인터뷰, 문서 샘플 확보, 출력 양식, 데이터베이스와 로그 설계, 화면 와이어프레임 작성</td>
+</tr>
+<tr>
+  <td>2개월</td>
+  <td>로그인, 사용자 역할, 문서 업로드, NAS 폴더 감시, 문서 상태관리, 설치 구조 구성</td>
+</tr>
+<tr>
+  <td>3개월</td>
+  <td>PDF/JPG/PNG OCR, 필드추출, 금액검산, 검수화면, 엑셀/CSV 내보내기, 배치 테스트</td>
+</tr>
+<tr>
+  <td>4개월</td>
+  <td>검수자/승인자 분리, 승인 요청, 반려, 승인 후 잠금, 재오픈 사유, 재승인 절차</td>
+</tr>
+<tr>
+  <td>5개월</td>
+  <td>원본 해시, 전표 초안, 증빙-전표 연결, 변경 전후 이력, 수정 사유 저장</td>
+</tr>
+<tr>
+  <td>6개월</td>
+  <td>파일럿 고객 설치, 실제 문서 처리, 검수 시간 측정, 출력 양식 조정</td>
+</tr>
+<tr>
+  <td>7개월</td>
+  <td>역할 세분화, 부서/사업장 접근제어, 감사자 권한, 권한변경로그</td>
+</tr>
+<tr>
+  <td>8개월</td>
+  <td>감사로그, 예외관리, 미승인·재오픈·검산오류 리포트</td>
+</tr>
+<tr>
+  <td>9개월</td>
+  <td>백업, 복구, 암호화, 복구 테스트, 시스템 변경 로그</td>
+</tr>
+<tr>
+  <td>10개월</td>
+  <td>감사 샘플 검색, 감사 패키지 생성, 해시 검증 리포트</td>
+</tr>
+<tr>
+  <td>11개월</td>
+  <td>대량 문서 테스트, 장시간 운영 테스트, 장애 복구, 매뉴얼, 보안자료 정리</td>
+</tr>
+<tr>
+  <td>12개월</td>
+  <td>파일럿 결과 정리, 투자효과 계산, 유료 제안, 구축비·유지보수 견적, 제품 출시</td>
+</tr>
+</tbody>
+</table>
+
+<div class="questions">
+  <ul>
+    <li>회계사 질문: 언제부터 AI 출력값을 전표 초안 작성에 사용할 수 있습니까?</li>
+    <li>AI 개발자 답변: 증빙-전표 연결, 금액 검산, 변경 추적이 가능한 5개월차 이후부터 사용하는 것이 적절합니다. 다만 최종 승인은 사람이 해야 합니다.</li>
+  </ul>
+</div>
+
+<h2>4. 기능 우선순위</h2>
+
+<h3>반드시 해야 하는 기능</h3>
+
+<ul>
+  <li>NAS/스캐너 폴더 자동 수집</li>
+  <li>OCR 및 필드추출</li>
+  <li>검수 화면</li>
+  <li>엑셀/CSV 내보내기</li>
+  <li>원본 증빙 해시값</li>
+  <li>증빙-전표 연결</li>
+  <li>검수/승인 분리</li>
+  <li>승인 후 잠금</li>
+  <li>변경 전후 이력</li>
+  <li>접근로그와 다운로드로그</li>
+  <li>감사 샘플 패키지</li>
+  <li>백업과 복구</li>
+</ul>
+
+<h3>1년 차에는 미뤄야 하는 기능</h3>
+
+<ul>
+  <li>홈택스 자동 연동</li>
+  <li>은행/카드사 자동 스크래핑</li>
+  <li>부가세 신고 자동제출</li>
+  <li>법인세 신고 자동화</li>
+  <li>전자세금계산서 발급 대행</li>
+  <li>완전 자동분개</li>
+  <li>모든 ERP 실시간 API 연동</li>
+  <li>대규모 클러스터 구축</li>
+  <li>모바일 앱</li>
+  <li>자체 대형 언어모델 학습</li>
+</ul>
+
+<div class="highlight">
+  <p>
+    1년 차 목표는 모든 회계업무 자동화가 아니라
+    증빙 통제, 검수, 승인, 감사추적이 가능한 안정적인 제품을 만드는 것입니다.
+  </p>
+</div>
+
+<h2>5. 개발팀 구성</h2>
+
+<p>
+권장 인원은 8~10명입니다. 초기에는 6~7명으로 시작할 수 있으나,
+6개월 이후에는 구축, 품질관리, 고객지원 인력이 필요합니다.
+</p>
+
+<table>
+<thead>
+<tr>
+  <th>역할</th>
+  <th>인원</th>
+  <th>담당</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>대표/기획자</td>
+  <td>1명</td>
+  <td>제품 방향, 고객, 일정, 우선순위 관리</td>
+</tr>
+<tr>
+  <td>백엔드 개발자</td>
+  <td>2명</td>
+  <td>API, 데이터베이스, 권한, 로그, 승인, 내보내기</td>
+</tr>
+<tr>
+  <td>프론트엔드 개발자</td>
+  <td>1~2명</td>
+  <td>검수 화면, 관리자 화면, 감사자 화면</td>
+</tr>
+<tr>
+  <td>AI/OCR 엔지니어</td>
+  <td>2명</td>
+  <td>OCR, 문서분류, 필드추출, 검산</td>
+</tr>
+<tr>
+  <td>인프라 담당자</td>
+  <td>1명</td>
+  <td>서버 설치, 백업, 업데이트, 운영환경 구성</td>
+</tr>
+<tr>
+  <td>회계/내부통제 전문가</td>
+  <td>1명</td>
+  <td>전표, 승인흐름, 내부회계 요구사항 설계</td>
+</tr>
+<tr>
+  <td>품질관리 담당자</td>
+  <td>1명</td>
+  <td>실제 문서 테스트, 회귀 테스트</td>
+</tr>
+<tr>
+  <td>영업/구축 담당자</td>
+  <td>1명</td>
+  <td>파일럿 고객, 설치, 교육, 피드백 수집</td>
+</tr>
+</tbody>
+</table>
+
+<h2>6. 1년 예산 계획</h2>
+
+<p>
+10억을 모두 소진하기보다 8억~8.5억으로 제품 1.0을 만들고,
+1.5억~2억은 예비비로 남기는 전략이 안전합니다.
+</p>
+
+<table>
+<thead>
+<tr>
+  <th>항목</th>
+  <th>예산</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>개발 인건비</td>
+  <td>3.5억~4.0억</td>
+</tr>
+<tr>
+  <td>AI/OCR 개발 및 데이터 구축</td>
+  <td>1.2억~1.5억</td>
+</tr>
+<tr>
+  <td>서버 및 파일럿 장비</td>
+  <td>1.0억</td>
+</tr>
+<tr>
+  <td>설치, 백업, 보안, 운영환경</td>
+  <td>0.8억</td>
+</tr>
+<tr>
+  <td>회계 및 내부통제 자문</td>
+  <td>0.5억</td>
+</tr>
+<tr>
+  <td>품질관리, 테스트, 문서화</td>
+  <td>0.5억</td>
+</tr>
+<tr>
+  <td>영업, 파일럿, 마케팅</td>
+  <td>1.0억</td>
+</tr>
+<tr>
+  <td>법무, 계약서, 개인정보 자문</td>
+  <td>0.3억</td>
+</tr>
+<tr>
+  <td>예비비</td>
+  <td>1.0억</td>
+</tr>
+</tbody>
+</table>
+
+<div class="highlight">
+  <p>
+    예비비는 고객별 출력 양식, 보안 질의 대응, 데이터 라벨링, 현장 지원,
+    서버 튜닝 같은 예상치 못한 비용에 대비하기 위해 필요합니다.
+  </p>
+</div>
+
+<h2>7. 구매 계획</h2>
+
+<h3>전체 구매 요약</h3>
+
+<table>
+<thead>
+<tr>
+  <th>구분</th>
+  <th>구매 항목</th>
+  <th>수량</th>
+  <th>구매 시점</th>
+  <th>주요 용도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>핵심 장비</td>
+  <td>개발용 GPU 서버</td>
+  <td>1대</td>
+  <td>즉시</td>
+  <td>OCR/AI 개발, 배치 처리 성능 측정</td>
+</tr>
+<tr>
+  <td>핵심 장비</td>
+  <td>파일럿 납품용 GPU 서버</td>
+  <td>1~2대</td>
+  <td>6개월 이후</td>
+  <td>고객사 내부망 설치 및 파일럿 운영</td>
+</tr>
+<tr>
+  <td>스토리지</td>
+  <td>테스트 NAS</td>
+  <td>1대</td>
+  <td>즉시</td>
+  <td>NAS/스캐너 폴더 감시 기능 개발</td>
+</tr>
+<tr>
+  <td>입력 장비</td>
+  <td>고속 문서 스캐너</td>
+  <td>1~2대</td>
+  <td>즉시~3개월</td>
+  <td>스캔 문서 테스트</td>
+</tr>
+<tr>
+  <td>전원</td>
+  <td>무정전 전원장치</td>
+  <td>1~3대</td>
+  <td>즉시~6개월</td>
+  <td>서버와 NAS 전원 보호</td>
+</tr>
+<tr>
+  <td>네트워크</td>
+  <td>고속 스위치</td>
+  <td>1대</td>
+  <td>즉시</td>
+  <td>서버와 NAS 간 대용량 전송</td>
+</tr>
+<tr>
+  <td>개발 장비</td>
+  <td>개발자 PC/노트북</td>
+  <td>3~5대</td>
+  <td>즉시</td>
+  <td>개발팀 기본 장비</td>
+</tr>
+<tr>
+  <td>보안/운영</td>
+  <td>보안 점검 및 모니터링 도구</td>
+  <td>1세트</td>
+  <td>3~9개월</td>
+  <td>취약점 점검, 로그, 운영 모니터링</td>
+</tr>
+</tbody>
+</table>
+
+<h3>서버 사양 기준</h3>
+
+<table>
+<thead>
+<tr>
+  <th>용도</th>
+  <th>권장 GPU</th>
+  <th>메모리</th>
+  <th>저장장치</th>
+  <th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>개발용</td>
+  <td>고성능 개발용 GPU</td>
+  <td>128GB</td>
+  <td>고속 SSD + 대용량 HDD</td>
+  <td>개발과 벤치마크에 적합</td>
+</tr>
+<tr>
+  <td>파일럿 소형</td>
+  <td>워크스테이션급 GPU</td>
+  <td>128GB 이상</td>
+  <td>SSD + RAID 저장소</td>
+  <td>소형 고객 운영에 적합</td>
+</tr>
+<tr>
+  <td>파일럿 중형</td>
+  <td>서버급 GPU</td>
+  <td>256GB 이상</td>
+  <td>대용량 SSD + RAID 저장소</td>
+  <td>중형 고객 또는 문서량이 많은 고객에 적합</td>
+</tr>
+<tr>
+  <td>대형 고객</td>
+  <td>서버급 고성능 GPU</td>
+  <td>256GB~512GB</td>
+  <td>대용량 스토리지 연동</td>
+  <td>대형 고객, 다사업장 고객에 적합</td>
+</tr>
+</tbody>
+</table>
+
+<div class="highlight">
+  <p>
+    처음부터 고가 서버를 여러 대 구매하지 말고,
+    개발 서버와 테스트 NAS로 시작한 뒤 실제 파일럿 고객과 문서량이 확인되면 납품 서버를 구매하는 것이 안전합니다.
+  </p>
+</div>
+
+<h2>8. 1년 후 완성되어야 하는 화면</h2>
+
+<table>
+<thead>
+<tr>
+  <th>화면 구분</th>
+  <th>포함 기능</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>사용자 화면</td>
+  <td>로그인, 문서함, 문서 업로드, OCR 대기열, 검수 화면, 승인 요청, 전표 초안, 내보내기, 오류 문서함</td>
+</tr>
+<tr>
+  <td>관리자 화면</td>
+  <td>사용자 관리, 권한 관리, 부서/사업장 접근제어, NAS 설정, OCR 처리 현황, 시스템 상태, 백업 상태</td>
+</tr>
+<tr>
+  <td>감사자 화면</td>
+  <td>전표-증빙 추적, 승인 이력, 변경 이력, 접근로그, 다운로드로그, 감사 샘플 검색, 감사 패키지 생성</td>
+</tr>
+<tr>
+  <td>운영자 화면</td>
+  <td>GPU 사용률, 작업 큐 상태, 실패 문서, OCR 엔진 상태, 백업 작업, 장애 로그, 버전 정보, 업데이트</td>
+</tr>
+</tbody>
+</table>
+
+<h2>9. 핵심 데이터베이스 설계</h2>
+
+<p>
+내부회계 대응 제품은 나중에 로그를 붙이면 늦습니다.
+처음부터 감사추적 테이블을 설계해야 합니다.
+</p>
+
+<div class="highlight">
+  <p>
+    원본 문서, OCR 결과, 추출 필드, 수정값, 승인, 내보내기, 다운로드 이력은
+    서로 연결된 기록으로 저장되어야 합니다.
+  </p>
+</div>
+
+<table>
+<thead>
+<tr>
+  <th>테이블 영역</th>
+  <th>주요 테이블</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>사용자/권한</td>
+  <td>사용자, 역할, 권한, 부서, 사용자별 부서권한</td>
+</tr>
+<tr>
+  <td>문서 처리</td>
+  <td>문서, 문서 해시, OCR 결과, 추출 필드, 필드 변경 로그</td>
+</tr>
+<tr>
+  <td>전표 연결</td>
+  <td>전표 초안, 전표-문서 연결</td>
+</tr>
+<tr>
+  <td>승인 관리</td>
+  <td>승인 워크플로우, 승인 로그</td>
+</tr>
+<tr>
+  <td>감사 로그</td>
+  <td>감사 로그, 접근 로그, 다운로드 로그, 내보내기 로그, 권한 변경 로그</td>
+</tr>
+<tr>
+  <td>운영 관리</td>
+  <td>백업 로그, 시스템 변경 로그, 처리 작업, 오류 문서</td>
+</tr>
+</tbody>
+</table>
+
+<h2>10. 제품 패키지 및 가격 전략</h2>
+
+<table>
+<thead>
+<tr>
+  <th>패키지</th>
+  <th>대상</th>
+  <th>초기 구축비</th>
+  <th>월 유지보수</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>엔터프라이즈 통제 소형</td>
+  <td>중소기업, 소형 세무법인</td>
+  <td>3,000만~5,000만 원</td>
+  <td>200만~300만 원</td>
+</tr>
+<tr>
+  <td>엔터프라이즈 통제 중형</td>
+  <td>중형 세무법인, 프랜차이즈 본사, 제조업체</td>
+  <td>5,000만~1억 원</td>
+  <td>300만~700만 원</td>
+</tr>
+<tr>
+  <td>엔터프라이즈 통제 대형</td>
+  <td>대형 고객, 다사업장 기업</td>
+  <td>1억 원 이상</td>
+  <td>700만 원 이상</td>
+</tr>
+</tbody>
+</table>
+
+<h3>사용 가능한 영업 표현</h3>
+
+<ul>
+  <li>내부회계 감사 대응 자료 준비 지원</li>
+  <li>증빙-전표 추적성 강화</li>
+  <li>승인 및 변경통제 강화</li>
+  <li>접근권한 및 감사로그 제공</li>
+</ul>
+
+<h3>사용하면 안 되는 표현</h3>
+
+<ul>
+  <li>내부회계 적정의견 보장</li>
+  <li>감사 무조건 통과</li>
+  <li>부정 방지 100%</li>
+  <li>회계오류 완전 제거</li>
+</ul>
+
+<h2>11. 주요 리스크와 대응 방안</h2>
+
+<table>
+<thead>
+<tr>
+  <th>리스크</th>
+  <th>내용</th>
+  <th>대응 방안</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>OCR 정확도 부족</td>
+  <td>스캔 품질과 양식 차이로 인식률이 떨어질 수 있습니다.</td>
+  <td>문서 유형을 제한하고 검수 화면을 강화하며 고객별 규칙을 축적합니다.</td>
+</tr>
+<tr>
+  <td>고객별 양식 차이</td>
+  <td>거래명세서와 회계 프로그램 업로드 양식이 고객마다 다릅니다.</td>
+  <td>초기에는 엑셀과 CSV 중심으로 제공하고 고객별 양식은 별도 과금합니다.</td>
+</tr>
+<tr>
+  <td>내부회계 책임 오해</td>
+  <td>고객이 감사의견 보장을 기대할 수 있습니다.</td>
+  <td>감사 결과 보장이 아니라 자료 준비 지원으로 표현을 제한합니다.</td>
+</tr>
+<tr>
+  <td>고사양 서버 비용</td>
+  <td>GPU 서버 비용 부담이 큽니다.</td>
+  <td>개발용 서버로 시작하고 파일럿 고객이 확보된 뒤 운영 서버를 구매합니다.</td>
+</tr>
+<tr>
+  <td>설치 복잡도</td>
+  <td>고객 내부망 환경이 다양합니다.</td>
+  <td>설치 매뉴얼, 사전 점검표, 반복 가능한 배포 절차를 제공합니다.</td>
+</tr>
+<tr>
+  <td>데이터 확보 어려움</td>
+  <td>실제 회계 문서 샘플이 부족할 수 있습니다.</td>
+  <td>파일럿 고객 계약, 비식별화, 라벨링 체계를 구축합니다.</td>
+</tr>
+<tr>
+  <td>기능 범위 과다</td>
+  <td>세무신고, 은행연동, 모든 회계 프로그램 연동까지 범위가 커질 수 있습니다.</td>
+  <td>1년 차는 OCR, 검수, 승인, 감사추적에 집중합니다.</td>
+</tr>
+</tbody>
+</table>
+
+<h2>12. 최종 결론</h2>
+
+<p>
+1년 차 목표는 완전 자동 회계가 아니라,
+내부회계 감사 대응이 가능한 AI 회계증빙 통제 서버 1.0을 완성하는 것입니다.
+</p>
+
+<div class="highlight">
+  <p>
+    입력 자동화, 검수 효율화, 증빙 추적성, 승인통제, 변경통제, 감사 대응 자료 준비가
+    이 제품의 핵심 가치입니다.
+  </p>
+</div>
+
+<h3>가장 중요한 개발 순서</h3>
+
+<ul>
+  <li>NAS/스캐너 폴더 자동 수집</li>
+  <li>OCR 및 필드추출</li>
+  <li>검수 화면</li>
+  <li>엑셀/CSV 내보내기</li>
+  <li>검수/승인 분리</li>
+  <li>원본 증빙 해시값</li>
+  <li>증빙-전표 연결</li>
+  <li>변경 전후 이력</li>
+  <li>접근로그와 다운로드로그</li>
+  <li>감사 샘플 패키지</li>
+  <li>백업과 복구</li>
+  <li>유료 파일럿 전환</li>
+</ul>
+
+<h3>구매 전략</h3>
+
+<table>
+<thead>
+<tr>
+  <th>시점</th>
+  <th>전략</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>지금</td>
+  <td>개발용 GPU 서버, 테스트 NAS, 고속 스캐너, 개발자 장비, 코드관리·라벨링·보안 점검 도구를 준비합니다.</td>
+</tr>
+<tr>
+  <td>6개월 이후</td>
+  <td>파일럿 고객이 확보된 뒤 운영용 납품 서버를 구매합니다.</td>
+</tr>
+<tr>
+  <td>9~12개월</td>
+  <td>파일럿 서버 추가, 백업/복구 장비, 감사 패키지 기능, 유료 구축 패키지를 완성합니다.</td>
+</tr>
+</tbody>
+</table>
+
+<h2>역할극으로 이해하기</h2>
+
+<div class="dialogue">
+<p><span class="role">감사인:</span> 이 시스템이 감사 대응 가능한 수준이라는 것을 무엇으로 증명할 수 있습니까?</p>
+
+<p><span class="role">AI 개발자:</span> 실제 고객 문서에 대해 증빙 추적성, 승인 잠금, 변경이력, 접근로그, 내보내기 로그, 백업 기록, 감사 샘플 패키지를 보여줄 수 있어야 합니다.</p>
+
+<p><span class="role">재무팀장:</span> 1년 차 사업 성공 기준은 무엇입니까?</p>
+
+<p><span class="role">AI 개발자:</span> 최소 1곳 이상의 유료 고객 전환, 수기 검수 시간 절감, 안정적인 파일럿 운영, 유지보수 비용을 지불하려는 고객 의사가 기준입니다.</p>
+
+<p><span class="role">개발자:</span> 기술적 성공 기준은 무엇입니까?</p>
+
+<p><span class="role">AI 개발자:</span> 내부망에서 실행되고, 실제 문서를 안정적으로 처리하며, 검수와 승인, 감사로그, 내보내기, 장애 복구, 반복 가능한 설치가 가능해야 합니다.</p>
+
+<p><span class="role">회계사:</span> 회계적 성공 기준은 무엇입니까?</p>
+
+<p><span class="role">AI 개발자:</span> 전표 초안 작성 속도를 높이면서 증빙, 승인, 수정 이력을 보존하고, 증빙 없는 입력을 줄이며 문서 조회를 쉽게 만드는 것입니다.</p>
+
+<p><span class="role">직원:</span> 직원들이 매일 사용하려면 무엇이 중요합니까?</p>
+
+<p><span class="role">AI 개발자:</span> 수기 입력보다 빠르고, 수정이 쉽고, 신뢰할 만큼 안정적이며, 기존 엑셀·CSV·회계 시스템 업로드 흐름과 연결되어야 합니다.</p>
+</div>
+
+<h2>학습 정리</h2>
+
+<div class="questions">
+<ul>
+  <li>이 제품이 단순 OCR 프로그램이 아니라 회계 통제 서버인 이유는 무엇인가</li>
+  <li>1년 차에 반드시 구현해야 할 기능과 미뤄야 할 기능은 무엇인가</li>
+  <li>내부회계 대응을 위해 어떤 로그와 변경이력이 필요한가</li>
+  <li>개발용 장비와 납품용 장비를 어떤 시점에 구분해 구매해야 하는가</li>
+  <li>유료 구축형 제품으로 전환하기 위한 성공 기준은 무엇인가</li>
+</ul>
+</div>
+
+<div class="back">
+  <a href="../">← 홈으로</a>
+  <a href="../biz.html">← 목록으로</a>
+</div>
+
+</div>
+
+<div class="footer-wrap">
+  <footer>
+    © <span id="year"></span> Cha GPTs. 모든 권리 보유.
+  </footer>
+</div>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
