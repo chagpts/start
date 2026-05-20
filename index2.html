@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI Accounting & Audit Training</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -18,6 +18,7 @@
 
     body {
       margin: 0;
+      padding: 24px 14px;
       min-height: 100vh;
       font-family: 'Quicksand', Arial, sans-serif;
       text-align: center;
@@ -27,80 +28,25 @@
       background-attachment: fixed;
     }
 
-    /* LEFT SIDEBAR */
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 230px;
-      height: 100vh;
-      background: rgba(255, 255, 255, 0.96);
-      box-shadow: 4px 0 16px rgba(0,0,0,0.16);
-      padding: 24px 18px;
-      z-index: 1000;
-      text-align: left;
-      overflow-y: auto;
-    }
-
-    .sidebar-logo {
-      text-align: center;
-      margin-bottom: 28px;
-    }
-
-    .sidebar-logo img {
-      max-width: 120px;
+    .logo {
+      width: auto;
       height: auto;
-    }
-
-    .sidebar-title {
-      font-family: 'Baloo 2', cursive;
-      text-align: center;
-      font-size: 20px;
-      color: #111;
-      margin-bottom: 24px;
-    }
-
-    .sidebar a {
-      display: block;
-      padding: 12px 14px;
-      margin-bottom: 10px;
-      border-radius: 14px;
-      color: #222;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 14px;
-      transition: 0.2s ease;
-    }
-
-    .sidebar a:hover {
-      background: #333;
-      color: #fff;
-    }
-
-    .sidebar-divider {
-      height: 1px;
-      background: #ddd;
-      margin: 18px 0;
-    }
-
-    .main-content {
-      margin-left: 230px;
-      padding: 50px 20px;
-      min-height: 100vh;
+      vertical-align: middle;
+      margin-right: 14px;
+      max-width: 180px;
     }
 
     .hero {
       background: rgba(255,255,255,0.96);
-      padding: 36px 50px;
+      padding: 24px 18px;
       border-radius: 22px;
       box-shadow: 0 6px 18px rgba(0,0,0,0.18);
-      margin: 0 auto 60px;
-      max-width: 900px;
+      margin-bottom: 28px;
     }
 
     h1 {
       font-family: 'Baloo 2', cursive;
-      font-size: 40px;
+      font-size: 26px;
       margin: 0 0 6px;
       color: #222;
     }
@@ -112,11 +58,70 @@
       line-height: 1.5;
     }
 
-    .meetup-info {
-      max-width: 520px;
-      margin: 0 auto 60px;
+    /* BOARD MENU */
+    .board-section {
+      max-width: 1100px;
+      margin: 0 auto 32px;
       background: rgba(255,255,255,0.96);
-      padding: 20px;
+      padding: 24px 18px;
+      border-radius: 22px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    }
+
+    .board-section h2 {
+      font-family: 'Baloo 2', cursive;
+      font-size: 22px;
+      margin: 0 0 6px;
+      color: #111;
+    }
+
+    .board-subtitle {
+      font-size: 14px;
+      color: #555;
+      margin: 0 0 20px;
+    }
+
+    .board-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .board-card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      background: rgba(255,255,255,0.95);
+      border-radius: 18px;
+      padding: 18px 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .board-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+    }
+
+    .board-card h3 {
+      font-size: 17px;
+      margin: 0 0 8px;
+      color: #222;
+    }
+
+    .board-card p {
+      font-size: 14px;
+      margin: 0;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    /* OVERVIEW */
+    .meetup-info {
+      max-width: 620px;
+      margin: 0 auto 32px;
+      background: rgba(255,255,255,0.96);
+      padding: 24px 20px;
       border-radius: 22px;
       box-shadow: 0 6px 18px rgba(0,0,0,0.18);
     }
@@ -125,8 +130,7 @@
     .meetup-info h3 {
       font-family: 'Baloo 2', cursive;
       font-size: 20px;
-      margin-top: 0;
-      margin-bottom: 14px;
+      margin: 0 0 14px;
       color: #111;
     }
 
@@ -143,55 +147,35 @@
     }
 
     .button {
-      display: inline-flex;
+      display: flex;
       justify-content: center;
       align-items: center;
-      width: auto;
-      padding: 14px 30px;
+      width: 100%;
+      padding: 14px 0;
       margin-top: 14px;
       background: #333;
       color: #fff;
       text-decoration: none;
       border-radius: 28px;
       font-size: 15px;
-      transition: 0.2s ease;
+      transition: background 0.15s ease, transform 0.15s ease;
     }
 
     .button:hover {
       background: #111;
+      transform: translateY(-2px);
     }
 
     .button:active {
       background: #111;
     }
 
-    .order-step {
-      background: rgba(255,255,255,0.95);
-      border-radius: 16px;
-      padding: 14px 16px;
-      margin-bottom: 10px;
-      text-align: left;
-    }
-
-    .step-title {
-      font-size: 14px;
-      font-weight: 600;
-      margin-bottom: 4px;
-      color: #222;
-    }
-
-    .order-step p {
-      font-size: 13px;
-      color: #555;
-      margin: 0;
-      line-height: 1.5;
-    }
-
+    /* MODULES */
     .topics {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-      max-width: 1100px;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      max-width: 420px;
       margin: 0 auto;
     }
 
@@ -205,8 +189,7 @@
     .topic h2 {
       font-family: 'Baloo 2', cursive;
       font-size: 20px;
-      margin-top: 0;
-      margin-bottom: 8px;
+      margin: 0 0 8px;
       color: #111;
     }
 
@@ -214,16 +197,119 @@
       font-size: 14px;
       color: #555;
       margin-bottom: 16px;
-      line-height: 1.5;
     }
 
+    /* COURSE SCROLL SECTION */
+    .course-scroll-section {
+      max-width: 1100px;
+      margin: 70px auto 40px;
+      padding: 28px 18px;
+      background: rgba(255,255,255,0.96);
+      border-radius: 22px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    }
+
+    .course-scroll-section h2 {
+      font-family: 'Baloo 2', cursive;
+      font-size: 28px;
+      margin: 0 0 8px;
+      color: #111;
+    }
+
+    .section-desc {
+      font-size: 14px;
+      color: #555;
+      margin: 0 0 24px;
+      line-height: 1.6;
+    }
+
+    .course-scroll {
+      display: flex;
+      gap: 22px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding: 10px 8px 26px;
+    }
+
+    .course-scroll::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .course-scroll::-webkit-scrollbar-track {
+      background: #eee;
+      border-radius: 10px;
+    }
+
+    .course-scroll::-webkit-scrollbar-thumb {
+      background: #bbb;
+      border-radius: 10px;
+    }
+
+    .course-card {
+      flex: 0 0 86%;
+      max-width: 430px;
+      min-height: 370px;
+      scroll-snap-align: center;
+      background: #fff;
+      border-radius: 24px;
+      padding: 28px 24px;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.16);
+      text-align: left;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .course-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+    }
+
+    .course-card .tag {
+      display: inline-block;
+      padding: 6px 12px;
+      background: #333;
+      color: #fff;
+      border-radius: 999px;
+      font-size: 12px;
+      margin-bottom: 16px;
+    }
+
+    .course-card h3 {
+      font-family: 'Baloo 2', cursive;
+      font-size: 24px;
+      margin: 0 0 12px;
+      color: #111;
+      line-height: 1.25;
+    }
+
+    .course-card p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.7;
+      margin: 0 0 16px;
+    }
+
+    .course-card ul {
+      padding-left: 18px;
+      margin: 0;
+    }
+
+    .course-card li {
+      font-size: 14px;
+      color: #444;
+      line-height: 1.8;
+    }
+
+    .scroll-hint {
+      font-size: 13px;
+      color: #666;
+      margin-top: 4px;
+    }
+
+    /* BOTTOM */
     .bottom-actions {
       margin-top: 40px;
       text-align: center;
-    }
-
-    .bottom-actions .button {
-      margin: 6px;
     }
 
     footer {
@@ -236,84 +322,72 @@
       border-radius: 18px;
     }
 
-    /* TABLET */
-    @media (max-width: 1024px) {
-      .topics {
-        grid-template-columns: repeat(2, 1fr);
-        max-width: 720px;
-      }
-    }
-
-    /* MOBILE */
-    @media (max-width: 767px) {
+    @media (min-width: 768px) {
       body {
-        background-attachment: scroll;
+        padding: 50px 20px;
       }
 
-      .sidebar {
-        position: relative;
-        width: 100%;
-        height: auto;
-        padding: 18px 12px;
-        text-align: center;
-      }
-
-      .sidebar-logo {
-        margin-bottom: 10px;
-      }
-
-      .sidebar-logo img {
-        max-width: 86px;
-      }
-
-      .sidebar-title {
-        margin-bottom: 12px;
-      }
-
-      .sidebar a {
-        display: inline-block;
-        padding: 9px 12px;
-        margin: 4px;
-        font-size: 13px;
-      }
-
-      .sidebar-divider {
-        margin: 12px auto;
-        max-width: 260px;
-      }
-
-      .main-content {
-        margin-left: 0;
-        padding: 24px 14px;
+      h1 {
+        font-size: 40px;
       }
 
       .hero {
-        padding: 24px 18px;
-        margin-bottom: 28px;
+        padding: 36px 50px;
+        margin-bottom: 60px;
+      }
+
+      .board-section {
+        margin-bottom: 60px;
+        padding: 30px;
+      }
+
+      .board-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .meetup-info {
+        margin-bottom: 60px;
+      }
+
+      .topics {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1100px;
+        gap: 30px;
+      }
+
+      .button {
+        width: auto;
+        padding: 14px 30px;
+        display: inline-block;
+      }
+
+      .course-card {
+        flex: 0 0 44%;
+      }
+    }
+
+    @media (min-width: 1100px) {
+      .course-card {
+        flex: 0 0 32%;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .logo {
+        width: 46px;
+        margin-right: 8px;
       }
 
       h1 {
         font-size: 30px;
       }
 
-      .meetup-info {
-        margin-bottom: 32px;
+      .course-scroll-section h2 {
+        font-size: 24px;
       }
 
-      .topics {
-        grid-template-columns: 1fr;
-        max-width: 420px;
-        gap: 18px;
-      }
-
-      .button {
-        width: 100%;
-        padding: 14px 0;
-      }
-
-      .bottom-actions .button {
-        width: 100%;
-        margin: 6px 0;
+      .course-card h3 {
+        font-size: 22px;
       }
     }
   </style>
@@ -321,159 +395,200 @@
 
 <body>
 
-  <!-- LEFT SIDEBAR -->
-  <aside class="sidebar">
-    <div class="sidebar-logo">
-      <img src="logo.png" alt="AuditSecu logo">
-    </div>
+  <!-- LOGO -->
+  <h1>
+    <img src="logo.png" class="logo" alt="AuditSecu logo">
+  </h1>
 
-    <div class="sidebar-title">AuditSecu</div>
+  <!-- HERO -->
+  <div class="hero">
+    <h1>AI Accounting & Audit Training</h1>
+    <p>Build, audit, and secure real accounting systems with AI.</p>
+    <p>회계 + AI + 감사 + 보안을 한 번에 배우는 실습형 교육</p>
+  </div>
 
-    <a href="./index.html">Home</a>
-    <a href="./acct.html">회계 전산 시스템 이론</a>
-    <a href="./ai.html">AI OCR 회계 시스템</a>
-    <a href="./ics.html">내부회계관리 및 일반통제 </a>
-    <a href="./weak.html">정보보안: 회계 시스템 취약점 </a>
-    <a href="./practice.html">케이스 분석</a>
-    <a href="./career.html"> 내부회계관리 및 전산감사 분야 일자리 </a>
+  <!-- BOARD MENU -->
+  <div class="board-section">
+    <h2>AI Accounting 게시판</h2>
+    <p class="board-subtitle">자유롭게 이야기하고 질문해보세요</p>
 
-    <div class="sidebar-divider"></div>
-
-    <a href="https://chagpts.github.io/auditsecu/" target="_blank">협력 업체</a>
-    <a href="./board/post.html">문의사항</a>
-  </aside>
-
-  <!-- MAIN CONTENT -->
-  <main class="main-content">
-
-    <!-- HERO -->
-    <div class="hero">
-      <h1>AI Accounting & Audit Training</h1>
-      <p>Build, audit, and secure real accounting systems with AI.</p>
-      <p>회계 + AI + 감사 + 보안을 한 번에 배우는 실습형 교육</p>
-    </div>
-
-    <!-- OVERVIEW -->
-    <div class="meetup-info">
-      <h2>Program Overview</h2>
-
-      <div class="info-item"><span>Focus:</span> AI OCR 기반 회계 시스템 + 감사 실습</div>
-      <div class="info-item"><span>대상:</span> 회계사 / IT Audit / 내부회계 / 취준생 등</div>
-      <div class="info-item"><span>Mode:</span> 실습 중심 교육 (로컬 AI)</div>
-      <div class="info-item"><span>Goal:</span> 실무형 디지털 회계·감사 역량 확보</div>
-    </div>
-
-    <!-- CURRICULUM -->
-    <div class="meetup-info">
-      <h3>Program Structure</h3>
-
-      <div class="order-step">
-        <div class="step-title">1. Accounting</div>
-        <p>
-          • AI 회계 프로그램 구축 대상 회계 토픽<br>
-          • IFRS, 일반기업회계기준, US-GAAP, 비영리회계기준, 국가회계기준<br>
-          • 파생 상품 및 특수 회계
-        </p>
-      </div>
-
-      <div class="order-step">
-        <div class="step-title">2. AI Accounting System</div>
-        <p>
-          • AI OCR System<br>
-          • LLM 기반 회계 자동화<br>
-          • 자동 분개 및 데이터 처리
-        </p>
-      </div>
-
-      <div class="order-step">
-        <div class="step-title">3. Audit & Internal Control</div>
-        <p>
-          • ITGC 및 내부통제<br>
-          • 전산감사 실습<br>
-          • 데이터 기반 감사
-        </p>
-      </div>
-
-      <div class="order-step">
-        <div class="step-title">4. Security Testing</div>
-        <p>
-          • SQL Injection<br>
-          • XSS / CSRF<br>
-          • 파일 업로드 취약점
-        </p>
-      </div>
-
-      <div class="order-step">
-        <div class="step-title">5. Real Case Training</div>
-        <p>
-          • 실제 기업 데이터 실습<br>
-          • End-to-End 감사 수행
-        </p>
-      </div>
-
-      <div class="order-step">
-        <div class="step-title">6. Career Track</div>
-        <p>
-          • Digital Audit<br>
-          • IT Audit<br>
-          • 회계 + IT 커리어
-        </p>
-      </div>
-    </div>
-
-    <!-- MODULES -->
-    <div class="topics">
-      <div class="topic">
-        <h2>Accounting</h2>
-        <p>회계 전산 시스템 이론</p>
-        <a class="button" href="./acct.html">Start</a>
-      </div>
-
-      <div class="topic">
-        <h2>AI OCR System</h2>
-        <p>회계 증빙 인식 및 자동 회계 처리</p>
-        <a class="button" href="./ai.html">Start</a>
-      </div>
-
-      <div class="topic">
-        <h2>Audit & ITGC</h2>
-        <p>내부통제 및 데이터 감사</p>
-        <a class="button" href="./ics.html">Start</a>
-      </div>
-
-      <div class="topic">
-        <h2>Security</h2>
-        <p>취약점 분석 및 방어</p>
-        <a class="button" href="./weak.html">Start</a>
-      </div>
-
-      <div class="topic">
-        <h2>Real Case</h2>
-        <p>실제 데이터 기반 실습</p>
-        <a class="button" href="./practice.html">Start</a>
-      </div>
-
-      <div class="topic">
-        <h2>Understanding Internal Audit and Career Development</h2>
-        <p>전산 감사 이해와 Digital Audit 커리어 준비</p>
-        <a class="button" href="./career.html">Start</a>
-      </div>
-    </div>
-
-    <!-- BOTTOM ACTIONS -->
-    <div class="bottom-actions">
-      <a class="button" href="https://chagpts.github.io/auditsecu/" target="_blank">
-        협력 업체
+    <div class="board-list">
+      <a href="./board/notice.html" class="board-card">
+        <h3>공지사항</h3>
+        <p>중요한 안내와 업데이트</p>
       </a>
 
-      <a class="button" href="./board/post.html">
-        문의사항 남기기
+      <a href="./board/post1.html" class="board-card">
+        <h3>교육 신청</h3>
+        <p>수강생 모집 게시판</p>
+      </a>
+
+      <a href="./board/qna.html" class="board-card">
+        <h3>질문 게시판</h3>
+        <p>궁금한 것을 물어보세요</p>
       </a>
     </div>
+  </div>
 
-    <footer>© 2026 AuditSecu</footer>
+  <!-- OVERVIEW -->
+  <div class="meetup-info">
+    <h2>Program Overview</h2>
 
-  </main>
+    <div class="info-item"><span>개요:</span> AI OCR 기반 회계 시스템 + 감사 실습</div>
+    <div class="info-item"><span>대상:</span> 회계사 / IT Audit / 내부회계 / 취준생 등</div>
+    <div class="info-item"><span>내용:</span> 로컬 AI 기반 실습 중심 교육</div>
+    <div class="info-item"><span>목적:</span> 실무형 디지털 회계·감사 역량 확보</div>
+  </div>
+
+  <!-- MODULES -->
+  <div class="topics">
+    <div class="topic">
+      <h2>Accounting Information System</h2>
+      <p>회계 전산 시스템</p>
+      <a class="button" href="./acct.html">Start</a>
+    </div>
+
+    <div class="topic">
+      <h2>AI OCR System</h2>
+      <p>AI OCR을 이용한 자동 회계 처리</p>
+      <a class="button" href="./ai.html">Start</a>
+    </div>
+
+    <div class="topic">
+      <h2>Audit & ITGC</h2>
+      <p>내부통제 및 데이터 감사</p>
+      <a class="button" href="./ics.html">Start</a>
+    </div>
+
+    <div class="topic">
+      <h2>Vulnerability Analysis and Defense</h2>
+      <p>취약점 분석 및 방어</p>
+      <a class="button" href="./weak.html">Start</a>
+    </div>
+
+    <div class="topic">
+      <h2>Real Case</h2>
+      <p>실제 데이터 기반 실습</p>
+      <a class="button" href="./practice.html">Start</a>
+    </div>
+
+    <div class="topic">
+      <h2>Understanding Internal Audit and Career Development</h2>
+      <p>전산 감사 이해 및 커리어</p>
+      <a class="button" href="./career.html">Start</a>
+    </div>
+  </div>
+
+  <!-- COURSE CONTENT SCROLL -->
+  <div class="course-scroll-section">
+    <h2>교육 내용 자세히 보기</h2>
+    <p class="section-desc">
+      아래 카드를 옆으로 넘기면서 각 교육 모듈의 내용을 확인해보세요.
+    </p>
+
+    <div class="course-scroll">
+
+      <div class="course-card">
+        <span class="tag">Module 01</span>
+        <h3>Accounting Information System</h3>
+        <p>
+          회계 데이터가 실제 시스템 안에서 어떻게 입력, 저장, 처리되는지 이해합니다.
+        </p>
+        <ul>
+          <li>회계 전산 시스템 구조 이해</li>
+          <li>거래 입력과 전표 처리 흐름</li>
+          <li>계정과목, 장부, 재무제표 연결</li>
+          <li>실무형 회계 데이터 구조 실습</li>
+        </ul>
+      </div>
+
+      <div class="course-card">
+        <span class="tag">Module 02</span>
+        <h3>AI OCR System</h3>
+        <p>
+          영수증, 인보이스, 증빙자료를 AI OCR로 읽고 회계 데이터로 변환하는 과정을 실습합니다.
+        </p>
+        <ul>
+          <li>AI OCR 기본 원리 이해</li>
+          <li>영수증 및 인보이스 인식</li>
+          <li>자동 분개 데이터 생성</li>
+          <li>오류 검토 및 보정 방법</li>
+        </ul>
+      </div>
+
+      <div class="course-card">
+        <span class="tag">Module 03</span>
+        <h3>Audit & ITGC</h3>
+        <p>
+          내부통제와 IT General Control을 이해하고 데이터 기반 감사 절차를 학습합니다.
+        </p>
+        <ul>
+          <li>ITGC 핵심 개념</li>
+          <li>접근권한 통제</li>
+          <li>변경관리 및 운영통제</li>
+          <li>감사 증적 확인 실습</li>
+        </ul>
+      </div>
+
+      <div class="course-card">
+        <span class="tag">Module 04</span>
+        <h3>Vulnerability Analysis and Defense</h3>
+        <p>
+          회계 시스템과 데이터 처리 환경에서 발생할 수 있는 취약점을 분석하고 방어 방법을 배웁니다.
+        </p>
+        <ul>
+          <li>시스템 취약점 기본 이해</li>
+          <li>데이터 보안 위험 분석</li>
+          <li>권한 관리 취약점 점검</li>
+          <li>보안 개선 방안 수립</li>
+        </ul>
+      </div>
+
+      <div class="course-card">
+        <span class="tag">Module 05</span>
+        <h3>Real Case Practice</h3>
+        <p>
+          실제와 유사한 회계 데이터를 기반으로 AI, 감사, 내부통제를 연결한 실습을 진행합니다.
+        </p>
+        <ul>
+          <li>샘플 회계 데이터 분석</li>
+          <li>이상 거래 탐지</li>
+          <li>감사 체크리스트 작성</li>
+          <li>결과 리포트 작성</li>
+        </ul>
+      </div>
+
+      <div class="course-card">
+        <span class="tag">Module 06</span>
+        <h3>Internal Audit and Career Development</h3>
+        <p>
+          전산 감사, 내부회계, IT Audit, AI 회계 자동화 분야로 커리어를 확장하는 방법을 다룹니다.
+        </p>
+        <ul>
+          <li>전산 감사 직무 이해</li>
+          <li>필요 역량과 포트폴리오</li>
+          <li>실무 프로젝트 구성 방법</li>
+          <li>커리어 방향 설정</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="scroll-hint">← 좌우로 스크롤해서 더 보기 →</div>
+  </div>
+
+  <!-- BOTTOM ACTIONS -->
+  <div class="bottom-actions">
+    <a class="button" href="https://chagpts.github.io/auditsecu/" target="_blank">
+      협력 업체
+    </a>
+
+    <a class="button" href="./board/post.html">
+      게시판
+    </a>
+  </div>
+
+  <footer>© 2026 AuditSecu</footer>
 
 </body>
 </html>
